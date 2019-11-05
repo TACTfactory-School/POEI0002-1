@@ -1,59 +1,45 @@
-Projet Application OVG "On Va Geeker"
-=====================================
+OVG Application "On Va Geeker"
+==============================
 
-+Git config :+
-```
-git config --global user.name "name"
-git config --global user.email "e-mail"
-git init
-git remote add origin « ssh: »
-git clone « https://.... »
-touch .gitignore
+OVG is an application designed to organizing events between users. These events are designed to allow our members to meet peoples in order to make new friends, or simply to have a good time without any hassle.
 
-```
+Inline-style: 
+![alt text](http://dev10.tactfactory.com/attachments/download/16/OVG_logo_prop3.png "Logo OVG")
 
-+Some basic Git commands :+
-```
-git status
-git log
-git log –graph // historique
+### Build in Progress...
 
-git checkout -b <ma_branche_parallele>
-git branch
-git branch -d <branch_name>
+_Coded by Colin Cerveaux, Samy Moussaoui & Fabrice Reigner_
 
-git tag // assigner un tag, oblige d'être sur le commit avec checkout
-git tag -d <tagName> // Supprimer tag
-git tag // Afficher tous les tags
+Architecture
+------------
+* MVC
+Inline-style: 
+![alt text](https://www.peerbits.com/wp-content/uploads/2018/04/mobile-app-architectures.jpg "Software Engineering")
 
-git checkout –- <file_to_restore>
-git checkout <n°commit>		Hachage/ empreinte SHA1 / 6 premiers char
+Languages
+---------
+* mySQL DB
+* SpringBoot
+* JAVA
+* Angular
+* HTML5 / CSS3
 
-git checkout master
+Workspace
+---------
+* Eclipse IDE
+* Maven
+* Jenkins
+* GitHub
+* Agile SCRUM
+* Redmine
+* Plant UML
 
-git add .
-git rm –-cached <name_file.extension> // supprimer fichier du cache Add
-git rm -r –-cached . <folder/> // supprime dossier + contenu du cache Add
-git rm -r –-cached . // supprime tous les fichiers du cache
-
-git commit -m "edit/update comment"
-git mv <file> <file_rename> // renommer 
-git commit –-ammend // editer le dernier commit
-git push –-force
-
-git push -u origin master 
-git push
-
-git merge master
-
-git pull 
-```
-
-+Some basic Unix commands :+
-```
-cat ~/.
-cd <folder>
-mkdir <folder>
-ls
-```
-
+Ressources
+----------
+- [OVG Redmine](http://dev10.tactfactory.com/)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/java)
+- [Spring Guides](https://spring.io/guides)
+- [Spring Initializr](https://start.spring.io/)
+- [Paiza Online Compiler](https://paiza.io/en)
+- [Java Baeldung](https://www.baeldung.com/java-try-with-resources)
+- [Plant UML](http://plantuml.com/fr/download)
