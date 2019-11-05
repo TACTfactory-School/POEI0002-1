@@ -3,8 +3,7 @@ OVG Application "On Va Geeker"
 
 OVG is an application designed to organizing events between users. These events are designed to allow our members to meet peoples in order to make new friends, or simply to have a good time without any hassle.
 
-Inline-style: 
-![alt text](http://dev10.tactfactory.com/attachments/download/16/OVG_logo_prop3.png "Logo OVG")
+![OVG Logo](/res/img/OVG_logo.png)
 
 ### Build in Progress...
 
@@ -43,4 +42,3 @@ Ressources
 - [Paiza Online Compiler](https://paiza.io/en)
 - [Java Baeldung](https://www.baeldung.com/java-try-with-resources)
 - [Plant UML](http://plantuml.com/fr/download)
-
