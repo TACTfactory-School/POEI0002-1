@@ -1,10 +1,25 @@
 package com.ovg.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class App {
+import com.ovg.app.repositories.EventRepository;
+
+@SpringBootApplication
+public class App implements CommandLineRunner {
+
+    @Autowired
+    private EventRepository eventRepository;
 
     public static void main( String[] args ) {
-
-        System.out.println( "Hello World!" );
+        SpringApplication.run(App.class, args);
     }
+
+    @Override
+    public void run(String... args) throws Exception {
+        // this.userRepository.selectAll(connection);
+    }
+
 }
