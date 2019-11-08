@@ -5,15 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
 @Table(name = "app_events")
 public class Event extends EntityBase {
-
-    //  @JsonProperty
-    //  private Integer id;
 
         @Column(length = 100, nullable = false, unique = true)
         @NotBlank
@@ -25,17 +19,6 @@ public class Event extends EntityBase {
         @Column(name = "author", length = 50, nullable = false, unique = true)
         @NotBlank
         private String author;
-
-
-//        public Event() {
-//            this(null, null, null);
-//        }
-
-//        public Event(final String label, final String description,  final String author) {
-//            this.label = label;
-//            this.description = description;
-//            this.author = author;
-//        }
 
         @Override
         public String toString() {

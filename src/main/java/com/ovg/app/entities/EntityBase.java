@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package com.ovg.app.entities;
 
 import javax.persistence.GeneratedValue;
@@ -8,19 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 /**
- * @author JoeHarms
+ * @author Colin Cerveaux @C-ambium
  *
  */
-
-
 @MappedSuperclass
 public class EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-//    private LocalDateTime createdAt = LocalDateTime.now();
 
     private boolean enabled = false;
 
@@ -48,19 +42,4 @@ public class EntityBase {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-
-//    /**
-//     * @return the createdAt
-//     */
-//    public LocalDateTime getCreatedAt() {
-//        return createdAt;
-//    }
-//
-//    /**
-//     * @param createdAt the createdAt to set
-//     */
-//    public void setCreatedAt(LocalDateTime createdAt) {
-//        this.createdAt = createdAt;
-//    }
-
 }
