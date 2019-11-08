@@ -1,25 +1,26 @@
 package com.ovg.app.configurations;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.ws.http.HTTPException;
-
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.ovg.app.exceptions.NotFoundException;
 
+
+@ControllerAdvice
 public class ControllerConfiguration {
 
-/*    public ControllerConfiguration() {
+    @ExceptionHandler(NotFoundException.class)
+    public Map<String, Object> errorsRewrite(final NotFoundException e) {
 
-        @ExceptionHandler(NotFoundException.class)
-        public Map<String, String> errorsRewrite(final NotFoundException e) {
+        final Map<String, Object> result = new HashMap<>();
 
-            final Map<String, String> result = new HashMap<>();
+        result.put("date", LocalDateTime.now());
+        result.put("error", e.getMessage());
 
-            result.put("date", LocalDateTime.now())
-            result.put("error", e.getMessage())
-
-        }*/
+        return result;
+    }
 }

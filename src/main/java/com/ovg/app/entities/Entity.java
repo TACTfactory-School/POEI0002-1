@@ -1,9 +1,13 @@
+/**
+ *
+ */
 package com.ovg.app.entities;
 
-public class Entity {
-
-	public Entity() {
-		// TODO Auto-generated constructor stub
-	}
-
+/**
+ * @author JoeHarms
+ *
+ */
+public interface Entity {
+    Integer getId();
+    void setId(Integer id);
 }

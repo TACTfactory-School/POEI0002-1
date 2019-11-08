@@ -2,19 +2,87 @@ package com.ovg.app.repositories;
 
 import com.ovg.app.entities.Event;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EventRepository extends OvgRepository<Event>{
+public interface EventRepository extends JpaRepository<Event, Long> {
 
+    boolean existsByLabelIgnoreCase(String label);
+
+    boolean existsByLabelIgnoreCaseAndIdNot(String label, Long id);
+
+//    @Query("SELECT p FROM PokemonSpecies p WHERE p.id = ?1")
+//    PokemonSpecies findOne(Long id);
+//    @Query("SELECT p FROM PokemonSpecies p WHERE p.id = :myId")
+//    PokemonSpecies findOne(@Param("myId") Long id);
+
+    @Query("SELECT COUNT(e) > 0"
+            + " FROM Event e"
+            + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"
+            + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
+    boolean existsByLabel(@Param("s") Event event);
+}
+
+/*
+ * CORRECTIF JDBC
+ * import com.ovg.app.repositories.OvgRepository;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Repository
+public class EventRepository extends OvgRepository<Event> {
+
+    @Override
+    protected String getTableName() {
+        return "app_events";
+    }
+
+    @Override
+    protected List<String> getColumnNames() {
+        return Arrays.asList("id", "label", "event_description", "author");
+    }
+
+    @Override
+    protected PreparedStatement fill(final PreparedStatement stmt, final Event e) throws SQLException {
+        stmt.setInt(1, e.getId());
+        stmt.setString(2, e.getLabel());
+        stmt.setString(3, e.getDescription());
+        stmt.setString(4, e.getAuthor());
+
+        return null;
+    }
+
+    @Override
+    protected Event fill(final ResultSet rs) throws SQLException {
+        final Event result = new Event();
+
+        result.setId(rs.getInt("id"));
+        result.setLabel(rs.getString("label"));
+        result.setDescription(rs.getString("event_description"));
+        result.setAuthor(rs.getString("author"));
+
+        return result;
+    }
+}
+/*
+ *		// OLD
+        import java.sql.Connection;
+        import java.sql.Statement;
+        import java.util.ArrayList;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.data.jpa.repository.JpaRepository;
+        import org.springframework.data.jpa.repository.Query;
+        import org.springframework.data.repository.query.Param;
+ *		EventRepository extends OvgRepository<Event>
+ *
         @Autowired
         private EntityManager manager;
 
@@ -108,4 +176,5 @@ public class EventRepository extends OvgRepository<Event>{
             insertOne(e.getLabel(), e.getDescription(), e.getAuthor());
 //          return new Event(1, e.getLabel(), e.getDescription(), e.getAuthor());
         }
-}
+*/
+

@@ -1,30 +1,37 @@
+/**
+ *
+ */
 package com.ovg.app.exceptions;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
+/**
+ * @author JoeHarms
+ *
+ */
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class NotFoundException extends HttpException {
+
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class BadRequestException extends HttpException {
 
     /** The serial number. */
     private static final long serialVersionUID = 1L;
 
-    public NotFoundException() {
+    public BadRequestException() {
     }
 
-    public NotFoundException(String message) {
+    public BadRequestException(String message) {
         super(message);
     }
 
-    public NotFoundException(Throwable cause) {
+    public BadRequestException(Throwable cause) {
         super(cause);
     }
 
-    public NotFoundException(String message, Throwable cause) {
+    public BadRequestException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public NotFoundException(String message, Throwable cause, boolean enableSuppression,
+    public BadRequestException(String message, Throwable cause, boolean enableSuppression,
             boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }

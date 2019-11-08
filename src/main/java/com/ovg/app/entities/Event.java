@@ -1,44 +1,47 @@
 package com.ovg.app.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
 //import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Event {
+@Entity
+@Table(name = "app_events")
+public class Event extends EntityBase {
 
-        @JsonProperty
-        private Integer id;
+    //  @JsonProperty
+    //  private Integer id;
 
+        @Column(length = 100, nullable = false, unique = true)
+        @NotBlank
         private String label;
 
+        @Column(name = "event_description", length = 255, nullable = true, unique = false)
         private String description;
 
+        @Column(name = "author", length = 50, nullable = false, unique = true)
+        @NotBlank
         private String author;
 
 
-        public Event() {
-            this(null, null, null, null);
-        }
+//        public Event() {
+//            this(null, null, null);
+//        }
 
-        public Event(final Integer id, final String label, final String description,  final String author) {
-            this.id = id;
-            this.label = label;
-            this.description = description;
-            this.author = author;
-        }
+//        public Event(final String label, final String description,  final String author) {
+//            this.label = label;
+//            this.description = description;
+//            this.author = author;
+//        }
 
         @Override
         public String toString() {
-            return String.format("ID : %d | Title : %s | Description : %s | Author : %s",
-                    id, label, description, author);
+            return String.format("| Title : %s | Description : %s | Author : %s",
+                    label, description, author);
         }
-
-        /**
-         * @return the id
-         */
-        public int getId() {
-            return id;
-        }
-
         /**
          * @return the label
          */
