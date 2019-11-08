@@ -1,4 +1,4 @@
-package com.ovg.app.repositories;
+package com.ovg.app.aexamples.drafts;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +10,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ovg.app.entities.Entity;
+import com.ovg.app.aexamples.drafts.EntityManager;
 import com.ovg.app.exceptions.HttpException;
 import com.ovg.app.exceptions.NotFoundException;
-import com.ovg.app.repositories.EntityManager;
 
 public abstract class OvgRepository<T extends Entity> {
 

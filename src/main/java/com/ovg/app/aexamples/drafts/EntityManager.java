@@ -1,4 +1,4 @@
-package com.ovg.app.repositories;
+package com.ovg.app.aexamples.drafts;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

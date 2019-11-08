@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.ovg.app.entities;
+package com.ovg.app.aexamples.drafts;
 
 /**
  * @author JoeHarms

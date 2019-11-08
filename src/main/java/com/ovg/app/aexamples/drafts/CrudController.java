@@ -1,4 +1,4 @@
-package com.ovg.app.controllers;
+package com.ovg.app.aexamples.drafts;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.ovg.app.entities.Entity;
 import com.ovg.app.exceptions.HttpException;
 import com.ovg.app.exceptions.NotFoundException;
-import com.ovg.app.repositories.OvgRepository;
 
 
 public class CrudController<T extends Entity, R extends OvgRepository<T>> {
