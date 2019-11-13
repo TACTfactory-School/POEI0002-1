@@ -89,12 +89,19 @@
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven
-        defaults (may be moved to parent pom) -->
+<!-- ==================== EXCLUDE PATH ==================== -->
+  <resources>
+    <resource>
+      <directory>src/main/java/com/ovg/app/aexamples</directory>
+      <excludes>
+        <exclude>**/*.java</exclude>
+      </excludes>
+    </resource>
+  </resources>
 
 <!-- ==================== PLUGINS ==================== -->
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-
 <!-- ________________ Maven ________________ -->
 
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -112,11 +119,6 @@
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
-          <configuration>
-            <excludes>
-              <exclude>src/main/java/com/ovg/app/aexamples/*</exclude>
-            </excludes>
-          </configuration>
         </plugin>
 
         <plugin>
