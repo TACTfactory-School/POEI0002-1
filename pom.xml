@@ -20,8 +20,6 @@
   <!-- FIXME change it to the project's website -->
   <!-- <url>http://www.ovg.fr</url> -->
 
-
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -114,6 +112,11 @@
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
+          <configuration>
+            <excludes>
+              <exclude>src/main/java/com/ovg/app/aexamples/*</exclude>
+            </excludes>
+          </configuration>
         </plugin>
 
         <plugin>
