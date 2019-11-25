@@ -14,15 +14,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    boolean existsByLabelIgnoreCase(String label);
+ //   boolean existsByLabelIgnoreCase(String label);
 
-    boolean existsByLabelIgnoreCaseAndIdNot(String label, Long id);
+  //  boolean existsByLabelIgnoreCaseAndIdNot(String label, Long id);
 
 //    @Query("SELECT p FROM PokemonSpecies p WHERE p.id = ?1")
 //    PokemonSpecies findOne(Long id);
 //    @Query("SELECT p FROM PokemonSpecies p WHERE p.id = :myId")
 //    PokemonSpecies findOne(@Param("myId") Long id);
-
+//
     @Query("SELECT COUNT(e) > 0"
             + " FROM Event e"
             + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"

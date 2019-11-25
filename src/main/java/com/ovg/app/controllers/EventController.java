@@ -19,38 +19,42 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ovg.app.entities.Event;
 import com.ovg.app.exceptions.BadRequestException;
 import com.ovg.app.exceptions.NotFoundException;
-import com.ovg.app.repositories.EventRepository;
+import com.ovg.app.services.EventCrudService;
 
 @RestController
 @RequestMapping("event")
 public class EventController {
 
     @Autowired
-    private EventRepository repository;
+    private EventCrudService service;
 
-    @GetMapping("list")
+    @GetMapping
     public List<Event> getAll() {
-        return this.repository.findAll();
+        return this.service.getAll();
+    }
+
+    @GetMapping("{id}")
+    public Event getOne(@PathVariable Long id) throws NotFoundException {
+        return this.service.getOne(id);
     }
 
     @PostMapping
-    public Event create(@Valid @RequestBody Event event) throws BadRequestException {
-        if (this.repository.existsByLabel(event)) {
+    public Event create(@Valid @RequestBody final Event event) throws BadRequestException {
+        if (this.service.existsByLabel(event)) { // delete test
             throw new BadRequestException("uniq_name");
         }
 
-        return this.repository.save(event);
+        return this.service.create(event);
     }
 
     @PutMapping("{id}")
     public Event update(@PathVariable Long id, @Valid @RequestBody Event event)
             throws BadRequestException, NotFoundException {
-        if (this.repository.existsByLabelIgnoreCaseAndIdNot(event.getLabel(), id)) {
+        if (this.service.existsByLabelIgnoreCaseAndIdNot(event.getLabel(), id)) { // delete test
             throw new BadRequestException("uniq_name");
         }
 
-        final Event entity = this.repository.findById(id)
-                .orElseThrow(() -> new NotFoundException());
+        final Event entity = this.service.getOne(id);
 
         // TODO: Use mapper.
 //        ObjectMapper mapper = new ObjectMapper();
@@ -59,18 +63,13 @@ public class EventController {
         entity.setAuthor(event.getAuthor());
         entity.setDescription(event.getDescription());
 
-        return this.repository.save(entity);
+        return this.service.create(entity);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
-        this.repository.deleteById(id);
+    public void delete(@PathVariable Long id) throws NotFoundException {
+        this.service.delete(id);
     }
 
-    @GetMapping("{id}")
-    public Event getOne(@PathVariable Long id) throws NotFoundException {
-        return this.repository.findById(id)
-                .orElseThrow(() -> new NotFoundException());
-    }
 }
