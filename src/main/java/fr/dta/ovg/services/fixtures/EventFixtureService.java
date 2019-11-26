@@ -28,7 +28,6 @@ public class EventFixtureService implements Fixture {
     @Override
     public void load() {
 
-
         // LocalDate currentDate = LocalDate.now();
         // this.age = (byte) Period.between(birthdate, currentDate).getYears();
         Event event1 = new Event();

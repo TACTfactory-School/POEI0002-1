@@ -61,13 +61,13 @@ public class UserCrudServiceImpl implements UserCrudService {
 //            + " FROM Event e"
 //            + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"
 //            + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
-    public boolean existsByLabel(User user) {
+    public boolean existsByUsername(User user) {
         // TODO Auto-generated method stub
-        return this.repository.existsByLabel(user);
+        return this.repository.existsByUsername(user);
     }
 
     @Override
-    public boolean existsByLabelIgnoreCaseAndIdNot(String label, Long id) {
+    public boolean existsByUsernameIgnoreCaseAndIdNot(String label, Long id) {
         // TODO Auto-generated method stub
         return false;
     }

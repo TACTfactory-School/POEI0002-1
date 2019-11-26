@@ -65,7 +65,7 @@ public class UserController {
      */
     @PostMapping
     public User create(@Valid @RequestBody final User user) throws BadRequestException {
-        if (this.service.existsByLabel(user)) { // delete test
+        if (this.service.existsByUsername(user)) { // delete test
             throw new BadRequestException("uniq_name");
         }
 
@@ -84,7 +84,7 @@ public class UserController {
     @PutMapping("{id}")
     public User update(@PathVariable Long id, @Valid @RequestBody User user)
             throws BadRequestException, NotFoundException {
-        if (this.service.existsByLabelIgnoreCaseAndIdNot(user.getUsername(), id)) { // delete test
+        if (this.service.existsByUsernameIgnoreCaseAndIdNot(user.getUsername(), id)) { // delete test
             throw new BadRequestException("uniq_name");
         }
 

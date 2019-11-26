@@ -46,7 +46,7 @@ public interface UserCrudService {
 
     // TODO Delete this functions from event.
 
-    boolean existsByLabelIgnoreCaseAndIdNot(String label, Long id);
+    boolean existsByUsernameIgnoreCaseAndIdNot(String label, Long id);
 
-    boolean existsByLabel(User user);
+    boolean existsByUsername(User user);
 }

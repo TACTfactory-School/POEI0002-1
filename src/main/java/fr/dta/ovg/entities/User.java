@@ -37,14 +37,12 @@ public class User extends EntityBase {
 
     /** Birthdate of user <br> DB Column */
     @Column(nullable = false)
-    @NotBlank
     private LocalDate birthdate;
 
 
 
     /** Registered date of user <br> DB Column */
-    @Column(nullable = false, unique = true)
-    @NotBlank
+    @Column(nullable = false)
     private LocalDateTime registeredAt;
 
     /** Age of user */
