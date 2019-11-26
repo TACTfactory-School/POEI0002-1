@@ -1,3 +1,8 @@
+/* Event Fixtures DB Service.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Initialize DB with initials data.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +12,16 @@ import org.springframework.stereotype.Component;
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.repositories.EventRepository;
 
+/** This class initialize DB with initials fixtures data */
 @Component
 @Profile("!prod")
 public class EventFixtureService implements Fixture {
 
+    /** Link to Event Repository */
     @Autowired
     private EventRepository repository;
 
+    /** Create-Drop DB - Insert initial data, erasing old data every run. */
     @Override
     public void load() {
         Event event1 = new Event();

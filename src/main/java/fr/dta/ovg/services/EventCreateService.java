@@ -1,5 +1,7 @@
-/**
- *
+/* Event Create Service.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Create an Event.
+ * License : ©2019 All rights reserved
  */
 package fr.dta.ovg.services;
 
@@ -12,25 +14,24 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.repositories.EventRepository;
 
-/**
- * @author JoeHarms
- *
- */
+/** Implementation Create CRUD on Event */
 @Component
 @Transactional
 public class EventCreateService {
 
-      private static final Logger log = LoggerFactory.getLogger(EventCreateService.class);
+    private static final Logger log = LoggerFactory.getLogger(EventCreateService.class);
 
-        @Autowired
-        private EventRepository repository;
+    /** Link to Event repository.*/
+    @Autowired
+    private EventRepository repository;
 
-        Event create(final Event event) {
-            log.debug("Create employee");
+    /** Create Event function implementation.*/
+    Event create(final Event event) {
+        log.debug("Create employee");
 
-            // Todo create (...) Upload avatar.
+        // TODO Put your code here - create (...) Upload photo.
 
-            return this.repository.save(event);
-        }
+        return this.repository.save(event);
+    }
 
 }

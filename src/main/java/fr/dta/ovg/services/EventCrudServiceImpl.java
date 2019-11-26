@@ -1,5 +1,7 @@
-/**
- *
+/* Event Crud Service Implementation.
+ * @author Colin Cerveaux @C-ambium
+ * Action get and update / Link to Create & Delete Service
+ * License : ©2019 All rights reserved
  */
 package fr.dta.ovg.services;
 
@@ -21,13 +23,15 @@ import fr.dta.ovg.repositories.EventRepository;
 @Service
 public class EventCrudServiceImpl implements EventCrudService {
 
-
+    /** Link to Event Repo. */
     @Autowired
     private EventRepository repository;
 
+    /** Link to Create Service.*/
     @Autowired
     private EventCreateService createService;
 
+    /** Link to Delete Service. */
     @Autowired
     private EventDeleteService deleteService;
 

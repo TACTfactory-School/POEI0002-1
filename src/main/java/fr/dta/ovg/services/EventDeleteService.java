@@ -1,3 +1,8 @@
+/* Event Delete Service.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Delete an Event.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.services;
 
 import org.slf4j.Logger;
@@ -16,13 +21,15 @@ public class EventDeleteService {
 
     private static final Logger log = LoggerFactory.getLogger(EventCreateService.class);
 
+    /** Link to Event Repository */
     @Autowired
     private EventRepository repository;
 
+    /** Delete Event function implementation.*/
     void delete(final long id)  throws NotFoundException {
         log.debug("Create employee");
 
-        // Todo delete (...) Save Stats
+        // TODO Put your code here - delete (...) Save Stats.
 
         Event event = this.repository.findById(id)
                 .orElseThrow(() -> new NotFoundException());

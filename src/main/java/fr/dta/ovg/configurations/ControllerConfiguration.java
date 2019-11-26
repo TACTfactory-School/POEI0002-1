@@ -1,3 +1,7 @@
+/* Controller Configuration Class
+ * @author Colin Cerveaux @C-ambium
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.configurations;
 
 import java.time.LocalDateTime;

@@ -1,12 +1,8 @@
-/**
- *
+/* Servlet Initializer.
+ * @author Colin Cerveaux @C-ambium
+ * License : ©2019 All rights reserved
  */
 package fr.dta.ovg;
-
-/**
- * @author JoeHarms
- *
- */
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

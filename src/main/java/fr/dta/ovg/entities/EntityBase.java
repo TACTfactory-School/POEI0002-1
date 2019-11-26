@@ -1,14 +1,15 @@
-
+/* Entity base class.
+ * @author Colin Cerveaux @C-ambium
+ * Shared attributes between entity.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.entities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-/**
- * @author Colin Cerveaux @C-ambium
- *
- */
+
 @MappedSuperclass
 public class EntityBase {
 
@@ -23,21 +24,24 @@ public class EntityBase {
     }
 
     /**
-     * @return the id
+     * Getter id
+     * @return the id (long).
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * @return the enabled
+     * Getter Function isEnabled.
+     * @return boolean : enabled
      */
     public boolean isEnabled() {
         return enabled;
     }
 
     /**
-     * @param enabled the enabled to set
+     * Setter setEnabled.
+     * @param boolean enabled : the enabled to set
      */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
