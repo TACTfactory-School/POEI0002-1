@@ -58,19 +58,4 @@ public class EventCrudServiceImpl implements EventCrudService {
         this.deleteService.delete(id);
     }
 
-    @Override
-//    @Query("SELECT COUNT(e) > 0"
-//            + " FROM Event e"
-//            + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"
-//            + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
-    public boolean existsByLabel(Event event) {
-        // TODO Auto-generated method stub
-        return this.repository.existsByLabel(event);
-    }
-
-    @Override
-    public boolean existsByLabelIgnoreCaseAndIdNot(String label, Long id) {
-        // TODO Auto-generated method stub
-        return false;
-    }
 }

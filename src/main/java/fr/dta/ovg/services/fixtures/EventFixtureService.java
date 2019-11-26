@@ -5,6 +5,9 @@
  */
 package fr.dta.ovg.services.fixtures;
 
+// import java.time.LocalDate;
+// import java.time.Period;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -24,6 +27,10 @@ public class EventFixtureService implements Fixture {
     /** Create-Drop DB - Insert initial data, erasing old data every run. */
     @Override
     public void load() {
+
+
+        // LocalDate currentDate = LocalDate.now();
+        // this.age = (byte) Period.between(birthdate, currentDate).getYears();
         Event event1 = new Event();
         Event event2 = new Event();
         Event event3 = new Event();

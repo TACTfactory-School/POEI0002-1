@@ -1,13 +1,18 @@
+/* Entity User class.
+ * @author Colin Cerveaux @C-ambium
+ * Define the entity User
+ * License : ©2019 All rights reserved.
+ */
 package fr.dta.ovg.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -26,7 +31,7 @@ public class User extends EntityBase {
     private String email;
 
     /** Password of user <br> DB Column */
-    @Column(length = 32, nullable = false)
+    @Column(length = 32, nullable = true)
     @NotBlank
     private String password; // TODO must be encrypted.
 
@@ -35,22 +40,19 @@ public class User extends EntityBase {
     @NotBlank
     private LocalDate birthdate;
 
-    /** Age of user <br> DB Column */
-    @Column(nullable = false)
-    @NotBlank
-    private byte age;
+
 
     /** Registered date of user <br> DB Column */
     @Column(nullable = false, unique = true)
     @NotBlank
     private LocalDateTime registeredAt;
 
+    /** Age of user */
+    @Transient
+    private byte age;
+
     @PrePersist
     public void init() {
-
-        LocalDate currentDate = LocalDate.now();
-
-        this.age = (byte) Period.between(birthdate, currentDate).getYears();
         this.registeredAt = LocalDateTime.now();
     }
 
@@ -159,6 +161,5 @@ public class User extends EntityBase {
     private Event[] bestOutings
 
     */
-
 
 }

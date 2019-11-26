@@ -66,10 +66,6 @@ public class EventController {
      */
     @PostMapping
     public Event create(@Valid @RequestBody final Event event) throws BadRequestException {
-        if (this.service.existsByLabel(event)) { // delete test
-            throw new BadRequestException("uniq_name");
-        }
-
         return this.service.create(event);
     }
 
@@ -85,9 +81,6 @@ public class EventController {
     @PutMapping("{id}")
     public Event update(@PathVariable Long id, @Valid @RequestBody Event event)
             throws BadRequestException, NotFoundException {
-        if (this.service.existsByLabelIgnoreCaseAndIdNot(event.getLabel(), id)) { // delete test
-            throw new BadRequestException("uniq_name");
-        }
 
         final Event entity = this.service.getOne(id);
 

@@ -17,8 +17,14 @@ public class FixtureService implements Fixture {
     @Autowired
     private EventFixtureService eventFixture;
 
+    /** Link to User Fixture Service. */
+    @Autowired
+    private UserFixtureService userFixture;
+
     /** Call loading initials fixtures @see {@link EventFixtureService}  */
     public void load() {
         this.eventFixture.load();
+        this.userFixture.load();
+
     }
 }

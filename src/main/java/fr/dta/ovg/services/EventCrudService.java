@@ -44,8 +44,4 @@ public interface EventCrudService {
      * */
     void delete(long id) throws NotFoundException;
 
-    // TODO Delete this functions and move it to User.
-    boolean existsByLabel(Event event);
-
-    boolean existsByLabelIgnoreCaseAndIdNot(String label, Long id);
 }
