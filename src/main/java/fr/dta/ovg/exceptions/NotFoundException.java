@@ -9,6 +9,7 @@ public class NotFoundException extends HttpException {
     /** The serial number. */
     private static final long serialVersionUID = 1L;
 
+    /** The default constructor. */
     public NotFoundException() {
     }
 

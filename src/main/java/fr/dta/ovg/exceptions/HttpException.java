@@ -6,9 +6,7 @@ public class HttpException extends Exception {
   /** The serial number. */
   private static final long serialVersionUID = 1L;
 
-  /**
-   *
-   */
+  /** The default constructor. */
   public HttpException() {
       super();
   }

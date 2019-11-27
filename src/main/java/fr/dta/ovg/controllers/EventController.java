@@ -25,10 +25,12 @@ import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.EventCrudService;
+import io.swagger.annotations.Api;
 
 
 @RestController
-@RequestMapping("event")
+@RequestMapping("api/v1/event")
+@Api(value="Event Management System", tags = "Event")
 public class EventController {
 
     /** Link to Event CRUD Service. */

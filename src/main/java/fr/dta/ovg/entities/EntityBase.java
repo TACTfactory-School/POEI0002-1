@@ -10,14 +10,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
+import io.swagger.annotations.ApiModelProperty;
+
 @MappedSuperclass
 public class EntityBase {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = Access.READ_ONLY)
+    @ApiModelProperty(value = "The generated database ID", readOnly = true)
     private Long id;
 
-    private boolean enabled = false;
+    @JsonProperty(access = Access.READ_ONLY)
+    @ApiModelProperty(value = "Specifies if the entity if enabled or not", readOnly = true)
+    private boolean enabled = true;
 
     protected EntityBase() {
         super();

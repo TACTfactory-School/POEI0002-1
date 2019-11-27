@@ -15,38 +15,53 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "app_users")
+@ApiModel(value = "Describes an User for our system")
 public class User extends EntityBase {
 
 
     /** Username of user <br> DB Column */
-    @Column(length = 32, nullable = false, unique = true)
     @NotBlank
+    @Column(length = 32, nullable = false, unique = true)
+    @ApiModelProperty(value = "The username of the user")
     private String username;
 
     /** Email of user <br> DB Column */
-    @Column(length = 50, nullable = false, unique = true)
     @NotBlank
+    @Column(length = 50, nullable = false, unique = true)
+    @ApiModelProperty(value = "The email of the user")
     private String email;
 
     /** Password of user <br> DB Column */
-    @Column(length = 32, nullable = true)
     @NotBlank
+    @Column(length = 32, nullable = true)
+    @ApiModelProperty(value = "The password of the user")
     private String password; // TODO must be encrypted.
 
     /** Birthdate of user <br> DB Column */
     @Column(nullable = false)
+    @ApiModelProperty(value = "The birthdate of the user")
     private LocalDate birthdate;
-
-
 
     /** Registered date of user <br> DB Column */
     @Column(nullable = false)
+    @JsonProperty(access = Access.READ_ONLY)
+    @CreatedDate
+    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
     private LocalDateTime registeredAt;
 
     /** Age of user */
     @Transient
+    @ApiModelProperty(value = "The calculated age of the user", readOnly = true)
     private byte age;
     // TODO : Calculate Age function -> move to mapper
     // LocalDate currentDate = LocalDate.now();

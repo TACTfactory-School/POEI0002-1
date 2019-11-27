@@ -10,22 +10,29 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "app_events")
+@ApiModel(value = "Describes an Event for our system")
 public class Event extends EntityBase {
 
         /** Title of the Event <br> DB Column */
-        @Column(length = 100, nullable = false, unique = false)
         @NotBlank
+        @Column(length = 100, nullable = false, unique = false)
+        @ApiModelProperty(value = "The label of the event")
         private String label;
 
         /** Description of the Event <br> DB Column */
         @Column(name = "event_description", length = 255, nullable = true, unique = false)
+        @ApiModelProperty(value = "The description of the event")
         private String description;
 
         /** Author of the Event <br> DB Column */
-        @Column(name = "author", length = 50, nullable = false, unique = true)
         @NotBlank
+        @Column(name = "author", length = 50, nullable = false, unique = true)
+        @ApiModelProperty(value = "The author of the event")
         private String author;
 
         /** Override toString() method with Event attributes */

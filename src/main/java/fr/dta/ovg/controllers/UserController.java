@@ -25,9 +25,11 @@ import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.UserCrudService;
+import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("api/v1/user")
+@Api(value="User Management System", tags = "User")
 public class UserController {
 
     /** Link to Event CRUD Service. */
