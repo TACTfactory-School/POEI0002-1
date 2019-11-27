@@ -3,7 +3,7 @@
  * Action get and update / Link to Create & Delete Service
  * License : ©2019 All rights reserved
  */
-package fr.dta.ovg.services;
+package fr.dta.ovg.services.user;
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.UserRepository;
+import fr.dta.ovg.services.UserCrudService;
 
 @Service
 public class UserCrudServiceImpl implements UserCrudService {

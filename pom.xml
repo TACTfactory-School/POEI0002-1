@@ -24,7 +24,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <start-class>fr.dta.ovg.App</start-class>
+    <start-class>fr.dta.ovg.Application</start-class>
   </properties>
 
   <!-- ==================== DEPENDANCIES ==================== -->
@@ -91,14 +91,16 @@
 
   <build>
 <!-- ==================== EXCLUDE PATH ==================== -->
-  <resources>
-    <resource>
-      <directory>src/main/java</directory>
-      <excludes>
-        <exclude>src/main/java/fr/dta/ovg/aexamples</exclude>
-      </excludes>
-    </resource>
-  </resources>
+
+<!-- The good way to exclude folder/package from Maven & Jenkins build -->
+<!--   <resources> -->
+<!--     <resource> -->
+<!--       <directory>src/main/java</directory> -->
+<!--       <excludes> -->
+<!--         <exclude>src/main/java/fr/dta/ovg/aexamples</exclude> -->
+<!--       </excludes> -->
+<!--     </resource> -->
+<!--   </resources> -->
 
 <!-- ==================== PLUGINS ==================== -->
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

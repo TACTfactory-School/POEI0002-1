@@ -3,7 +3,7 @@
  * Action get and update / Link to Create & Delete Service
  * License : ©2019 All rights reserved
  */
-package fr.dta.ovg.services;
+package fr.dta.ovg.services.event;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.EventRepository;
+import fr.dta.ovg.services.EventCrudService;
 
 
 @Service

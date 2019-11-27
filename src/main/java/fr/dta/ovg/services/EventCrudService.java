@@ -9,6 +9,9 @@ import java.util.List;
 
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.services.event.EventCreateService;
+import fr.dta.ovg.services.event.EventCrudServiceImpl;
+import fr.dta.ovg.services.event.EventDeleteService;
 
 public interface EventCrudService {
 

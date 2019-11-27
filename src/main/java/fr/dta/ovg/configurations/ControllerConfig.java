@@ -15,7 +15,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 
 
 @ControllerAdvice
-public class ControllerConfiguration {
+public class ControllerConfig {
 
     @ExceptionHandler(NotFoundException.class)
     public Map<String, Object> errorsRewrite(final NotFoundException e) {

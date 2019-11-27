@@ -3,7 +3,7 @@
  * Action : Create an Event.
  * License : ©2019 All rights reserved
  */
-package fr.dta.ovg.services;
+package fr.dta.ovg.services.event;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,9 +1,9 @@
-/* User Delete Service.
+/* Event Delete Service.
  * @author Colin Cerveaux @C-ambium
  * Action : Delete an Event.
  * License : ©2019 All rights reserved
  */
-package fr.dta.ovg.services;
+package fr.dta.ovg.services.event;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,29 +11,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.dta.ovg.entities.User;
+import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.repositories.UserRepository;
+import fr.dta.ovg.repositories.EventRepository;
 
 @Component
 @Transactional
-public class UserDeleteService {
+public class EventDeleteService {
 
-    private static final Logger log = LoggerFactory.getLogger(UserDeleteService.class);
+    private static final Logger log = LoggerFactory.getLogger(EventDeleteService.class);
 
-    /** Link to User Repository */
+    /** Link to Event Repository */
     @Autowired
-    private UserRepository repository;
+    private EventRepository repository;
 
-    /** Delete User function implementation.*/
+    /** Delete Event function implementation.*/
     void delete(final long id)  throws NotFoundException {
-        log.debug("Delete User");
+        log.debug("Delete event");
 
         // TODO Put your code here - delete (...) Save Stats.
 
-        User user = this.repository.findById(id)
+        Event event = this.repository.findById(id)
                 .orElseThrow(() -> new NotFoundException());
 
-        this.repository.delete(user);
+        this.repository.delete(event);
     }
 }
