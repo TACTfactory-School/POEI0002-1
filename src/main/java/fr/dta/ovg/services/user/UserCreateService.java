@@ -26,7 +26,7 @@ public class UserCreateService {
     private UserRepository repository;
 
     /** Create User function implementation. */
-    User create(final User user) {
+    public User create(final User user) {
         log.debug("Create User");
 
         // TODO Put your code here - create (...) Upload photo.

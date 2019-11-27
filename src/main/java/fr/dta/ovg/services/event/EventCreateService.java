@@ -26,7 +26,7 @@ public class EventCreateService {
     private EventRepository repository;
 
     /** Create Event function implementation.*/
-    Event create(final Event event) {
+    public Event create(final Event event) {
         log.debug("Create employee");
 
         // TODO Put your code here - create (...) Upload photo.

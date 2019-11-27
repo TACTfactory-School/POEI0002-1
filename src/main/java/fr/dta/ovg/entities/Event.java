@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 public class Event extends EntityBase {
 
         /** Title of the Event <br> DB Column */
-        @Column(length = 100, nullable = false, unique = true)
+        @Column(length = 100, nullable = false, unique = false)
         @NotBlank
         private String label;
 

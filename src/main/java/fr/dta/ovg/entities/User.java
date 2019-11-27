@@ -48,6 +48,9 @@ public class User extends EntityBase {
     /** Age of user */
     @Transient
     private byte age;
+    // TODO : Calculate Age function -> move to mapper
+    // LocalDate currentDate = LocalDate.now();
+    // this.age = (byte) Period.between(birthdate, currentDate).getYears();
 
     @PrePersist
     public void init() {

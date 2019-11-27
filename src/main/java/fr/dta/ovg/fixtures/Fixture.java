@@ -3,7 +3,7 @@
  * Action : Initialize DB with initials data.
  * License : ©2019 All rights reserved
  */
-package fr.dta.ovg.services.fixtures;
+package fr.dta.ovg.fixtures;
 
 import javax.transaction.Transactional;
 
