@@ -7,9 +7,11 @@ package fr.dta.ovg.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -58,6 +60,10 @@ public class User extends EntityBase {
     @CreatedDate
     @ApiModelProperty(value = "The generated date of creation", readOnly = true)
     private LocalDateTime registeredAt;
+
+    @ManyToMany(mappedBy = "users")
+    List<Event> futureOutings;
+
 
     /** Age of user */
     @Transient

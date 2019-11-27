@@ -5,8 +5,13 @@
  */
 package fr.dta.ovg.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -34,6 +39,13 @@ public class Event extends EntityBase {
         @Column(name = "author", length = 50, nullable = false, unique = true)
         @ApiModelProperty(value = "The author of the event")
         private String author;
+
+        @ManyToMany
+        @JoinTable(
+            name = "app_event_users",
+            joinColumns = {@JoinColumn(name = "app_users.id")},
+            inverseJoinColumns = { @JoinColumn(name = "app_events.id") })
+        private List<User> users;
 
         /** Override toString() method with Event attributes */
         @Override

@@ -30,6 +30,9 @@ public class UserFixtureService implements Fixture {
 
     private final Faker fake = new Faker(Locale.FRENCH);
 
+    private UniqFakeStore username = new UniqFakeStore(() -> this.fake.name().username());
+    private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().emailAddress());
+
     /**
      * Local Constructor
      * Link to User Repository by UserCreateService
@@ -71,9 +74,6 @@ public class UserFixtureService implements Fixture {
     }
 
     private void buildFake(int i) {
-
-        UniqFakeStore username = new UniqFakeStore(() -> this.fake.name().username());
-        UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().emailAddress());
 
         this.build(username.genUniqValue(),
                 email.genUniqValue(),
