@@ -16,7 +16,7 @@ __Some basic Git commands :__
 ```
 git status									# Show position & changed files
 git log										# Show commits log
-git log –graph								# History log & graph
+git log --oneline --decorate --graph		# History log & graph
 
 git checkout -b <ma_branche_parallele>		# Create branch and step into
 git branch 									# List existing branch ***--list***
@@ -48,7 +48,8 @@ git push –-force							# Amending message of the most recently pushed commit
 git push -u origin master 					# Push files & set the uptstream on the current local branch
 git push 									# Push all files
 
-git merge master							# Merge branch on master
+git merge <branch_name>						# Merge branch on master ***Should be on master branch***
+git merge local:destination					# Merge branch local on destination
 git rebase									# Rebase local branch for fast-forward merge
 
 git pull 									# Fetch from repository
