@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "app_inscription")
+@Table(name = "app_join")
 public class Join extends EntityBase {
 
         private LocalDateTime startedAt;

@@ -41,14 +41,14 @@ public class EntityBase {
 
     @CreatedDate
     @ApiModelProperty(value = "The generated date of creation", readOnly = true)
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = Access.READ_ONLY)
     @Column(name = "created", nullable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
     @ApiModelProperty(value = "The generated date of creation", readOnly = true)
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = Access.READ_ONLY)
     @Column(name = "updated", nullable = false)
     private LocalDateTime updatedAt;
