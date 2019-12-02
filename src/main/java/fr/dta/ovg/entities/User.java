@@ -6,21 +6,14 @@
 package fr.dta.ovg.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
-
-import org.springframework.data.annotation.CreatedDate;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -55,11 +48,11 @@ public class User extends EntityBase {
     private LocalDate birthdate;
 
     /** Registered date of user <br> DB Column */
-    @Column(nullable = false)
-    @JsonProperty(access = Access.READ_ONLY)
-    @CreatedDate
-    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
-    private LocalDateTime registeredAt;
+//    @Column(nullable = false)
+//    @JsonProperty(access = Access.READ_ONLY)
+//    @CreatedDate
+//    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
+//    private LocalDateTime registeredAt;
 
     @ManyToMany(mappedBy = "users")
     List<Event> futureOutings;
@@ -73,16 +66,16 @@ public class User extends EntityBase {
     // LocalDate currentDate = LocalDate.now();
     // this.age = (byte) Period.between(birthdate, currentDate).getYears();
 
-    @PrePersist
-    public void init() {
-        this.registeredAt = LocalDateTime.now();
-    }
+//    @PrePersist
+//    public void init() {
+//        this.registeredAt = LocalDateTime.now();
+//    }
 
     /** Override toString() method with User attributes */
     @Override
     public String toString() {
-        return String.format("Registred at : %dt | Username : %s | Email : %s | Age : %d | Birthdate : %dt",
-                registeredAt, username, email, age, birthdate);
+        return String.format("Username : %s | Email : %s | Age : %d | Birthdate : %dt",
+                username, email, age, birthdate);
     }
 
     /**
@@ -132,20 +125,6 @@ public class User extends EntityBase {
      */
     public byte getAge() {
         return age;
-    }
-
-    /**
-     * @return the registeredAt
-     */
-    public LocalDateTime getRegisteredAt() {
-        return registeredAt;
-    }
-
-    /**
-     * @param registeredAt the registeredAt to set
-     */
-    public void setRegisteredAt(LocalDateTime registeredAt) {
-        this.registeredAt = registeredAt;
     }
 
     /**

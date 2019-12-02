@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
 
-public class InscriptionDto {
+public class JoinDto {
 
     @NotNull
     private LocalDateTime startedAt;

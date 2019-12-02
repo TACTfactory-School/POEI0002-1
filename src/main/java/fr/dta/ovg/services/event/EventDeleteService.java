@@ -31,7 +31,8 @@ public class EventDeleteService {
 
         // TODO Put your code here - delete (...) Save Stats.
 
-        Event event = this.repository.findById(id)
+        Event event = this.repository
+                .findById(id)
                 .orElseThrow(() -> new NotFoundException());
 
         this.repository.delete(event);
