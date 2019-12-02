@@ -124,16 +124,13 @@
       <version>2.2.0.RELEASE</version>
     </dependency>
 
-<!--     <dependency> -->
-<!--       <groupId>org.springframework.security</groupId> -->
-<!--       <artifactId>spring-security-web</artifactId> -->
-<!--       <exclusions> -->
-<!--           <exclusion> -->
-<!--               <groupId>org.springframework.security</groupId> -->
-<!--               <artifactId>spring-security-core</artifactId> -->
-<!--            </exclusion> -->
-<!--       </exclusions> -->
-<!--     </dependency> -->
+    <!-- ________________ Spring Starter Security ________________ -->
+  <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+      <version>2.2.0.RELEASE</version>
+    </dependency>
 
   </dependencies>
 

@@ -20,6 +20,12 @@ public class FixtureService implements Fixture {
     /** Link to User Fixture Service. */
     @Autowired
     private UserFixtureService userFixture;
+    
+    @Autowired
+    private SecurityUserFixtureService securityUserFixture;
+    
+    @Autowired
+    private SecurityRoleFixtureService securityRoleFixture;
 
     /** Call loading initials fixtures @see {@link EventFixtureService}  */
     public void load() {
