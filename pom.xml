@@ -10,6 +10,15 @@
     <version>2.2.0.RELEASE</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
+<<<<<<< HEAD
+=======
+
+  <groupId>com.ovg.app</groupId>
+  <artifactId>OVG</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <description>Demo project for OVG Spring Boot</description>
+>>>>>>> devsamy
 
   <groupId>fr.dta.ovg</groupId>
   <artifactId>sandbox</artifactId>
@@ -26,15 +35,26 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <start-class>fr.dta.ovg.Application</start-class>
   </properties>
+<<<<<<< HEAD
 
 <!-- ==================== DEPENDANCIES ==================== -->
+=======
+>>>>>>> devsamy
   <dependencies>
     <!-- ________________ jUnit ________________ -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
     </dependency>
 
     <!-- ________________ mySQL ________________ -->
@@ -98,9 +118,31 @@
     <!-- ________________ Swagger ________________ -->
     <!-- Config @see : https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api -->
     <dependency>
+<<<<<<< HEAD
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger2</artifactId>
       <version>2.9.2</version>
+=======
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
+>>>>>>> devsamy
     </dependency>
 
     <dependency>
@@ -119,6 +161,7 @@
   </dependencies>
 
   <build>
+<<<<<<< HEAD
 <!-- ==================== EXCLUDE PATH ==================== -->
 
 <!-- The good way to exclude folder/package from Maven & Jenkins build -->
@@ -133,6 +176,10 @@
 
 <!-- ==================== PLUGINS ==================== -->
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+=======
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven
+        defaults (may be moved to parent pom) -->
+>>>>>>> devsamy
       <plugins>
 <!-- ________________ Maven ________________ -->
 
@@ -185,20 +232,42 @@
         </plugin>
 
         <plugin>
+<<<<<<< HEAD
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
+=======
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.1.0</version>
         </plugin>
-<!-- ________________ Jenkins jacoco ________________ -->
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>0.8.5</version>
+>>>>>>> devsamy
         </plugin>
-<!-- ________________ Jenkins Spotbugs ________________ -->
+<!-- ________________ Jenkins jacoco ________________ -->
         <plugin>
+<<<<<<< HEAD
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.5</version>
+=======
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
           <version>3.1.12.2</version>
+>>>>>>> devsamy
+        </plugin>
+<!-- ________________ Jenkins Spotbugs ________________ -->
+        <plugin>
+<<<<<<< HEAD
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-maven-plugin</artifactId>
+          <version>3.1.12.2</version>
+=======
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+>>>>>>> devsamy
         </plugin>
 
 <!-- ________________ Jenkins Javadoc ________________ -->
