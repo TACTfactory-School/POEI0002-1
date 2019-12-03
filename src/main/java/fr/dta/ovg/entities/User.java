@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
@@ -23,6 +24,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "Describes an User for our system")
 public class User extends EntityBase {
 
+
+    @ManyToOne(targetEntity = Role.class, optional = true)
+    private Role role;
 
     /** Username of user <br> DB Column */
     @NotBlank
@@ -53,10 +57,8 @@ public class User extends EntityBase {
 //    @CreatedDate
 //    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
 //    private LocalDateTime registeredAt;
-
     @ManyToMany(mappedBy = "users")
-    List<Event> futureOutings;
-
+    List<Event> events;
 
     /** Age of user */
     @Transient
@@ -139,6 +141,25 @@ public class User extends EntityBase {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNoEncodedPassword() {
+        // TODO Auto-generated method stub
+        return password;
+    }
+
+    /**
+     * @return the role
+     */
+    public Role getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     /* Futures attributees

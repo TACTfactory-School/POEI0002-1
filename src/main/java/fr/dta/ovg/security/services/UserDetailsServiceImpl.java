@@ -16,16 +16,15 @@ import org.springframework.stereotype.Service;
 import fr.dta.ovg.security.entities.SecurityRole;
 import fr.dta.ovg.security.entities.SecurityUser;
 import fr.dta.ovg.security.repositories.SecurityRoleRepository;
-import fr.dta.ovg.security.repositories.SecurityUserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private SecurityRoleRepository roleRepo;
+    private UserServiceImpl userServiceImpl;
 
     @Autowired
-    private SecurityUserRepository userRepo;
+    private SecurityRoleRepository roleRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -33,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // Role d'un utilisateur Springboot
         UserDetails result = null;
 
-        SecurityUser user = userRepo.findByUsername(username);
+        SecurityUser user = userServiceImpl.findByUsername(username);
 
         if (user != null) {
             List<SecurityRole> roles = roleRepo.findByUsername(username);

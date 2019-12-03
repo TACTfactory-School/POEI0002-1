@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import fr.dta.ovg.security.entities.SecurityUser;
+
 @Entity
 @Table(name = "app_join")
 public class Join extends EntityBase {
@@ -19,7 +21,7 @@ public class Join extends EntityBase {
 
         /** User inscription. */
         @ManyToOne(targetEntity = Event.class, optional = false)
-        private User user;
+        private SecurityUser user;
 
         /** Selected event. */
         @ManyToOne(targetEntity = User.class, optional = false)
@@ -56,14 +58,14 @@ public class Join extends EntityBase {
         /**
          * @return the user
          */
-        public User getUser() {
+        public SecurityUser getUser() {
             return user;
         }
 
         /**
          * @param user the user to set
          */
-        public void setUser(User user) {
+        public void setUser(SecurityUser user) {
             this.user = user;
         }
 
@@ -80,7 +82,5 @@ public class Join extends EntityBase {
         public void setEvent(Event event) {
             this.event = event;
         }
-
-
 
 }

@@ -20,10 +20,10 @@ public class FixtureService implements Fixture {
     /** Link to User Fixture Service. */
     @Autowired
     private UserFixtureService userFixture;
-    
+
     @Autowired
     private SecurityUserFixtureService securityUserFixture;
-    
+
     @Autowired
     private SecurityRoleFixtureService securityRoleFixture;
 
@@ -31,6 +31,7 @@ public class FixtureService implements Fixture {
     public void load() {
         this.eventFixture.load();
         this.userFixture.load();
-
+//        this.securityUserFixture.load();
+//        this.securityRoleFixture.load();
     }
 }

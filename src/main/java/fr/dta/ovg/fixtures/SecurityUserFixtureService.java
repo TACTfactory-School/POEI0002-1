@@ -14,11 +14,9 @@ import fr.dta.ovg.security.repositories.SecurityUserRepository;
 @Profile("!prod")
 public class SecurityUserFixtureService implements Fixture{
 
-    @Autowired
-    private SecurityUserRepository repository;
+    private final SecurityUserRepository repository;
 
     public SecurityUserFixtureService(@Autowired final SecurityUserRepository repository) {
-        super();
         this.repository = repository;
     }
 

@@ -14,11 +14,9 @@ import fr.dta.ovg.security.repositories.SecurityRoleRepository;
 @Profile("!prod")
 public class SecurityRoleFixtureService implements Fixture{
 
-    @Autowired
-    private SecurityRoleRepository repository;
+    private final SecurityRoleRepository repository;
 
     public SecurityRoleFixtureService ( @Autowired final SecurityRoleRepository repository) {
-        super();
         this.repository = repository;
     }
 
