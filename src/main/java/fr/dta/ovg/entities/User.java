@@ -13,7 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModel;
@@ -61,9 +60,9 @@ public class User extends EntityBase {
     List<Event> events;
 
     /** Age of user */
-    @Transient
-    @ApiModelProperty(value = "The calculated age of the user", readOnly = true)
-    private byte age;
+//    @Transient
+//    @ApiModelProperty(value = "The calculated age of the user", readOnly = true)
+//    private byte age;
     // TODO : Calculate Age function -> move to mapper
     // LocalDate currentDate = LocalDate.now();
     // this.age = (byte) Period.between(birthdate, currentDate).getYears();
@@ -76,8 +75,8 @@ public class User extends EntityBase {
     /** Override toString() method with User attributes */
     @Override
     public String toString() {
-        return String.format("Username : %s | Email : %s | Age : %d | Birthdate : %dt",
-                username, email, age, birthdate);
+        return String.format("Username : %s | Email : %s | Birthdate : %dt",
+                username, email, birthdate);
     }
 
     /**
@@ -120,13 +119,6 @@ public class User extends EntityBase {
      */
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
-    }
-
-    /**
-     * @return the age
-     */
-    public byte getAge() {
-        return age;
     }
 
     /**
