@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import fr.dta.ovg.entities.User;
 import fr.dta.ovg.security.entities.SecurityUser;
 import fr.dta.ovg.security.repositories.SecurityUserRepository;
 
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public SecurityUser findByUsername(String login) {
+    public User findByUsername(String login) {
       return userSecurityRepository.findByUsername(login);
     }
 

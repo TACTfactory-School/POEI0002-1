@@ -13,18 +13,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import fr.dta.ovg.entities.User;
+import fr.dta.ovg.repositories.UserRepository;
 import fr.dta.ovg.security.entities.SecurityRole;
-import fr.dta.ovg.security.entities.SecurityUser;
 import fr.dta.ovg.security.repositories.SecurityRoleRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserServiceImpl userServiceImpl;
+//    @Autowired
+//    private UserServiceImpl userServiceImpl;
+////
+//    @Autowired
+//    private SecurityRoleRepository roleRepo;
 
-    @Autowired
-    private SecurityRoleRepository roleRepo;
+     @Autowired
+     UserRepository userRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -32,17 +36,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // Role d'un utilisateur Springboot
         UserDetails result = null;
 
-        SecurityUser user = userServiceImpl.findByUsername(username);
+        // User user = userServiceImpl.findByUsername(username);
+        User user = userRepo.findByUsername(username);
+
 
         if (user != null) {
-            List<SecurityRole> roles = roleRepo.findByUsername(username);
+
+            //List<SecurityRole> roles = roleRepo.findByUsername(username);
 
             Set<GrantedAuthority> grantedAutorities = new HashSet<>();
 
-            for (SecurityRole role : roles) {
+            //for (SecurityRole role : roles) { }
                 // Simple = role springboot
-                grantedAutorities.add(new SimpleGrantedAuthority(role.getRole()));
-            }
+                grantedAutorities.add(new SimpleGrantedAuthority(user.getRole()));
+
 
             UserBuilder userBuilder = org.springframework.security.core.userdetails.User.builder();
 

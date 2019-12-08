@@ -11,7 +11,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -24,8 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class User extends EntityBase {
 
 
-    @ManyToOne(targetEntity = Role.class, optional = true)
-    private Role role;
+    private String role;
 
     /** Username of user <br> DB Column */
     @NotBlank
@@ -143,14 +141,14 @@ public class User extends EntityBase {
     /**
      * @return the role
      */
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
     /**
      * @param role the role to set
      */
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
