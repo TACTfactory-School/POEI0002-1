@@ -1,0 +1,8 @@
+<mat-button-toggle-group #group="matButtonToggleGroup" value="cards">
+  <mat-button-toggle (change)="selectionChanged($event)" value="cards" aria-label="Show as cards">
+    <mat-icon color="accent">view_module</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle (change)="selectionChanged($event)" value="list" aria-label="Show as list">
+    <mat-icon color="accent">view_stream</mat-icon>
+  </mat-button-toggle>
+</mat-button-toggle-group>
