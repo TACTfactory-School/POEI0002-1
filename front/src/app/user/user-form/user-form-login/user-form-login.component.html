@@ -1,0 +1,38 @@
+<div *ngIf="displayForm" class="content">
+  <div class="header">
+    <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Connexion</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="close()">
+              <mat-icon>close</mat-icon>
+          </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="login-form">
+
+    <form [formGroup]="login" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nom d'utilisateur</mat-label>
+          <input matInput placeholder="Nom d'utilisateur" formControlName="username">
+          <mat-error *ngIf="isFieldInvalid('username')" class="alert"> Veuillez saisir un nom d'utilisateur valide.</mat-error>
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" placeholder="Mot de passe" formControlName="password">
+          <mat-error *ngIf="isFieldInvalid('password')" class="alert"> Veuillez saisir un mot de passe valide.</mat-error>
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </p>
+      <span class="spacer"></span>
+      <button class="btn" mat-raised-button type="submit">Connexion</button>
+    </form>
+  </div>
+</div>

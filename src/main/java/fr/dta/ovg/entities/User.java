@@ -6,21 +6,13 @@
 package fr.dta.ovg.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
-
-import org.springframework.data.annotation.CreatedDate;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,6 +22,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "Describes an User for our system")
 public class User extends EntityBase {
 
+
+    private String role;
 
     /** Username of user <br> DB Column */
     @NotBlank
@@ -55,34 +49,32 @@ public class User extends EntityBase {
     private LocalDate birthdate;
 
     /** Registered date of user <br> DB Column */
-    @Column(nullable = false)
-    @JsonProperty(access = Access.READ_ONLY)
-    @CreatedDate
-    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
-    private LocalDateTime registeredAt;
-
+//    @Column(nullable = false)
+//    @JsonProperty(access = Access.READ_ONLY)
+//    @CreatedDate
+//    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
+//    private LocalDateTime registeredAt;
     @ManyToMany(mappedBy = "users")
-    List<Event> futureOutings;
-
+    List<Event> events;
 
     /** Age of user */
-    @Transient
-    @ApiModelProperty(value = "The calculated age of the user", readOnly = true)
-    private byte age;
+//    @Transient
+//    @ApiModelProperty(value = "The calculated age of the user", readOnly = true)
+//    private byte age;
     // TODO : Calculate Age function -> move to mapper
     // LocalDate currentDate = LocalDate.now();
     // this.age = (byte) Period.between(birthdate, currentDate).getYears();
 
-    @PrePersist
-    public void init() {
-        this.registeredAt = LocalDateTime.now();
-    }
+//    @PrePersist
+//    public void init() {
+//        this.registeredAt = LocalDateTime.now();
+//    }
 
     /** Override toString() method with User attributes */
     @Override
     public String toString() {
-        return String.format("Registred at : %dt | Username : %s | Email : %s | Age : %d | Birthdate : %dt",
-                registeredAt, username, email, age, birthdate);
+        return String.format("Username : %s | Email : %s | Birthdate : %dt",
+                username, email, birthdate);
     }
 
     /**
@@ -128,27 +120,6 @@ public class User extends EntityBase {
     }
 
     /**
-     * @return the age
-     */
-    public byte getAge() {
-        return age;
-    }
-
-    /**
-     * @return the registeredAt
-     */
-    public LocalDateTime getRegisteredAt() {
-        return registeredAt;
-    }
-
-    /**
-     * @param registeredAt the registeredAt to set
-     */
-    public void setRegisteredAt(LocalDateTime registeredAt) {
-        this.registeredAt = registeredAt;
-    }
-
-    /**
      * @return the password
      */
     public String getPassword() {
@@ -160,6 +131,25 @@ public class User extends EntityBase {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNoEncodedPassword() {
+        // TODO Auto-generated method stub
+        return password;
+    }
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
     }
 
     /* Futures attributees

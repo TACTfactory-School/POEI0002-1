@@ -1,0 +1,52 @@
+// .register {
+//     border: 0.4rem;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+
+//     border: 3px #ffbb29 groove;
+//     border-radius: 20px;
+//     width: 400px;
+//     padding: 12px;
+//     padding-bottom: 42px;
+//     margin: auto;
+//     margin-block-start: 2rem;
+//     text-align: center;
+// }
+
+.content {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  width: 60%;
+  margin: auto;
+  background: #fff;
+ }
+
+ .signin-form {
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-toolbar {
+  color: #fff;
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.btn {
+  color: #fff;
+  float: right;
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+}

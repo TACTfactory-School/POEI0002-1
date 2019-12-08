@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import fr.dta.ovg.exceptions.NotFoundException;
+
 @Component
 @Profile("!prod")
 public class FixtureService implements Fixture {
@@ -21,10 +23,18 @@ public class FixtureService implements Fixture {
     @Autowired
     private UserFixtureService userFixture;
 
-    /** Call loading initials fixtures @see {@link EventFixtureService}  */
-    public void load() {
-        this.eventFixture.load();
-        this.userFixture.load();
+    @Autowired
+    private SecurityUserFixtureService securityUserFixture;
 
+    @Autowired
+    private SecurityRoleFixtureService securityRoleFixture;
+
+    /** Call loading initials fixtures @see {@link EventFixtureService}
+     * @throws NotFoundException */
+    public void load() throws NotFoundException {
+        this.userFixture.load();
+        this.eventFixture.load();
+//        this.securityUserFixture.load();
+//        this.securityRoleFixture.load();
     }
 }

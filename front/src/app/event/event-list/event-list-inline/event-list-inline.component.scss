@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+  border-style: none !important;
+}
+tr {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  height: 56px !important;
+}
+th {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+.mat-header-row {
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+
+}
+
+mat-paginator {
+  background: whitesmoke;
+}

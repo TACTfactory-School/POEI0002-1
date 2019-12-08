@@ -1,0 +1,44 @@
+<ng-template #loading><app-loader></app-loader></ng-template>
+
+<article *ngIf="(event$ | async) as e; else loading">
+  <p>Fiche détaillé de l'évenement {{ e.id }}</p>
+
+  <h1>{{ e.label }}</h1>
+
+<!--
+  <img *ngIf="e.img" src="{{ e.img }}" alt="avatar de {{ e.label }}">
+  <p>{{ u.username }} travail en tant que {{ u.job }}.</p>
+-->
+
+  <mat-card class="event-card">
+      <mat-card-header>
+        <div mat-card-avatar class="event-header-image"></div>
+        <mat-card-title>{{ e.label }}</mat-card-title>
+        <mat-card-subtitle>{{ e.author.username }}</mat-card-subtitle>
+      </mat-card-header>
+      <img *ngIf="e.img" mat-card-image src="{{ e.img }}" alt="avatar de {{ e.label }">
+      <img *ngIf="!e.img" mat-card-image src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
+
+      <mat-card-content>
+        <p *ngIf="e.finished">
+          L'évenement est terminé !
+        </p>
+        <p>
+          Nombre de place maxium : {{ e.nbPlaceMax }}
+          Nombre de place restante : {{ e.nbPlaceMax }}
+        </p>
+        <p>
+          Date : {{ e.startAt | date: 'short' }}
+        </p>
+        <p>
+          Descrition : {{ e.description }}
+        </p>
+        <p>
+          Lieu : {{ e.address }} {{ e.postcode }} {{ e.city }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+          <button color="accent" mat-button>Rejoindre</button>
+      </mat-card-actions>
+    </mat-card>
+</article>

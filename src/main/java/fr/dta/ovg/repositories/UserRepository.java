@@ -31,4 +31,6 @@ public interface UserRepository  extends JpaRepository<User, Long> {
      @Query("SELECT COUNT(e) > 0" + " FROM User e" + " WHERE LOWER(e.username) = LOWER(:#{#s.username})"
             + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
       boolean existsByUsername(@Param("s") User user);
+
+    User findByUsername(String login);
 }

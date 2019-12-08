@@ -5,7 +5,11 @@
  */
 package fr.dta.ovg.fixtures;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,9 @@ import org.springframework.stereotype.Component;
 import com.github.javafaker.Faker;
 
 import fr.dta.ovg.entities.Event;
+import fr.dta.ovg.entities.User;
+import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.services.UserCrudService;
 import fr.dta.ovg.services.event.EventCreateService;
 
 /** This class initialize DB with initials fixtures data */
@@ -23,9 +30,14 @@ import fr.dta.ovg.services.event.EventCreateService;
 @Profile("!prod")
 public class EventFixtureService implements Fixture {
 
-    private final EventCreateService service;
+    private final EventCreateService eventService;
 
-    private int fakerSize;
+    private final UserCrudService userService;
+
+    private int eventFakerSize;
+
+    private int userFakerSize;
+
 
     private final Faker fake = new Faker(Locale.FRENCH);
 
@@ -34,47 +46,87 @@ public class EventFixtureService implements Fixture {
      *  Link to Event Create Service
      *  Get Value of fakerSize @see application.properties */
      public EventFixtureService(
-            @Value("${app.event.fixtures.fakersize:50}") final int fakerSize,
-            @Autowired final EventCreateService service) {
-        this.fakerSize = fakerSize;
-        this.service = service;
+            @Value("${app.event.fixtures.fakersize:50}") final int eventFakerSize,
+            @Value("${app.user.fixtures.fakersize:100}") final int userFakerSize,
+            @Autowired final EventCreateService eventService,
+            @Autowired final UserCrudService userService) {
+        this.eventFakerSize = eventFakerSize;
+        this.userFakerSize = userFakerSize;
+        this.eventService = eventService;
+        this.userService = userService;
     }
 
-    /** Create-Drop DB - Insert initial data, erasing old data every run. */
+    /** Create-Drop DB - Insert initial data, erasing old data every run.
+     * @throws NotFoundException */
     @Override
-    public void load() {
+    public void load() throws NotFoundException {
         this.loadReal();
         this.loadFake();
     }
 
-    private void loadReal() {
-        this.build("Supra Party One",   "Bernard Saulon",       "C'est super génial Viendez");
-        this.build("Poke GO",           "Jean Peuplier",        "Chasse aux pokemons");
-        this.build("GameBox",           "Simon Clark",          "RetroGamin Event #7");
-        this.build("Dotball",           "polo4life@4ever.org",  "Jeux de sports & pinball");
+    private void loadReal() throws NotFoundException {
 
+        LocalDateTime start = LocalDateTime.now();
+
+        this.build("Supra Party One",   userService.getOne(1),          "C'est super génial Viendez",
+                    start,              "img1",                         25,
+                    "5 rue du chat",    "35000",                        "Rennes");
+
+        this.build("Poke GO",           userService.getOne(2),          "Chasse aux pokemons",
+                    start,              "img1",                         25,
+                    "5 chemin des eaux","49000",                        "Angers");
+
+        this.build("GameBox",           userService.getOne(3),          "RetroGamin Event #7",
+                    start,              "img1",                         25,
+                    "5 bld Nerobi",     "69000",                        "Lyon");
+
+        this.build("Dotball",           userService.getOne(4),          "Jeux de sports & pinball",
+                    start,              "img1",                         25,
+                    "15 rue Paul Bert", "75000",                        "Paris");
     }
 
-    private void build(final String label, final String author, final String description) {
+    private void build(final String label, final User author, final String description,
+            final LocalDateTime startAt, final String img, final int nbPlaceMax,
+            final String address, final String postcode, final String city) {
 
         final Event event = new Event();
 
         event.setLabel(label);
         event.setAuthor(author);
         event.setDescription(description);
+        event.setStartAt(startAt);
+        event.setImg(img);
+        event.setNbPlaceMax(nbPlaceMax);
+        event.setAddress(address);
+        event.setPostcode(postcode);
+        event.setCity(city);
 
-        service.create(event);
+        eventService.create(event);
     }
 
     private void loadFake() {
-        IntStream.range(0, this.fakerSize).forEach(this::buildFake);
+        IntStream.range(0, this.eventFakerSize).forEach(this::buildFake);
     }
 
     private void buildFake(int i) {
 
-        this.build(this.fake.esports().event(),
-                this.fake.name().fullName(),
-                this.fake.gameOfThrones().quote());
+        Random rand = new Random();
+
+        try {
+            this.build(
+                    this.fake.esports().event(),
+                    userService.getOne(rand.nextInt(userFakerSize)),// this.fake.name().fullName(),
+                    this.fake.gameOfThrones().quote(),
+                    this.fake.date().future(rand.nextInt(2000) + 1, TimeUnit.DAYS)
+                        .toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
+                    this.fake.avatar().toString(),
+                    rand.nextInt(100),
+                    this.fake.address().streetAddress(),
+                    this.fake.address().zipCode(),
+                    this.fake.address().city());
+        } catch (NotFoundException e) {
+            e.getMessage();
+        }
     }
 
 }
