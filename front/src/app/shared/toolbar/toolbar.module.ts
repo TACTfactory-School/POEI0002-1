@@ -17,7 +17,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatToolbarModule,
     MaterialModule,
     RouterModule,
-    AppRoutingModule,
     UserFormLoginModule,
     MatFormFieldModule,
     MatInputModule
