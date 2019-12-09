@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 
 import fr.dta.ovg.dtos.JoinDto;
 import fr.dta.ovg.entities.Event;
-import fr.dta.ovg.entities.Join;
+import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.EventCrudService;
 
 @Component
-public class JoinMapper {
+public class JoinEventMapper {
 
     private static final String ERR_ID_TO_EVENT = "Error during convertion, impossible to retrieve event from id {}";
 
@@ -27,12 +27,12 @@ public class JoinMapper {
     @Autowired
     private EventCrudService service;
 
-    private static final Logger log = LoggerFactory.getLogger(JoinMapper.class);
+    private static final Logger log = LoggerFactory.getLogger(JoinEventMapper.class);
 
     @PostConstruct
     public void init() {
 
-        this.mapper.typeMap(JoinDto.class, Join.class).addMappings(mapper -> {
+        this.mapper.typeMap(JoinDto.class, JoinEvent.class).addMappings(mapper -> {
             mapper.using((final MappingContext<Long, Event> ctx) -> {
                 Event result = null;
 
@@ -43,11 +43,11 @@ public class JoinMapper {
                 }
 
                 return result;
-            }).map(JoinDto::getEventId, Join::setUser);
+            }).map(JoinDto::getEventId, JoinEvent::setUser);
         });
     }
 
-    public Join createFrom(@Valid JoinDto dto) {
-        return this.mapper.map(dto, Join.class);
+    public JoinEvent createFrom(@Valid JoinDto dto) {
+        return this.mapper.map(dto, JoinEvent.class);
     }
 }
