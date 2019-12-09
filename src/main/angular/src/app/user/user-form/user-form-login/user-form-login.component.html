@@ -8,8 +8,8 @@
     </mat-toolbar>
   </div>
   <span class="incorrect" *ngIf="invalidLogin">Nom d'utilisateur ou mot de passe incorrecte.</span>
-  <div class="signin-form">
-    <form [formGroup]="signin" (ngSubmit)="checkLogin()">
+  <div class="login-form">
+    <form [formGroup]="login" (ngSubmit)="checkLogin()">
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Nom d'utilisateur</mat-label>
