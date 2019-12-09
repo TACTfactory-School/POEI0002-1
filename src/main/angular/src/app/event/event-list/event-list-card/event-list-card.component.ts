@@ -8,10 +8,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./event-list-card.component.scss']
 })
 export class EventListCardComponent implements OnInit {
-  // @Input() event: Event;
+  @Input() event: Event;
   @Input() label: string;
   @Input() description: string;
-  @Input() author: User;
+  @Input() creator: User;
   @Input() id: number;
 
 //  id : string;
@@ -22,6 +22,7 @@ export class EventListCardComponent implements OnInit {
 
   ngOnInit() {
  //   this.id = this.route.snapshot.paramMap.get('id');
+
   }
 
 }
