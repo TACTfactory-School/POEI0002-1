@@ -7,7 +7,6 @@ package fr.dta.ovg;
 public class Application {
 
     public void shouldAnswerWithTrue() {
-
         assertTrue( true );
     }
 }
