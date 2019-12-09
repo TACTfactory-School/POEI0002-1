@@ -1,0 +1,63 @@
+<div class="content">
+  <div class="header">
+    <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Inscription</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="register-form">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <fieldset class="register">
+          <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Pseudo</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="username">
+                <mat-error *ngIf="username.invalid && !username.pristine" class="alert"> Veuillez saisir un pseudo valide.</mat-error>
+                <mat-icon matSuffix>mood_bad</mat-icon>
+                <mat-hint>Caractères autorisés : 0..9 # @ _ - </mat-hint>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Placeholder" type="email" formControlName="email">
+                <mat-error *ngIf="email.invalid && !email.pristine" class="alert"> Veuillez saisir un email valide.</mat-error>
+                <mat-icon matSuffix>sentiment_very_dissatisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </p>
+            <p>
+              <!-- [ng-container] -->
+              <mat-form-field appearance="outline">
+                <mat-label>Mot de Passe</mat-label>
+                <input matInput placeholder="Placeholder" type="password" formControlName="password">
+                <mat-error *ngIf="password.invalid && !password.pristine" class="alert"> Veuillez saisir un mot de passe valide.</mat-error>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </p>
+            <!-- <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirmez le mot de passe</mat-label>
+                  <input matInput placeholder="Placeholder" type="password" formControlName="confimpassword">
+                  <mat-error *ngIf="password.invalid && !password.pristine" class="alert"> Le mot de passe n'est pas identique.</mat-error>
+                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </p> -->
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Date de naissance</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="birthdate.invalid && !birthdate.pristine" class="alert"> Veuillez saisir une date de naissance valide. </mat-error>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </p>
+            <button mat-raised-button class="btn" type="submit" [disabled]="!registerForm.valid">Continuer</button>
+      </fieldset>
+    </form>
+  </div>
+</div>

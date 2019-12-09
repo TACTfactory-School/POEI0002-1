@@ -1,0 +1,40 @@
+
+// Custom Theming for Angular Material
+@import '~@angular/material/theming';
+
+@import 'assets/ovg-colors'; // import the custom colors for material
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the default theme (same as the example above).
+$ovg-primary: mat-palette($ovg, 200); // orange
+$ovg-accent:  mat-palette($ovg, A400);
+$ovg-theme:   mat-light-theme($ovg-primary, $ovg-accent);
+
+// Include the default theme styles.
+@include angular-material-theme($ovg-theme);
+
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+
+.unicorn-dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// set 0 padding to the mat dialogs
+.mat-dialog-container {
+  padding:0 !important;
+}
