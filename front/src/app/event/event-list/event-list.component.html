@@ -1,0 +1,25 @@
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
+
+
+<app-event-list-toggle class="toggle-btn" (change)="onDrawModeChange($event)"></app-event-list-toggle>
+
+<div [ngSwitch]="drawMode">
+  <ng-container *ngIf="events; else loading">
+
+    <div class="event-list" *ngSwitchCase="'list'">
+        <ng-container>
+          <app-event-list-inline [events]="events" ></app-event-list-inline>
+        </ng-container>
+    </div>
+
+    <div class="event-cards" *ngSwitchCase="'cards'">
+        <ng-container *ngFor="let e of events">
+          <app-event-list-card [label]="e.label" [description]="e.description" [author]="e.author"></app-event-list-card>
+        </ng-container>
+    </div>
+
+  </ng-container>
+</div>
+

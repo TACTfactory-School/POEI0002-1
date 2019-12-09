@@ -7,6 +7,7 @@ package fr.dta.ovg.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,16 @@ public class EventController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) throws NotFoundException {
         this.service.delete(id);
+    }
+
+    // TODO : REMOVE TEST
+    @GetMapping("/testSession")
+    public String test(HttpSession session) {
+
+        if(session.getAttribute("test") == null) {
+            session.setAttribute("test", "coucou");
+        }
+        return session.getAttribute("test").toString();
     }
 
 }

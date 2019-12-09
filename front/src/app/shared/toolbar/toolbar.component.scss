@@ -1,0 +1,43 @@
+.mat-toolbar {
+  background: #fff;
+}
+i {
+  color: rgba(0, 0, 0, 0.87);
+}
+.toolbar-icon {
+  margin:auto;
+  padding: 14px 14px;
+  font-size: 32px;
+  background: -webkit-linear-gradient(135deg, #ff2d3b, #ffb702 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.toolbar-icon:hover {
+  background-color: #eee;
+
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+.brand-logo {
+  width: 8rem;
+  margin-top: 0.5rem;
+}
+a {
+  cursor: pointer;
+}
+.icon {
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);}
+.icon:hover {
+  background-color: #eee;
+}
+.mat-icon {
+  height: auto !important;
+  width: auto !important;
+  color: #ff791c;
+}
+
+mat-menu {
+  border-top: solid #ff791c;
+}

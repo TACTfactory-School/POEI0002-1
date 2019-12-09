@@ -1,0 +1,36 @@
+.content {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  width: 60%;
+  margin: auto;
+  background: #fff;
+ }
+
+ .login-form {
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-toolbar {
+  color: #fff;
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.btn {
+  color: #fff;
+  float: right;
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+}

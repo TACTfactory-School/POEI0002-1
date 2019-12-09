@@ -1,0 +1,38 @@
+.event-card {
+  max-width: 80%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  display: inline-block;
+  width: 250px;
+  margin: 1rem;
+}
+
+.event-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.event-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+p {
+  word-wrap: break-word;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+mat-card-actions {
+  display: flex;
+}
+
+mat-card-actions {
+margin: 0 !important;
+display: flex;
+justify-content: space-between;
+}
+
+.gradient {
+color: #fff;
+background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+}
