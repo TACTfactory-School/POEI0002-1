@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventApiService } from '../event-api.service';
-import { EventDetail } from '../event';
+import { Event } from '../event';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class EventDetailsComponent implements OnInit {
 
-  event$: Observable<EventDetail>;
+  event$: Observable<Event>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class EventDetailsComponent implements OnInit {
           console.log('subscribe');
           if (params.id) {
             console.log('id', params.id);
-            this.event$ = this.api.getOneDetail(params.id);
+            this.event$ = this.api.getOne(params.id);
           }
         });
   }

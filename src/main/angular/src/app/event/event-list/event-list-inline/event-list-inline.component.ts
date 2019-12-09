@@ -11,11 +11,11 @@ export class EventListInlineComponent implements OnInit {
 
   // @Input() label: string;
   // @Input() description: string;
-  // @Input() author: string;
+  // @Input() creator: string;
 
   @Input() events: Event[];
 
-  displayedColumns: string[] = ['author', 'label', 'description'];
+  displayedColumns: string[] = ['creator', 'label', 'description'];
   dataSource: MatTableDataSource<Event>;
 
    @ViewChild(MatPaginator) paginator: MatPaginator;
