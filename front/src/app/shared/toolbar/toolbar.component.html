@@ -1,8 +1,13 @@
 <mat-toolbar class="fixed-top">
   <mat-toolbar-row>
     <a [routerLink]="['event']"><img class="brand-logo" src="../../../assets/logo.png" alt="OVG"/></a>
+    <form class="search-form">
+      <mat-form-field color="primary" class="search-bar">
+        <input matInput  placeholder="Rechercher un événement">
+      </mat-form-field>
+    </form>
     <span class="spacer"></span>
-    <button mat-stroked-button color="primary" (click)="displayConnect()">Connexion</button>
+    <button mat-stroked-button color="primary" (click)="openDialog()">Connexion</button>
     <!-- Other MatIcon : date_range // calendar_today -->
     <a [routerLink]="['event']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-labelledby="events">event</mat-icon></a>
     <a [routerLink]="['user']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="users">group</mat-icon></a>

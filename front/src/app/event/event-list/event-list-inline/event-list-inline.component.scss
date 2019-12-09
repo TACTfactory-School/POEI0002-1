@@ -8,6 +8,10 @@ table {
   width: 100%;
 }
 
+table tr:nth-child(even){
+  background-color: whitesmoke;
+}
+
 td, th {
   width: 25%;
   border-style: none !important;

@@ -1,5 +1,6 @@
 table {
   width: 100%;
+  margin-top: 1rem;
 }
 
 .mat-form-field {
@@ -8,20 +9,28 @@ table {
 }
 
 table tr:nth-child(even){
-  background-color: rgba(243, 128, 33, 0.6);
+  background-color: whitesmoke;
 }
 
-.usertable {
-  margin-right: 8rem;
-  margin-left: 8rem;
-  padding-top: 20px;
+td, th {
+  width: 25%;
+  border-style: none !important;
 }
-
+tr {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  height: 56px !important;
+}
 th {
-  background-color: rgba(243, 128, 33, 0.6);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+.mat-header-row {
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+
 }
 
- td, .display {
-  vertical-align: middle;
-  text-align: center;
+mat-paginator {
+  background: whitesmoke;
 }

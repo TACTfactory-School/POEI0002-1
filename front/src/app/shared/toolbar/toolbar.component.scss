@@ -41,3 +41,19 @@ a {
 mat-menu {
   border-top: solid #ff791c;
 }
+
+.search-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: 2rem;
+  margin-top: 16px;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+.mat-form-field {
+  color: #ff791c !important;
+}
