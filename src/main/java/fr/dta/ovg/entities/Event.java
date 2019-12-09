@@ -31,7 +31,7 @@ public class Event extends EntityBase {
     /** Author of the Event <br> DB Column */
         @ApiModelProperty(value = "The author of the event")
         @ManyToOne(optional = false)
-        private User author;
+        private User creator;
 
         /** Title of the Event <br> DB Column */
         @NotBlank
@@ -98,7 +98,7 @@ public class Event extends EntityBase {
         @Override
         public String toString() {
             return String.format("| Title : %s | Description : %s | Author : %s",
-                    label, description, author);
+                    label, description, creator);
         }
 
         /**
@@ -220,15 +220,15 @@ public class Event extends EntityBase {
          * Getter Author.
          * @return String : the author.
          */
-        public User getAuthor() {
-            return author;
+        public User getCreator() {
+            return creator;
         }
 
         /**
          * Setter Author.
          * @param String author : the author to set.
          */
-        public void setAuthor(User author) {
-            this.author = author;
+        public void setCreator(User author) {
+            this.creator = author;
         }
 }

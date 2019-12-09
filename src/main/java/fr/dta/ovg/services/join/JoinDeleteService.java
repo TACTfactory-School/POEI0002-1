@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.repositories.JoinRepository;
+import fr.dta.ovg.repositories.JoinEventRepository;
 
 @Component
 public class JoinDeleteService {
 
     /** Link to Join repository. */
     @Autowired
-    private JoinRepository repository;
+    private JoinEventRepository repository;
 
     public void delete(final long id) throws NotFoundException {
         this.repository.delete(

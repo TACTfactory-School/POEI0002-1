@@ -91,7 +91,7 @@ public class EventController {
         //  ObjectMapper mapper = new ObjectMapper();
         // ---------
         entity.setLabel(event.getLabel());
-        entity.setAuthor(event.getAuthor());
+        entity.setCreator(event.getCreator());
         entity.setDescription(event.getDescription());
 
         return this.service.create(entity);
