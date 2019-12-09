@@ -1,12 +1,15 @@
 package fr.dta.ovg;
 
-//import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-// import org.junit.Test;
 
-public class Application {
+@SpringBootTest
+ class ApplicationTests {
+    class Onvageeker1ApplicationTests {
 
-    public void shouldAnswerWithTrue() {
-        assertTrue( true );
+            @Test
+            void contextLoads() {
+            }
     }
 }
