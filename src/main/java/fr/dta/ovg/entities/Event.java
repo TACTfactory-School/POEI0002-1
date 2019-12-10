@@ -71,7 +71,7 @@ public class Event extends EntityBase {
 
         /** City of the Event. <br> DB Column. */
         @NotBlank
-        @ApiModelProperty(name = "ev_postcode" ,value = "The city of the event.")
+        @ApiModelProperty(name = "ev_postcode" , value = "The city of the event.")
         @Column(length = 255, nullable = true) // false
         private String city;
 
