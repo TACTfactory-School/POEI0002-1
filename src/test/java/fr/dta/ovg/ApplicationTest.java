@@ -8,8 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
  class ApplicationTest {
 
-            @Test
-            public void shouldAnswerWithTrue() {
-                assertTrue(true);
-            }
+    @Test
+    public void shouldAnswerWithTrue() {
+        assertTrue(true);
+    }
 }
