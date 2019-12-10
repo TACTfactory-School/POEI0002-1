@@ -111,7 +111,7 @@ public class Event extends EntityBase {
         /**
          * @param startedAt the startedAt to set
          */
-        public void setStartAt(LocalDateTime startedAt) {
+        public final void setStartAt(LocalDateTime startedAt) {
             this.startAt = startedAt;
         }
 
@@ -125,7 +125,7 @@ public class Event extends EntityBase {
         /**
          * @param img the img to set
          */
-        public void setImg(String img) {
+        public final void setImg(String img) {
             this.img = img;
         }
 
@@ -139,7 +139,7 @@ public class Event extends EntityBase {
         /**
          * @param nbPlaceMax the nbPlaceMax to set
          */
-        public void setNbPlaceMax(int nbPlaceMax) {
+        public final void setNbPlaceMax(int nbPlaceMax) {
             this.nbPlaceMax = nbPlaceMax;
         }
 
@@ -153,7 +153,7 @@ public class Event extends EntityBase {
         /**
          * @param address the address to set
          */
-        public void setAddress(String address) {
+        public final void setAddress(String address) {
             this.address = address;
         }
 
@@ -167,7 +167,7 @@ public class Event extends EntityBase {
         /**
          * @param postcode the postcode to set
          */
-        public void setPostcode(String postcode) {
+        public final void setPostcode(String postcode) {
             this.postcode = postcode;
         }
 
@@ -181,7 +181,7 @@ public class Event extends EntityBase {
         /**
          * @param city the city to set
          */
-        public void setCity(String city) {
+        public final void setCity(String city) {
             this.city = city;
         }
 
@@ -197,7 +197,7 @@ public class Event extends EntityBase {
          * Setter Label.
          * @param String label : label to set.
          */
-        public void setLabel(String label) {
+        public final void setLabel(String label) {
             this.label = label;
         }
 
@@ -213,7 +213,7 @@ public class Event extends EntityBase {
          * Setter Description.
          * @param String description : the description to set.
          */
-        public void setDescription(String description) {
+        public final void setDescription(String description) {
             this.description = description;
         }
         /**
@@ -228,7 +228,7 @@ public class Event extends EntityBase {
          * Setter Author.
          * @param String author : the author to set.
          */
-        public void setCreator(User author) {
+        public final void setCreator(User author) {
             this.creator = author;
         }
 }
