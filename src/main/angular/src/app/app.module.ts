@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import localeFr from '@angular/common/locales/fr';
 import { PagesModule } from './pages/pages.module';
 import { MaterialModule } from './shared/material/material.module';
+import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -26,6 +27,7 @@ registerLocaleData(localeFr, 'fr');
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
+    AppRoutingModule,
     EventModule,
     UserModule,
     AuthModule,

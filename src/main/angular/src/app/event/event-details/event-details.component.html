@@ -14,7 +14,7 @@
       <mat-card-header>
         <div mat-card-avatar class="event-header-image"></div>
         <mat-card-title>{{ e.label }}</mat-card-title>
-        <mat-card-subtitle>{{ e.author.username }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ e.creator.username }}</mat-card-subtitle>
       </mat-card-header>
       <img *ngIf="e.img" mat-card-image src="{{ e.img }}" alt="avatar de {{ e.label }">
       <img *ngIf="!e.img" mat-card-image src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
