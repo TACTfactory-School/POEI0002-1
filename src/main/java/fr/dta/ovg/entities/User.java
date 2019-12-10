@@ -113,7 +113,7 @@ public class User extends EntityBase {
     /**
      * @param firstname the firstname to set
      */
-    public void setFirstname(String firstname) {
+    public void setFirstname(final String firstname) {
         this.firstname = firstname;
     }
 
@@ -127,7 +127,7 @@ public class User extends EntityBase {
     /**
      * @param city the city to set
      */
-    public void setCity(String city) {
+    public void setCity(final String city) {
         this.city = city;
     }
 
@@ -141,7 +141,7 @@ public class User extends EntityBase {
     /**
      * @param job the job to set
      */
-    public void setJob(String job) {
+    public void setJob(final String job) {
         this.job = job;
     }
 
@@ -155,7 +155,7 @@ public class User extends EntityBase {
     /**
      * @param rate the rate to set
      */
-    public void setRate(float rate) {
+    public void setRate(final float rate) {
         this.rate = rate;
     }
 
@@ -169,7 +169,7 @@ public class User extends EntityBase {
     /**
      * @param lastLogin the lastLogin to set
      */
-    public void setLastLogin(ZonedDateTime lastLogin) {
+    public void setLastLogin(final ZonedDateTime lastLogin) {
         this.lastLogin = lastLogin;
     }
 
@@ -183,7 +183,7 @@ public class User extends EntityBase {
     /**
      * @param events the events to set
      */
-    public void setEvents(List<Event> events) {
+    public void setEvents(final List<Event> events) {
         this.events = events;
     }
 
