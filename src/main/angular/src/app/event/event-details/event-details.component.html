@@ -1,4 +1,6 @@
-<ng-template #loading><app-loader></app-loader></ng-template>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
 
 <article *ngIf="(event$ | async) as e; else loading">
   <p>Fiche détaillé de l'évenement {{ e.id }}</p>
@@ -16,7 +18,7 @@
         <mat-card-title>{{ e.label }}</mat-card-title>
         <mat-card-subtitle>{{ e.creator.username }}</mat-card-subtitle>
       </mat-card-header>
-      <img *ngIf="e.img" mat-card-image src="{{ e.img }}" alt="avatar de {{ e.label }">
+      <img *ngIf="e.img" mat-card-image src="{{ e.img }}" alt="avatar de {{ e.label }}">
       <img *ngIf="!e.img" mat-card-image src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
 
       <mat-card-content>

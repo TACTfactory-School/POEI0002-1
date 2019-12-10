@@ -18,6 +18,7 @@ export class EventApiService {
   }
 
   getOne(id: number) {
+    // return this.http.get<Event[]>('./assets/fixtureEvent3.json');
     return this.http.get<Event>(`${URL}/${id}`);
   }
 
