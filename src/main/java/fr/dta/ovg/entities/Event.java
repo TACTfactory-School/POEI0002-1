@@ -139,7 +139,7 @@ public class Event extends EntityBase {
         /**
          * @param nbPlaceMax the nbPlaceMax to set
          */
-        public final void setNbPlaceMax(int nbPlaceMax) {
+        public final void setNbPlaceMax(final int nbPlaceMax) {
             this.nbPlaceMax = nbPlaceMax;
         }
 
