@@ -23,7 +23,7 @@ public interface JoinCrudService {
      *             Throws if no {@link JoinEvent inscription} entity exists
      *             for given {@code id}.
      */
-    void delete(final long id) throws NotFoundException;
+    void delete(long id) throws NotFoundException;
 
     /**
      * Get one Event entity by ID.<br>
@@ -40,5 +40,5 @@ public interface JoinCrudService {
      *            The built entity.
      * @return The entity after hydratation.
      */
-    JoinEvent create(final JoinEvent entity);
+    JoinEvent create(JoinEvent entity);
 }

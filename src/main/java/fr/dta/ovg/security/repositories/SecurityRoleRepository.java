@@ -10,6 +10,6 @@ import fr.dta.ovg.security.entities.SecurityRole;
 @Repository
 public interface SecurityRoleRepository extends JpaRepository<SecurityRole, Integer> {
 
-    public List<SecurityRole> findByUsername(String username);
+    List<SecurityRole> findByUsername(String username);
 
 }
