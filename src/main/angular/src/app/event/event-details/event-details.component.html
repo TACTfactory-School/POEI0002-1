@@ -7,14 +7,16 @@
       <div class="header">
         <mat-toolbar>
             <mat-toolbar-row>
-              <span class="title">{{ e.label | uppercase }} </span><span class="username">par <a [routerLink]="['/user', e.creator.id]" class="username">{{ e.creator.username }}</a></span>
+              <p class="title">{{ e.label | uppercase }} </p>
+              <p class="username">par <a [routerLink]="['/user', e.creator.id]">{{ e.creator.username }}</a></p>
               <span class="spacer"></span>
+              <button mat-raised-button type="submit">Editer</button>
             </mat-toolbar-row>
         </mat-toolbar>
-        <div mat-card-avatar class="event-header-image"></div>
-        <img *ngIf="e.img" mat-card-image src="{{ e.img }}" alt="image de l'événement {{ e.label }}">
-        <img *ngIf="!e.img" mat-card-image src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
-
+        <div class="event-header-image">
+          <img *ngIf="e.img" class="header-image" src="{{ e.img }}" alt="image de l'événement {{ e.label }}">
+          <img *ngIf="!e.img" class="header-image" src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
+        </div>
       </div>
       <div class="login-form">
         <form (ngSubmit)="joinEvent()">
@@ -26,7 +28,7 @@
               Nombre de place restante : {{ e.nbPlaceMax }}
             </p>
             <p>
-              Date : {{ e.startAt | date: 'short' }}
+              Date : {{ e.startAt | date: 'medium' }}
             </p>
             <p>
               Description : {{ e.description }}
