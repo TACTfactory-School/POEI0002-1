@@ -75,7 +75,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
         this.build("Poke GO",           userService.getOne(2),          "Chasse aux pokemons",
                     start,              "img1",                         25,
-                    "5 chemin des eaux","49000",                        "Angers");
+                    "5 chemin des eaux", "49000",                        "Angers");
 
         this.build("GameBox",           userService.getOne(3),          "RetroGamin Event #7",
                     start,              "img1",                         25,
@@ -116,7 +116,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         try {
             this.build(
                     this.fake.esports().event(),
-                    userService.getOne(rand.nextInt(userFakerSize)),// this.fake.name().fullName(),
+                    userService.getOne(rand.nextInt(userFakerSize)), // this.fake.name().fullName(),
                     this.fake.gameOfThrones().quote(),
                     this.fake.date().future(rand.nextInt(2000) + 1, TimeUnit.DAYS)
                         .toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),

@@ -54,7 +54,7 @@ public class EventCrudServiceImpl implements EventCrudService {
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(final long id) throws NotFoundException {
         // TODO Auto-generated method stub
         this.deleteService.delete(id);
     }

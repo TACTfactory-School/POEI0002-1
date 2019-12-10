@@ -50,7 +50,7 @@ public class JoinServiceImpl implements JoinCrudService {
 
     /** Get one join from join repository. */
     @Override
-    public JoinEvent getOne(long id) throws NotFoundException {
+    public JoinEvent getOne(final long id) throws NotFoundException {
         // TODO Auto-generated method stub
         return null;
     }

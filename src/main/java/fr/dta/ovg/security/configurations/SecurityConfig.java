@@ -19,8 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
-    /* (non-Javadoc)
-     * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)
+
+    /**
+     *
      */
 
     @Override
@@ -41,8 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         super.configure(http);
     }
 
-    /* (non-Javadoc)
-     * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder)
+    /**
+     *
      */
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
