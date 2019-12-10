@@ -1,5 +1,13 @@
 package fr.dta.ovg.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+
+@Entity
+@Table(name = "app_notifications")
+@ApiModel(value = "Describes a Notification for our system")
 public class Notification extends EntityBase {
 
     private String label;

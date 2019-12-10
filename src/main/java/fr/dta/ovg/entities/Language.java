@@ -1,5 +1,13 @@
 package fr.dta.ovg.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+
+@Entity
+@Table(name = "app_languages")
+@ApiModel(value = "Describes a Language for our system")
 public class Language extends EntityBase {
 
     private String label;

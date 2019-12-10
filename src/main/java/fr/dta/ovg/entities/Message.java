@@ -1,5 +1,13 @@
 package fr.dta.ovg.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+
+@Entity
+@Table(name = "app_messages")
+@ApiModel(value = "Describes a Message for our system")
 public class Message extends EntityBase {
 
     private String message;
