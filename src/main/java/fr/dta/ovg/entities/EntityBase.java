@@ -87,7 +87,7 @@ public class EntityBase {
      * Setter setEnabled.
      * @param boolean enabled : the enabled to set
      */
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
 
