@@ -29,7 +29,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("api/v1/user")
-@Api(value="User Management System", tags = "User")
+@Api(value = "User Management System", tags = "User")
 public class UserController {
 
     /** Link to Event CRUD Service. */
