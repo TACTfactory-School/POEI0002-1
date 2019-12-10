@@ -81,7 +81,7 @@ public class User extends EntityBase {
 //    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
 //    private LocalDateTime registeredAt;
     @ManyToMany(mappedBy = "users")
-    List<Event> events;
+    private List<Event> events;
 
     /** Age of user */
 //    @Transient
