@@ -83,7 +83,7 @@ public class JoinController {
 
         final JoinEvent entity = this.service.getOne(id);
 
-        // TODO: Use mapper.
+        // Use mapper.
         // ObjectMapper mapper = new ObjectMapper();
         // ---------
         return this.service.create(entity);

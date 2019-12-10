@@ -94,7 +94,7 @@ public class Event extends EntityBase {
                 inverseJoinColumns = { @JoinColumn(name = "app_events.id") })
             private List<User> users;
 
-        /** Override toString() method with Event attributes */
+        /** Override toString() method with Event attributes. */
         @Override
         public String toString() {
             return String.format("| Title : %s | Description : %s | Author : %s",

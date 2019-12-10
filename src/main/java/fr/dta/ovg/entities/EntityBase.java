@@ -68,7 +68,7 @@ public class EntityBase {
     }
 
     /**
-     * Getter id
+     * Getter id.
      * @return the id (long).
      */
     public Long getId() {
@@ -100,7 +100,7 @@ public class EntityBase {
     }
 
     /**
-     * Getter updated date
+     * Getter updated date.
      * @return LocalDateTime updatedAt
      */
     public LocalDateTime getUpdatedAt() {

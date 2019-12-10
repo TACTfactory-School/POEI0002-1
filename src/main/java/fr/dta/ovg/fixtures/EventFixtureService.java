@@ -26,7 +26,7 @@ import fr.dta.ovg.repositories.EventRepository;
 import fr.dta.ovg.services.UserCrudService;
 import fr.dta.ovg.services.event.EventCreateService;
 
-/** This class initialize DB with initials fixtures data */
+/** This class initialize DB with initials fixtures data. */
 @Component
 @Profile("!prod")
 public class EventFixtureService extends FixtureCheck<EventRepository> {
@@ -43,9 +43,9 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
     private final Faker fake = new Faker(Locale.FRENCH);
 
     /**
-     * Local Constructor
-     *  Link to Event Create Service
-     *  Get Value of fakerSize @see application.properties */
+     * Local Constructor.
+     *  Link to Event Create Service.
+     *  Get Value of fakerSize @see application.properties. */
      public EventFixtureService(
             @Value("${app.event.fixtures.fakersize:50}") final int eventFakerSize,
             @Value("${app.user.fixtures.fakersize:100}") final int userFakerSize,

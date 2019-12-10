@@ -74,14 +74,14 @@ public class User extends EntityBase {
     @ApiModelProperty(value = "The last login date rate of the user.")
     private ZonedDateTime lastLogin;
 
-    /** Registered date of user <br> DB Column */
+    /** Registered date of user <br> DB Column. */
 //    @Column(nullable = false)
 //    @JsonProperty(access = Access.READ_ONLY)
 //    @CreatedDate
 //    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
 //    private LocalDateTime registeredAt;
     @ManyToMany(mappedBy = "users")
-    List<Event> events;
+    private List<Event> events;
 
     /** Age of user */
 //    @Transient
@@ -96,7 +96,7 @@ public class User extends EntityBase {
 //        this.registeredAt = LocalDateTime.now();
 //    }
 
-    /** Override toString() method with User attributes */
+    /** Override toString() method with User attributes. */
     @Override
     public String toString() {
         return String.format("Username : %s | Email : %s | Birthdate : %dt",
