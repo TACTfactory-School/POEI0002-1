@@ -31,7 +31,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("api/v1/event")
-@Api(value="Event Management System", tags = "Event")
+@Api(value = "Event Management System", tags = "Event")
 public class EventController {
 
     /** Link to Event CRUD Service. */
@@ -113,7 +113,7 @@ public class EventController {
     @GetMapping("/testSession")
     public String test(final HttpSession session) {
 
-        if(session.getAttribute("test") == null) {
+        if (session.getAttribute("test") == null) {
             session.setAttribute("test", "coucou");
         }
         return session.getAttribute("test").toString();
