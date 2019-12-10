@@ -54,7 +54,7 @@ public class UserController {
      * @throws NotFoundException
      */
     @GetMapping("{id}")
-    public User getOne(@PathVariable Long id) throws NotFoundException {
+    public User getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
 
@@ -84,7 +84,7 @@ public class UserController {
      * @throws NotFoundException
      */
     @PutMapping("{id}")
-    public User update(@PathVariable Long id, @Valid @RequestBody User user)
+    public User update(@PathVariable final Long id, @Valid @RequestBody final User user)
             throws BadRequestException, NotFoundException {
         if (this.service.existsByUsernameIgnoreCaseAndIdNot(user.getUsername(), id)) { // delete test
             throw new BadRequestException("uniq_name");
@@ -111,7 +111,7 @@ public class UserController {
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) throws NotFoundException {
+    public void delete(@PathVariable final Long id) throws NotFoundException {
         this.service.delete(id);
     }
 

@@ -25,7 +25,7 @@ public class JoinDto {
     /**
      * @param startedAt the startedAt to set
      */
-    public void setStartedAt(LocalDateTime startedAt) {
+    public void setStartedAt(final LocalDateTime startedAt) {
         this.startedAt = startedAt;
     }
 
@@ -39,7 +39,7 @@ public class JoinDto {
     /**
      * @param valid the valid to set
      */
-    public void setValid(boolean valid) {
+    public void setValid(final boolean valid) {
         this.valid = valid;
     }
 
@@ -53,7 +53,7 @@ public class JoinDto {
     /**
      * @param userId the userId to set
      */
-    public void setUserId(long userId) {
+    public void setUserId(final long userId) {
         this.userId = userId;
     }
 
@@ -67,7 +67,7 @@ public class JoinDto {
     /**
      * @param eventId the eventId to set
      */
-    public void setEventId(long eventId) {
+    public void setEventId(final long eventId) {
         this.eventId = eventId;
     }
 

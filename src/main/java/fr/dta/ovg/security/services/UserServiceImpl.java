@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     private SecurityUserRepository userSecurityRepository;
 
     @Override
-    public void save(@Valid SecurityUser user) {
+    public void save(@Valid final SecurityUser user) {
       String idForEncode = "bcrypt";
       Map<String, PasswordEncoder> encoders = new HashMap<String, PasswordEncoder>();
       encoders.put(idForEncode, new BCryptPasswordEncoder());
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String login) {
+    public User findByUsername(final String login) {
       return userSecurityRepository.findByUsername(login);
     }
 

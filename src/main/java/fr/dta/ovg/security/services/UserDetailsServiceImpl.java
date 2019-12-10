@@ -31,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      UserRepository userRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 
         // Role d'un utilisateur Springboot
         UserDetails result = null;
