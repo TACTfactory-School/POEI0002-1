@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.services.event.EventCrudServiceImpl;
 
 public interface JoinCrudService {
     /**

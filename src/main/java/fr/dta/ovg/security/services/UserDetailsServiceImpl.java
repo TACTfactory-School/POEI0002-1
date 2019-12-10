@@ -1,7 +1,6 @@
 package fr.dta.ovg.security.services;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.repositories.UserRepository;
-import fr.dta.ovg.security.entities.SecurityRole;
-import fr.dta.ovg.security.repositories.SecurityRoleRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

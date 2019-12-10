@@ -26,8 +26,8 @@ public class SecurityRoleFixtureService implements Fixture {
 
         List<SecurityRole> roles = new ArrayList<>();
 
-        roles.add(new SecurityRole() { { setUsername("admin"); setRole("ADMIN"); } } );
-        roles.add(new SecurityRole() { { setUsername("user1"); setRole("USER"); } } );
+        roles.add(new SecurityRole() { { setUsername("admin"); setRole("ADMIN");} } );
+        roles.add(new SecurityRole() { { setUsername("user1"); setRole("USER");} } );
 
         repository.saveAll(roles);
 

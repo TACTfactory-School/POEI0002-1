@@ -9,9 +9,6 @@ import java.util.List;
 
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.services.user.UserCreateService;
-import fr.dta.ovg.services.user.UserCrudServiceImpl;
-import fr.dta.ovg.services.user.UserDeleteService;
 
 public interface UserCrudService {
 
