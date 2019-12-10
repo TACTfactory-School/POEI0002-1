@@ -14,7 +14,7 @@ public class NotYetImplementedException extends Exception {
      * @param enableSuppression
      * @param writableStackTrace
      */
-    public NotYetImplementedException(String message, Throwable cause, boolean enableSuppression,
+    public NotYetImplementedException(final String message, final Throwable cause, final boolean enableSuppression,
             boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
         // TODO Auto-generated constructor stub
@@ -24,7 +24,7 @@ public class NotYetImplementedException extends Exception {
      * @param message
      * @param cause
      */
-    public NotYetImplementedException(String message, Throwable cause) {
+    public NotYetImplementedException(final String message, final Throwable cause) {
         super(message, cause);
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,7 @@ public class NotYetImplementedException extends Exception {
     /**
      * @param message
      */
-    public NotYetImplementedException(String message) {
+    public NotYetImplementedException(final String message) {
         super(message);
         // TODO Auto-generated constructor stub
     }
@@ -40,7 +40,7 @@ public class NotYetImplementedException extends Exception {
     /**
      * @param cause
      */
-    public NotYetImplementedException(Throwable cause) {
+    public NotYetImplementedException(final Throwable cause) {
         super(cause);
         // TODO Auto-generated constructor stub
     }

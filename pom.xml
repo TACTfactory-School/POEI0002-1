@@ -87,6 +87,10 @@
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
     </dependency>
+<<<<<<< HEAD
+=======
+
+>>>>>>> f8df8f27628e66e33b14ed7d031667149c3ffb15
 
     <!-- ________________ Java Faker ________________ -->
     <!-- Config @see : https://github.com/DiUS/java-faker -->
