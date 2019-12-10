@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, AbstractControl, FormGroup } from '@angular/forms';
 import { AuthApiService } from 'src/app/auth/auth-api.service';
 import { ToolbarComponent } from 'src/app/shared/toolbar/toolbar.component';
+import { MatDialog } from '@angular/material';
 // import { ClickOutsideDirective } from '../../../shared/clickoutside.directive';
 
 @Component({
@@ -11,11 +12,10 @@ import { ToolbarComponent } from 'src/app/shared/toolbar/toolbar.component';
 })
 export class UserFormLoginComponent implements OnInit {
 
-  displayForm: boolean;
   private formSubmitAttempt: boolean;
   login: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthApiService) { }
+  constructor(public dialog: MatDialog, private fb: FormBuilder, private auth: AuthApiService) { }
 
   ngOnInit() {
     this.login = this.fb.group({
@@ -32,7 +32,7 @@ export class UserFormLoginComponent implements OnInit {
   }
 
   close() {
-    this.displayForm = false;
+    this.dialog.closeAll();
   }
 
   isFieldInvalid(field: string) {

@@ -1,3 +1,94 @@
-<p>
-  event-form works!
-</p>
+<div class="content">
+    <div class="header">
+      <mat-toolbar>
+          <mat-toolbar-row>
+            <span>Créer un événement</span>
+            <span class="spacer"></span>
+            <!-- <button mat-icon-button (click)="close()">
+              <mat-icon>close</mat-icon>
+            </button> -->
+          </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="event-form">
+      <form [formGroup]="createEvent" (ngSubmit)="create()">
+        <!-- ID de créator à gérer par la connexion -->
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>ID du créator</mat-label>
+            <input matInput type="number" placeholder="Titre de l'événement" formControlName="creator" [(ngModel)]="creator">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Titre de l'événement</mat-label>
+            <input matInput placeholder="Titre de l'événement" formControlName="label" [(ngModel)]="label">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Description" formControlName="description" [(ngModel)]="description">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Débute le</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Débute le" formControlName="startAt">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <!-- <mat-error *ngIf="startedAt.invalid && !startedAt.pristine" class="alert"> Veuillez saisir une date valide. </mat-error> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Adresse" formControlName="address" [(ngModel)]="address">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Code Postal</mat-label>
+            <input matInput placeholder="Code Postal" formControlName="postcode" [(ngModel)]="postcode">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Ville" formControlName="city" [(ngModel)]="city">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre de places</mat-label>
+            <input matInput type="number" placeholder="Nombre de place" formControlName="nbPlaceMax" [(ngModel)]="nbPlaceMax">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Image d'entête</mat-label>
+            <input matInput placeholder="Image d'entête" formControlName="img" [(ngModel)]="img">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <!-- <button mat-stroked-button (click)="close()">Fermer</button> -->
+        <span class="spacer"></span>
+        <button  class="btn" mat-raised-button type="submit">Créer un événement</button>
+      </form>
+    </div>
+  </div>

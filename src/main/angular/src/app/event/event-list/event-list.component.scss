@@ -4,4 +4,12 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
+.fab {
+  position: fixed;
+  right: 48px;
+  bottom: 52px;
+}
+.gradient {
+  color: #fff;
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+}

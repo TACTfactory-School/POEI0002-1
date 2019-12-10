@@ -30,7 +30,7 @@ export class EventApiService {
     return this.http.delete<void>(`${URL}/${id}`);
   }
 
-  create(data: EventFormDTO) {
+  create(data: Event) {
     return this.http.post<Event>(URL, data);
   }
 
