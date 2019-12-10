@@ -87,7 +87,7 @@ public class User extends EntityBase {
     /**
      * @param username the username to set
      */
-    public void setUsername(String username) {
+    public final void setUsername(String username) {
         this.username = username;
     }
 
@@ -101,7 +101,7 @@ public class User extends EntityBase {
     /**
      * @param email the email to set
      */
-    public void setEmail(String email) {
+    public final void setEmail(String email) {
         this.email = email;
     }
 
@@ -115,7 +115,7 @@ public class User extends EntityBase {
     /**
      * @param birthdate the birthdate to set
      */
-    public void setBirthdate(LocalDate birthdate) {
+    public final void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -129,7 +129,7 @@ public class User extends EntityBase {
     /**
      * @param password the password to set
      */
-    public void setPassword(String password) {
+    public final void setPassword(String password) {
         this.password = password;
     }
 
@@ -148,7 +148,7 @@ public class User extends EntityBase {
     /**
      * @param role the role to set
      */
-    public void setRole(String role) {
+    public final void setRole(String role) {
         this.role = role;
     }
 
