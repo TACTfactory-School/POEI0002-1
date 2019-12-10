@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.dta.ovg.entities.Join;
+import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.repositories.JoinRepository;
+import fr.dta.ovg.repositories.JoinEventRepository;
 import fr.dta.ovg.services.JoinCrudService;
 
 @Transactional
@@ -22,7 +22,7 @@ public class JoinServiceImpl implements JoinCrudService {
 
     /** Link to Join repository. */
     @Autowired
-    private JoinRepository repository;
+    private JoinEventRepository repository;
 
     /** Link to Delete Service. */
     @Autowired
@@ -31,7 +31,7 @@ public class JoinServiceImpl implements JoinCrudService {
     /** Get All join from join repository. */
     @Transactional(readOnly = true)
     @Override
-    public List<Join> getAll() {
+    public List<JoinEvent> getAll() {
         return this.repository.findAll();
     }
 
@@ -44,13 +44,13 @@ public class JoinServiceImpl implements JoinCrudService {
     /** Create one join from join repository. */
     @Transactional()
     @Override
-    public Join create(final Join entity) {
+    public JoinEvent create(final JoinEvent entity) {
         return this.repository.save(entity);
     }
 
     /** Get one join from join repository. */
     @Override
-    public Join getOne(long id) throws NotFoundException {
+    public JoinEvent getOne(long id) throws NotFoundException {
         // TODO Auto-generated method stub
         return null;
     }

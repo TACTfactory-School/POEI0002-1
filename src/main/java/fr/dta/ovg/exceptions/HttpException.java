@@ -17,7 +17,8 @@ public class HttpException extends Exception {
    * @param enableSuppression
    * @param writableStackTrace
    */
-  public HttpException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+  public HttpException(final String message, final Throwable cause, final boolean enableSuppression,
+          final boolean writableStackTrace) {
       super(message, cause, enableSuppression, writableStackTrace);
   }
 
@@ -25,21 +26,21 @@ public class HttpException extends Exception {
    * @param message
    * @param cause
    */
-  public HttpException(String message, Throwable cause) {
+  public HttpException(final String message, final Throwable cause) {
       super(message, cause);
   }
 
   /**
    * @param message
    */
-  public HttpException(String message) {
+  public HttpException(final String message) {
       super(message);
   }
 
   /**
    * @param cause
    */
-  public HttpException(Throwable cause) {
+  public HttpException(final Throwable cause) {
       super(cause);
   }
 }

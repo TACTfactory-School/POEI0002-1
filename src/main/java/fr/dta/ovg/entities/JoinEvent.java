@@ -11,7 +11,7 @@ import fr.dta.ovg.security.entities.SecurityUser;
 
 @Entity
 @Table(name = "app_join")
-public class Join extends EntityBase {
+public class JoinEvent extends EntityBase {
 
         private LocalDateTime startedAt;
 

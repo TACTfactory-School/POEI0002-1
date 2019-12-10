@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.dta.ovg.entities.Join;
+import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.JoinCrudService;
@@ -40,7 +40,7 @@ public class JoinController {
      * @return List of all Users who joined Events.
      */
     @GetMapping
-    public List<Join> getAll() {
+    public List<JoinEvent> getAll() {
         return this.service.getAll();
     }
 
@@ -52,19 +52,19 @@ public class JoinController {
      * @throws NotFoundException
      */
     @GetMapping("{id}")
-    public Join getOne(@PathVariable Long id) throws NotFoundException {
+    public JoinEvent getOne(@PathVariable Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
 
     /**
      * Create a Join.<br>
      * POST - HTTP.
-     * @param Join entity.
+     * @param JoinEvent entity.
      * @return the created object Join.
      * @throws BadRequestException
      */
     @PostMapping
-    public Join create(@Valid @RequestBody final Join inscription) throws BadRequestException {
+    public JoinEvent create(@Valid @RequestBody final JoinEvent inscription) throws BadRequestException {
         return this.service.create(inscription);
     }
 
@@ -72,16 +72,16 @@ public class JoinController {
      * Update an Join. <br>
      * PUT - HTTP.
      * @param id: number of the selected event.
-     * @param Join entity.
+     * @param JoinEvent entity.
      * @return the updated Join object.
      * @throws BadRequestException
      * @throws NotFoundException
      */
     @PutMapping("{id}")
-    public Join update(@PathVariable Long id, @Valid @RequestBody Join inscription)
+    public JoinEvent update(@PathVariable Long id, @Valid @RequestBody JoinEvent inscription)
             throws BadRequestException, NotFoundException {
 
-        final Join entity = this.service.getOne(id);
+        final JoinEvent entity = this.service.getOne(id);
 
         // TODO: Use mapper.
         // ObjectMapper mapper = new ObjectMapper();

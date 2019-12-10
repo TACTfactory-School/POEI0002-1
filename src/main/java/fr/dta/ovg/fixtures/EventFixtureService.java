@@ -85,14 +85,14 @@ public class EventFixtureService implements Fixture {
                     "15 rue Paul Bert", "75000",                        "Paris");
     }
 
-    private void build(final String label, final User author, final String description,
+    private void build(final String label, final User creator, final String description,
             final LocalDateTime startAt, final String img, final int nbPlaceMax,
             final String address, final String postcode, final String city) {
 
         final Event event = new Event();
 
         event.setLabel(label);
-        event.setAuthor(author);
+        event.setCreator(creator);
         event.setDescription(description);
         event.setStartAt(startAt);
         event.setImg(img);
