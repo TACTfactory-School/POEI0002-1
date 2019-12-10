@@ -12,7 +12,7 @@ import fr.dta.ovg.security.repositories.SecurityUserRepository;
 
 @Component
 @Profile("!prod")
-public class SecurityUserFixtureService extends FixtureCheck<SecurityUserRepository>{
+public class SecurityUserFixtureService extends FixtureCheck<SecurityUserRepository> {
 
     private final SecurityUserRepository repository;
 

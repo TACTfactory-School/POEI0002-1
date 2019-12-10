@@ -12,7 +12,7 @@ import fr.dta.ovg.security.repositories.SecurityRoleRepository;
 
 @Component
 @Profile("!prod")
-public class SecurityRoleFixtureService extends FixtureCheck<SecurityRoleRepository>{
+public class SecurityRoleFixtureService extends FixtureCheck<SecurityRoleRepository> {
 
     private final SecurityRoleRepository repository;
 
