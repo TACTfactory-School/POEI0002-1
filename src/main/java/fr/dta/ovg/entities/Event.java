@@ -28,50 +28,50 @@ public class Event extends EntityBase {
 
     //  @NotBlank
     //  @Column(name = "ev_author", length = 50, nullable = false, unique = true)
-    /** Author of the Event <br> DB Column */
-        @ApiModelProperty(value = "The author of the event")
+    /** Author of the Event. <br> DB Column. */
+        @ApiModelProperty(value = "The author of the event.")
         @ManyToOne(optional = false)
         private User creator;
 
-        /** Title of the Event <br> DB Column */
+        /** Title of the Event. <br> DB Column. */
         @NotBlank
         @Column(name = "ev_title", length = 100, nullable = false, unique = false)
-        @ApiModelProperty(value = "The label of the event")
+        @ApiModelProperty(value = "The label of the event.")
         private String label;
 
-        /** Description of the Event <br> DB Column */
+        /** Description of the Event. <br> DB Column. */
         @Column(name = "ev_description", length = 510, nullable = true, unique = false)
-        @ApiModelProperty(value = "The description of the event")
+        @ApiModelProperty(value = "The description of the event.")
         private String description;
 
-        /** The started date/time of the Event <br> DB Column */
-        @ApiModelProperty(value = "The started time date of the event")
-        @Column(nullable = false)
+        /** The started date/time of the Event. <br> DB Column. */
+        @ApiModelProperty(value = "The started time date of the event.")
+        @Column(name = "ev_start_date", nullable = false)
         private LocalDateTime startAt;
 
-        /** Custom photo of the Event <br> DB Column */
-        @ApiModelProperty(value = "The custom picture of the event")
+        /** Custom photo of the Event. <br> DB Column. */
+        @ApiModelProperty(name = "ev_img", value = "The custom picture of the event.")
         @Column(length = 255, nullable = true)
         private String img;
 
-        /** Max places of the Event <br> DB Column */
-        @ApiModelProperty(value = "Th max places amount of the event")
+        /** Max places of the Event. <br> DB Column. */
+        @ApiModelProperty(name = "ev_nb_max_places", value = "Th max places amount of the event.")
         @Column(nullable = true) // false
         private int nbPlaceMax;
 
-        /** Address of the Event <br> DB Column */
-        @ApiModelProperty(value = "The place of the event")
+        /** Address of the Event. <br> DB Column. */
+        @ApiModelProperty(name = "ev_address", value = "The place of the event.")
         @Column(length = 255, nullable = true)
         private String address;
 
-        /** City postcode of the Event <br> DB Column */
-        @ApiModelProperty(value = "The city postcode of the event")
+        /** City postcode of the Event. <br> DB Column. */
+        @ApiModelProperty(name = "ev_city", value = "The city postcode of the event.")
         @Column(nullable = true)
         private String postcode;
 
-        /** City of the Event <br> DB Column */
+        /** City of the Event. <br> DB Column. */
         @NotBlank
-        @ApiModelProperty(value = "The city of the event")
+        @ApiModelProperty(name = "ev_postcode" ,value = "The city of the event.")
         @Column(length = 255, nullable = true) // false
         private String city;
 

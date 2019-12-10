@@ -27,11 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
 
         http.csrf().disable()
-            .antMatcher("/*").anonymous()
+            .antMatcher("/*").anonymous() // anonymous
             .and()
-            .antMatcher("/api/**").authorizeRequests()
+            .antMatcher("/api/**").authorizeRequests() // authorizeRequests
             .and()
-            .antMatcher("/api/v1/*").authorizeRequests()
+            .antMatcher("/api/v1/*").authorizeRequests() // authorizeRequests
                 .antMatchers(HttpMethod.GET, "/api/v1/user").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/event").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
