@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE module PUBLIC
+  "-//Checkstyle//DTD Checkstyle Configuration 1.2//EN"
+  "https://checkstyle.org/dtds/configuration_1_2.dtd">
+
+<module name="Checker">
+    <module name="TreeWalker">
+
+        <!-- Checks for Size Violations. -->
+        <!-- See http://checkstyle.sourceforge.net/config_sizes.html#LineLength -->
+        <module name="LineLength">
+            <property name="ignorePattern" value="^import" />
+            <property name="max" value="120" />
+        </module>
+
+
+        <!-- Other rules -->
+
+
+    </module>
+</module>
