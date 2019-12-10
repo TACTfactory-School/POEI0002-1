@@ -1,84 +1,95 @@
 package fr.dta.ovg.entities;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
-@Table(name = "app_join_event")
+@Table(name = "app_join_event")//, uniqueConstraints = {@UniqueConstraint(columnNames={"user", "event"})})
 public class JoinEvent extends EntityBase {
 
-        private LocalDateTime startedAt;
+    /** Validation of event inscription request. */
+    @Column(name = "us_ev_valid", unique = false, nullable = false)
+    private boolean valid = true;
 
-        /** Le livreur doit-il installer le materiel. */
-        @Column(nullable = false)
-        private boolean valid = true;
+    /**
+     * Event Role of user. <br> DB Column.*/
+    @Column(name = "us_ev_role", unique = false, nullable = false)
+    @ApiModelProperty(value = "The Role of the user in the Event.")
+    private EventRole role;
 
-        /** User inscription. */
-        @ManyToOne(targetEntity = Event.class, optional = false)
-        private User user;
+    /** User inscription. */
+    @ManyToOne(optional = false) // targetEntity = Event.class
+    @JoinColumn(nullable = false)
+    private User user;
 
-        /** Selected event. */
-        @ManyToOne(targetEntity = User.class, optional = false)
-        private Event event;
+    /** Selected event. */
+    @ManyToOne(optional = false) // targetEntity = User.class
+    @JoinColumn(nullable = false)
+    private Event event;
 
-        /**
-         * @return the startedAt
-         */
-        public LocalDateTime getStartedAt() {
-            return startedAt;
-        }
+    /**
+     * @return the role.
+     */
+    public EventRole getRole() {
+        return role;
+    }
 
-        /**
-         * @param startedAt the startedAt to set
-         */
-        public void setStartedAt(final LocalDateTime startedAt) {
-            this.startedAt = startedAt;
-        }
+    /**
+     * @param role the role to set.
+     */
+    public void setRole(final EventRole role) {
+        this.role = role;
+    }
 
-        /**
-         * @return the valid
-         */
-        public boolean isValid() {
-            return valid;
-        }
+    /**
+     * @return the valid.
+     */
+    public boolean isValid() {
+        return valid;
+    }
 
-        /**
-         * @param valid the valid to set
-         */
-        public void setValid(final boolean valid) {
-            this.valid = valid;
-        }
+    /**
+     * @param valid
+     *            the valid to set.
+     */
+    public void setValid(final boolean valid) {
+        this.valid = valid;
+    }
 
-        /**
-         * @return the user
-         */
-        public User getUser() {
-            return user;
-        }
+    /**
+     * @return the user.
+     */
+    public User getUser() {
+        return user;
+    }
 
-        /**
-         * @param user the user to set
-         */
-        public void setUser(final User user) {
-            this.user = user;
-        }
+    /**
+     * @param user
+     *            the user to set.
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
 
-        /**
-         * @return the event
-         */
-        public Event getEvent() {
-            return event;
-        }
+    /**
+     * @return the event.
+     */
+    public Event getEvent() {
+        return event;
+    }
 
-        /**
-         * @param event the event to set
-         */
-        public void setEvent(final Event event) {
-            this.event = event;
-        }
+    /**
+     * @param event
+     *            the event to set.
+     */
+    public void setEvent(final Event event) {
+        this.event = event;
+    }
 
 }
