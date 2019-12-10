@@ -70,7 +70,7 @@ public class OpenApiConfig {
                 .build();
     }
 
-    private List<ResponseMessage> httpErrorResponses(final HttpStatus ...status) {
+    private List<ResponseMessage> httpErrorResponses(final HttpStatus...status) {
         return Stream
                 .of(status)
                 .map(this::httpErrorResponse)

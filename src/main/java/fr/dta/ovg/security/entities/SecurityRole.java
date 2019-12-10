@@ -27,7 +27,7 @@ public class SecurityRole {
     /**
      * @return the user_role_id
      */
-    public Integer getUser_role_id() {
+    public Integer getUserRoleId() {
         return user_role_id;
     }
 
