@@ -30,7 +30,7 @@ public class FixtureService implements Fixture {
 //    private SecurityRoleFixtureService securityRoleFixture;
 
     /** Call loading initials fixtures @see {@link EventFixtureService}.
-     * @throws NotFoundException. */
+     * @throws NotFoundException */
     public void load() throws NotFoundException {
         this.userFixture.load();
         this.eventFixture.load();
