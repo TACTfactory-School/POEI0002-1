@@ -88,7 +88,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         IntStream.range(0, this.fakerSize).forEach(this::buildFake);
     }
 
-    private void buildFake(int i) {
+    private void buildFake(final int i) {
 
         Random rand = new Random();
         ZoneId zoneId = ZoneId.of( "Europe/Paris" );        //Zone information

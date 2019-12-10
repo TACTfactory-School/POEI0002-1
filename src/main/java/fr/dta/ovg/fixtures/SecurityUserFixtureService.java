@@ -25,8 +25,8 @@ public class SecurityUserFixtureService extends FixtureCheck<SecurityUserReposit
 
         List<SecurityUser> users = new ArrayList<>();
 
-        users.add(new SecurityUser() {{setUsername("user1"); setPassword("user1"); setEnabled(true);}});
-        users.add(new SecurityUser() {{setUsername("user2"); setPassword("user2"); setEnabled(true);}});
+        users.add(new SecurityUser() { {setUsername("user1"); setPassword("user1"); setEnabled(true);} } );
+        users.add(new SecurityUser() { {setUsername("user2"); setPassword("user2"); setEnabled(true);} } );
 
         repository.saveAll(users);
 

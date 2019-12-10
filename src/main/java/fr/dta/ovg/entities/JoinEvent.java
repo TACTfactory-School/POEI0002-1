@@ -35,7 +35,7 @@ public class JoinEvent extends EntityBase {
         /**
          * @param startedAt the startedAt to set
          */
-        public void setStartedAt(LocalDateTime startedAt) {
+        public void setStartedAt(final LocalDateTime startedAt) {
             this.startedAt = startedAt;
         }
 
@@ -49,7 +49,7 @@ public class JoinEvent extends EntityBase {
         /**
          * @param valid the valid to set
          */
-        public void setValid(boolean valid) {
+        public void setValid(final boolean valid) {
             this.valid = valid;
         }
 
@@ -63,7 +63,7 @@ public class JoinEvent extends EntityBase {
         /**
          * @param user the user to set
          */
-        public void setUser(User user) {
+        public void setUser(final User user) {
             this.user = user;
         }
 
@@ -77,7 +77,7 @@ public class JoinEvent extends EntityBase {
         /**
          * @param event the event to set
          */
-        public void setEvent(Event event) {
+        public void setEvent(final Event event) {
             this.event = event;
         }
 

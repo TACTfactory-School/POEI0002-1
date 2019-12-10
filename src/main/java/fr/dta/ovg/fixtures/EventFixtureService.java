@@ -109,7 +109,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         IntStream.range(0, this.eventFakerSize).forEach(this::buildFake);
     }
 
-    private void buildFake(int i) {
+    private void buildFake(final int i) {
 
         Random rand = new Random();
 

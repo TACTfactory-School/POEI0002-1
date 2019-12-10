@@ -52,7 +52,7 @@ public class UserCrudServiceImpl implements UserCrudService {
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(final long id) throws NotFoundException {
         // TODO Auto-generated method stub
         this.deleteService.delete(id);
     }
@@ -62,13 +62,13 @@ public class UserCrudServiceImpl implements UserCrudService {
 //            + " FROM Event e"
 //            + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"
 //            + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
-    public boolean existsByUsername(User user) {
+    public boolean existsByUsername(final User user) {
         // TODO Auto-generated method stub
         return this.repository.existsByUsername(user);
     }
 
     @Override
-    public boolean existsByUsernameIgnoreCaseAndIdNot(String label, Long id) {
+    public boolean existsByUsernameIgnoreCaseAndIdNot(final String label, final Long id) {
         // TODO Auto-generated method stub
         return false;
     }

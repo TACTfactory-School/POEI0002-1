@@ -22,16 +22,16 @@ public class Role extends EntityBase {
      * @param name
      *            the name to set
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
-    public Role(String name) {
+    public Role(final String name) {
         super();
         this.name = name;
     }
 
-    public Role(int id, String name) {
+    public Role(final int id, final String name) {
         super();
         this.name = name;
     }

@@ -33,7 +33,7 @@ public class BadRequestException extends HttpException {
     }
 
     public BadRequestException(final String message, final Throwable cause, final boolean enableSuppression,
-            boolean writableStackTrace) {
+            final boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

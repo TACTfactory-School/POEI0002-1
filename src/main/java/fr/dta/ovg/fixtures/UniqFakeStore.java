@@ -20,7 +20,7 @@ public class UniqFakeStore {
 
         String value = null;
 
-        while(notFound) {
+        while (notFound) {
             value = this.valueGen.get();
 
             if (!this.uniqStore.contains(value)) {

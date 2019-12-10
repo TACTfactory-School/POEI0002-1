@@ -25,7 +25,7 @@ public class SecurityUser {
     /**
      * @param username the username to set
      */
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -39,7 +39,7 @@ public class SecurityUser {
     /**
      * @param password the password to set
      */
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -53,7 +53,7 @@ public class SecurityUser {
     /**
      * @param enabled the enabled to set
      */
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
 
