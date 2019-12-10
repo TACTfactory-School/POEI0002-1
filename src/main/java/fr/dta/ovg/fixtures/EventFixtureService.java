@@ -22,13 +22,14 @@ import com.github.javafaker.Faker;
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.repositories.EventRepository;
 import fr.dta.ovg.services.UserCrudService;
 import fr.dta.ovg.services.event.EventCreateService;
 
 /** This class initialize DB with initials fixtures data */
 @Component
 @Profile("!prod")
-public class EventFixtureService implements Fixture {
+public class EventFixtureService extends FixtureCheck<EventRepository> {
 
     private final EventCreateService eventService;
 
@@ -59,7 +60,7 @@ public class EventFixtureService implements Fixture {
     /** Create-Drop DB - Insert initial data, erasing old data every run.
      * @throws NotFoundException */
     @Override
-    public void load() throws NotFoundException {
+    public void loadIfNoData() throws NotFoundException {
         this.loadReal();
         this.loadFake();
     }
@@ -128,6 +129,5 @@ public class EventFixtureService implements Fixture {
             e.getMessage();
         }
     }
-
 }
 
