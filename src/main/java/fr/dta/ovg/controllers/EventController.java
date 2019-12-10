@@ -86,7 +86,7 @@ public class EventController {
 
         final Event entity = this.service.getOne(id);
 
-        // TODO: Use mapper.
+        //  Use mapper.
         //  ObjectMapper mapper = new ObjectMapper();
         // ---------
         entity.setLabel(event.getLabel());

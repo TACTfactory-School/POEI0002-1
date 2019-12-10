@@ -38,9 +38,9 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().emailAddress());
 
     /**
-     * Local Constructor
-     * Link to User Repository by UserCreateService
-     * Get Value of fakerSize @see application.properties */
+     * Local Constructor.
+     * Link to User Repository by UserCreateService.
+     * Get Value of fakerSize @see application.properties. */
     public UserFixtureService(
             @Value("${app.user.fixtures.fakersize:100}") final int fakerSize,
             @Autowired final UserCreateService service) {
@@ -91,7 +91,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     private void buildFake(final int i) {
 
         Random rand = new Random();
-        ZoneId zoneId = ZoneId.of( "Europe/Paris" );        //Zone information
+        ZoneId zoneId = ZoneId.of("Europe/Paris");        //Zone information
 
         this.build(username.genUniqValue(),
                 email.genUniqValue(),

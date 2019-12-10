@@ -304,5 +304,4 @@ public class Event extends EntityBase {
     // /** Organizers of the Event <br> DB Mapped By */
     // @ManyToMany(mappedBy = "ev_organizers")
     // private List<User> organizers;
-
 }

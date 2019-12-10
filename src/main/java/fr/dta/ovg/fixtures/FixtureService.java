@@ -29,8 +29,8 @@ public class FixtureService implements Fixture {
 //    @Autowired
 //    private SecurityRoleFixtureService securityRoleFixture;
 
-    /** Call loading initials fixtures @see {@link EventFixtureService}
-     * @throws NotFoundException */
+    /** Call loading initials fixtures @see {@link EventFixtureService}.
+     *  @throws NotFoundException */
     public void load() throws NotFoundException {
         this.userFixture.load();
         this.eventFixture.load();

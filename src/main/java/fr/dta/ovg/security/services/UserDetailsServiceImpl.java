@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //    private SecurityRoleRepository roleRepo;
 
      @Autowired
-     UserRepository userRepo;
+     private UserRepository userRepo;
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {

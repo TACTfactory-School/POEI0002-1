@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.dta.ovg.entities.Event;
 
-/** Event Repository extends Jpa Repository */
+/** Event Repository extends Jpa Repository. */
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 

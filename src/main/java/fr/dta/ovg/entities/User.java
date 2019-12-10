@@ -89,7 +89,7 @@ public class User extends EntityBase {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private final List<JoinEvent> events = new ArrayList<>();
 
-    /** Override toString() method with User attributes */
+    /** Override toString() method with User attributes. */
     @Override
     public String toString() {
         return String.format("Username : %s | Email : %s | Birthdate : %dt",

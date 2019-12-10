@@ -19,15 +19,15 @@ import fr.dta.ovg.repositories.EventRepository;
 @Transactional
 public class EventDeleteService {
 
-    private static final Logger log = LoggerFactory.getLogger(EventDeleteService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventDeleteService.class);
 
-    /** Link to Event Repository */
+    /** Link to Event Repository. */
     @Autowired
     private EventRepository repository;
 
     /** Delete Event function implementation.*/
     void delete(final long id)  throws NotFoundException {
-        log.debug("Delete event");
+        LOG.debug("Delete event");
 
         // TODO Put your code here - delete (...) Save Stats.
 
