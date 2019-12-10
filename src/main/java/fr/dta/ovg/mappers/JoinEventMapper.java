@@ -27,7 +27,7 @@ public class JoinEventMapper {
     @Autowired
     private EventCrudService service;
 
-    private static final Logger log = LoggerFactory.getLogger(JoinEventMapper.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JoinEventMapper.class);
 
     @PostConstruct
     public void init() {
@@ -39,7 +39,7 @@ public class JoinEventMapper {
                 try {
                     result = this.service.getOne(ctx.getSource());
                 } catch (NotFoundException e) {
-                    log.error(ERR_ID_TO_EVENT, ctx.getSource());
+                    LOG.error(ERR_ID_TO_EVENT, ctx.getSource());
                 }
 
                 return result;

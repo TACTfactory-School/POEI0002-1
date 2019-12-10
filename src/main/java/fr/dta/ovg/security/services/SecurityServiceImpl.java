@@ -15,7 +15,7 @@ import fr.dta.ovg.Application;
 @Service
 public class SecurityServiceImpl implements SecurityService {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -33,7 +33,7 @@ public class SecurityServiceImpl implements SecurityService {
 
         if (!(userDetails instanceof UserDetails) && result == null) {
             result = null;
-            log.debug("Failed Authentication !");
+            LOG.debug("Failed Authentication !");
         }
         return result;
     }

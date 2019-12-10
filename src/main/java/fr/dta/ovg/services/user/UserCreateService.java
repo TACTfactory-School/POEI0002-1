@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.repositories.UserRepository;
 
-/** Implementation Create CRUD on User */
+/** Implementation Create CRUD on User. */
 @Component
 @Transactional
 public class UserCreateService {
 
-    private static final Logger log = LoggerFactory.getLogger(UserCreateService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserCreateService.class);
 
     /** Link to User repository. */
     @Autowired
@@ -27,7 +27,7 @@ public class UserCreateService {
 
     /** Create User function implementation. */
     public User create(final User user) {
-        log.debug("Create User");
+        LOG.debug("Create User");
 
         // TODO Put your code here - create (...) Upload photo.
 

@@ -19,15 +19,15 @@ import fr.dta.ovg.repositories.UserRepository;
 @Transactional
 public class UserDeleteService {
 
-    private static final Logger log = LoggerFactory.getLogger(UserDeleteService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
-    /** Link to User Repository */
+    /** Link to User Repository. */
     @Autowired
     private UserRepository repository;
 
     /** Delete User function implementation.*/
     void delete(final long id)  throws NotFoundException {
-        log.debug("Delete User");
+        LOG.debug("Delete User");
 
         // TODO Put your code here - delete (...) Save Stats.
 

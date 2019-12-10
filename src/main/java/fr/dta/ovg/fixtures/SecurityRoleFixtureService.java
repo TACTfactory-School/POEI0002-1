@@ -16,7 +16,7 @@ public class SecurityRoleFixtureService extends FixtureCheck<SecurityRoleReposit
 
     private final SecurityRoleRepository repository;
 
-    public SecurityRoleFixtureService ( @Autowired final SecurityRoleRepository repository) {
+    public SecurityRoleFixtureService (@Autowired final SecurityRoleRepository repository) {
         this.repository = repository;
     }
 
