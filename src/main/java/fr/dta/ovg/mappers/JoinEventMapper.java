@@ -47,7 +47,7 @@ public class JoinEventMapper {
         });
     }
 
-    public JoinEvent createFrom(@Valid JoinDto dto) {
+    public JoinEvent createFrom(@Valid final JoinDto dto) {
         return this.mapper.map(dto, JoinEvent.class);
     }
 }
