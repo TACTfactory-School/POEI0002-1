@@ -1,6 +1,6 @@
 package fr.dta.ovg.entities;
 
-public class Hobbie  extends EntityBase{
+public class Hobby  extends EntityBase{
 
     private String label;
 
