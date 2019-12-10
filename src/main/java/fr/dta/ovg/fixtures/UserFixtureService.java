@@ -73,7 +73,7 @@ public class UserFixtureService implements Fixture {
         IntStream.range(0, this.fakerSize).forEach(this::buildFake);
     }
 
-    private void buildFake(int i) {
+    private void buildFake(final int i) {
 
         this.build(username.genUniqValue(),
                 email.genUniqValue(),

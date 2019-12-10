@@ -52,7 +52,7 @@ public class JoinController {
      * @throws NotFoundException
      */
     @GetMapping("{id}")
-    public JoinEvent getOne(@PathVariable Long id) throws NotFoundException {
+    public JoinEvent getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
 
@@ -78,7 +78,7 @@ public class JoinController {
      * @throws NotFoundException
      */
     @PutMapping("{id}")
-    public JoinEvent update(@PathVariable Long id, @Valid @RequestBody JoinEvent inscription)
+    public JoinEvent update(@PathVariable final Long id, @Valid @RequestBody final JoinEvent inscription)
             throws BadRequestException, NotFoundException {
 
         final JoinEvent entity = this.service.getOne(id);
@@ -97,7 +97,7 @@ public class JoinController {
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) throws NotFoundException {
+    public void delete(@PathVariable final Long id) throws NotFoundException {
         this.service.delete(id);
     }
 }

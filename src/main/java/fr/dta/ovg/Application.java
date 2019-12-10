@@ -25,13 +25,13 @@ public class Application implements CommandLineRunner {
     private FixtureService fixtures;
 
     /** Main. This is the main entry of OVG application. */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     /**Initialize DB with fixtures data.*/
     @Override
-    public void run(String... args) throws Exception {
+    public void run(final String... args) throws Exception {
         if (this.fixtures != null) {
             log.debug("Fixtures loading...");
 

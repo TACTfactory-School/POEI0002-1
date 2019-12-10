@@ -56,7 +56,7 @@ public class EventController {
      * @throws NotFoundException
      */
     @GetMapping("{id}")
-    public Event getOne(@PathVariable Long id) throws NotFoundException {
+    public Event getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
 
@@ -82,7 +82,7 @@ public class EventController {
      * @throws NotFoundException
      */
     @PutMapping("{id}")
-    public Event update(@PathVariable Long id, @Valid @RequestBody Event event)
+    public Event update(@PathVariable final Long id, @Valid @RequestBody final Event event)
             throws BadRequestException, NotFoundException {
 
         final Event entity = this.service.getOne(id);
@@ -105,13 +105,13 @@ public class EventController {
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) throws NotFoundException {
+    public void delete(@PathVariable final Long id) throws NotFoundException {
         this.service.delete(id);
     }
 
     // TODO : REMOVE TEST
     @GetMapping("/testSession")
-    public String test(HttpSession session) {
+    public String test(final HttpSession session) {
 
         if(session.getAttribute("test") == null) {
             session.setAttribute("test", "coucou");

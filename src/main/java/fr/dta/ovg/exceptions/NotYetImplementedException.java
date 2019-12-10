@@ -15,7 +15,7 @@ public class NotYetImplementedException extends Exception {
      * @param writableStackTrace
      */
     public NotYetImplementedException(final String message, final Throwable cause, final boolean enableSuppression,
-            boolean writableStackTrace) {
+            final boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
         // TODO Auto-generated constructor stub
     }
