@@ -16,7 +16,7 @@
 
     <div class="event-cards" *ngSwitchCase="'cards'">
         <ng-container *ngFor="let e of events">
-          <app-event-list-card [label]="e.label" [description]="e.description" [creator]="e.creator.username"></app-event-list-card>
+          <app-event-list-card [id]="e.id" [label]="e.label" [description]="e.description" [creator]="e.creator.username"></app-event-list-card>
         </ng-container>
     </div>
 

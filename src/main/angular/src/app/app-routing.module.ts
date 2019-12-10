@@ -13,11 +13,16 @@ import { UserFormEditComponent } from './user/user-form/user-form-edit/user-form
 const routes: Routes = [
 
   { path: '',     redirectTo: 'login', pathMatch: 'full' },
-  { path: 'event', component: EventListComponent, // Event List
-      children: [
-        { path : ':id', component: EventDetailsComponent } // event detail
-      ],
+  { path: 'events', component: EventListComponent, // Event List
+      // children: [
+      //   {
+      //     path : ':id',
+      //     component: EventDetailsComponent
+      //   } // event detail
+      // ],
   },
+  { path: 'event/:id', component: EventDetailsComponent},
+
   { path: 'user', component: UserListComponent }, // User List
   { path: 'login', component: UserFormLoginComponent }, // Login
   { path: 'register', component: UserFormRegisterComponent }, // Register
@@ -49,7 +54,7 @@ const routes: Routes = [
   // { path: '',     redirectTo: 'event', pathMatch: 'full' }
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

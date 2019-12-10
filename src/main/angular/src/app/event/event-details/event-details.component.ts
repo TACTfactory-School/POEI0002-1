@@ -11,11 +11,11 @@ import { Observable } from 'rxjs';
 })
 export class EventDetailsComponent implements OnInit {
 
-  event$: Observable<Event>;
 
-  constructor(
-    private readonly route: ActivatedRoute,
-    private readonly api: EventApiService) { }
+  event$: Observable<Event>;
+  // event: Event = null;
+  // id: number;
+  constructor(private readonly route: ActivatedRoute, private readonly api: EventApiService) { }
 
 
   ngOnInit() {
@@ -23,11 +23,12 @@ export class EventDetailsComponent implements OnInit {
     this.route
         .params
         .subscribe(params => {
-          console.log('subscribe');
           if (params.id) {
             console.log('id', params.id);
             this.event$ = this.api.getOne(params.id);
           }
         });
+    // +this.route.snapshot.paramMap.get('id')
+
   }
 }
