@@ -12,7 +12,7 @@ import fr.dta.ovg.security.repositories.SecurityRoleRepository;
 
 @Component
 @Profile("!prod")
-public class SecurityRoleFixtureService implements Fixture{
+public class SecurityRoleFixtureService extends FixtureCheck<SecurityRoleRepository>{
 
     private final SecurityRoleRepository repository;
 
@@ -22,7 +22,7 @@ public class SecurityRoleFixtureService implements Fixture{
 
 
     @Override
-    public void load() {
+    public void loadIfNoData() {
 
         List<SecurityRole> roles = new ArrayList<>();
 

@@ -12,7 +12,7 @@ import fr.dta.ovg.security.repositories.SecurityUserRepository;
 
 @Component
 @Profile("!prod")
-public class SecurityUserFixtureService implements Fixture{
+public class SecurityUserFixtureService extends FixtureCheck<SecurityUserRepository>{
 
     private final SecurityUserRepository repository;
 
@@ -21,7 +21,7 @@ public class SecurityUserFixtureService implements Fixture{
     }
 
     @Override
-    public void load() {
+    public void loadIfNoData() {
 
         List<SecurityUser> users = new ArrayList<>();
 

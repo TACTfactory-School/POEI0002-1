@@ -6,6 +6,7 @@
 package fr.dta.ovg.entities;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,28 +26,53 @@ public class User extends EntityBase {
 
     private String role;
 
-    /** Username of user <br> DB Column */
+    /** Username of user. <br> DB Column. */
     @NotBlank
-    @Column(length = 32, nullable = false, unique = true)
-    @ApiModelProperty(value = "The username of the user")
+    @Column(name = "us_username", length = 32, nullable = false, unique = true)
+    @ApiModelProperty(value = "The username of the user.")
     private String username;
 
-    /** Email of user <br> DB Column */
+    /** Email of user. <br> DB Column. */
     @NotBlank
-    @Column(length = 50, nullable = false, unique = true)
-    @ApiModelProperty(value = "The email of the user")
+    @Column(name = "us_email", length = 50, nullable = false, unique = true)
+    @ApiModelProperty(value = "The email of the user.")
     private String email;
 
-    /** Password of user <br> DB Column */
+    /** Password of user. <br> DB Column. */
     @NotBlank
-    @Column(length = 32, nullable = true)
-    @ApiModelProperty(value = "The password of the user")
+    @Column(name = "us_password", length = 32, unique = false, nullable = true)
+    @ApiModelProperty(value = "The password of the user.")
     private String password; // TODO must be encrypted.
 
-    /** Birthdate of user <br> DB Column */
-    @Column(nullable = false)
-    @ApiModelProperty(value = "The birthdate of the user")
+    /** Birthdate of user. <br> DB Column. */
+    @Column(name = "us_birthdate", unique = false, nullable = false)
+    @ApiModelProperty(value = "The birthdate of the user.")
     private LocalDate birthdate;
+
+    /** Firstname of user. <br> DB Column. */
+    @Column(name = "us_firstname", unique = false, nullable = true)
+    @ApiModelProperty(value = "The firstname of the user.")
+    private String firstname;
+
+    /** City of user. <br> DB Column. */
+    @Column(name = "us_city", unique = false, nullable = true)
+    @ApiModelProperty(value = "The city of the user.")
+    private String city;
+
+    /** Job of user. <br> DB Column. */
+    @Column(name = "us_job", unique = false, nullable = true)
+    @ApiModelProperty(value = "The job of the user.")
+    private String job;
+
+    /** Fiability rate of user. <br> DB Column. */
+    @Column(name = "us_rate", unique = false, nullable = true)
+    @ApiModelProperty(value = "The fiability rate of the user.")
+    private float rate;
+
+    /** Last Login Date of user. <br> DB Column. */
+    @Column(name = "us_lastlog", unique = false, nullable = true)
+    @ApiModelProperty(value = "The last login date rate of the user.")
+    private ZonedDateTime lastLogin;
 
     /** Registered date of user <br> DB Column */
 //    @Column(nullable = false)
@@ -75,6 +101,90 @@ public class User extends EntityBase {
     public String toString() {
         return String.format("Username : %s | Email : %s | Birthdate : %dt",
                 username, email, birthdate);
+    }
+
+    /**
+     * @return the firstname
+     */
+    public String getFirstname() {
+        return firstname;
+    }
+
+    /**
+     * @param firstname the firstname to set
+     */
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    /**
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * @return the job
+     */
+    public String getJob() {
+        return job;
+    }
+
+    /**
+     * @param job the job to set
+     */
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    /**
+     * @return the rate
+     */
+    public float getRate() {
+        return rate;
+    }
+
+    /**
+     * @param rate the rate to set
+     */
+    public void setRate(float rate) {
+        this.rate = rate;
+    }
+
+    /**
+     * @return the lastLogin
+     */
+    public ZonedDateTime getLastLogin() {
+        return lastLogin;
+    }
+
+    /**
+     * @param lastLogin the lastLogin to set
+     */
+    public void setLastLogin(ZonedDateTime lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    /**
+     * @return the events
+     */
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    /**
+     * @param events the events to set
+     */
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
     /**

@@ -23,11 +23,11 @@ public class FixtureService implements Fixture {
     @Autowired
     private UserFixtureService userFixture;
 
-    @Autowired
-    private SecurityUserFixtureService securityUserFixture;
+//    @Autowired
+//    private SecurityUserFixtureService securityUserFixture;
 
-    @Autowired
-    private SecurityRoleFixtureService securityRoleFixture;
+//    @Autowired
+//    private SecurityRoleFixtureService securityRoleFixture;
 
     /** Call loading initials fixtures @see {@link EventFixtureService}
      * @throws NotFoundException */
