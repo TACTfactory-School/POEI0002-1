@@ -86,6 +86,7 @@ public class User extends EntityBase {
     @ApiModelProperty(value = "The marital status of the user.")
     private UserStatus maritalStatus;
 
+    /** Join event List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private final List<JoinEvent> events = new ArrayList<>();
 
@@ -97,169 +98,194 @@ public class User extends EntityBase {
     }
 
     /**
-     * @return the gender
+     * Getter user's gender.
+     * @return the gender (UserGender Enum).
      */
     public UserGender getGender() {
         return gender;
     }
 
     /**
-     * @param gender the gender to set
+     * Setter user's gender.
+     * @param type (UserGender Enum) : the gender to set.
      */
     public void setGender(final UserGender gender) {
         this.gender = gender;
     }
 
     /**
-     * @return the maritalStatus
+     * Getter user's status.
+     * @return the maritalStatus (UserStatus Enum).
      */
     public UserStatus getMaritalStatus() {
         return maritalStatus;
     }
 
     /**
-     * @param maritalStatus the maritalStatus to set
+     * Setter user's status.
+     * @param maritalStatus  (UserStatus Enum) : the maritalStatus to set.
      */
     public void setMaritalStatus(final UserStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
     /**
-     * @return the firstname
+     * Getter firstname.
+     * @return the firstname (String).
      */
     public String getFirstname() {
         return firstname;
     }
 
     /**
-     * @param firstname the firstname to set
+     * Setter firstname.
+     * @param firstname (String) : the firstname to set.
      */
     public void setFirstname(final String firstname) {
         this.firstname = firstname;
     }
 
     /**
-     * @return the city
+     * Get the user city.
+     * @return the city (String).
      */
     public String getCity() {
         return city;
     }
 
     /**
-     * @param city the city to set
+     * Set the user city.
+     * @param city (String) the city to set.
      */
     public void setCity(final String city) {
         this.city = city;
     }
 
     /**
-     * @return the job
+     * Get the user job.
+     * @return the job (String).
      */
     public String getJob() {
         return job;
     }
 
     /**
-     * @param job the job to set
+     * Set the user job.
+     * @param job the job to set (String)
      */
     public void setJob(final String job) {
         this.job = job;
     }
 
     /**
-     * @return the rate
+     * Get the user rate.
+     * @return the user rate (float).
      */
     public float getRate() {
         return rate;
     }
 
     /**
-     * @param rate the rate to set
+     * Set the user rate.
+     * @param rate (float) : the rate to set
      */
     public void setRate(final float rate) {
         this.rate = rate;
     }
 
     /**
-     * @return the lastLogin
+     * Get the user last login date time.
+     * @return the lastLogin (ZonedDateTime).
      */
     public ZonedDateTime getLastLogin() {
         return lastLogin;
     }
 
     /**
-     * @param lastLogin the lastLogin to set
+     * Set the user last login date time.
+     * @param lastLogin (ZonedDateTime) : the lastLogin to set
      */
     public void setLastLogin(final ZonedDateTime lastLogin) {
         this.lastLogin = lastLogin;
     }
 
     /**
-     * @return the events
+     * Get List of all user's join events.
+     * @return the events (List).
      */
     public List<JoinEvent> getEvents() {
         return events;
     }
 
     /**
-     * @param events the events to set
+     * Set List of all user's join event.
+     * @param events (List) : the events to set.
      */
     public void setEvents(final List<JoinEvent> events) {
+        // TODO TO REMOVE
         this.events.clear();
         this.events.addAll(events);
     }
 
     /**
-     * @return the username
+     * Get the username.
+     * @return the username (String).
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * @param username the username to set
+     * Set the username.
+     * @param username (String) : the username to set.
      */
     public void setUsername(final String username) {
         this.username = username;
     }
 
     /**
-     * @return the email
+     * Get the user email.
+     * @return the email (String).
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * @param email the email to set
+     * Set the user email.
+     * @param email (String) : the email to set.
      */
     public void setEmail(final String email) {
         this.email = email;
     }
 
     /**
-     * @return the birthdate
+     * Get the user birthdate.
+     * @return the birthdate (LocalDate).
      */
     public LocalDate getBirthdate() {
         return birthdate;
     }
 
     /**
-     * @param birthdate the birthdate to set
+     * Set the user birthdate.
+     * @param birthdate (LocalDate) : the birthdate to set.
      */
     public void setBirthdate(final LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
     /**
-     * @return the password
+     * Get the user password.
+     * @return the password (String not encrypted).
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * @param password the password to set
+     * Set the user password.
+     * @param password (String not encrypted) : the password to set.
      */
     public void setPassword(final String password) {
         this.password = password;
@@ -285,25 +311,11 @@ public class User extends EntityBase {
     }
 
     /* Futures attributees
-     *
-
-    private String firstname;
-    private String maritalStatus;
-    private String job;
-    private char sex;
-    private String description;
-    private String city;
-
-    private String avatar;
-    private float fiabilityRate;
-
     private Language[] languages;
     private Habbie[] hobbies;
     private User[] friendsList;
     private Event[] futureOutings
     private Event[] pastOutings
     private Event[] bestOutings
-
     */
-
 }

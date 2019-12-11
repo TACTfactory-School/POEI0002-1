@@ -5,10 +5,14 @@
  */
 package fr.dta.ovg.services;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.services.user.UserCreateService;
+import fr.dta.ovg.services.user.UserCrudServiceImpl;
+import fr.dta.ovg.services.user.UserDeleteService;
 
 public interface UserCrudService {
 
@@ -18,7 +22,7 @@ public interface UserCrudService {
      * @return List of all User.
      * @see UserCrudServiceImpl UserCrudServiceImpl
      * */
-    List<User> getAll();
+    Page<User> getAll(Pageable pageable);
 
     /**
      * Get one User entity by ID.<br>
@@ -49,4 +53,5 @@ public interface UserCrudService {
     boolean existsByUsernameIgnoreCaseAndIdNot(String label, Long id);
 
     boolean existsByUsername(User user);
+
 }

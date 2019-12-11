@@ -1,7 +1,7 @@
 /* Entity base class.
- * @author Colin Cerveaux @C-ambium
+ * @author Colin Cerveaux @C-ambium.
  * Shared attributes between entity.
- * License : ©2019 All rights reserved
+ * License : ©2019 All rights reserved.
  */
 package fr.dta.ovg.entities;
 
@@ -28,7 +28,6 @@ public class EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@JsonProperty(access = Access.READ_ONLY)
     @ApiModelProperty(value = "The generated database ID", readOnly = true)
     private Long id;
 
@@ -63,6 +62,7 @@ public class EntityBase {
         }
 
 
+    /** Constructor of Entity base.*/
     protected EntityBase() {
         super();
     }
@@ -75,8 +75,12 @@ public class EntityBase {
         return id;
     }
 
-    public void setId(Long value) {
-        this.id = value;
+    /**
+     * Setter id.
+     * @param id the id to set (Long)
+     */
+    public void setId(final Long id) {
+        this.id = id;
     }
 
     /**

@@ -1,6 +1,6 @@
-/* Controller Configuration Class
- * @author Colin Cerveaux @C-ambium
- * License : ©2019 All rights reserved
+/* Controller Configuration Class.
+ * @author Colin Cerveaux @C-ambium.
+ * License : ©2019 All rights reserved.
  */
 package fr.dta.ovg.configurations;
 
@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import fr.dta.ovg.exceptions.NotFoundException;
 
-
 @ControllerAdvice
 public class ControllerConfig {
 
+    /**
+     * Rewrite Error Exception Handler.<br>
+     * @param e NotFoundException.<br>
+     * @return HashMap contains errors messages and date.
+     */
     @ExceptionHandler(NotFoundException.class)
     public Map<String, Object> errorsRewrite(final NotFoundException e) {
 

@@ -1,3 +1,8 @@
+/* Entity Notification class.
+ * @author Colin Cerveaux @C-ambium.
+ * Define the entity Notification.
+ * License : ©2019 All rights reserved.
+ */
 package fr.dta.ovg.entities;
 
 import javax.persistence.Entity;
@@ -11,44 +16,53 @@ import io.swagger.annotations.ApiModel;
 public class Notification extends EntityBase {
 
     private String label;
+
     private boolean app;
+
     private boolean mail;
+
     /**
-     * @return the label
+     * Getter label.
+     * @return the label (String).
      */
     public String getLabel() {
         return label;
     }
-    /**
-     * @param label the label to set
+
+    /** Setter Label.
+     * @param label (String) : the label to set
      */
     public void setLabel(final String label) {
         this.label = label;
     }
+
     /**
-     * @return the app
+     * Get Boolean preference application notification.
+     * @return the app (boolean).
      */
     public boolean isApp() {
         return app;
     }
     /**
-     * @param app the app to set
+     * Set Boolean preference application notification.
+     * @param app (boolean) :the app to set.
      */
     public void setApp(final boolean app) {
         this.app = app;
     }
+
     /**
+     * Get Boolean preference mail notification.
      * @return the mail
      */
     public boolean isMail() {
         return mail;
     }
     /**
-     * @param mail the mail to set
+     * Set Boolean preference mail notification.
+     * @param mail (boolean) : the mail to set.
      */
     public void setMail(final boolean mail) {
         this.mail = mail;
     }
-
-
 }
