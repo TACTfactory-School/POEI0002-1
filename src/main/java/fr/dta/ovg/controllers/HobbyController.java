@@ -1,3 +1,8 @@
+/* Hobby Controller Class.
+ * @author Colin Cerveaux @C-ambium.
+ * Rest Mapping and SpringBoot mapping hobby controller.
+ * License : ©2019 All rights reserved.
+ */
 package fr.dta.ovg.controllers;
 
 import java.util.List;

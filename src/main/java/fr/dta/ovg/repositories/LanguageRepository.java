@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.dta.ovg.entities.Language;
 
+/** Language Repository extends Jpa Repository. */
 @Repository
 public interface LanguageRepository extends JpaRepository<Language, Long> {
 

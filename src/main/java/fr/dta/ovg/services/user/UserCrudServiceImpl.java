@@ -5,9 +5,9 @@
  */
 package fr.dta.ovg.services.user;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,8 +33,11 @@ public class UserCrudServiceImpl implements UserCrudService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<User> getAll() {
-        return this.repository.findAll();
+    public Page<User> getAll(final Pageable pageable) {
+
+        Page<User> paginateResult = this.repository.findAll(pageable);
+
+        return paginateResult;
     }
 
     @Transactional(readOnly = true)

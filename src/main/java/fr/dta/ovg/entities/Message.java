@@ -1,3 +1,8 @@
+/* Entity Message class.
+ * @author Colin Cerveaux @C-ambium.
+ * Define the entity Message.
+ * License : ©2019 All rights reserved.
+ */
 package fr.dta.ovg.entities;
 
 import javax.persistence.Entity;
@@ -13,14 +18,16 @@ public class Message extends EntityBase {
     private String message;
 
     /**
-     * @return the message
+     * Getter Message.
+     * @return the message (String).
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     * @param message the message to set
+     * Setter Message.
+     * @param message  (String) : the message to set.
      */
     public void setMessage(final String message) {
         this.message = message;

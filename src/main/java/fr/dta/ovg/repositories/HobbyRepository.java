@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.dta.ovg.entities.Hobby;
 
+/** Hobby Repository extends Jpa Repository. */
 @Repository
 public interface HobbyRepository extends JpaRepository<Hobby, Long> {
 

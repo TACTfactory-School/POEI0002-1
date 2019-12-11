@@ -1,3 +1,7 @@
+/* Cors Configuration Class.
+ * @author Colin Cerveaux @C-ambium.
+ * License : ©2019 All rights reserved.
+ */
 package fr.dta.ovg.configurations;
 
 import org.springframework.context.annotation.Bean;
@@ -8,6 +12,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig {
 
+    /**
+     * Cors Configurer.<br>
+     * Desactivate Cors. Open MVC configuration.<br>
+     * Allow all requests GET PUT POST PATCH DELETE OPTIONS.<br>
+     * @return nothing (void).
+     */
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
