@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoaderComponent } from './loader.component';
+import { LoaderModule } from './loader.module';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared.module';
 
 describe('LoaderComponent', () => {
   let component: LoaderComponent;
@@ -8,7 +11,14 @@ describe('LoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoaderComponent ]
+      declarations: [
+      ],
+      imports: [
+      LoaderModule,
+      FormsModule,
+      SharedModule,
+
+      ]
     })
     .compileComponents();
   }));

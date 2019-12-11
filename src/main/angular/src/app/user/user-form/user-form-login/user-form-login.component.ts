@@ -3,6 +3,7 @@ import { Validators, FormBuilder, AbstractControl, FormGroup } from '@angular/fo
 import { AuthApiService } from 'src/app/auth/auth-api.service';
 import { ToolbarComponent } from 'src/app/shared/toolbar/toolbar.component';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 // import { ClickOutsideDirective } from '../../../shared/clickoutside.directive';
 
 @Component({
@@ -15,7 +16,7 @@ export class UserFormLoginComponent implements OnInit {
   private formSubmitAttempt: boolean;
   login: FormGroup;
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder, private auth: AuthApiService) { }
+  constructor(public dialog: MatDialog, private fb: FormBuilder, private auth: AuthApiService, private router: Router) { }
 
   ngOnInit() {
     this.login = this.fb.group({
@@ -34,7 +35,10 @@ export class UserFormLoginComponent implements OnInit {
   close() {
     this.dialog.closeAll();
   }
-
+  registered() {
+    this.dialog.closeAll();
+    this.router.navigate(['register']);
+  }
   isFieldInvalid(field: string) {
     return  (
       (this.login.get(field).invalid && this.login.get(field).touched) ||

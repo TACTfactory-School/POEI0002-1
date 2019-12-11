@@ -36,7 +36,7 @@ export class EventFormComponent implements OnInit {
   }
 
   create() {
-    this.test = this.user.getOne(this.fb.group.arguments.creator);
+    // this.test = this.user.getOne(this.fb.group.arguments.creator);
     console.log(this.currentUser);
     this.newEvent.creator = this.currentUser;
     this.newEvent.label = this.fb.group.arguments.label;

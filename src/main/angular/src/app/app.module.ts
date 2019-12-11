@@ -9,11 +9,11 @@ import { RouterModule } from '@angular/router';
 import { ToolbarModule } from './shared/toolbar/toolbar.module';
 import { registerLocaleData } from '@angular/common';
 import { AuthModule } from './auth/auth.module';
-
 import localeFr from '@angular/common/locales/fr';
 import { PagesModule } from './pages/pages.module';
-import { MaterialModule } from './shared/material/material.module';
 import { AppRoutingModule } from './app-routing.module';
+import { FooterModule } from './shared/footer/footer.module';
+import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -22,7 +22,6 @@ registerLocaleData(localeFr, 'fr');
     AppComponent,
   ],
   imports: [
-    ToolbarModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -31,7 +30,8 @@ registerLocaleData(localeFr, 'fr');
     EventModule,
     UserModule,
     AuthModule,
-    PagesModule
+    PagesModule,
+    SharedModule
   ],
   providers: [
     // Set locate to FR for pipe date

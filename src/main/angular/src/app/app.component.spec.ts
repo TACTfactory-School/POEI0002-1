@@ -5,6 +5,8 @@ import { UserModule } from './user/user.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoaderModule } from './shared/loader/loader.module';
+import { SharedModule } from './shared/shared.module';
+import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,11 +14,13 @@ describe('AppComponent', () => {
       declarations: [
       ],
       imports: [
+        AppModule,
         EventModule,
         LoaderModule,
         UserModule,
         FormsModule,
-        RouterModule
+        RouterModule,
+        SharedModule
       ]
     }).compileComponents();
   }));

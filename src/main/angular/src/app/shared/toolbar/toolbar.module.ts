@@ -5,7 +5,6 @@ import { MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule } f
 import { MaterialModule } from '../material/material.module';
 import { UserFormLoginModule } from 'src/app/user/user-form/user-form-login/user-form-login.module';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @NgModule({
   declarations: [
