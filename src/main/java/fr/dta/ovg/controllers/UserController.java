@@ -1,15 +1,16 @@
-/* User Controller Class
- * @author Colin Cerveaux @C-ambium
- * Rest Mapping and SpringBoot mapping user controller
- * License : ©2019 All rights reserved
+/* User Controller Class.
+ * @author Colin Cerveaux @C-ambium.
+ * Rest Mapping and SpringBoot mapping user controller.
+ * License : ©2019 All rights reserved.
  */
 package fr.dta.ovg.controllers;
-
-import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,8 +43,11 @@ public class UserController {
      * @return List of all Users.
      */
     @GetMapping
-    public List<User> getAll() {
-        return this.service.getAll();
+    public Page<User> getAll(final int page, final int quantity) {
+
+        Pageable pageable = PageRequest.of(page, quantity);
+
+        return this.service.getAll(pageable);
     }
 
     /**

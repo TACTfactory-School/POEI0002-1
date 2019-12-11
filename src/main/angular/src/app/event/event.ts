@@ -1,10 +1,9 @@
 import { User } from '../user/user';
-import { Observable } from 'rxjs';
 
 export interface Event {
   id: number;
   label: string;
-  creator: Observable<User>;
+  creator: User;
   description: string;
   finished: boolean;
   startAt: Date;
@@ -16,6 +15,35 @@ export interface Event {
   enabled: boolean;
 }
 
+export class Event {
+  constructor(
+    label: string,
+    creator: User,
+    description: string,
+    finished: boolean,
+    startAt: Date,
+    img: string,
+    nbPlaceMax: number,
+    address: string,
+    postcode: string,
+    city: string,
+    enabled: boolean) {
+    this.label = label;
+    this.creator = creator;
+    this.description = description;
+    this.finished = finished;
+    this.startAt = startAt;
+    this.img = img;
+    this.nbPlaceMax = nbPlaceMax;
+    this.address = address;
+    this.postcode = postcode;
+    this.city = city;
+    this.enabled = enabled;
+  }
+  setUser(id: number, creator: User) {
+
+  }
+}
 export interface EventFormDTO {
   id: number;
   label: string;

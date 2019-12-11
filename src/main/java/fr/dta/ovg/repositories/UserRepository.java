@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.dta.ovg.entities.User;
 
+/** User Repository extends Jpa Repository. */
 @Repository
 public interface UserRepository  extends JpaRepository<User, Long> {
 

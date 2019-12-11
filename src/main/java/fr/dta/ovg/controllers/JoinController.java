@@ -1,7 +1,7 @@
-/* Join Controller Class
- * @author Colin Cerveaux @C-ambium
- * Rest Mapping and SpringBoot mapping join controller
- * License : ©2019 All rights reserved
+/* Join Controller Class.
+ * @author Colin Cerveaux @C-ambium.
+ * Rest Mapping and SpringBoot mapping join controller.
+ * License : ©2019 All rights reserved.
  */
 package fr.dta.ovg.controllers;
 

@@ -14,7 +14,7 @@
           <app-event-list-card [id]="e.id" [label]="e.label" [description]="e.description" [creator]="e.creator.username"></app-event-list-card>
         </ng-container>
     </div>
-    <button mat-fab class="fab gradient">
+    <button [routerLink]="['/event/new']" mat-fab class="fab gradient">
       <mat-icon>create</mat-icon>
     </button>
   </ng-container>

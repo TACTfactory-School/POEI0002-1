@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.dta.ovg.entities.Message;
 
+/** Message Repository extends Jpa Repository. */
 @Repository
 public interface MessageRepository  extends JpaRepository<Message, Long>{
 

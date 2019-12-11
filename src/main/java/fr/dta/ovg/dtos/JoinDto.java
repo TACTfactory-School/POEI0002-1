@@ -1,3 +1,7 @@
+/* Join DTO Class.
+ * @author Colin Cerveaux @C-ambium.
+ * License : ©2019 All rights reserved.
+ */
 package fr.dta.ovg.dtos;
 
 import java.time.LocalDateTime;
@@ -16,34 +20,39 @@ public class JoinDto {
     private long eventId;
 
     /**
-     * @return the startedAt
+     * Getter Started date.
+     * @return the startedAt Date Time.
      */
     public LocalDateTime getStartedAt() {
         return startedAt;
     }
 
     /**
-     * @param startedAt the startedAt to set
+     * Setter Started date.
+     * @param startedAt the startedAt Date Time to set.
      */
     public void setStartedAt(final LocalDateTime startedAt) {
         this.startedAt = startedAt;
     }
 
     /**
-     * @return the valid
+     * Getter isValid.
+     * @return the valid boolean.
      */
     public boolean isValid() {
         return valid;
     }
 
     /**
-     * @param valid the valid to set
+     * Setter Valid boolean.
+     * @param valid the valid boolean to set.
      */
     public void setValid(final boolean valid) {
         this.valid = valid;
     }
 
     /**
+     * Getter User id.
      * @return the userId
      */
     public long getUserId() {
@@ -51,21 +60,23 @@ public class JoinDto {
     }
 
     /**
+     * Setter User id.
      * @param userId the userId to set
      */
     public void setUserId(final long userId) {
         this.userId = userId;
     }
 
-    /**
-     * @return the eventId
+    /** Getter Event id.
+     * @return the eventId.
      */
     public long getEventId() {
         return eventId;
     }
 
     /**
-     * @param eventId the eventId to set
+     * Setter Event id.
+     * @param eventId the eventId to set.
      */
     public void setEventId(final long eventId) {
         this.eventId = eventId;

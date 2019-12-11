@@ -7,7 +7,8 @@ export interface User {
   age: number;
   registeredAt: Date;
   enabled: boolean;
-  }
+  events: Event[];
+}
 
 export interface UserFormDTO {
   username: string;
