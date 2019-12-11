@@ -28,7 +28,7 @@ public class EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = Access.READ_ONLY)
+    //@JsonProperty(access = Access.READ_ONLY)
     @ApiModelProperty(value = "The generated database ID", readOnly = true)
     private Long id;
 
@@ -73,6 +73,10 @@ public class EntityBase {
      */
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long value) {
+        this.id = value;
     }
 
     /**
