@@ -10,6 +10,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EventDetailsComponent } from './event/event-details/event-details.component';
 import { UserFormEditComponent } from './user/user-form/user-form-edit/user-form-edit.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { CguComponent } from './pages/cgu/cgu.component';
 
 const routes: Routes = [
 
@@ -27,8 +28,11 @@ const routes: Routes = [
 
   { path: 'users', component: UserListComponent }, // User List
   { path: 'user/:id', component: UserDetailsComponent }, // User details
+
   { path: 'login', component: UserFormLoginComponent }, // Login form
   { path: 'register', component: UserFormRegisterComponent }, // Register form
+
+  { path: 'cgu', component: CguComponent }, // CGU Legacy & Rights
 
   // USER guard routing path
   // { path: 'user',

@@ -6,13 +6,11 @@ import { EventModule } from './event/event.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ToolbarModule } from './shared/toolbar/toolbar.module';
 import { registerLocaleData } from '@angular/common';
 import { AuthModule } from './auth/auth.module';
 import localeFr from '@angular/common/locales/fr';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
-import { FooterModule } from './shared/footer/footer.module';
 import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localeFr, 'fr');
