@@ -5,7 +5,7 @@
  */
 package fr.dta.ovg.entities;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -40,25 +40,25 @@ public class EntityBase {
 //  @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = Access.READ_ONLY)
     @Column(name = "created", nullable = false)
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
 
     @LastModifiedDate
     @ApiModelProperty(value = "The updated date of entity", readOnly = true)
 //  @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = Access.READ_ONLY)
     @Column(name = "updated", nullable = false)
-    private LocalDateTime updatedAt;
+    private ZonedDateTime updatedAt;
 
     /** CREATION: On DB fixtures load and when event is created.*/
     @PrePersist
     protected void onCreate() {
-        updatedAt = createdAt = LocalDateTime.now();
+        updatedAt = createdAt = ZonedDateTime.now();
         }
 
     /** UPDATE: On DB fixtures load and when event is updated. */
     @PreUpdate
     protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+        updatedAt = ZonedDateTime.now();
         }
 
 
@@ -101,17 +101,17 @@ public class EntityBase {
 
     /**
      * Getter created date.
-     * @return LocalDateTime createdAt
+     * @return ZonedDateTime createdAt
      */
-    public LocalDateTime getCreatedAt() {
+    public ZonedDateTime getCreatedAt() {
         return createdAt;
     }
 
     /**
      * Getter updated date.
-     * @return LocalDateTime updatedAt
+     * @return ZonedDateTime updatedAt
      */
-    public LocalDateTime getUpdatedAt() {
+    public ZonedDateTime getUpdatedAt() {
         return updatedAt;
     }
 }
