@@ -202,7 +202,8 @@ public class User extends EntityBase {
     }
 
     /**
-     * @param lastLogin the lastLogin to set
+     * Set the user last login date time.
+     * @param lastLogin (ZonedDateTime) : the lastLogin to set
      */
     public void setLastLogin(final ZonedDateTime lastLogin) {
         this.lastLogin = lastLogin;
