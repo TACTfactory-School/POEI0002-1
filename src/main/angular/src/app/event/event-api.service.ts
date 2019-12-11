@@ -13,8 +13,8 @@ export class EventApiService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<Event[]>('./assets/fixtureEvent3.json');
-  //  return this.http.get<Event[]>(`${URL}`);
+    // return this.http.get<Event[]>('./assets/fixtureEvent3.json');
+    return this.http.get<Event[]>(`${URL}`);
   }
 
   getOne(id: number) {
@@ -30,7 +30,7 @@ export class EventApiService {
     return this.http.delete<void>(`${URL}/${id}`);
   }
 
-  create(data: EventFormDTO) {
+  create(data: Event) {
     return this.http.post<Event>(URL, data);
   }
 

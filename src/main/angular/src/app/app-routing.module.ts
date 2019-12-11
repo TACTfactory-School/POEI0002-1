@@ -9,6 +9,7 @@ import { LogguedGuard } from './auth/loggued.guard';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EventDetailsComponent } from './event/event-details/event-details.component';
 import { UserFormEditComponent } from './user/user-form/user-form-edit/user-form-edit.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 
 const routes: Routes = [
 
@@ -21,29 +22,31 @@ const routes: Routes = [
       //   } // event detail
       // ],
   },
-  { path: 'event/:id', component: EventDetailsComponent},
+  { path: 'event/new', component: EventFormComponent},
+  { path: 'event/:id', component: EventDetailsComponent}, // Event details
 
-  { path: 'user', component: UserListComponent }, // User List
-  { path: 'login', component: UserFormLoginComponent }, // Login
-  { path: 'register', component: UserFormRegisterComponent }, // Register
+  { path: 'users', component: UserListComponent }, // User List
+  { path: 'user/:id', component: UserDetailsComponent }, // User details
+  { path: 'login', component: UserFormLoginComponent }, // Login form
+  { path: 'register', component: UserFormRegisterComponent }, // Register form
 
   // USER guard routing path
-  { path: 'user',
-      children: [
-        { path: '',       component: UserListComponent, pathMatch: 'full' },
-        { path: ':id',    component: UserFormEditComponent } // user edit
-  //    { path: ':id',    component: UserDetailsComponent } // user detail
-        ],
-        canActivate: [ LogguedGuard ]
-  },
+  // { path: 'user',
+  //     children: [
+  //       { path: '',       component: UserListComponent, pathMatch: 'full' },
+  //       { path: ':id',    component: UserFormEditComponent } // user edit
+  //       { path: ':id',    component: UserDetailsComponent } // user detail
+  //       ],
+  //       canActivate: [ LogguedGuard ]
+  // },
   // EVENT guard routing path
-  { path: 'event',
-    children: [
-      { path : '', component: EventListComponent, pathMatch: 'full'},
-      { path: 'new', component: EventFormComponent },
-    ],
-    canActivate: [ LogguedGuard ]
-  },
+  // { path: 'event',
+  //   children: [
+  //     { path : '', component: EventListComponent, pathMatch: 'full'},
+  //     { path: 'new', component: EventFormComponent },
+  //   ],
+  //   // canActivate: [ LogguedGuard ]
+  // },
   { path: '**',   component: NotFoundComponent }, // not found
 ];
   // OLD Direct path routing

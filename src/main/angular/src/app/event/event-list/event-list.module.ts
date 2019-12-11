@@ -6,6 +6,7 @@ import { EventListToggleModule } from './event-list-toggle/event-list-toggle.mod
 import { EventFormModule } from '../event-form/event-form.module';
 import { EventListComponent } from './event-list.component';
 import { LoaderModule } from 'src/app/shared/loader/loader.module';
+import { MaterialModule } from 'src/app/shared/material/material.module';
 
 @NgModule({
   declarations: [EventListComponent],
@@ -15,7 +16,8 @@ import { LoaderModule } from 'src/app/shared/loader/loader.module';
     EventListCardModule,
     EventListToggleModule,
     EventFormModule,
-    LoaderModule
+    LoaderModule,
+    MaterialModule
   ],
   exports: [EventListComponent]
 })

@@ -1,9 +1,10 @@
 import { User } from '../user/user';
+import { Observable } from 'rxjs';
 
 export interface Event {
   id: number;
   label: string;
-  creator: User;
+  creator: Observable<User>;
   description: string;
   finished: boolean;
   startAt: Date;
@@ -12,6 +13,7 @@ export interface Event {
   address: string;
   postcode: string;
   city: string;
+  enabled: boolean;
 }
 
 export interface EventFormDTO {
