@@ -9,6 +9,6 @@ import fr.dta.ovg.security.entities.SecurityUser;
 @Repository
 public interface SecurityUserRepository extends JpaRepository<SecurityUser, String> {
 
-    public User findByUsername(String username);
+    User findByUsername(String username);
 
 }

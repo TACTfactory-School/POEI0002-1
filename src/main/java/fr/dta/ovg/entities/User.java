@@ -7,11 +7,13 @@ package fr.dta.ovg.entities;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -74,33 +76,52 @@ public class User extends EntityBase {
     @ApiModelProperty(value = "The last login date rate of the user.")
     private ZonedDateTime lastLogin;
 
-    /** Registered date of user <br> DB Column */
-//    @Column(nullable = false)
-//    @JsonProperty(access = Access.READ_ONLY)
-//    @CreatedDate
-//    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
-//    private LocalDateTime registeredAt;
-    @ManyToMany(mappedBy = "users")
-    List<Event> events;
+    /** Gender of user. <br> DB Column. */
+    @Column(name = "us_gender", unique = false, nullable = true)
+    @ApiModelProperty(value = "The gender of the user.")
+    private UserGender gender;
 
-    /** Age of user */
-//    @Transient
-//    @ApiModelProperty(value = "The calculated age of the user", readOnly = true)
-//    private byte age;
-    // TODO : Calculate Age function -> move to mapper
-    // LocalDate currentDate = LocalDate.now();
-    // this.age = (byte) Period.between(birthdate, currentDate).getYears();
+    /** Marital status of user. <br> DB Column. */
+    @Column(name = "us_status", unique = false, nullable = true)
+    @ApiModelProperty(value = "The marital status of the user.")
+    private UserStatus maritalStatus;
 
-//    @PrePersist
-//    public void init() {
-//        this.registeredAt = LocalDateTime.now();
-//    }
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private final List<JoinEvent> events = new ArrayList<>();
 
-    /** Override toString() method with User attributes */
+    /** Override toString() method with User attributes. */
     @Override
     public String toString() {
         return String.format("Username : %s | Email : %s | Birthdate : %dt",
                 username, email, birthdate);
+    }
+
+    /**
+     * @return the gender
+     */
+    public UserGender getGender() {
+        return gender;
+    }
+
+    /**
+     * @param gender the gender to set
+     */
+    public void setGender(final UserGender gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * @return the maritalStatus
+     */
+    public UserStatus getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    /**
+     * @param maritalStatus the maritalStatus to set
+     */
+    public void setMaritalStatus(final UserStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
     /**
@@ -176,15 +197,16 @@ public class User extends EntityBase {
     /**
      * @return the events
      */
-    public List<Event> getEvents() {
+    public List<JoinEvent> getEvents() {
         return events;
     }
 
     /**
      * @param events the events to set
      */
-    public void setEvents(final List<Event> events) {
-        this.events = events;
+    public void setEvents(final List<JoinEvent> events) {
+        this.events.clear();
+        this.events.addAll(events);
     }
 
     /**

@@ -7,7 +7,6 @@ package fr.dta.ovg.controllers;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +86,7 @@ public class EventController {
 
         final Event entity = this.service.getOne(id);
 
-        // TODO: Use mapper.
+        //  Use mapper.
         //  ObjectMapper mapper = new ObjectMapper();
         // ---------
         entity.setLabel(event.getLabel());
@@ -108,15 +107,4 @@ public class EventController {
     public void delete(@PathVariable final Long id) throws NotFoundException {
         this.service.delete(id);
     }
-
-    // TODO : REMOVE TEST
-    @GetMapping("/testSession")
-    public String test(final HttpSession session) {
-
-        if (session.getAttribute("test") == null) {
-            session.setAttribute("test", "coucou");
-        }
-        return session.getAttribute("test").toString();
-    }
-
 }

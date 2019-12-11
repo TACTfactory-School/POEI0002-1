@@ -12,7 +12,7 @@ import fr.dta.ovg.security.repositories.SecurityUserRepository;
 
 @Component
 @Profile("!prod")
-public class SecurityUserFixtureService extends FixtureCheck<SecurityUserRepository>{
+public class SecurityUserFixtureService extends FixtureCheck<SecurityUserRepository> {
 
     private final SecurityUserRepository repository;
 
@@ -25,8 +25,8 @@ public class SecurityUserFixtureService extends FixtureCheck<SecurityUserReposit
 
         List<SecurityUser> users = new ArrayList<>();
 
-        users.add(new SecurityUser() { {setUsername("user1"); setPassword("user1"); setEnabled(true);} } );
-        users.add(new SecurityUser() { {setUsername("user2"); setPassword("user2"); setEnabled(true);} } );
+        users.add(new SecurityUser() { { setUsername("user1"); setPassword("user1"); setEnabled(true); } });
+        users.add(new SecurityUser() { { setUsername("user2"); setPassword("user2"); setEnabled(true); } });
 
         repository.saveAll(users);
 

@@ -18,9 +18,9 @@ import fr.dta.ovg.fixtures.FixtureService;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
-    /**Link to Fixture Service*/
+    /**Link to Fixture Service. */
     @Autowired(required = false)
     private FixtureService fixtures;
 
@@ -33,11 +33,11 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(final String... args) throws Exception {
         if (this.fixtures != null) {
-            log.debug("Fixtures loading...");
+            LOG.debug("Fixtures loading...");
 
             this.fixtures.load();
 
-            log.debug("Fixtures loaded");
+            LOG.debug("Fixtures loaded");
         }
     }
 }

@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.repositories.EventRepository;
 
-/** Implementation Create CRUD on Event */
+/** Implementation Create CRUD on Event. */
 @Component
 @Transactional
 public class EventCreateService {
 
-    private static final Logger log = LoggerFactory.getLogger(EventCreateService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventCreateService.class);
 
     /** Link to Event repository.*/
     @Autowired
@@ -27,7 +27,7 @@ public class EventCreateService {
 
     /** Create Event function implementation.*/
     public Event create(final Event event) {
-        log.debug("Create event");
+        LOG.debug("Create event");
 
         // TODO Put your code here - create (...) Upload photo.
 

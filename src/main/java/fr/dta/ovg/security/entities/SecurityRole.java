@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table( name = "app_security_role", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "role" }))
+@Table(name = "app_security_role", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "role" }))
 public class SecurityRole {
 
     @Id
@@ -27,7 +27,7 @@ public class SecurityRole {
     /**
      * @return the user_role_id
      */
-    public Integer getUser_role_id() {
+    public Integer getUserRoleId() {
         return user_role_id;
     }
 

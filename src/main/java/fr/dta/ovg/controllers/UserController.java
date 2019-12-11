@@ -92,7 +92,7 @@ public class UserController {
 
         final User entity = this.service.getOne(id);
 
-        // TODO: Use mapper.
+        //  Use mapper.
         //  ObjectMapper mapper = new ObjectMapper();
         // ---------
         entity.setUsername(user.getUsername());

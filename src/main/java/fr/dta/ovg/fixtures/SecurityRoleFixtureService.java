@@ -12,11 +12,11 @@ import fr.dta.ovg.security.repositories.SecurityRoleRepository;
 
 @Component
 @Profile("!prod")
-public class SecurityRoleFixtureService extends FixtureCheck<SecurityRoleRepository>{
+public class SecurityRoleFixtureService extends FixtureCheck<SecurityRoleRepository> {
 
     private final SecurityRoleRepository repository;
 
-    public SecurityRoleFixtureService ( @Autowired final SecurityRoleRepository repository) {
+    public SecurityRoleFixtureService (@Autowired final SecurityRoleRepository repository) {
         this.repository = repository;
     }
 
@@ -26,8 +26,8 @@ public class SecurityRoleFixtureService extends FixtureCheck<SecurityRoleReposit
 
         List<SecurityRole> roles = new ArrayList<>();
 
-        roles.add(new SecurityRole() { { setUsername("admin"); setRole("ADMIN"); } } );
-        roles.add(new SecurityRole() { { setUsername("user1"); setRole("USER"); } } );
+        roles.add(new SecurityRole() { { setUsername("admin"); setRole("ADMIN"); } });
+        roles.add(new SecurityRole() { { setUsername("user1"); setRole("USER"); } });
 
         repository.saveAll(roles);
 
