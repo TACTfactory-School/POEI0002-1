@@ -5,12 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity
-@Table(name = "app_join_event")//, uniqueConstraints = {@UniqueConstraint(columnNames={"user", "event"})})
+@Table(name = "app_join_event") //, uniqueConstraints = {@UniqueConstraint(columnNames={"user", "event"})})
 public class JoinEvent extends EntityBase {
 
     /** Validation of event inscription request. */

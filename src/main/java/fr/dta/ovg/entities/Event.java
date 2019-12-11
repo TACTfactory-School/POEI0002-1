@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,6 +33,7 @@ public class Event extends EntityBase {
 //  @NotBlank
     @ApiModelProperty(value = "The author of the event.")
     @ManyToOne(optional = false)
+    @JoinColumn(nullable = false)
     private User creator;
 
     /**
