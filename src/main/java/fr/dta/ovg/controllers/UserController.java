@@ -43,11 +43,11 @@ public class UserController {
      * @return List of all Users.
      */
     @GetMapping
-    public Page<User> getAll(final int page, final int quantity) {
+    public Page<User> getAll(final int page, final int quantity, final String search) {
 
         Pageable pageable = PageRequest.of(page, quantity);
 
-        return this.service.getAll(pageable);
+        return this.service.getAll(pageable, search);
     }
 
     /**

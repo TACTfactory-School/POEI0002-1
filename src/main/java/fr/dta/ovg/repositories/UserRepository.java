@@ -1,5 +1,7 @@
 package fr.dta.ovg.repositories;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,9 +31,14 @@ public interface UserRepository  extends JpaRepository<User, Long> {
 //     */
 
      // TODO Delete this function - move to user
-     @Query("SELECT COUNT(e) > 0" + " FROM User e" + " WHERE LOWER(e.username) = LOWER(:#{#s.username})"
+    @Query("SELECT COUNT(e) > 0" + " FROM User e" + " WHERE LOWER(e.username) = LOWER(:#{#s.username})"
             + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
-      boolean existsByUsername(@Param("s") User user);
+    boolean existsByUsername(@Param("s") User user);
+
+    @Query(
+            value = "SELECT * FROM app_users u WHERE u.us_username like %?1%",
+            nativeQuery = true)
+    Page<User> findAll(String search, Pageable pageable);
 
     User findByUsername(String login);
 }

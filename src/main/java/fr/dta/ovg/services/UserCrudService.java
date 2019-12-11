@@ -22,7 +22,7 @@ public interface UserCrudService {
      * @return List of all User.
      * @see UserCrudServiceImpl UserCrudServiceImpl
      * */
-    Page<User> getAll(Pageable pageable);
+    Page<User> getAll(Pageable pageable, String search);
 
     /**
      * Get one User entity by ID.<br>
