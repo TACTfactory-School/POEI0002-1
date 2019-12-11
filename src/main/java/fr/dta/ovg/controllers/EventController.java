@@ -5,16 +5,12 @@
  */
 package fr.dta.ovg.controllers;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,27 +39,17 @@ public class EventController {
     private EventCrudService service;
 
     /**
-     * Get All function. <br>
-     * GET - HTTP.
-     * @return List of all Events.
-     */
+    * Get All function. <br>
+    * GET - HTTP.
+    * @return List of all Events.
+    */
     @GetMapping
-    public List<Event> getAll() {
+    public Page<Event> getAll(final int page, final int quantity) {
 
-        return this.service.getAll();
-    }
-
-    /*
-    @GetMapping
-    public List<Event> getAll(final int page, final int quantity) {
-
-        Sort sort = Sort.by(Direction.DESC, "ev_start_date");
         Pageable pageable = PageRequest.of(page, quantity);
-        Page<Event> paginateResult = this.service.getAll(pageable);
-        paginateResult.getContent();
 
-        return this.service.getAll();
-    } */
+        return this.service.getAll(pageable);
+    }
 
     /**
      * Get One by ID.<br>
@@ -72,7 +58,7 @@ public class EventController {
      * @return Entity Event.
      * @throws NotFoundException
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Event getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
@@ -82,7 +68,7 @@ public class EventController {
      * POST - HTTP.
      * @param event entity.
      * @return the created object event.
-     * @throws BadRequestException
+     * @throws BadRequestException bad request.
      */
     @PostMapping
     public Event create(@Valid @RequestBody final Event event) throws BadRequestException {
@@ -95,8 +81,8 @@ public class EventController {
      * @param id : number of the selected event.
      * @param event : entity.
      * @return the updated event object.
-     * @throws BadRequestException
-     * @throws NotFoundException
+     * @throws BadRequestException bad request.
+     * @throws NotFoundException object not found.
      */
     @PutMapping("{id}")
     public Event update(@PathVariable final Long id, @Valid @RequestBody final Event event)
@@ -118,7 +104,7 @@ public class EventController {
      * Delete one by ID. <br>
      * DELETE - HTTP.
      * @param id : number of the selected event.
-     * @throws NotFoundException
+     * @throws NotFoundException object not found.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

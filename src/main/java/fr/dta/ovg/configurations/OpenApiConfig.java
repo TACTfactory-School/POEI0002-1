@@ -31,7 +31,7 @@ public class OpenApiConfig {
 
     /**
      *  Api Swagger.
-     * @return Docket
+     * @return Docket Object.
      */
     @Bean
     public Docket api() {

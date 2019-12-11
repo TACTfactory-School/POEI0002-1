@@ -244,42 +244,48 @@ public class User extends EntityBase {
     }
 
     /**
-     * @return the email
+     * Get the user email.
+     * @return the email (String).
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * @param email the email to set
+     * Set the user email.
+     * @param email (String) : the email to set.
      */
     public void setEmail(final String email) {
         this.email = email;
     }
 
     /**
-     * @return the birthdate
+     * Get the user birthdate.
+     * @return the birthdate (LocalDate).
      */
     public LocalDate getBirthdate() {
         return birthdate;
     }
 
     /**
-     * @param birthdate the birthdate to set
+     * Set the user birthdate.
+     * @param birthdate (LocalDate) : the birthdate to set.
      */
     public void setBirthdate(final LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
     /**
-     * @return the password
+     * Get the user password.
+     * @return the password (String not encrypted).
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * @param password the password to set
+     * Set the user password.
+     * @param password (String not encrypted) : the password to set.
      */
     public void setPassword(final String password) {
         this.password = password;
@@ -305,25 +311,11 @@ public class User extends EntityBase {
     }
 
     /* Futures attributees
-     *
-
-    private String firstname;
-    private String maritalStatus;
-    private String job;
-    private char sex;
-    private String description;
-    private String city;
-
-    private String avatar;
-    private float fiabilityRate;
-
     private Language[] languages;
     private Habbie[] hobbies;
     private User[] friendsList;
     private Event[] futureOutings
     private Event[] pastOutings
     private Event[] bestOutings
-
     */
-
 }

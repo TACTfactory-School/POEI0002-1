@@ -5,10 +5,10 @@
  */
 package fr.dta.ovg.services.event;
 
-import java.util.List;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,10 +33,23 @@ public class EventCrudServiceImpl implements EventCrudService {
     @Autowired
     private EventDeleteService deleteService;
 
+    /*
     @Transactional(readOnly = true)
     @Override
     public List<Event> getAll() {
         return this.repository.findAll();
+    } */
+
+    @Transactional(readOnly = true)
+    @Override
+    public Page<Event> getAll(Pageable pageable) {
+
+        // Sort sort = Sort.by(Direction.DESC, "startAt");
+        Pageable pageableFinal = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+
+        Page<Event> paginateResult = this.repository.findAll(pageableFinal);
+
+        return paginateResult;
     }
 
     @Transactional(readOnly = true)

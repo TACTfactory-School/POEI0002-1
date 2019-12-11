@@ -5,10 +5,14 @@
  */
 package fr.dta.ovg.services;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.services.event.EventCreateService;
+import fr.dta.ovg.services.event.EventCrudServiceImpl;
+import fr.dta.ovg.services.event.EventDeleteService;
 
 public interface EventCrudService {
 
@@ -17,9 +21,17 @@ public interface EventCrudService {
      * Must be redefined in implemented class.<br>
      * @return List of all Event.
      * @see EventCrudServiceImpl EventCrudServiceImpl
+     *
+    List<Event> getAll(); */
+
+    /**
+     * Get all Event entity with pageable.<br>
+     * Must be redefined in implemented class.<br>
+     * @return List of all Event.
+     * @param pageable (Pageable) object with page number and quantity.
+     * @see EventCrudServiceImpl EventCrudServiceImpl
      * */
-    List<Event> getAll();
-//  List<Event> getAll(final int page, final int quantity);
+    Page<Event> getAll(Pageable pageable);
 
     /**
      * Get one Event entity by ID.<br>
@@ -44,5 +56,6 @@ public interface EventCrudService {
      * @see EventDeleteService EventDeleteService.
      * */
     void delete(long id) throws NotFoundException;
+
 
 }
