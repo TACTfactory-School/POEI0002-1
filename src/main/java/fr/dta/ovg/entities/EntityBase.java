@@ -79,7 +79,7 @@ public class EntityBase {
      * Setter id.
      * @param id the id to set (Long)
      */
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 

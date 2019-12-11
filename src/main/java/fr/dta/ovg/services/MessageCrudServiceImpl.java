@@ -18,19 +18,19 @@ public class MessageCrudServiceImpl implements MessageCrudService{
     @Autowired
    MessageRepository repository;
 
-    private static final Logger log = LoggerFactory.getLogger(UserDeleteService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     @Override
     public List<Message> getAll() {
 
-        log.debug("Get All Messages");
+        LOG.debug("Get All Messages");
         return this.repository.findAll();
     }
 
     @Override
     public Message getOne(final long id) throws NotFoundException {
 
-        log.debug("Get one Message");
+        LOG.debug("Get one Message");
         return this.repository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException());
@@ -39,13 +39,13 @@ public class MessageCrudServiceImpl implements MessageCrudService{
     @Override
     public Message create(final Message message) {
 
-        log.debug("Create Message");
+        LOG.debug("Create Message");
         return this.repository.save(message);
     }
 
     @Override
     public void delete(final long id) throws NotFoundException {
-        log.debug("Delete Message");
+        LOG.debug("Delete Message");
 
         Message message = this.repository.findById(id)
                 .orElseThrow(() -> new NotFoundException());

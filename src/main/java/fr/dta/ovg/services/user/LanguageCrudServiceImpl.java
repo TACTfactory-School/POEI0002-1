@@ -54,7 +54,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService{
     }
 
     @Override
-    public boolean existsByLabel(Language language) {
+    public boolean existsByLabel(final Language language) {
 
         return this.repository.existsByLabel(language);
     }

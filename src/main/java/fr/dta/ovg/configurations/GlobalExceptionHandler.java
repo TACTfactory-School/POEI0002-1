@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Not Yet Implemented Exception
+     * Not Yet Implemented Exception.
      * @param e Exception.
      * @return Response Entity.
      */

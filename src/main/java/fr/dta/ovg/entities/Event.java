@@ -85,7 +85,7 @@ public class Event extends EntityBase {
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private final List<JoinEvent> users = new ArrayList<>();
 
-    /** Override toString() method with Event attributes */
+    /** Override toString() method with Event attributes.*/
     @Override
     public String toString() {
         return String.format("| Title : %s | Description : %s | Creator : %s", label, description, creator);

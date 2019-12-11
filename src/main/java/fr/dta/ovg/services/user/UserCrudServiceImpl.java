@@ -33,7 +33,7 @@ public class UserCrudServiceImpl implements UserCrudService {
 
     @Transactional(readOnly = true)
     @Override
-    public Page<User> getAll(Pageable pageable) {
+    public Page<User> getAll(final Pageable pageable) {
 
         Page<User> paginateResult = this.repository.findAll(pageable);
 

@@ -42,7 +42,7 @@ public class EventCrudServiceImpl implements EventCrudService {
 
     @Transactional(readOnly = true)
     @Override
-    public Page<Event> getAll(Pageable pageable) {
+    public Page<Event> getAll(final Pageable pageable) {
 
         // Sort sort = Sort.by(Direction.DESC, "startAt");
         Pageable pageableFinal = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());

@@ -18,19 +18,19 @@ public class HobbyCrudServiceImpl implements HobbyCrudService{
     @Autowired
     HobbyRepository repository;
 
-    private static final Logger log = LoggerFactory.getLogger(UserDeleteService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     @Override
     public List<Hobby> getAll() {
 
-        log.debug("Get All Hobbies");
+        LOG.debug("Get All Hobbies");
         return this.repository.findAll();
     }
 
     @Override
     public Hobby getOne(final long id) throws NotFoundException {
 
-        log.debug("Get one Hobby");
+        LOG.debug("Get one Hobby");
         return this.repository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException());
@@ -39,13 +39,13 @@ public class HobbyCrudServiceImpl implements HobbyCrudService{
     @Override
     public Hobby create(final Hobby hobby) {
 
-        log.debug("Create Hobby");
+        LOG.debug("Create Hobby");
         return this.repository.save(hobby);
     }
 
     @Override
     public void delete(final long id) throws NotFoundException {
-        log.debug("Delete one Hobby by ID");
+        LOG.debug("Delete one Hobby by ID");
 
         Hobby hobby = this.repository.findById(id)
                 .orElseThrow(() -> new NotFoundException());

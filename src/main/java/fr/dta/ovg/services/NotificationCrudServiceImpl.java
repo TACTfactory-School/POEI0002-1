@@ -18,19 +18,19 @@ public class NotificationCrudServiceImpl implements NotificationCrudService{
     @Autowired
     NotificationRepository repository;
 
-    private static final Logger log = LoggerFactory.getLogger(UserDeleteService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     @Override
     public List<Notification> getAll() {
 
-        log.debug("Get All Notifications");
+        LOG.debug("Get All Notifications");
         return this.repository.findAll();
     }
 
     @Override
     public Notification getOne(final long id) throws NotFoundException {
 
-        log.debug("Get one Notification");
+        LOG.debug("Get one Notification");
         return this.repository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException());
@@ -39,13 +39,13 @@ public class NotificationCrudServiceImpl implements NotificationCrudService{
     @Override
     public Notification create(final Notification notification) {
 
-        log.debug("Create Notification");
+        LOG.debug("Create Notification");
         return this.repository.save(notification);
     }
 
     @Override
     public void delete(final long id) throws NotFoundException {
-        log.debug("Delete Notification");
+        LOG.debug("Delete Notification");
 
         Notification notification = this.repository.findById(id)
                 .orElseThrow(() -> new NotFoundException());
