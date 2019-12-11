@@ -1,7 +1,7 @@
 /* Entity base class.
- * @author Colin Cerveaux @C-ambium
+ * @author Colin Cerveaux @C-ambium.
  * Shared attributes between entity.
- * License : ©2019 All rights reserved
+ * License : ©2019 All rights reserved.
  */
 package fr.dta.ovg.entities;
 
@@ -63,6 +63,7 @@ public class EntityBase {
         }
 
 
+    /** Constructor of Entity base.*/
     protected EntityBase() {
         super();
     }

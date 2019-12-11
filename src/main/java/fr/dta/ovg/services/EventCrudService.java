@@ -19,6 +19,7 @@ public interface EventCrudService {
      * @see EventCrudServiceImpl EventCrudServiceImpl
      * */
     List<Event> getAll();
+//  List<Event> getAll(final int page, final int quantity);
 
     /**
      * Get one Event entity by ID.<br>

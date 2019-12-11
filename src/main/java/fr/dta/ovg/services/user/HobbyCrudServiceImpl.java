@@ -1,4 +1,4 @@
-package fr.dta.ovg.services;
+package fr.dta.ovg.services.user;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import fr.dta.ovg.entities.Hobby;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.HobbyRepository;
-import fr.dta.ovg.services.user.UserDeleteService;
+import fr.dta.ovg.services.HobbyCrudService;
 
 @Service
 public class HobbyCrudServiceImpl implements HobbyCrudService{
@@ -28,7 +28,7 @@ public class HobbyCrudServiceImpl implements HobbyCrudService{
     }
 
     @Override
-    public Hobby getOne(long id) throws NotFoundException {
+    public Hobby getOne(final long id) throws NotFoundException {
 
         log.debug("Get one Hobby");
         return this.repository
@@ -44,7 +44,7 @@ public class HobbyCrudServiceImpl implements HobbyCrudService{
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(final long id) throws NotFoundException {
         log.debug("Delete one Hobby by ID");
 
         Hobby hobby = this.repository.findById(id)

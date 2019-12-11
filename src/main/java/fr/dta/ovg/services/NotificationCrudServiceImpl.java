@@ -28,7 +28,7 @@ public class NotificationCrudServiceImpl implements NotificationCrudService{
     }
 
     @Override
-    public Notification getOne(long id) throws NotFoundException {
+    public Notification getOne(final long id) throws NotFoundException {
 
         log.debug("Get one Notification");
         return this.repository
@@ -44,7 +44,7 @@ public class NotificationCrudServiceImpl implements NotificationCrudService{
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(final long id) throws NotFoundException {
         log.debug("Delete Notification");
 
         Notification notification = this.repository.findById(id)

@@ -1,4 +1,4 @@
-package fr.dta.ovg.services;
+package fr.dta.ovg.services.user;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import fr.dta.ovg.entities.Language;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.LanguageRepository;
-import fr.dta.ovg.services.user.UserDeleteService;
+import fr.dta.ovg.services.LanguageCrudService;
 
 @Service
 public class LanguageCrudServiceImpl implements LanguageCrudService{
@@ -28,7 +28,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService{
     }
 
     @Override
-    public Language getOne(long id) throws NotFoundException {
+    public Language getOne(final long id) throws NotFoundException {
 
         log.debug("Get one Language");
         return this.repository
@@ -44,7 +44,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService{
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(final long id) throws NotFoundException {
         log.debug("Delete Language");
 
         Language language = this.repository.findById(id)

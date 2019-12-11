@@ -86,6 +86,7 @@ public class User extends EntityBase {
     @ApiModelProperty(value = "The marital status of the user.")
     private UserStatus maritalStatus;
 
+    /** Join event List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private final List<JoinEvent> events = new ArrayList<>();
 
@@ -97,91 +98,104 @@ public class User extends EntityBase {
     }
 
     /**
-     * @return the gender
+     * Getter user's gender.
+     * @return the gender (UserGender Enum).
      */
     public UserGender getGender() {
         return gender;
     }
 
     /**
-     * @param gender the gender to set
+     * Setter user's gender.
+     * @param type (UserGender Enum) : the gender to set.
      */
     public void setGender(final UserGender gender) {
         this.gender = gender;
     }
 
     /**
-     * @return the maritalStatus
+     * Getter user's status.
+     * @return the maritalStatus (UserStatus Enum).
      */
     public UserStatus getMaritalStatus() {
         return maritalStatus;
     }
 
     /**
-     * @param maritalStatus the maritalStatus to set
+     * Setter user's status.
+     * @param maritalStatus  (UserStatus Enum) : the maritalStatus to set.
      */
     public void setMaritalStatus(final UserStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
     /**
-     * @return the firstname
+     * Getter firstname.
+     * @return the firstname (String).
      */
     public String getFirstname() {
         return firstname;
     }
 
     /**
-     * @param firstname the firstname to set
+     * Setter firstname.
+     * @param firstname (String) : the firstname to set.
      */
     public void setFirstname(final String firstname) {
         this.firstname = firstname;
     }
 
     /**
-     * @return the city
+     * Get the user city.
+     * @return the city (String).
      */
     public String getCity() {
         return city;
     }
 
     /**
-     * @param city the city to set
+     * Set the user city.
+     * @param city (String) the city to set.
      */
     public void setCity(final String city) {
         this.city = city;
     }
 
     /**
-     * @return the job
+     * Get the user job.
+     * @return the job (String).
      */
     public String getJob() {
         return job;
     }
 
     /**
-     * @param job the job to set
+     * Set the user job.
+     * @param job the job to set (String)
      */
     public void setJob(final String job) {
         this.job = job;
     }
 
     /**
-     * @return the rate
+     * Get the user rate.
+     * @return the user rate (float).
      */
     public float getRate() {
         return rate;
     }
 
     /**
-     * @param rate the rate to set
+     * Set the user rate.
+     * @param rate (float) : the rate to set
      */
     public void setRate(final float rate) {
         this.rate = rate;
     }
 
     /**
-     * @return the lastLogin
+     * Get the user last login date time.
+     * @return the lastLogin (ZonedDateTime).
      */
     public ZonedDateTime getLastLogin() {
         return lastLogin;

@@ -28,7 +28,7 @@ public class MessageCrudServiceImpl implements MessageCrudService{
     }
 
     @Override
-    public Message getOne(long id) throws NotFoundException {
+    public Message getOne(final long id) throws NotFoundException {
 
         log.debug("Get one Message");
         return this.repository
@@ -44,7 +44,7 @@ public class MessageCrudServiceImpl implements MessageCrudService{
     }
 
     @Override
-    public void delete(long id) throws NotFoundException {
+    public void delete(final long id) throws NotFoundException {
         log.debug("Delete Message");
 
         Message message = this.repository.findById(id)

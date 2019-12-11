@@ -1,3 +1,7 @@
+/* Api Swagger Configuration Class.
+ * @author Colin Cerveaux @C-ambium.
+ * License : ©2019 All rights reserved.
+ */
 package fr.dta.ovg.configurations;
 
 import java.util.List;
@@ -25,6 +29,10 @@ public class OpenApiConfig {
 
     private static final String BASE_PACKAGE = "fr.dta.ovg";
 
+    /**
+     *  Api Swagger.
+     * @return Docket
+     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -60,6 +68,10 @@ public class OpenApiConfig {
                     .apiInfo(this.metaData());
     }
 
+    /**
+     * Metdata Api.
+     * @return Api Info.
+     */
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
                 .title("OVG API documentation")
@@ -70,6 +82,11 @@ public class OpenApiConfig {
                 .build();
     }
 
+    /**
+     * Http Error Responses.
+     * @param status HttpStatus.
+     * @return List of Response Message.
+     */
     private List<ResponseMessage> httpErrorResponses(final HttpStatus...status) {
         return Stream
                 .of(status)
@@ -77,6 +94,11 @@ public class OpenApiConfig {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Http Error Responses.
+     * @param status HttpStatus.
+     * @return Single Response Message.
+     */
     private ResponseMessage httpErrorResponse(final HttpStatus status) {
         return new ResponseMessageBuilder()
                 .code(status.value())
