@@ -7,10 +7,12 @@ package fr.dta.ovg.services.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.UserRepository;
@@ -33,9 +35,16 @@ public class UserCrudServiceImpl implements UserCrudService {
 
     @Transactional(readOnly = true)
     @Override
-    public Page<User> getAll(final Pageable pageable) {
+    public Page<User> getAll(final Pageable pageable, final String search) {
 
-        Page<User> paginateResult = this.repository.findAll(pageable);
+        Pageable pageableFinal = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+        Page<User> paginateResult;
+
+        if (search != null) {
+            paginateResult = this.repository.findAll(search, pageableFinal);
+        } else {
+            paginateResult = this.repository.findAll(pageableFinal);
+        }
 
         return paginateResult;
     }

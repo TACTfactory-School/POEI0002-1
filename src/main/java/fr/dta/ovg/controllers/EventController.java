@@ -47,11 +47,11 @@ public class EventController {
     * @return Page page number with quantity asked.
     */
     @GetMapping
-    public Page<Event> getAll(final int page, final int quantity) {
+    public Page<Event> getAll(final int page, final int quantity, final String search) {
 
         Pageable pageable = PageRequest.of(page, quantity);
 
-        return this.service.getAll(pageable);
+        return this.service.getAll(pageable, search);
     }
 
     /**

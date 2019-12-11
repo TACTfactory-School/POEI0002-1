@@ -31,7 +31,7 @@ public interface EventCrudService {
      * @param pageable (Pageable) object with page number and quantity.
      * @see EventCrudServiceImpl EventCrudServiceImpl
      * */
-    Page<Event> getAll(Pageable pageable);
+    Page<Event> getAll(Pageable pageable, String search);
 
     /**
      * Get one Event entity by ID.<br>
