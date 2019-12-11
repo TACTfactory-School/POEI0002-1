@@ -13,7 +13,7 @@ import fr.dta.ovg.repositories.LanguageRepository;
 import fr.dta.ovg.services.LanguageCrudService;
 
 @Service
-public class LanguageCrudServiceImpl implements LanguageCrudService{
+public class LanguageCrudServiceImpl implements LanguageCrudService {
 
     @Autowired
     LanguageRepository repository;

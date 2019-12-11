@@ -10,9 +10,6 @@ import org.springframework.data.domain.Pageable;
 
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.services.event.EventCreateService;
-import fr.dta.ovg.services.event.EventCrudServiceImpl;
-import fr.dta.ovg.services.event.EventDeleteService;
 
 public interface EventCrudService {
 

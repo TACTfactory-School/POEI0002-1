@@ -8,6 +8,6 @@ import fr.dta.ovg.entities.Message;
 
 /** Message Repository extends Jpa Repository. */
 @Repository
-public interface MessageRepository  extends JpaRepository<Message, Long>{
+public interface MessageRepository extends JpaRepository<Message, Long> {
 
 }
