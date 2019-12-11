@@ -43,7 +43,9 @@
 //                }
 //
 //                return result;
-//            }).map(JoinDto::getEventId, JoinEvent::setUser);
+//            })
+//            .map(JoinDto::getEventId, JoinEvent::setUser)
+//            .map(JoinDto::getEventId, JoinEvent::setUser);
 //        });
 //    }
 //
