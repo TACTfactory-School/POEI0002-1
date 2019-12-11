@@ -42,6 +42,9 @@ public class EventController {
     * Get All function. <br>
     * GET - HTTP.
     * @return List of all Events.
+    * @param page the page number.
+    * @param quantity the quantity of return per page.
+    * @return Page page number with quantity asked.
     */
     @GetMapping
     public Page<Event> getAll(final int page, final int quantity) {
@@ -56,9 +59,9 @@ public class EventController {
      * GET - HTTP
      * @param id : number of the selected event.
      * @return Entity Event.
-     * @throws NotFoundException
+     * @throws NotFoundException asked object not found.
      */
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Event getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
@@ -82,7 +85,7 @@ public class EventController {
      * @param event : entity.
      * @return the updated event object.
      * @throws BadRequestException bad request.
-     * @throws NotFoundException object not found.
+     * @throws NotFoundException asked object not found.
      */
     @PutMapping("{id}")
     public Event update(@PathVariable final Long id, @Valid @RequestBody final Event event)
