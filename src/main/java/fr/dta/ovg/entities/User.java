@@ -210,29 +210,34 @@ public class User extends EntityBase {
     }
 
     /**
-     * @return the events
+     * Get List of all user's join events.
+     * @return the events (List).
      */
     public List<JoinEvent> getEvents() {
         return events;
     }
 
     /**
-     * @param events the events to set
+     * Set List of all user's join event.
+     * @param events (List) : the events to set.
      */
     public void setEvents(final List<JoinEvent> events) {
+        // TODO TO REMOVE
         this.events.clear();
         this.events.addAll(events);
     }
 
     /**
-     * @return the username
+     * Get the username.
+     * @return the username (String).
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * @param username the username to set
+     * Set the username.
+     * @param username (String) : the username to set.
      */
     public void setUsername(final String username) {
         this.username = username;

@@ -53,16 +53,17 @@ public class EventController {
         return this.service.getAll();
     }
 
+    /*
     @GetMapping
     public List<Event> getAll(final int page, final int quantity) {
 
         Sort sort = Sort.by(Direction.DESC, "ev_start_date");
         Pageable pageable = PageRequest.of(page, quantity);
-//        Page<Event> paginateResult = this.service.getAll(pageable);
-//        paginateResult.getContent();
+        Page<Event> paginateResult = this.service.getAll(pageable);
+        paginateResult.getContent();
 
         return this.service.getAll();
-    }
+    } */
 
     /**
      * Get One by ID.<br>
