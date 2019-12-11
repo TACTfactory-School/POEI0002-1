@@ -6,9 +6,9 @@ import javax.persistence.Table;
 import io.swagger.annotations.ApiModel;
 
 @Entity
-@Table(name = "app_languages")
-@ApiModel(value = "Describes a Language for our system")
-public class Language extends EntityBase {
+@Table(name = "app_hobbies")
+@ApiModel(value = "Describes a Hobby for our system")
+public class Hobby  extends EntityBase{
 
     private String label;
 
@@ -22,7 +22,8 @@ public class Language extends EntityBase {
     /**
      * @param label the label to set
      */
-    public void setLabel(String label) {
+    public void setLabel(final String label) {
         this.label = label;
     }
+
 }
