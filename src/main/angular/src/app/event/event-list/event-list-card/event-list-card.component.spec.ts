@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventListCardComponent } from './event-list-card.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/shared/material/material.module';
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 describe('EventListCardComponent', () => {
   let component: EventListCardComponent;
@@ -12,7 +16,11 @@ describe('EventListCardComponent', () => {
         EventListCardComponent
        ],
        imports: [
-         MatCardModule
+         SharedModule,
+         MaterialModule,
+         FormsModule,
+         MatCardModule,
+         RouterModule.forRoot([]),
        ]
     })
     .compileComponents();

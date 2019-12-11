@@ -5,6 +5,7 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 import { PipesModule } from './pipes/pipes.module';
 import { MaterialModule } from './material/material.module';
 import { LoaderModule } from './loader/loader.module';
+import { FooterModule } from './footer/footer.module';
 
 @NgModule({
   declarations: [],
@@ -13,14 +14,16 @@ import { LoaderModule } from './loader/loader.module';
     ToolbarModule,
     MaterialModule,
     PipesModule,
-    LoaderModule
+    LoaderModule,
+    FooterModule
   ],
   exports : [
     LoaderComponent,
     ToolbarModule,
     MaterialModule,
     PipesModule,
-    LoaderModule
+    LoaderModule,
+    FooterModule
   ]
 })
 export class SharedModule { }

@@ -7,6 +7,8 @@ import { EventListInlineComponent } from './event-list-inline/event-list-inline.
 import { EventListCardComponent } from './event-list-card/event-list-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 describe('EventListComponent', () => {
   let component: EventListComponent;
@@ -25,7 +27,9 @@ describe('EventListComponent', () => {
         MatCardModule,
         MaterialModule,
         MatPaginatorModule,
-        MatTableModule
+        MatTableModule,
+        SharedModule,
+        RouterModule.forRoot([]),
 
       ]
     })

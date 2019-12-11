@@ -2,9 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserFormRegisterComponent } from './user-form-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 describe('UserFormRegisterComponent', () => {
   let component: UserFormRegisterComponent;
@@ -20,9 +21,10 @@ describe('UserFormRegisterComponent', () => {
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule
+        SharedModule,
+        MatToolbarModule,
+        MatDatepickerModule,
+        MatNativeDateModule
       ]
     })
     .compileComponents();

@@ -3,6 +3,7 @@ import { UserListComponent } from './user-list.component';
 import { OvgTablesModule } from 'src/app/shared/tables/ovg-tables.module';
 import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -14,7 +15,8 @@ describe('UserListComponent', () => {
       imports: [
         SharedModule,
         OvgTablesModule,
-        OvgFormsModule
+        OvgFormsModule,
+        HttpClientModule
       ]
     })
     .compileComponents();
