@@ -1,5 +1,7 @@
 package fr.dta.ovg.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -40,5 +42,5 @@ public interface UserRepository  extends JpaRepository<User, Long> {
             nativeQuery = true)
     Page<User> findAll(String search, Pageable pageable);
 
-    User findByUsername(String login);
+    Optional<User> findByUsername(String login);
 }

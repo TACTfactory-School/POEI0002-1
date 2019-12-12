@@ -16,6 +16,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.github.javafaker.Faker;
@@ -27,6 +28,8 @@ import fr.dta.ovg.services.user.UserCreateService;
 @Component
 @Profile("!prod")
 public class UserFixtureService extends FixtureCheck<UserRepository> {
+
+    private final PasswordEncoder encoder;
 
     private final UserCreateService service;
 
@@ -43,7 +46,9 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
      * Get Value of fakerSize @see application.properties. */
     public UserFixtureService(
             @Value("${app.user.fixtures.fakersize:100}") final int fakerSize,
+            @Autowired() final PasswordEncoder encoder,
             @Autowired final UserCreateService service) {
+        this.encoder = encoder;
         this.fakerSize = fakerSize;
         this.service = service;
     }
@@ -73,7 +78,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
 
         user.setUsername(username);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(this.encoder.encode(password));
         user.setBirthdate(birthdate);
         user.setFirstname(firstname);
         user.setCity(city);
