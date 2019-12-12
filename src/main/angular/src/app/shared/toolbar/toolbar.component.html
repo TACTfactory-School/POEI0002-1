@@ -7,18 +7,18 @@
       </mat-form-field>
     </form>
     <span class="spacer"></span>
-    <button mat-stroked-button color="primary" (click)="openDialog()">Connexion</button>
+    <button *ngIf="!user" mat-stroked-button color="primary" (click)="openDialog()">Connexion</button>
     <!-- Other MatIcon : date_range // calendar_today -->
     <a [routerLink]="['events']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-labelledby="events">event</mat-icon></a>
     <a [routerLink]="['users']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="users">group</mat-icon></a>
-    <a class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="notifications">notifications</mat-icon></a>
-    <a class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">mail</mat-icon></a>
-    <a class="icon" [matMenuTriggerFor]="menu"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">account_circle</mat-icon></a>
+    <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="notifications">notifications</mat-icon></a>
+    <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">mail</mat-icon></a>
+    <a *ngIf="user" class="icon" [matMenuTriggerFor]="menu"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">account_circle</mat-icon></a>
     <!-- Dropdown menu -->
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
         <mat-icon>person</mat-icon>
-        <span>Profil</span>
+        <span *ngIf="user">{{user.username}}</span>
       </button>
       <!-- Other MatIcon :  face -->
       <button mat-menu-item>
@@ -29,7 +29,7 @@
         <mat-icon>settings</mat-icon>
         <span>Mon compte</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onLogout()">
         <mat-icon>power_settings_new</mat-icon>
         <span>Déconnexion</span>
       </button>

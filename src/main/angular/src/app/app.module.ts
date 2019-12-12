@@ -12,6 +12,7 @@ import localeFr from '@angular/common/locales/fr';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { httpInterceptors } from './interceptors';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -32,6 +33,8 @@ registerLocaleData(localeFr, 'fr');
     SharedModule
   ],
   providers: [
+    httpInterceptors,
+
     // Set locate to FR for pipe date
     { provide: LOCALE_ID, useValue: 'fr-FR' }
   ],

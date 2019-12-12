@@ -1,16 +1,13 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { TokenStorageService } from './token-storage.service';
 import { User } from '../user/user';
+import { of } from 'rxjs';
 
 const URL = environment.apiUrl;
-
-interface LoginResult {
-  token: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +16,19 @@ export class AuthApiService {
 
   constructor(
       private readonly http: HttpClient,
-      private readonly token: TokenStorageService) { }
+      private readonly tokenStorage: TokenStorageService) { }
 
-  login(login: string, password: string) {
-    // return this.http.post<LoginResult>(`${URL}/user/me`, {login, password})
-    //     .pipe(tap((res: LoginResult) => this.token.save(res.token)));
-    const params = new HttpParams().set('login', login).set('password', password);
-    return this.http.post((URL + '/user/me'), { params });
+  login(username: string, password: string) {
+    const token = btoa(username + ':' + password);
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic ' + token);
+
+    return this.http.get((URL + '/user/me'), { headers })
+      .pipe(tap(() => this.tokenStorage.save(token)));
   }
 
   logout() {
-    return this.http.post<void>(`${URL}/logout`, {})
-        .pipe(tap(() => this.token.clear()));
+    return of(this.tokenStorage.clear());
   }
 
   me() {

@@ -13,7 +13,6 @@ export class TokenStorageService {
 
   constructor() {
     this.subject.next(this.get());
-    this.save('USERNAME'); // TODO: Remove this line -- just here to simulate a login.
   }
 
   save(token: string) {

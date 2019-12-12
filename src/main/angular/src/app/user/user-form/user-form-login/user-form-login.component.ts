@@ -5,6 +5,7 @@ import { ToolbarComponent } from 'src/app/shared/toolbar/toolbar.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { TokenStorageService } from 'src/app/auth/token-storage.service';
 // import { ClickOutsideDirective } from '../../../shared/clickoutside.directive';
 
 @Component({
@@ -23,7 +24,9 @@ export class UserFormLoginComponent implements OnInit {
   returnUrl: string;
   error = '';
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder, private auth: AuthApiService, private router: Router) { }
+  constructor(public dialog: MatDialog, private fb: FormBuilder,
+              private auth: AuthApiService, private router: Router,
+              private storage: TokenStorageService) { }
 
   ngOnInit() {
     this.login = this.fb.group({
@@ -46,7 +49,8 @@ export class UserFormLoginComponent implements OnInit {
         return;
     }
     this.loading = true;
-    this.auth.login(this.login.value.login, this.login.value.password)
+    console.log(this.login.value.username, '-', this.login.value.password);
+    this.auth.login(this.login.value.username, this.login.value.password)
       .pipe(first())
       .subscribe(
           data => {
