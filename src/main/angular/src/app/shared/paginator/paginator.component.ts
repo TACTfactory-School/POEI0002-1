@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {PageEvent, MatPaginator} from '@angular/material/paginator';
+import { MatPaginator} from '@angular/material/paginator';
 import { Pageable } from './pageable';
 
 const pageSizeOptions = [12, 24, 48, 96];
