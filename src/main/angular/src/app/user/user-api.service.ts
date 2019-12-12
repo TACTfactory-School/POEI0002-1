@@ -25,12 +25,11 @@ export class UserApiService {
     return this.http.delete<void>(`${URL}/${id}`);
   }
 
-  add(data : User) {
+  add(data: User) {
     return this.http.post<Event>(URL, data);
   }
 
-  updateOne(id: number, data : User) {
+  updateOne(id: number, data: User) {
     return this.http.put<Event>(`${URL}/${id}`, data);
-    }
-
+  }
 }

@@ -121,7 +121,7 @@ public class UserController {
         this.service.delete(id);
     }
 
-    @GetMapping("me")
+    @PostMapping("me")
     public User getMe(final Principal principal) throws NotFoundException {
         return this.service.getOne(principal.getName());
     }

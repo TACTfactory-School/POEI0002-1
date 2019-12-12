@@ -9,23 +9,20 @@ import { UserFormLoginComponent } from 'src/app/user/user-form/user-form-login/u
 })
 export class ToolbarComponent implements OnInit {
 
-  displayForm: boolean;
+  public isModal: boolean;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.displayForm = false;
-  }
-  displayConnect() {
-    this.displayForm = true;
   }
   openDialog(): void {
+    this.isModal = true;
     const dialogRef = this.dialog.open(UserFormLoginComponent, {
       width: '40%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
+      this.isModal = false;
     });
   }
 
