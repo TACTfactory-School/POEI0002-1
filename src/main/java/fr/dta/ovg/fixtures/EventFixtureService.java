@@ -5,7 +5,7 @@
  */
 package fr.dta.ovg.fixtures;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.Random;
@@ -67,7 +67,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
     private void loadReal() throws NotFoundException {
 
-        LocalDateTime start = LocalDateTime.now();
+        ZonedDateTime start = ZonedDateTime.now();
 
         this.build("Supra Party One",   userService.getOne(1),          "C'est super génial Viendez",
                     start,              "img1",                         25,
@@ -87,7 +87,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
     }
 
     private void build(final String label, final User creator, final String description,
-            final LocalDateTime startAt, final String img, final int nbPlaceMax,
+            final ZonedDateTime startAt, final String img, final int nbPlaceMax,
             final String address, final String postcode, final String city) {
 
         final Event event = new Event();
@@ -119,7 +119,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
                     userService.getOne(rand.nextInt(userFakerSize)), // this.fake.name().fullName(),
                     this.fake.gameOfThrones().quote(),
                     this.fake.date().future(rand.nextInt(2000) + 1, TimeUnit.DAYS)
-                        .toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(),
+                        .toInstant().atZone(ZoneId.systemDefault()),
                     this.fake.avatar().toString(),
                     rand.nextInt(100),
                     this.fake.address().streetAddress(),

@@ -4,7 +4,7 @@
  */
 package fr.dta.ovg.configurations;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +26,7 @@ public class ControllerConfig {
 
         final Map<String, Object> result = new HashMap<>();
 
-        result.put("date", LocalDateTime.now());
+        result.put("date", ZonedDateTime.now());
         result.put("error", e.getMessage());
 
         return result;

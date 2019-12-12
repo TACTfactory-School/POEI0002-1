@@ -4,14 +4,14 @@
  */
 package fr.dta.ovg.dtos;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import javax.validation.constraints.NotNull;
 
 public class JoinDto {
 
     @NotNull
-    private LocalDateTime startedAt;
+    private ZonedDateTime startedAt;
 
     private boolean valid;
 
@@ -23,7 +23,7 @@ public class JoinDto {
      * Getter Started date.
      * @return the startedAt Date Time.
      */
-    public LocalDateTime getStartedAt() {
+    public ZonedDateTime getStartedAt() {
         return startedAt;
     }
 
@@ -31,7 +31,7 @@ public class JoinDto {
      * Setter Started date.
      * @param startedAt the startedAt Date Time to set.
      */
-    public void setStartedAt(final LocalDateTime startedAt) {
+    public void setStartedAt(final ZonedDateTime startedAt) {
         this.startedAt = startedAt;
     }
 

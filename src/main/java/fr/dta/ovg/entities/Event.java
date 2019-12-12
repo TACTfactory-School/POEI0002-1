@@ -5,7 +5,7 @@
  */
 package fr.dta.ovg.entities;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class Event extends EntityBase {
     /** The started date/time of the Event. <br> DB Column.*/
     @ApiModelProperty(value = "The started time date of the event.")
     @Column(name = "ev_start_date", nullable = false, unique = false)
-    private LocalDateTime startAt;
+    private ZonedDateTime startAt;
 
     /** Custom photo of the Event. <br>DB Column.*/
     @ApiModelProperty(name = "ev_img", value = "The custom picture of the event.")
@@ -129,7 +129,7 @@ public class Event extends EntityBase {
      * Getter started date time.
      * @return the startedAt (ZoneDateTime).
      */
-    public LocalDateTime getStartAt() {
+    public ZonedDateTime getStartAt() {
         return startAt;
     }
 
@@ -137,7 +137,7 @@ public class Event extends EntityBase {
      * Setter started date time.
      * @param startedAt (ZonedDateTime) : the startedAt to set.
      */
-    public void setStartAt(final LocalDateTime startedAt) {
+    public void setStartAt(final ZonedDateTime startedAt) {
         this.startAt = startedAt;
     }
 
