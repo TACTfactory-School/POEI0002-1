@@ -4,6 +4,7 @@ import { Event, EventFormDTO } from './event';
 import { environment } from 'src/environments/environment';
 
 const URL = `${environment.apiUrl}/event`;
+const PAGEABLE = `?page=${environment.p}&quantity=${environment.q}`;
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class EventApiService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    // return this.http.get<Event[]>('./assets/fixtureEvent3.json');
-    return this.http.get<Event[]>(`${URL}`);
+    return this.http.get<Event[]>('./assets/fixtureEvent3.json');
+    //return this.http.get<Event[]>(`${URL}`);
   }
 
   getOne(id: number) {
