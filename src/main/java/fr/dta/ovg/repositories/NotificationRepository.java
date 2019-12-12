@@ -7,6 +7,6 @@ import fr.dta.ovg.entities.Notification;
 
 /** Notification Repository extends Jpa Repository. */
 @Repository
-public interface NotificationRepository extends JpaRepository<Notification, Long>{
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
 
 }

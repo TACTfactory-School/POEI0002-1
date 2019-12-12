@@ -42,7 +42,7 @@ public class MessageController {
      * @return List of all Messages.
      */
     @GetMapping
-    public List< Message> getAll() {
+    public List<Message> getAll() {
         return this.service.getAll();
     }
 

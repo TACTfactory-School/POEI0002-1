@@ -13,7 +13,7 @@ import fr.dta.ovg.repositories.HobbyRepository;
 import fr.dta.ovg.services.HobbyCrudService;
 
 @Service
-public class HobbyCrudServiceImpl implements HobbyCrudService{
+public class HobbyCrudServiceImpl implements HobbyCrudService {
 
     @Autowired
     HobbyRepository repository;

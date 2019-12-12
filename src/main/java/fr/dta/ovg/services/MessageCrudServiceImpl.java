@@ -13,7 +13,7 @@ import fr.dta.ovg.repositories.MessageRepository;
 import fr.dta.ovg.services.user.UserDeleteService;
 
 @Service
-public class MessageCrudServiceImpl implements MessageCrudService{
+public class MessageCrudServiceImpl implements MessageCrudService {
 
     @Autowired
    MessageRepository repository;

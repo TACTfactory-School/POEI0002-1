@@ -13,7 +13,7 @@ import fr.dta.ovg.repositories.NotificationRepository;
 import fr.dta.ovg.services.user.UserDeleteService;
 
 @Service
-public class NotificationCrudServiceImpl implements NotificationCrudService{
+public class NotificationCrudServiceImpl implements NotificationCrudService {
 
     @Autowired
     NotificationRepository repository;

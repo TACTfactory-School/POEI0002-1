@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModel;
 @Entity
 @Table(name = "app_hobbies")
 @ApiModel(value = "Describes a Hobby for our system.")
-public class Hobby  extends EntityBase{
+public class Hobby  extends EntityBase {
 
     private String label;
 
