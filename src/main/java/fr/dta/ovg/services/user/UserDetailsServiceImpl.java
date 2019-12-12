@@ -1,4 +1,4 @@
-package fr.dta.ovg.security.services;
+package fr.dta.ovg.services.user;
 
 import java.util.HashSet;
 import java.util.Set;

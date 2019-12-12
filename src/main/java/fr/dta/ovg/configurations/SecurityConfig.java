@@ -1,4 +1,4 @@
-package fr.dta.ovg.security.configurations;
+package fr.dta.ovg.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import fr.dta.ovg.security.services.UserDetailsServiceImpl;
+import fr.dta.ovg.services.user.UserDetailsServiceImpl;
 
 @EnableWebSecurity
 @EnableAutoConfiguration
