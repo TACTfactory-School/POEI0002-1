@@ -25,9 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "Describes an User for our system")
 public class User extends EntityBase {
 
-
-    private String role;
-
     /** Username of user. <br> DB Column. */
     @NotBlank
     @Column(name = "us_username", length = 32, nullable = false, unique = true)
@@ -42,7 +39,7 @@ public class User extends EntityBase {
 
     /** Password of user. <br> DB Column. */
     @NotBlank
-    @Column(name = "us_password", length = 32, unique = false, nullable = true)
+    @Column(name = "us_password", unique = false, nullable = true)
     @ApiModelProperty(value = "The password of the user.")
     private String password; // TODO must be encrypted.
 
@@ -300,15 +297,14 @@ public class User extends EntityBase {
      * @return the role
      */
     public String getRole() {
-        return role;
+        return "USER";
     }
 
-    /**
-     * @param role the role to set
-     */
-    public void setRole(final String role) {
-        this.role = role;
-    }
+//    @Override
+//    public String getName() {
+//        // TODO Auto-generated method stub
+//        return this.getUsername();
+//    }
 
     /* Futures attributees
     private Language[] languages;
