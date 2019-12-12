@@ -11,9 +11,8 @@
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.event-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+li {
+  list-style-type: none;
 }
 p {
   word-wrap: break-word;
@@ -35,4 +34,8 @@ justify-content: space-between;
 .gradient {
 color: #fff;
 background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+}
+
+mat-card {
+  cursor: pointer;
 }

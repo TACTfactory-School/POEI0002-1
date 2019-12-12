@@ -2,20 +2,31 @@
   <app-loader></app-loader>
 </ng-template>
 <app-event-list-toggle class="toggle-btn" (change)="onDrawModeChange($event)"></app-event-list-toggle>
+
 <div [ngSwitch]="drawMode">
-  <ng-container *ngIf="events; else loading">
+  <ng-container *ngIf="page; else loading">
     <div class="event-list" *ngSwitchCase="'list'">
         <ng-container>
-          <app-event-list-inline [events]="events" ></app-event-list-inline>
+          <app-event-list-inline [events]="page.content" ></app-event-list-inline>
         </ng-container>
     </div>
-    <div class="event-cards" *ngSwitchCase="'cards'">
-        <ng-container *ngFor="let e of events">
-          <app-event-list-card [id]="e.id" [label]="e.label" [description]="e.description" [creator]="e.creator.username"></app-event-list-card>
+      <div class="event-cards" *ngSwitchCase="'cards'">
+        <ng-container *ngFor="let e of page.content">
+          <app-event-list-card [event]="e">
+            </app-event-list-card>
         </ng-container>
+
     </div>
+
     <button [routerLink]="['/event/new']" mat-fab class="fab gradient">
       <mat-icon>create</mat-icon>
     </button>
   </ng-container>
+
+  <app-paginator
+    [totalElements]="totalElements"
+    (page)="onPaginate($event)"
+  >
+  </app-paginator>
 </div>
+

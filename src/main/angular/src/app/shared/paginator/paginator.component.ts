@@ -1,5 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {PageEvent} from '@angular/material/paginator';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {PageEvent, MatPaginator} from '@angular/material/paginator';
+import { Pageable } from './pageable';
+
+const pageSizeOptions = [12, 24, 48, 96];
+
+interface PaginatorOptions {
+  page: number;
+  perPage: number;
+  pageSizeOptions: number[];
+}
 
 @Component({
   selector: 'app-paginator',
@@ -8,20 +17,26 @@ import {PageEvent} from '@angular/material/paginator';
 })
 export class PaginatorComponent implements OnInit {
 
+  readonly options: PaginatorOptions = {
+    page: 0,
+    perPage: 12,
+    pageSizeOptions
+  };
+
+  @Input() readonly totalElements: number = null;
+
+  @Output() page = new EventEmitter<Pageable>();
+
   constructor() { }
 
   ngOnInit() {
+    this.page.emit(this.options);
   }
 
-  // MatPaginator Inputs
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-
-  // MatPaginator Output
-  pageEvent: PageEvent;
-
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  onPaginate(p: MatPaginator) {
+    this.page.emit({
+      page: p.pageIndex,
+      perPage: p.pageSize
+    })
   }
 }

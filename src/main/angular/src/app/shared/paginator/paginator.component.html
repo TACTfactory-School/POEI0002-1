@@ -1,4 +1,4 @@
-<mat-form-field>
+<!-- <mat-form-field>
   List length:
   <input matInput [(ngModel)]="length">
 </mat-form-field>
@@ -12,17 +12,18 @@
   <input matInput
          [ngModel]="pageSizeOptions"
          (ngModelChange)="setPageSizeOptions($event)">
-</mat-form-field>
+</mat-form-field> -->
 
-<mat-paginator [length]="length"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="pageSizeOptions"
-              (page)="pageEvent = $event">
+<mat-paginator [length]="totalElements"
+              [pageIndex]="options.page"
+              [pageSize]="options.perPage"
+              [pageSizeOptions]="options.pageSizeOptions"
+              (page)="onPaginate($event)">
 </mat-paginator>
-
+<!--
 <div *ngIf="pageEvent">
   <h5>Page Change Event Properties</h5>
   <div>List length: {{pageEvent.length}}</div>
   <div>Page size: {{pageEvent.pageSize}}</div>
   <div>Page index: {{pageEvent.pageIndex}}</div>
-</div>
+</div> -->

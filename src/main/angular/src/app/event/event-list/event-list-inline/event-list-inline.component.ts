@@ -7,24 +7,19 @@ import { Event } from '../../event';
   templateUrl: './event-list-inline.component.html',
   styleUrls: ['./event-list-inline.component.scss']
 })
-export class EventListInlineComponent implements OnInit {
+export class EventListInlineComponent {
 
   // @Input() label: string;
   // @Input() description: string;
   // @Input() creator: string;
 
-  @Input() events: Event[];
+  // @Input() events:\ Event[];
 
   displayedColumns: string[] = ['creator', 'label', 'description'];
   dataSource: MatTableDataSource<Event>;
 
-   @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort, {static: true}) sort: MatSort;
-
-  constructor() { }
-
-  ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.events);
-    this.dataSource.paginator = this.paginator;
+  @Input('events')
+  set setPage(events: Event[]) {
+    this.dataSource = new MatTableDataSource(events);
   }
 }
