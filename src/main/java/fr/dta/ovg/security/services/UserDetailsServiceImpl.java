@@ -24,8 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //    @Autowired
 //    private SecurityRoleRepository roleRepo;
 
-     @Autowired
-     private UserRepository userRepo;
+    @Autowired
+    private UserRepository userRepo;
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
@@ -34,27 +34,24 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserDetails result = null;
 
         // User user = userServiceImpl.findByUsername(username);
-        User user = userRepo.findByUsername(username);
+        User user = userRepo.findByUsername(username).orElse(null);
 
+        // TODO: Search on administrator if not found as simple user
 
         if (user != null) {
 
-            //List<SecurityRole> roles = roleRepo.findByUsername(username);
+            // List<SecurityRole> roles = roleRepo.findByUsername(username);
 
             Set<GrantedAuthority> grantedAutorities = new HashSet<>();
 
-            //for (SecurityRole role : roles) { }
-                // Simple = role springboot
-                grantedAutorities.add(new SimpleGrantedAuthority(user.getRole()));
-
+            // for (SecurityRole role : roles) { }
+            // Simple = role springboot
+            grantedAutorities.add(new SimpleGrantedAuthority(user.getRole()));
 
             UserBuilder userBuilder = org.springframework.security.core.userdetails.User.builder();
 
-            result = userBuilder
-                    .username(user.getUsername())
-                    .password(user.getPassword())
-                    .authorities(grantedAutorities)
-                    .build();
+            result = userBuilder.username(user.getUsername()).password(user.getPassword())
+                    .authorities(grantedAutorities).build();
         }
 
         return result;

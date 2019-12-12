@@ -1,19 +1,22 @@
 package fr.dta.ovg.security.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import fr.dta.ovg.security.services.UserDetailsServiceImpl;
 
-
-//@EnableWebSecurity
-//@EnableAutoConfiguration
+@EnableWebSecurity
+@EnableAutoConfiguration
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -26,22 +29,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-
         http.csrf().disable()
-            .antMatcher("/*").anonymous() // anonymous
+            .cors().disable()
+            .authorizeRequests()
+                .antMatchers("/api/v1/user/me").authenticated()
+                .antMatchers(HttpMethod.POST).authenticated()
+                .antMatchers(HttpMethod.POST, "/api/v1/user/").anonymous()
+                .anyRequest().permitAll()
             .and()
-            .antMatcher("/api/**").authorizeRequests() // authorizeRequests
+            .httpBasic()
             .and()
-            .antMatcher("/api/v1/*").authorizeRequests() // authorizeRequests
-                .antMatchers(HttpMethod.GET, "/api/v1/user").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/v1/event").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/v1/event").permitAll()
-                .antMatchers(HttpMethod.OPTIONS, "/api/v1/event").permitAll()
-            .and()
-            .httpBasic();
-
-        super.configure(http);
+                .formLogin().disable();
     }
 
     /**
@@ -49,14 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.userDetailsService(userDetailsServiceImpl)
-            .and()
-            .inMemoryAuthentication().withUser("admin").password("admin")
-            .and()
-            .withUser("standard").password("standard");
-
-//        auth.userDetailsService(userDetailsServiceImpl);
+        auth.userDetailsService(userDetailsServiceImpl);
 
         super.configure(auth);
     }
@@ -64,6 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationManager customAuthenticationManager() throws Exception {
       return authenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

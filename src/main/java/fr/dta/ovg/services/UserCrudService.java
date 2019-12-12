@@ -29,6 +29,8 @@ public interface UserCrudService {
      * */
     User getOne(long id) throws NotFoundException;
 
+    User getOne(String username) throws NotFoundException;
+
     /**
      * Create one User entity.<br>
      * Must be redefined in implemented class.<br>

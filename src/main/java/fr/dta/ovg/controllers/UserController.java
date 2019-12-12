@@ -5,6 +5,8 @@
  */
 package fr.dta.ovg.controllers;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,6 +119,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable final Long id) throws NotFoundException {
         this.service.delete(id);
+    }
+
+    @GetMapping("me")
+    public User getMe(final Principal principal) throws NotFoundException {
+        return this.service.getOne(principal.getName());
     }
 
 

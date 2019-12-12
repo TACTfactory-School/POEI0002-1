@@ -56,6 +56,14 @@ public class UserCrudServiceImpl implements UserCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public User getOne(final String username) throws NotFoundException {
+        return this.repository
+                .findByUsername(username)
+                .orElseThrow(() -> new NotFoundException());
+    }
+
     @Transactional()
     @Override
     public User create(final User user) {
