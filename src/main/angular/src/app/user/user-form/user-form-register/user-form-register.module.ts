@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UserFormRegisterComponent } from './user-form-register.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
-import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule, MatStepperModule, MatMenuModule,
+   MatFormFieldModule } from '@angular/material';
 
 @NgModule({
   declarations: [ UserFormRegisterComponent ],
@@ -13,7 +14,10 @@ import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule } from '@ang
     OvgFormsModule,
     MatToolbarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatStepperModule,
+    MatMenuModule,
+    MatFormFieldModule
   ],
   exports: [ UserFormRegisterComponent ]
 })

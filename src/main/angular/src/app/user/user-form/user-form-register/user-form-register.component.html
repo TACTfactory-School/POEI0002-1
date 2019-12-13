@@ -21,7 +21,7 @@
             <p>
               <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Email" formControlName="email">
+                <input matInput placeholder="Email" type="email" formControlName="email">
                 <!-- <mat-error *ngIf="email.invalid && !email.pristine" class="alert"> Veuillez saisir un email valide.</mat-error> -->
                 <mat-icon matSuffix>sentiment_very_dissatisfied</mat-icon>
                 <mat-hint>Hint</mat-hint>
@@ -55,6 +55,48 @@
                 <!-- <mat-error *ngIf="birthdate.invalid && !birthdate.pristine" class="alert"> Veuillez saisir une date de naissance valide. </mat-error> -->
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
+              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                  <form [formGroup]="registerUser">
+                    <ng-template matStepLabel>Prénom</ng-template>
+                    <mat-form-field>
+                      <input matInput placeholder="Prenom" formControlName="firstname">
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperNext>Suivant</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                  <form [formGroup]="registerUser">
+                    <ng-template matStepLabel>Ville</ng-template>
+                    <mat-form-field>
+                      <input matInput placeholder="Ville" formControlName="city">
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperPrevious>Retour</button>
+                      <button mat-button matStepperNext>Suivant</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step [stepControl]="thirdFormGroup">
+                  <form [formGroup]="registerUser">
+                    <ng-template matStepLabel>Sex</ng-template>
+                      <button mat-button [matMenuTriggerFor]="menu">Genre</button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Femme</button>
+                        <button mat-menu-item>Homme</button>
+                        <button mat-menu-item>Non Binaire</button>
+                      </mat-menu>
+                    <div>
+                      <button mat-button matStepperPrevious>Retour</button>
+                      <button mat-button matStepperNext>Suivant</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <!-- <mat-step>
+                </mat-step> -->
+              </mat-horizontal-stepper>
             </p>
             <button mat-raised-button class="btn" type="submit" [disabled]="!registerUser.valid">Continuer</button>
       </fieldset>

@@ -13,6 +13,10 @@ import { MatSnackBar } from '@angular/material';
 })
 export class UserFormRegisterComponent implements OnInit {
 
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
   registerUser: FormGroup;
   newUser: User;
 
@@ -33,11 +37,12 @@ export class UserFormRegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerUser = this.fb.group({
-      username : new FormControl(''),
-      email : new FormControl(''),
-      password : new FormControl(''),
-      birthdate : new FormControl(''),
-
+      username : new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+      email : new FormControl('', Validators.compose([Validators.required, Validators.email])),
+      password : new FormControl('', Validators.compose([Validators.required, Validators.minLength(7), Validators.maxLength(25)])),
+      birthdate : new FormControl('', Validators.required),
+      firstname : new FormControl(''),
+      city : new FormControl(''),
     });
   }
 
@@ -51,6 +56,8 @@ export class UserFormRegisterComponent implements OnInit {
       this.registerUser.controls.email.value,
       this.registerUser.controls.password.value,
       this.registerUser.controls.birthdate.value,
+      this.registerUser.controls.firstname.value,
+      this.registerUser.controls.city.value,
     );
     console.log(this.registerUser.value);
     if (this.api.add(this.newUser) && this.registerUser.valid) {
@@ -67,6 +74,15 @@ export class UserFormRegisterComponent implements OnInit {
             console.log(error);
         });
     }
+    this.firstFormGroup = this.fb.group({
+      firstCtrl: new FormControl('')
+    });
+    this.secondFormGroup = this.fb.group({
+      secondCtrl: new FormControl('')
+    });
+    this.thirdFormGroup = this.fb.group({
+      secondCtrl: new FormControl('')
+    });
   }
 
 
