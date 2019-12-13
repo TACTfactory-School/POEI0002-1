@@ -54,7 +54,8 @@ export class UserFormLoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
           data => {
-              this.router.navigate(['events']);
+              this.router.navigateByUrl(this.router.url);
+              this.dialog.closeAll();
           },
           error => {
               this.error = error;
