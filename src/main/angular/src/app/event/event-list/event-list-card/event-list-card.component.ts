@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/user/user';
 import { ActivatedRoute } from '@angular/router';
+import { Event } from '../../event';
 
 @Component({
   selector: 'app-event-list-card',
@@ -9,20 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventListCardComponent implements OnInit {
   @Input() event: Event;
-  @Input() label: string;
-  @Input() description: string;
-  @Input() creator: User;
-  @Input() id: number;
+  // @Input() label: string;
+  // @Input() description: string;
+  // @Input() creator: User;
+  // @Input() id: number;
 
-//  id : string;
+  // @Input() finished: boolean;
+  // @Input() startAt: Date;
+  // @Input() nbPlaceMax: number;
+  // @Input() city: string;
 
-  constructor(
- //   private readonly route: ActivatedRoute
-    ) {}
 
-  ngOnInit() {
- //   this.id = this.route.snapshot.paramMap.get('id');
+  constructor() {}
 
-  }
+  ngOnInit() {}
 
 }

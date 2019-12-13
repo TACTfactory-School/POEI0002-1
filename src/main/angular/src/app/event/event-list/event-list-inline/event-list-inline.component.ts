@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { Component, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 import { Event } from '../../event';
 
 @Component({
@@ -7,24 +7,13 @@ import { Event } from '../../event';
   templateUrl: './event-list-inline.component.html',
   styleUrls: ['./event-list-inline.component.scss']
 })
-export class EventListInlineComponent implements OnInit {
-
-  // @Input() label: string;
-  // @Input() description: string;
-  // @Input() creator: string;
-
-  @Input() events: Event[];
+export class EventListInlineComponent {
 
   displayedColumns: string[] = ['creator', 'label', 'description'];
   dataSource: MatTableDataSource<Event>;
 
-   @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort, {static: true}) sort: MatSort;
-
-  constructor() { }
-
-  ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.events);
-    this.dataSource.paginator = this.paginator;
+  @Input('events')
+  set setPage(events: Event[]) {
+    this.dataSource = new MatTableDataSource(events);
   }
 }

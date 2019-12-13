@@ -31,4 +31,6 @@ export class EventDetailsComponent implements OnInit {
     // +this.route.snapshot.paramMap.get('id')
 
   }
+
+  joinEvent() {}
 }

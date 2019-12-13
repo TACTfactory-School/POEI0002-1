@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Event, EventFormDTO } from './event';
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
+import { Page } from './page';
 
 const URL = `${environment.apiUrl}/event`;
 const PAGEABLE = `?page=${environment.p}&quantity=${environment.q}`;
@@ -13,9 +15,14 @@ export class EventApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {
-    return this.http.get<Event[]>('./assets/fixtureEvent3.json');
-    //return this.http.get<Event[]>(`${URL}`);
+  getAll(page: number, perPage: number) {
+    //return this.http.get<Event[]>('./assets/fixtureEvent3.json');
+
+    const params = new HttpParams()
+        .set('page', `${page}`)
+        .set('quantity', `${perPage}`)
+
+    return this.http.get<Page<Event>>(`${URL}`, {params});
   }
 
   getOne(id: number) {
