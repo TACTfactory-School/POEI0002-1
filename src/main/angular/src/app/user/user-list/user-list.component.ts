@@ -1,9 +1,11 @@
-import { Component, Input, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, Input } from '@angular/core';
 import { User } from '../user';
 import { UserApiService } from '../user-api.service';
 import { Subscription } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Page } from 'src/app/shared/paginator/page';
+import { Pageable } from 'src/app/shared/paginator/pageable';
+import { CurrentUserService } from 'src/app/auth/current-user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -12,64 +14,43 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 })
 export class UserListComponent implements OnInit, OnDestroy {
 
-  constructor(private api: UserApiService) { }
-
-  users: User[] = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  displayedColumns: string[] = ['id', 'username', 'email', 'birthdate', 'age', 'registeredAt', 'actions'];
-
+  user: User;
+  page: Page<User>;
+  displayedColumns: string[] = ['username', 'firstname', 'email', 'birthdate', 'age', 'registeredAt', 'actions'];
   dataSource: MatTableDataSource<User>;
 
-  private sub: Subscription;
+  constructor(private api: UserApiService, private readonly currentUser: CurrentUserService) { }
+
+  private sub: Subscription[] = [];
 
   ngOnInit() {
-    this.api.getAll()
-      .pipe(delay(1_000))
-      .subscribe(data => this.receive(data));
-  }
-  receive(data: User[]): void {
-    this.users = data;
-    this.dataSource = new MatTableDataSource(this.users);
-    this.dataSource.paginator = this.paginator;
+    this.sub.push(
+        this.currentUser
+            .observable
+            .subscribe(user => this.user = user));
   }
 
-  get total() {
-    return (this.users || []).length;
+  onPaginate(pageable: Pageable) {
+    this.sub.push(
+    this.api
+        .getAll(pageable.page, pageable.perPage)
+        .subscribe(data => {
+          this.page = data;
+          this.dataSource = new MatTableDataSource(this.page.content);
+        }));
+  }
+
+  get totalElements() {
+    return (this.page || {totalElements: null}).totalElements;
+  }
+
+  get quantity() {
+    return (this.page || {content: []}).content.length;
   }
 
   ngOnDestroy() {
-    if (this.sub) {
-      this.sub.unsubscribe();
-      this.sub = null;
-    }
+    this.sub.forEach(s => s.unsubscribe());
+    this.sub = [];
   }
 }
-
-  // applyFilter(filterValue: string) {
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-
-  //   if (this.dataSource.paginator) {
-  //     this.dataSource.paginator.firstPage();
-  //   }
-  // }
-
-  // Assign the data to the data source for the table to render
-  // this.dataSource = new MatTableDataSource(this.users);
-  // this.dataSource.paginator = this.paginator;
-  // this.dataSource.sort = this.sort;
-
-  // displayedColumns: string[] = ['id', 'username', 'email', 'birthdate', 'age', 'registeredAt', 'enabled' ];
-  // dataSource: MatTableDataSource<User>;
-
-  // @ViewChild(MatPaginator, { read: true }) paginator: MatPaginator;
-  // @ViewChild(MatSort, { read: true }) sort: MatSort;
-  // @Input() id: number;
-  // @Input() username: string;
-  // @Input() email: string;
-  // @Input() birthdate: Date;
-  // public age = this.calculateAge();
-  // @Input() registeredAt: Date;
-  // @Input() enabled: boolean;
-
-

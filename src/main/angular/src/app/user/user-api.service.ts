@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from './user';
 import { environment } from 'src/environments/environment';
-import { Page } from '../event/page';
+import { Page } from '../shared/paginator/page';
 
 const URL = `${environment.apiUrl}/user`;
 

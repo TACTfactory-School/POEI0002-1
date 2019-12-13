@@ -6,6 +6,7 @@ import { OvgTablesModule } from 'src/app/shared/tables/ovg-tables.module';
 import { LoaderModule } from 'src/app/shared/loader/loader.module';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { RouterModule } from '@angular/router';
+import { PaginatorModule } from 'src/app/shared/paginator/paginator.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     OvgFormsModule,
     LoaderModule,
     RouterModule,
+    PaginatorModule,
     PipesModule
   ],
   exports: [
