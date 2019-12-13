@@ -15,16 +15,19 @@ import { CguComponent } from './pages/cgu/cgu.component';
 const routes: Routes = [
 
   { path: '',     redirectTo: 'login', pathMatch: 'full' },
-  { path: 'events', component: EventListComponent, // Event List
-      // children: [
-      //   {
-      //     path : ':id',
-      //     component: EventDetailsComponent
-      //   } // event detail
-      // ],
+
+  // { path: 'events', component: EventListComponent}, // Event List
+  // { path: 'event/new', component: EventFormComponent, canActivate: [LogguedGuard]},
+  // { path: 'event/:id', component: EventDetailsComponent}, // Event details
+
+  {
+    path: 'event',
+    children: [
+      { path: 'new', component: EventFormComponent , canActivate: [LogguedGuard]},
+      { path: ':id', component: EventDetailsComponent}, // Event details
+      { path: '', component: EventListComponent} // Event List
+    ]
   },
-  { path: 'event/new', component: EventFormComponent, canActivate: [ LogguedGuard ]},
-  { path: 'event/:id', component: EventDetailsComponent}, // Event details
 
   { path: 'users', component: UserListComponent }, // User List
   { path: 'user/:id', component: UserDetailsComponent }, // User details

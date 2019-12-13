@@ -6,7 +6,7 @@
 package fr.dta.ovg.entities;
 
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +71,7 @@ public class User extends EntityBase {
     /** Last Login Date of user. <br> DB Column. */
     @Column(name = "us_lastlog", unique = false, nullable = true)
     @ApiModelProperty(value = "The last login date rate of the user.")
-    private ZonedDateTime lastLogin;
+    private LocalDateTime lastLogin;
 
     /** Gender of user. <br> DB Column. */
     @Column(name = "us_gender", unique = false, nullable = true)
@@ -192,17 +192,17 @@ public class User extends EntityBase {
 
     /**
      * Get the user last login date time.
-     * @return the lastLogin (ZonedDateTime).
+     * @return the lastLogin (LocalDateTime).
      */
-    public ZonedDateTime getLastLogin() {
+    public LocalDateTime getLastLogin() {
         return lastLogin;
     }
 
     /**
      * Set the user last login date time.
-     * @param lastLogin (ZonedDateTime) : the lastLogin to set
+     * @param lastLogin (LocalDateTime) : the lastLogin to set
      */
-    public void setLastLogin(final ZonedDateTime lastLogin) {
+    public void setLastLogin(final LocalDateTime lastLogin) {
         this.lastLogin = lastLogin;
     }
 

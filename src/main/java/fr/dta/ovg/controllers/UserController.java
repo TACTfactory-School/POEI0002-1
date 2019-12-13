@@ -6,6 +6,7 @@
 package fr.dta.ovg.controllers;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 
 import javax.validation.Valid;
 
@@ -123,6 +124,7 @@ public class UserController {
 
     @GetMapping("me")
     public User getMe(final Principal principal) throws NotFoundException {
+        this.service.getOne(principal.getName()).setLastLogin(LocalDateTime.now());
         return this.service.getOne(principal.getName());
     }
 
