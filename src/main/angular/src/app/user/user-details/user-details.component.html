@@ -7,33 +7,69 @@
       <div class="header">
         <mat-toolbar>
             <mat-toolbar-row>
-              <p class="title">Profil </p>
-              <p class="username">de {{ u.username | uppercase }}</p>
+              <p class="title">Profil de {{ u.username | uppercase }}</p>
               <span class="spacer"></span>
-              <!-- <button mat-raised-button [routerLink]="['/user', u.m.id]">Editer</button> -->
+              <p class="lastlog">Dernière connexion : {{ u.lastLogin | date: 'medium' }}</p>
+              <span class="spacer"></span>
+              <button class="btn" mat-raised-button type="submit">Signaler</button>
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="event-header-image">
-          <img class="header-image" src="{{ e.img }}" alt="avatar de l'utilisateur">
-          <img class="header-image" src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
+          <img class="header-image" src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="Avatar de l'utilisateur.">
         </div>
       </div>
-      <div class="login-form">
+      <div class="view-form">
           <p *ngIf="!u.enabled; else viewDetails" >
-              L'utilisateur à désactivé son compte
+              L'utilisateur à désactivé son compte.
           </p>
           <ng-template #viewDetails>
-            <p>Nom d'utilisateur : {{ u.username }}</p>
-            <p>Email : {{ u.email }}</p>
-            <p>Date de naissance : {{ u.email }}</p>
-            <p>Age : {{ u.birthdate | age }}</p>
-            <p>Dernière connexion : {{ u.lastLogin }}</p>
-            <p>Date d'inscription : {{ u.createdAt }}</p>
-            <p>Email : {{ u.email }}</p>
-          </ng-template>
+            <span class="user-rate">Note : {{ u.rate }}</span>
+            <dl>
+              <dt>Nom d'utilisateur</dt>
+              <dd>{{ u.username }}</dd>
 
+              <dt>Prénom</dt>
+              <dd>{{ u.firstname }}</dd>
+
+              <dt>Email</dt>
+              <dd>{{ u.email }}</dd>
+
+              <dt>Langues parlés</dt>
+              <dd *ngFor="let lang of u.languages; index as i">{{ lang.default }} {{ lang.level }}</dd>
+
+              <dt>Centres d'intérêts</dt>
+              <dd *ngFor="let hobby of u.hobbies; index as i">{{ hobby.label }}</dd>
+
+              <dt>Evenements</dt>
+              <dd *ngFor="let event of u.events; index as i">{{ event.label }}</dd>
+
+              <dt>Date de naissance</dt>
+              <dd>{{ u.birthdate | date: 'short' }}</dd>
+
+              <dt>Age</dt>
+              <dd>{{ u.birthdate | age }}</dd>
+
+              <dt>Emploi</dt>
+              <dd>{{ u.job }}</dd>
+
+              <dt>Ville</dt>
+              <dd>{{ u.city }}</dd>
+
+              <dt>Sitation familiale</dt>
+              <dd>{{ u.maritalStatus }}</dd>
+
+              <dt>Genre</dt>
+              <dd>{{ u.gender }}</dd>
+
+              <dt>Date d'inscription</dt>
+              <dd>inscrit depuis le {{ u.createdAt | date: 'short' }}</dd>
+
+              <dt>Dernière modification</dt>
+              <dd>{{ u.updatedAt | date: 'short' }}</dd>
+            </dl>
+          </ng-template>
         <span class="spacer"></span>
-        <button class="btn" mat-raised-button type="submit">Rejoindre</button>
       </div>
+      <button class="btn" mat-raised-button type="submit">Inviter</button>
     </div>
 </article>

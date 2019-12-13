@@ -54,7 +54,10 @@
        <!-- Actions Column -->
        <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-          <td mat-cell *matCellDef="let row"> ici les boutons </td>
+          <td mat-cell *matCellDef="let row">
+              <button class="btn" mat-raised-button>Inviter</button>
+              <button class="btn" mat-raised-button  [routerLink]="['/user', row.id]">Détails</button>
+            </td>
         </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
