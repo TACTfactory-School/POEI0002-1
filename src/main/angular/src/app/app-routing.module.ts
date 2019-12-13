@@ -23,7 +23,7 @@ const routes: Routes = [
       //   } // event detail
       // ],
   },
-  { path: 'event/new', component: EventFormComponent},
+  { path: 'event/new', component: EventFormComponent, canActivate: [ LogguedGuard ]},
   { path: 'event/:id', component: EventDetailsComponent}, // Event details
 
   { path: 'users', component: UserListComponent }, // User List

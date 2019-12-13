@@ -31,6 +31,5 @@ export class UserApiService {
 
   updateOne(id: number, data: User) {
     return this.http.put<Event>(`${URL}/${id}`, data);
-    }
-
+  }
 }
