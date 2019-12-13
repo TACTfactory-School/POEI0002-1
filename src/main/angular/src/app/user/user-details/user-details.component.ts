@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
+import { Observable } from 'rxjs';
+import { UserApiService } from '../user-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-details',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor() { }
+  user$: Observable<User>;
+
+  constructor(private readonly route: ActivatedRoute, private readonly api: UserApiService) { }
 
   ngOnInit() {
+    console.log('init user detail');
+    this.route
+        .params
+        .subscribe(params => {
+          if (params.id) {
+            console.log('id', params.id);
+            this.user$ = this.api.getOne(params.id);
+          }
+        });
   }
 
 }

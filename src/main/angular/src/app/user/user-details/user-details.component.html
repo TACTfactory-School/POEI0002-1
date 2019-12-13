@@ -1,3 +1,39 @@
-<p>
-  user-details works!
-</p>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
+
+<article *ngIf="(user$ | async) as u; else loading">
+  <div class="content">
+      <div class="header">
+        <mat-toolbar>
+            <mat-toolbar-row>
+              <p class="title">Profil </p>
+              <p class="username">de {{ u.username | uppercase }}</p>
+              <span class="spacer"></span>
+              <!-- <button mat-raised-button [routerLink]="['/user', u.m.id]">Editer</button> -->
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <div class="event-header-image">
+          <img class="header-image" src="{{ e.img }}" alt="avatar de l'utilisateur">
+          <img class="header-image" src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
+        </div>
+      </div>
+      <div class="login-form">
+          <p *ngIf="!u.enabled; else viewDetails" >
+              L'utilisateur à désactivé son compte
+          </p>
+          <ng-template #viewDetails>
+            <p>Nom d'utilisateur : {{ u.username }}</p>
+            <p>Email : {{ u.email }}</p>
+            <p>Date de naissance : {{ u.email }}</p>
+            <p>Age : {{ u.birthdate | age }}</p>
+            <p>Dernière connexion : {{ u.lastLogin }}</p>
+            <p>Date d'inscription : {{ u.createdAt }}</p>
+            <p>Email : {{ u.email }}</p>
+          </ng-template>
+
+        <span class="spacer"></span>
+        <button class="btn" mat-raised-button type="submit">Rejoindre</button>
+      </div>
+    </div>
+</article>
