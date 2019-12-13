@@ -8,6 +8,7 @@ import { EventListComponent } from './event-list.component';
 import { LoaderModule } from 'src/app/shared/loader/loader.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { RouterModule } from '@angular/router';
+import { PaginatorModule } from 'src/app/shared/paginator/paginator.module';
 
 @NgModule({
   declarations: [EventListComponent],
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     EventFormModule,
     LoaderModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    PaginatorModule
   ],
   exports: [EventListComponent]
 })

@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventApiService } from '../event-api.service';
 import { Event } from '../event';
+import { MatPaginator } from '@angular/material';
+import { Page } from '../page';
+import { Pageable } from 'src/app/shared/paginator/pageable';
 
 type Mode = 'list' | 'cards' | null;
 
@@ -11,19 +14,27 @@ type Mode = 'list' | 'cards' | null;
 })
 export class EventListComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   drawMode: Mode = 'cards';
+
+  page: Page<Event>;
 
   constructor(private api: EventApiService) {}
 
-  events: Event[] = null;
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.api.getAll()
-      .subscribe(data => this.events = data);
+  onPaginate(pageable: Pageable) {
+    this.api
+        .getAll(pageable.page, pageable.perPage)
+        .subscribe(data => this.page = data);
   }
 
   onDrawModeChange(mode: Mode) {
     console.log('list', {mode, active: this.drawMode});
     this.drawMode = mode;
+  }
+
+  get totalElements() {
+    return (this.page || {totalElements: null}).totalElements;
   }
 }
