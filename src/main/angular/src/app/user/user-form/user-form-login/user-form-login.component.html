@@ -4,7 +4,7 @@
         <mat-toolbar-row>
           <span>Connexion</span>
           <span class="spacer"></span>
-          <button mat-icon-button (click)="close()">
+          <button *ngIf="isModal" mat-icon-button (click)="close()">
             <mat-icon>close</mat-icon>
           </button>
         </mat-toolbar-row>
@@ -12,7 +12,7 @@
   </div>
   <span class="incorrect" *ngIf="invalidLogin">Nom d'utilisateur ou mot de passe incorrecte.</span>
   <div class="login-form">
-    <form [formGroup]="login" (ngSubmit)="checkLogin()">
+    <form [formGroup]="login" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Nom d'utilisateur</mat-label>
@@ -29,11 +29,11 @@
           <!-- <mat-hint>Hint</mat-hint> -->
         </mat-form-field>
       </p>
-      <button mat-stroked-button (click)="close()">Fermer</button>
+      <button class="btn" mat-stroked-button *ngIf="isModal" (click)="close()">Fermer</button>
       <span class="spacer"></span>
-      <button mat-stroked-button color="primary" (click)="registered()">Inscription</button>
+      <button class="btn" mat-stroked-button color="primary" (click)="registered()">Inscription</button>
       <span class="spacer"></span>
-      <button class="btn" mat-raised-button type="submit">Connexion</button>
+      <button class="gradient" mat-raised-button type="submit">Connexion</button>
     </form>
   </div>
 </div>

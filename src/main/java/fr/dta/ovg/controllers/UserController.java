@@ -126,5 +126,4 @@ public class UserController {
         return this.service.getOne(principal.getName());
     }
 
-
 }

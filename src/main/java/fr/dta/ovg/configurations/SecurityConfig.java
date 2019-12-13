@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
             .cors().disable()
             .authorizeRequests()
-                .antMatchers("/api/v1/user/me").authenticated()
+                .antMatchers("/api/v1/user/me").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/event").authenticated()
                 .antMatchers(HttpMethod.POST, "/api/v1/user").anonymous()
                 .anyRequest().permitAll()

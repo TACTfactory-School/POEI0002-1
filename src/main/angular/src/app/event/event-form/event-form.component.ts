@@ -89,9 +89,10 @@ export class EventFormComponent implements OnInit {
         },
         error => {
             console.log(error);
+            this._snackBar.open('L\'événement n\'a pu être ajouté... Veuillez vérifier que vous êtes bien connecté(e)', 'Fermer', {
+              duration: 4000,
+            });
         });
-      console.log('evenement ajouté');
-
     } else {
       console.log('erreur lors de l\'ajout de l\'événement');
     }

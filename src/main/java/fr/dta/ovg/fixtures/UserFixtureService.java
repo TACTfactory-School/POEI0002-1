@@ -61,7 +61,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     }
 
     private void loadReal() {
-        this.build("Pawamba",   "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
+        this.build("Pamwamba",   "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
                     "Samy",     "Nantes",               "Dev Fullstack", 15.5f, ZonedDateTime.now());
         this.build("C-ambium",  "joe@me.com",           "colincolin",           LocalDate.of(1990, 06, 05),
                     "Colin",    "Rennes",               "Dev Fullstack", 14.2f, ZonedDateTime.now());

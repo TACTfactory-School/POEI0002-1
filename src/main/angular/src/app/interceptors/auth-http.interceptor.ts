@@ -8,11 +8,12 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   private token: string;
 
   constructor(private readonly tokenStorage: TokenStorageService) {
-    this.tokenStorage.observable.subscribe(token => this.token = token);
+    this.tokenStorage
+        .observable
+        .subscribe(token => this.token = token ? `Basic ${token}` : null);
   }
 
   intercept(req: HttpRequest<any> , next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('update req', { token: this.token});
     return next.handle(this.token ? this.buildRequest(req) : req);
   }
 
@@ -21,20 +22,4 @@ export class AuthHttpInterceptor implements HttpInterceptor {
       headers: req.headers.set('Authorization', this.token)
     });
   }
-
-  // intercept(req: HttpRequest<any> , next: HttpHandler): Observable<HttpEvent<any>> {
-  //   let result: HttpRequest<any>;
-
-  //   if (this.token) {
-  //     const newRequest = req.clone({
-  //       headers: req.headers.set('Authorization', this.token)
-  //     });
-
-  //     result = newRequest;
-  //   } else {
-  //     result = req;
-  //   }
-
-  //   return next.handle(result);
-  // }
 }
