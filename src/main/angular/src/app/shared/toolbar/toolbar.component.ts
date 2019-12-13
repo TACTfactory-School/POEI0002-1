@@ -43,6 +43,6 @@ export class ToolbarComponent implements OnInit {
   onLogout() {
     this.auth
         .logout()
-        .subscribe(() => this.router.navigate(['events']));
+        .subscribe(() => this.router.navigate(['event']));
   }
 }
