@@ -49,6 +49,7 @@ export class UserFormRegisterComponent implements OnInit, OnDestroy {
       this.registerUser.controls.password.value,
       this.registerUser.controls.birthdate.value,
     );
+
     console.log(this.registerUser.value);
     if (this.api.add(this.newUser) && this.registerUser.valid) {
       this.sub.push(
@@ -57,7 +58,7 @@ export class UserFormRegisterComponent implements OnInit, OnDestroy {
         .subscribe(
           data => {
               this.router.navigate(['/login']);
-              this._snackBar.open('Vous êtes inscrit !', 'Fermer', {
+              this._snackBar.open('Bienvenue ${newUser.username}. Vous êtes inscrit !', 'Fermer', {
                 duration: 4000,
               });
           },
@@ -67,6 +68,7 @@ export class UserFormRegisterComponent implements OnInit, OnDestroy {
     }
   }
 }
+// event listener / ngOnblur // OnChange ... icon change
     // registerForm = this.fb.group({
   //   username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
   //   email: ['', [Validators.required, Validators.email]],

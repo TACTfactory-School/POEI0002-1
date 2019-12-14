@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatPaginatorModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatPaginatorModule, MatFormFieldModule, MatInputModule, MatPaginatorIntl } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator.component';
+import { CustomMatPaginatorIntl } from './custom-paginator';
 
 @NgModule({
-  declarations: [PaginatorComponent],
+  declarations: [
+    PaginatorComponent
+  ],
   imports: [
     CommonModule,
     MatPaginatorModule,
@@ -13,6 +16,12 @@ import { PaginatorComponent } from './paginator.component';
     MatInputModule,
     FormsModule
   ],
-  exports: [PaginatorComponent]
+  exports: [
+    PaginatorComponent
+  ],
+  providers: [{
+    provide: MatPaginatorIntl,
+    useClass: CustomMatPaginatorIntl
+  }]
 })
 export class PaginatorModule { }

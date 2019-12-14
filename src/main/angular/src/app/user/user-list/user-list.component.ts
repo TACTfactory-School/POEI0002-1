@@ -46,7 +46,8 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   get quantity() {
-    return (this.page || {content: []}).content.length;
+    return (this.page || {content: null}).content.length;
+
   }
 
   ngOnDestroy() {

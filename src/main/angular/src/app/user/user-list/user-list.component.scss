@@ -1,3 +1,11 @@
+@import "../../../sass/_media.scss";
+
+@include mat-table-columns((
+    firstname: (width: 6rem),
+    createdAt: (width: 6rem)
+));
+
+// TABLE
 table {
   width: 100%;
   margin-top: 1rem;
@@ -13,14 +21,16 @@ table tr:nth-child(even){
 }
 
 td, th {
-  width: 25%;
+  //width: 25%;
   border-style: none !important;
 }
+
 tr {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
   height: 56px !important;
 }
+
 th {
   color: #fff;
   font-size: 1.2rem;
@@ -28,9 +38,26 @@ th {
 }
 .mat-header-row {
   background: linear-gradient(135deg,  #ffb702, #ff2d3b );
-
 }
+
+// ::ng-deep .mat-sort-header-container{
+//   display:flex;
+//   justify-content:center;
+// }
 
 mat-paginator {
   background: whitesmoke;
+}
+
+.inline-btn {
+  display: flex;
+  padding-left: 0.5em;
+}
+
+.spacer {
+  padding: 0.6em;
+}
+
+.display {
+  text-align: right;
 }
