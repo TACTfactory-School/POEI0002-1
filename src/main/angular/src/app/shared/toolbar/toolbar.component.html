@@ -19,8 +19,10 @@
     <!-- Messages if logged -->
     <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">mail</mat-icon></a>
 
-    <!-- Account Dropdown if looged -->
+    <!-- Account Dropdown if logged -->
     <a *ngIf="user" class="icon" [matMenuTriggerFor]="menu"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">account_circle</mat-icon></a>
+
+    <!-- Connxion/Login button if !logged -->
     <button *ngIf="!user" mat-stroked-button color="primary" (click)="openDialog()">Connexion</button>
 
     <!-- Dropdown menu -->
@@ -34,7 +36,7 @@
         <mat-icon>face</mat-icon>
         <span>Mes amis</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="openPrefDialog()">
         <mat-icon>settings</mat-icon>
         <span>Mon compte</span>
       </button>

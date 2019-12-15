@@ -12,6 +12,7 @@ import { UserFormEditComponent } from './user/user-form/user-form-edit/user-form
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { CguComponent } from './pages/cgu/cgu.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UserPreferencesComponent } from './user/user-preferences/user-preferences.component';
 
 const routes: Routes = [
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     children: [
       { path: 'me', component: UserProfileComponent , canActivate: [LogguedGuard]},
       { path: 'me/edit', component: UserFormEditComponent , canActivate: [LogguedGuard]},
+      { path: 'me/preferences', component: UserPreferencesComponent , canActivate: [LogguedGuard]},
       { path: ':id', component: UserDetailsComponent }, // User details
       { path: '', component: UserListComponent } // User List
     ]

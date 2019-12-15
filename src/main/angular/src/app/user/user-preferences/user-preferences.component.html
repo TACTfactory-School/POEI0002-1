@@ -13,7 +13,7 @@
   <div class="pref-dialog">
     <form [formGroup]="preferences" (ngSubmit)="onSubmit()">
       <div class="pref-notifications">
-          <mat-toolbar>
+          <mat-toolbar class="sub">
               <mat-toolbar-row>
                 <span>Notifications</span>
               </mat-toolbar-row>
@@ -21,16 +21,21 @@
         <ul>
           <li>
             <!-- Hide Current User Email -->
-            <mat-slide-toggle [ngModel]="checked">Désactiver les notifications dans l'application</mat-slide-toggle>
+            <mat-slide-toggle aria-label="Desactivate application notficiations" [checked]="checked">Désactiver les notifications dans l'application</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Birthate -->
-            <mat-slide-toggle [ngModel]="checked">Désactiver les notifications par mail</mat-slide-toggle>
+            <mat-slide-toggle aria-label="Desactivate mail notficiations">Désactiver les notifications par mail</mat-slide-toggle>
           </li>
         </ul>
 
       </div>
       <div class="pref-hide">
+        <mat-toolbar class="sub">
+          <mat-toolbar-row>
+            <span>Confidentialité</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
         <ul>
           <li>
             <!-- Hide Current User Email -->
@@ -57,9 +62,9 @@
 
       <button class="btn" mat-stroked-button *ngIf="isModal" (click)="close()">Fermer</button>
       <span class="spacer"></span>
-      <button class="btn" mat-stroked-button color="primary" (click)="save()">Inscription</button>
+      <button class="btn" mat-stroked-button color="primary" (click)="save()">Appliquer</button>
       <span class="spacer"></span>
-      <button class="gradient" mat-raised-button type="submit">Connexion</button>
+      <button class="gradient" mat-raised-button type="submit">Sauvegarder</button>
     </form>
   </div>
 </div>
