@@ -28,10 +28,10 @@ mat-toolbar-row {
 }
 
 
-mat-toolbar-row.sub {
-  color: linear-gradient(135deg,  #ffb702, #ff2d3b);
-  background-color: rgb(246, 246, 246);
-}
+// mat-toolbar-row.sub::after {
+//   color: linear-gradient(135deg,  #ffb702, #ff2d3b);
+//   background-color: rgb(246, 246, 246);
+// }
 
 // ---------- Form ---------- //
 form {
@@ -63,30 +63,30 @@ mat-form-field {
 //   pointer-events: none;
 // }
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-.mat-slide-toggle-thumb {
-  width: 10px !important;
-  height: 10px !important;
-  transform: translate(50%, 50%);
-}
+// .mat-slide-toggle-thumb {
+//   width: 10px !important;
+//   height: 10px !important;
+//   transform: translate(50%, 50%);
+// }
 
-.mat-slide-toggle-bar {
-background-color: rgb(245, 245, 245);
-border-radius: 15px !important;
-height: 16px !important;
-}
+// .mat-slide-toggle-bar {
+// background-color: rgb(245, 245, 245);
+// border-radius: 15px !important;
+// height: 16px !important;
+// }
 
-.mat-slide-toggle-thumb-container {
-top: -2px !important;
-}
+// .mat-slide-toggle-thumb-container {
+// top: -2px !important;
+// }
 
-.mat-slide-toggle.mat-checked:not(.mat-disabled)
-.mat-slide-toggle-bar {
-background-color: #000;
-}
+// .mat-slide-toggle.mat-checked:not(.mat-disabled)
+// .mat-slide-toggle-bar {
+// background-color: #000;
+// }
 
-.mat-slide-toggle.mat-checked:not(.mat-disabled)
-.mat-slide-toggle-thumb {
-background-color: #fff;
-}
+// .mat-slide-toggle.mat-checked:not(.mat-disabled)
+// .mat-slide-toggle-thumb {
+// background-color: #fff;
+// }

@@ -13,8 +13,8 @@
   <div class="pref-dialog">
     <form [formGroup]="preferences" (ngSubmit)="onSubmit()">
       <div class="pref-notifications">
-          <mat-toolbar class="sub">
-              <mat-toolbar-row>
+          <mat-toolbar>
+              <mat-toolbar-row class="sub">
                 <span>Notifications</span>
               </mat-toolbar-row>
             </mat-toolbar>
@@ -31,15 +31,15 @@
 
       </div>
       <div class="pref-hide">
-        <mat-toolbar class="sub">
-          <mat-toolbar-row>
+        <mat-toolbar>
+          <mat-toolbar-row class="sub">
             <span>Confidentialité</span>
           </mat-toolbar-row>
         </mat-toolbar>
         <ul>
           <li>
             <!-- Hide Current User Email -->
-            <mat-slide-toggle formControlName="hide" (change)="changed3($event)">{{ hideMail }} mon email.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hideMail" (change)="changed3($event)">{{ hideMail }} mon email.</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Birthate -->

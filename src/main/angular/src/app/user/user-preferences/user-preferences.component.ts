@@ -12,6 +12,8 @@ export class UserPreferencesComponent implements OnInit {
 
   preferences: FormGroup;
   isModal: boolean;
+  private app: boolean;
+  private mail: boolean;
 
   // Hide label manual TODO refacto ?
   activeApp = 'Désactiver';
@@ -22,26 +24,36 @@ export class UserPreferencesComponent implements OnInit {
   hideGender = 'Masquer';
   hideStatus = 'Masquer';
 
-  @Input() checked: boolean;
-  id: number;
-
   constructor(public dialog: MatDialog, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.preferences = this.fb.group({
-      hide: new FormControl('', Validators.required)
-    })
+      activeApp: new FormControl('', Validators.required),
+      activeMail: new FormControl('', Validators.required),
+      hideBirthdate: new FormControl('', Validators.required),
+      hideJob: new FormControl('', Validators.required),
+      hideStatus: new FormControl('', Validators.required),
+      hideGender: new FormControl('', Validators.required)
+    });
   }
 
-  onSubmit() { }
+  onSubmit() {
+    if (this.preferences.controls.activeApp.value === 'Désactiver') {
+      this.app = true;
+    }
+    if (this.preferences.controls.activeMail.value === 'Désactiver') {
+      this.app = true;
+    }
+    this.close();
+   }
 
   close() {
     this.dialog.closeAll();
   }
 
   save() {
-    this.dialog.closeAll();
-    this.router.navigate(['user/me']);
+    this.close();
+  //  this.router.navigate(['user/me']);
   }
 
   changed1(ob: MatSlideToggleChange) {
