@@ -21,11 +21,11 @@
         <ul>
           <li>
             <!-- Hide Current User Email -->
-            <mat-slide-toggle aria-label="Desactivate application notficiations" [checked]="checked">Désactiver les notifications dans l'application</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hide" (change)="onChange($event, 1)" aria-label="Desactivate application notficiations">Désactiver les notifications dans l'application</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Birthate -->
-            <mat-slide-toggle aria-label="Desactivate mail notficiations">Désactiver les notifications par mail</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hide" (change)="onChange($event, 2)" aria-label="Desactivate mail notficiations">Désactiver les notifications par mail</mat-slide-toggle>
           </li>
         </ul>
 
@@ -39,23 +39,23 @@
         <ul>
           <li>
             <!-- Hide Current User Email -->
-            <mat-slide-toggle [ngModel]="checked">Masquer mon email</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hide" (change)="onChange($event, 3)" [checked]="checked">{{ hideMail }} mon email</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Birthate -->
-            <mat-slide-toggle [ngModel]="checked">Masquer ma date de naissance</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hide" (change)="onChange($event, 4)">{{ hideBirthdate }} ma date de naissance</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Job -->
-            <mat-slide-toggle [ngModel]="checked">Masquer ma profession</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hide" (change)="onChange($event, 5)">{{ hideJob }} ma profession</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Marital Status -->
-            <mat-slide-toggle [ngModel]="checked">Masquer ma situation familiale</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hide" (change)="onChange($event, 6)">{{ hideStatus }} ma situation familiale</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Gender -->
-            <mat-slide-toggle [ngModel]="checked">Masquer mon genre</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hide" (change)="onChange($event, 7)">{{ hideGender }} mon genre</mat-slide-toggle>
           </li>
         </ul>
       </div>

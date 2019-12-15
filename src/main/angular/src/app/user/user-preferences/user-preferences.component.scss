@@ -1,4 +1,7 @@
 // ---------- Global content css ---------- //
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 .content {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   width: 100%;
@@ -53,9 +56,9 @@ mat-form-field {
 }
 
 // ---------- Mat Slide Custom Toggle ---------- //
-.mat-slide-toggle{
-  pointer-events: none;
-}
+// .mat-slide-toggle{
+//   pointer-events: none;
+// }
 
 .mat-slide-toggle-thumb {
   width: 10px !important;
@@ -73,10 +76,12 @@ height: 16px !important;
 top: -2px !important;
 }
 
-.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+.mat-slide-toggle.mat-checked:not(.mat-disabled)
+.mat-slide-toggle-bar {
 background-color: #000;
 }
 
-.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+.mat-slide-toggle.mat-checked:not(.mat-disabled)
+.mat-slide-toggle-thumb {
 background-color: #fff;
 }
