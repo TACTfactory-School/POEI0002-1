@@ -11,15 +11,13 @@ import { EventDetailsComponent } from './event/event-details/event-details.compo
 import { UserFormEditComponent } from './user/user-form/user-form-edit/user-form-edit.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { CguComponent } from './pages/cgu/cgu.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 const routes: Routes = [
 
   { path: '',     redirectTo: 'login', pathMatch: 'full' },
-
-  // { path: 'events', component: EventListComponent}, // Event List
-  // { path: 'event/new', component: EventFormComponent, canActivate: [LogguedGuard]},
-  // { path: 'event/:id', component: EventDetailsComponent}, // Event details
-
+  { path: 'login', component: UserFormLoginComponent }, // Login form
+  { path: 'register', component: UserFormRegisterComponent }, // Register form
   {
     path: 'event',
     children: [
@@ -28,14 +26,17 @@ const routes: Routes = [
       { path: '', component: EventListComponent} // Event List
     ]
   },
-
-  { path: 'users', component: UserListComponent }, // User List
-  { path: 'user/:id', component: UserDetailsComponent }, // User details
-
-  { path: 'login', component: UserFormLoginComponent }, // Login form
-  { path: 'register', component: UserFormRegisterComponent }, // Register form
-
+  {
+    path: 'user',
+    children: [
+      { path: 'me', component: UserProfileComponent , canActivate: [LogguedGuard]},
+      { path: 'me/edit', component: UserFormEditComponent , canActivate: [LogguedGuard]},
+      { path: ':id', component: UserDetailsComponent }, // User details
+      { path: '', component: UserListComponent } // User List
+    ]
+  },
   { path: 'cgu', component: CguComponent }, // CGU Legacy & Rights
+  { path: '**',   component: NotFoundComponent }, // not found
 
   // USER guard routing path
   // { path: 'user',
@@ -54,14 +55,7 @@ const routes: Routes = [
   //   ],
   //   // canActivate: [ LogguedGuard ]
   // },
-  { path: '**',   component: NotFoundComponent }, // not found
 ];
-  // OLD Direct path routing
-  // { path: 'event', component: EventListComponent },
-  // { path: 'event/new', component: EventFormComponent },
-  // { path: 'user', component: UserListComponent },
-  // { path: 'register', component: UserFormRegisterComponent },
-  // { path: '',     redirectTo: 'event', pathMatch: 'full' }
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), RouterModule.forChild(routes)],

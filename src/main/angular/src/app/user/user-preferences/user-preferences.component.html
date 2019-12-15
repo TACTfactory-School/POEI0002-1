@@ -1,0 +1,65 @@
+<div class="content">
+  <div class="header">
+    <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Préférences</span>
+          <span class="spacer"></span>
+          <button *ngIf="isModal" mat-icon-button (click)="close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="pref-dialog">
+    <form [formGroup]="preferences" (ngSubmit)="onSubmit()">
+      <div class="pref-notifications">
+          <mat-toolbar>
+              <mat-toolbar-row>
+                <span>Notifications</span>
+              </mat-toolbar-row>
+            </mat-toolbar>
+        <ul>
+          <li>
+            <!-- Hide Current User Email -->
+            <mat-slide-toggle [ngModel]="checked">Désactiver les notifications dans l'application</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Birthate -->
+            <mat-slide-toggle [ngModel]="checked">Désactiver les notifications par mail</mat-slide-toggle>
+          </li>
+        </ul>
+
+      </div>
+      <div class="pref-hide">
+        <ul>
+          <li>
+            <!-- Hide Current User Email -->
+            <mat-slide-toggle [ngModel]="checked">Masquer mon email</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Birthate -->
+            <mat-slide-toggle [ngModel]="checked">Masquer ma date de naissance</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Job -->
+            <mat-slide-toggle [ngModel]="checked">Masquer ma profession</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Marital Status -->
+            <mat-slide-toggle [ngModel]="checked">Masquer ma situation familiale</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Gender -->
+            <mat-slide-toggle [ngModel]="checked">Masquer mon genre</mat-slide-toggle>
+          </li>
+        </ul>
+      </div>
+
+      <button class="btn" mat-stroked-button *ngIf="isModal" (click)="close()">Fermer</button>
+      <span class="spacer"></span>
+      <button class="btn" mat-stroked-button color="primary" (click)="save()">Inscription</button>
+      <span class="spacer"></span>
+      <button class="gradient" mat-raised-button type="submit">Connexion</button>
+    </form>
+  </div>
+</div>

@@ -5,9 +5,10 @@ import { UserFormEditModule } from './user-form/user-form-edit/user-form-edit.mo
 import { UserFormRegisterModule } from './user-form/user-form-register/user-form-register.module';
 import { UserDetailsModule } from './user-details/user-details.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserPreferencesComponent } from './user-preferences/user-preferences.component';
 
 @NgModule({
-  declarations: [UserProfileComponent],
+  declarations: [UserProfileComponent, UserPreferencesComponent],
   imports: [
     CommonModule,
     UserFormRegisterModule,
