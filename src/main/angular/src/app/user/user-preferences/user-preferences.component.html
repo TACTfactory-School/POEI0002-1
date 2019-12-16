@@ -4,7 +4,7 @@
         <mat-toolbar-row>
           <span>Préférences</span>
           <span class="spacer"></span>
-          <button *ngIf="isModal" mat-icon-button (click)="close()">
+          <button mat-icon-button (click)="close()">
             <mat-icon>close</mat-icon>
           </button>
         </mat-toolbar-row>
@@ -15,7 +15,7 @@
       <div class="pref-notifications">
           <mat-toolbar>
               <mat-toolbar-row class="sub">
-                <span>Notifications</span>
+                <span class="title">Notifications</span>
               </mat-toolbar-row>
             </mat-toolbar>
         <ul>
@@ -33,7 +33,7 @@
       <div class="pref-hide">
         <mat-toolbar>
           <mat-toolbar-row class="sub">
-            <span>Confidentialité</span>
+            <span class="title">Confidentialité</span>
           </mat-toolbar-row>
         </mat-toolbar>
         <ul>
@@ -59,10 +59,6 @@
           </li>
         </ul>
       </div>
-
-      <button class="btn" mat-stroked-button *ngIf="isModal" (click)="close()">Fermer</button>
-      <span class="spacer"></span>
-      <button class="btn" mat-stroked-button color="primary" (click)="save()">Appliquer</button>
       <span class="spacer"></span>
       <button class="gradient" mat-raised-button type="submit">Sauvegarder</button>
     </form>
