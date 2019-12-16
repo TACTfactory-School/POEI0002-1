@@ -17,7 +17,7 @@ export class UserFormLoginComponent implements OnInit {
 
   private formSubmitAttempt: boolean;
   login: FormGroup;
-  private isModal: boolean;
+  isModal: boolean;
 
   loading = false;
   submitted = false;
