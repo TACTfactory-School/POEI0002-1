@@ -1,3 +1,74 @@
-<p>
-  user-form-edit works!
-</p>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
+
+<article *ngIf="(user$ | async) as u; else loading">
+  <div class="content">
+      <div class="header">
+        <mat-toolbar>
+            <mat-toolbar-row>
+              <p class="title">Modifier mon profil</p>
+              <span class="spacer"></span>
+              <p class="lastlog">Dernière modification : {{ u.updatedAt | date: 'medium' }}</p>
+              <span class="spacer"></span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <div class="event-header-image">
+          <img class="header-image" src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="{{ u.username }} avatar.">
+        </div>
+      </div>
+      <div class="view-form">
+          <p *ngIf="!u.enabled; else viewEdit" >
+            Vous avez désactivé votre compte.
+          </p>
+          <ng-template #viewEdit>
+            <span class="user-rate">Note : {{ u.rate }}</span>
+            <dl>
+              <dt>Nom d'utilisateur</dt>
+              <dd>{{ u.username }}</dd>
+
+              <dt>Prénom</dt>
+              <dd>{{ u.firstname }}</dd>
+
+              <dt>Email</dt>
+              <dd>{{ u.email }}</dd>
+
+              <dt>Langues parlés</dt>
+              <dd *ngFor="let lang of u.languages; index as i">{{ lang.default }} {{ lang.level }}</dd>
+
+              <dt>Centres d'intérêts</dt>
+              <dd *ngFor="let hobby of u.hobbies; index as i">{{ hobby.label }}</dd>
+
+              <dt>Evenements</dt>
+              <dd *ngFor="let event of u.events; index as i">{{ event.label }}</dd>
+
+              <dt>Date de naissance</dt>
+              <dd>{{ u.birthdate | date: 'short' }}</dd>
+
+              <dt>Age</dt>
+              <dd>{{ u.birthdate | age }}</dd>
+
+              <dt>Emploi</dt>
+              <dd>{{ u.job }}</dd>
+
+              <dt>Ville</dt>
+              <dd>{{ u.city }}</dd>
+
+              <dt>Sitation familiale</dt>
+              <dd>{{ u.maritalStatus }}</dd>
+
+              <dt>Genre</dt>
+              <dd>{{ u.gender }}</dd>
+
+              <dt>Date d'inscription</dt>
+              <dd>inscrit depuis le {{ u.createdAt | date: 'short' }}</dd>
+
+              <dt>Dernière modification</dt>
+              <dd>{{ u.updatedAt | date: 'short' }}</dd>
+            </dl>
+          </ng-template>
+        <span class="spacer"></span>
+      </div>
+      <button class="btn" mat-raised-button type="submit">Inviter</button>
+    </div>
+</article>

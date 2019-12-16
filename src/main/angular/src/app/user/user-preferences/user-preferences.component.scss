@@ -1,0 +1,92 @@
+// ---------- Global content css ---------- //
+.content {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  width: 100%;
+  margin: auto;
+  background: #fff;
+ }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+ // ---------- Modal Dialog ---------- //
+ .pref-dialog {
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  list-style: none;
+}
+
+mat-toolbar-row {
+  color: #fff;
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+}
+
+
+// mat-toolbar-row.sub::after {
+//   color: linear-gradient(135deg,  #ffb702, #ff2d3b);
+//   background-color: rgb(246, 246, 246);
+// }
+
+// ---------- Form ---------- //
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+// buttons
+.mat-stroked-button{
+  margin: 10px;
+}
+
+.btn {
+  float: left;
+}
+
+.gradient {
+  color: #fff;
+  float: right;
+  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+  margin: 10px;
+}
+
+// ---------- Mat Slide Custom Toggle ---------- //
+// .mat-slide-toggle{
+//   pointer-events: none;
+// }
+
+// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// .mat-slide-toggle-thumb {
+//   width: 10px !important;
+//   height: 10px !important;
+//   transform: translate(50%, 50%);
+// }
+
+// .mat-slide-toggle-bar {
+// background-color: rgb(245, 245, 245);
+// border-radius: 15px !important;
+// height: 16px !important;
+// }
+
+// .mat-slide-toggle-thumb-container {
+// top: -2px !important;
+// }
+
+// .mat-slide-toggle.mat-checked:not(.mat-disabled)
+// .mat-slide-toggle-bar {
+// background-color: #000;
+// }
+
+// .mat-slide-toggle.mat-checked:not(.mat-disabled)
+// .mat-slide-toggle-thumb {
+// background-color: #fff;
+// }

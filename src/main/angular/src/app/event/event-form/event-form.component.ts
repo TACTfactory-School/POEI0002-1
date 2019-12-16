@@ -10,6 +10,7 @@ import { UserDetailsComponent } from 'src/app/user/user-details/user-details.com
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
+import { CurrentUserService } from 'src/app/auth/current-user.service';
 
 @Component({
   selector: 'app-event-form',
@@ -27,21 +28,11 @@ export class EventFormComponent implements OnInit {
     private fb: FormBuilder,
     private api: EventApiService,
     private user: UserApiService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private readonly currentU: CurrentUserService
     ) { }
 
   ngOnInit() {
-    // this.createEvent = this.fb.group({
-    //   label: ['', Validators.required, Validators.minLength(10),  Validators.maxLength(100), Validators.pattern('[a-zA-Z ]*')],
-    //   description: ['', Validators.required, Validators.minLength(10),  Validators.maxLength(500)],
-    //   startAt: ['', Validators.required],
-    //   address: ['', Validators.required],
-    //   postcode: ['', Validators.required],
-    //   city: ['', Validators.required],
-    //   nbPlaceMax: ['', Validators.required, Validators.min(2), Validators.max(50)],
-    //   img: [''],
-    // });
-
     this.createEvent = this.fb.group({
       label : new FormControl('label', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])),
       description : new FormControl('description', Validators.compose([
@@ -54,11 +45,11 @@ export class EventFormComponent implements OnInit {
       nbPlaceMax : new FormControl('nbPlaceMax', Validators.compose([Validators.required, Validators.min(2), Validators.max(50)])),
       img: new FormControl(),
     });
-    this.user.getOne(1) // TODO : Replace the value by the logged user.
-      .subscribe(
-        value => this.currentUser = value,
-        err => console.error(err),
-        () => {});
+    this.currentU.observable
+        .subscribe(
+          value => this.currentUser = value,
+          err => console.error(err),
+          () => {});
   }
 
   create() {
@@ -76,13 +67,12 @@ export class EventFormComponent implements OnInit {
       true
       );
 
-
     if (this.api.create(this.newEvent) && this.createEvent.valid) {
       this.api.create(this.newEvent)
       .pipe(first())
       .subscribe(
         data => {
-            this.router.navigate(['/events']);
+            this.router.navigate(['/event']);
             this._snackBar.open('Votre événement a bien été ajouté !', 'Fermer', {
               duration: 4000,
             });
