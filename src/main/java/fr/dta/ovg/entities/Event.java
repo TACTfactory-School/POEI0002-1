@@ -83,7 +83,7 @@ public class Event extends EntityBase {
 
     /** Join users List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
-    private final List<JoinEvent> users = new ArrayList<>();
+    private final List<JoinEvent> usersJoin = new ArrayList<>();
 
     /** Override toString() method with Event attributes.*/
     @Override
@@ -111,18 +111,18 @@ public class Event extends EntityBase {
      * Getter List of join users.
      * @return all users who have requested to join event.
      */
-    public List<JoinEvent> getUsers() {
-        return users;
+    public List<JoinEvent> getUsersJoin() {
+        return usersJoin;
     }
 
     /**
      * Setter List of join users.
      * @param users the users to set
      */
-    public void setUsers(final List<JoinEvent> users) {
+    public void setUsers(final List<JoinEvent> usersJoin) {
         //TODO TO REMOVE
-        this.users.clear();
-        this.users.addAll(users);
+        this.usersJoin.clear();
+        this.usersJoin.addAll(usersJoin);
     }
 
     /**

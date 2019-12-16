@@ -86,7 +86,7 @@ public class User extends EntityBase {
 
     /** Join event List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private final List<JoinEvent> events = new ArrayList<>();
+    private final List<JoinEvent> eventsJoin = new ArrayList<>();
 
 //    @Column(name = "us_preferences", unique = false, nullable = true)
 //    @ApiModelProperty(value = "The notification preferences of the user.")
@@ -241,18 +241,18 @@ public class User extends EntityBase {
      * Get List of all user's join events.
      * @return the events (List).
      */
-    public List<JoinEvent> getEvents() {
-        return events;
+    public List<JoinEvent> getEventsJoin() {
+        return eventsJoin;
     }
 
     /**
      * Set List of all user's join event.
      * @param events (List) : the events to set.
      */
-    public void setEvents(final List<JoinEvent> events) {
+    public void setEventsJoin(final List<JoinEvent> events) {
         // TODO TO REMOVE
-        this.events.clear();
-        this.events.addAll(events);
+        this.eventsJoin.clear();
+        this.eventsJoin.addAll(events);
     }
 
     /**

@@ -5,8 +5,8 @@
  */
 package fr.dta.ovg.fixtures;
 
-import java.time.ZonedDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -20,9 +20,12 @@ import org.springframework.stereotype.Component;
 import com.github.javafaker.Faker;
 
 import fr.dta.ovg.entities.Event;
+import fr.dta.ovg.entities.EventRole;
+import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.EventRepository;
+import fr.dta.ovg.services.JoinCrudService;
 import fr.dta.ovg.services.UserCrudService;
 import fr.dta.ovg.services.event.EventCreateService;
 
@@ -34,6 +37,8 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
     private final EventCreateService eventService;
 
     private final UserCrudService userService;
+
+    private final JoinCrudService joinService;
 
     private int eventFakerSize;
 
@@ -47,14 +52,16 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
      *  Link to Event Create Service.
      *  Get Value of fakerSize @see application.properties. */
      public EventFixtureService(
-            @Value("${app.event.fixtures.fakersize:50}") final int eventFakerSize,
+            @Value("${app.event.fixtures.fakersize:100}") final int eventFakerSize,
             @Value("${app.user.fixtures.fakersize:100}") final int userFakerSize,
             @Autowired final EventCreateService eventService,
-            @Autowired final UserCrudService userService) {
+            @Autowired final UserCrudService userService,
+            @Autowired final JoinCrudService joinService) {
         this.eventFakerSize = eventFakerSize;
         this.userFakerSize = userFakerSize;
         this.eventService = eventService;
         this.userService = userService;
+        this.joinService = joinService;
     }
 
     /** Create-Drop DB - Insert initial data, erasing old data every run.
@@ -91,6 +98,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
             final String address, final String postcode, final String city) {
 
         final Event event = new Event();
+        final JoinEvent join = new JoinEvent();
 
         event.setLabel(label);
         event.setCreator(creator);
@@ -103,6 +111,15 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         event.setCity(city);
 
         eventService.create(event);
+
+        // ADD Creator to each event
+        join.setValid(true);
+        join.setUser(creator);
+        join.setRole(EventRole.CREATOR);
+        join.setEvent(event);
+
+        joinService.create(join);
+
     }
 
     private void loadFake() {
