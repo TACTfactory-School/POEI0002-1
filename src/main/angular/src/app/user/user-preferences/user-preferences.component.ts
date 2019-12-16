@@ -30,6 +30,7 @@ export class UserPreferencesComponent implements OnInit {
     this.preferences = this.fb.group({
       activeApp: new FormControl('', Validators.required),
       activeMail: new FormControl('', Validators.required),
+      hideMail: new FormControl('', Validators.required),
       hideBirthdate: new FormControl('', Validators.required),
       hideJob: new FormControl('', Validators.required),
       hideStatus: new FormControl('', Validators.required),
