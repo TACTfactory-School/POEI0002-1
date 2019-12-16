@@ -2,7 +2,7 @@
   <app-loader></app-loader>
 </ng-template>
 
-<article *ngIf="(event$ | async) as e; else loading">
+<article *ngIf="event as e; else loading">
   <div class="content">
       <div class="header">
         <mat-toolbar>
@@ -10,7 +10,7 @@
               <p class="title">{{ e.label | uppercase }} </p>
               <p class="username">par <a [routerLink]="['/user', e.creator.id]">{{ e.creator.username }}</a></p>
               <span class="spacer"></span>
-              <button mat-raised-button *ngIf="isOwner(e.creator.id)" type="submit">Editer</button>
+              <button mat-raised-button *ngIf="isOwner">Editer</button>
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="event-header-image">
@@ -18,8 +18,7 @@
           <img *ngIf="!e.img" class="header-image" src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
         </div>
       </div>
-      <div class="login-form">
-        <form (ngSubmit)="joinEvent()">
+      <div class="event-detail">
           <dl>
             <dd *ngIf="e.finished">
               L'évenement est terminé !
@@ -41,9 +40,13 @@
               Lieu : {{ e.address }}, {{ e.postcode }}, {{ e.city }}
             </dd>
           </dl>
-          <span class="spacer"></span>
-          <button class="btn" mat-raised-button *ngIf="!isOwner(e.creator.id)" type="submit">Rejoindre</button>
-        </form>
+      </div>
+      <div class="event-detail-footer">
+        <span class="spacer"></span>
+        <button class="btn" mat-raised-button *ngIf="isNotOwner" (click)="joinEvent()">Rejoindre</button>
+        <div class="deleteAction">
+          <button class="delete" *ngIf="isOwner" (click)="deleteDialog(e.id)">Supprimer l'événement</button>
+        </div>
       </div>
     </div>
 </article>
