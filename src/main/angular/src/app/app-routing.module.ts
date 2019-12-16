@@ -13,6 +13,7 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
 import { CguComponent } from './pages/cgu/cgu.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserPreferencesComponent } from './user/user-preferences/user-preferences.component';
+import { ConfirmDialogComponent } from './event/confirm-dialog/confirm-dialog.component';
 
 const routes: Routes = [
 
@@ -26,6 +27,9 @@ const routes: Routes = [
       { path: ':id', component: EventDetailsComponent}, // Event details
       { path: '', component: EventListComponent} // Event List
     ]
+  },
+  {
+    path: 'dialog', component: ConfirmDialogComponent
   },
   {
     path: 'user',

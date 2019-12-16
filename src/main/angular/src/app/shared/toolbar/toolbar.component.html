@@ -6,12 +6,13 @@
         <input matInput  placeholder="Rechercher un événement">
       </mat-form-field>
     </form>
-    <span class="spacer"></span>
     <!-- Event List -->
     <a [routerLink]="['event']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-labelledby="events">event</mat-icon></a>
 
     <!-- User List -->
     <a [routerLink]="['user']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="users">group</mat-icon></a>
+
+    <span class="spacer"></span>
 
     <!-- Notifications if logged -->
     <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="notifications">notifications</mat-icon></a>

@@ -5,11 +5,15 @@
   background: #fff;
  }
 
- .login-form {
-  padding: 2rem;
+ .event-detail {
+  padding: 1rem;
   margin: auto;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
+}
+
+.event-detail-footer {
+  padding: 1rem;
 }
 
 form {
@@ -75,4 +79,26 @@ a {
 
 dd {
   padding-bottom: 1rem;
+}
+
+.deleteAction {
+  display: flex;
+  width: 100%;
+}
+.delete {
+  border-style: none;
+  background-color: #fff;
+  color: #ff2d3b;
+  text-decoration: underline;
+  margin: auto;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.delete:hover {
+  color: darken(#ff2d3b, 30);
+}
+
+.mat-dialog-content {
+  overflow: hidden !important;
 }

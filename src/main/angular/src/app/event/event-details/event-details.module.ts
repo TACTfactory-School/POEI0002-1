@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventDetailsComponent } from './event-details.component';
 import { LoaderModule } from 'src/app/shared/loader/loader.module';
-import { MatCardModule, MatToolbarModule } from '@angular/material';
+import { MatCardModule, MatToolbarModule, MatDialogModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
+import { ConfirmDialogModule } from 'src/app/event/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   declarations: [EventDetailsComponent],
@@ -16,7 +17,9 @@ import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
     LoaderModule,
     MaterialModule,
     MatToolbarModule,
-    OvgFormsModule
+    OvgFormsModule,
+    MatDialogModule,
+    ConfirmDialogModule
   ],
   exports: [EventDetailsComponent]
 })
