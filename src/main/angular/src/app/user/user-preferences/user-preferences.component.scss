@@ -27,11 +27,15 @@ mat-toolbar-row {
   background: linear-gradient(135deg,  #ffb702, #ff2d3b);
 }
 
-
-// mat-toolbar-row.sub::after {
-//   color: linear-gradient(135deg,  #ffb702, #ff2d3b);
-//   background-color: rgb(246, 246, 246);
-// }
+mat-toolbar-row.sub {
+  background: #fff;
+}
+.title {
+  background: -webkit-linear-gradient(135deg,  #ff2d3b, #ffb702);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  // background-color: #fff;
+}
 
 // ---------- Form ---------- //
 form {

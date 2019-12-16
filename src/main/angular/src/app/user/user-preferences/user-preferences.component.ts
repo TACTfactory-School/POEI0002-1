@@ -11,18 +11,17 @@ import { Router } from '@angular/router';
 export class UserPreferencesComponent implements OnInit {
 
   preferences: FormGroup;
-  isModal: boolean;
   private app: boolean;
   private mail: boolean;
 
   // Hide label manual TODO refacto ?
-  activeApp = 'Désactiver';
-  activeMail = 'Désactiver';
-  hideBirthdate = 'Masquer';
-  hideMail = 'Masquer';
-  hideJob = 'Masquer';
-  hideGender = 'Masquer';
-  hideStatus = 'Masquer';
+  activeApp = 'Activer';
+  activeMail = 'Activer';
+  hideBirthdate = 'Afficher';
+  hideMail = 'Afficher';
+  hideJob = 'Afficher';
+  hideGender = 'Afficher';
+  hideStatus = 'Afficher';
 
   constructor(public dialog: MatDialog, private router: Router, private fb: FormBuilder) { }
 
@@ -58,32 +57,32 @@ export class UserPreferencesComponent implements OnInit {
   }
 
   changed1(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.activeApp = 'Activer';
-    } else { this.activeApp = 'Désactiver'; }
+    if (ob.checked) { this.activeApp = 'Désactiver';
+    } else { this.activeApp = 'Activer'; }
   }
   changed2(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.activeMail = 'Activer';
-    } else { this.activeMail = 'Désactiver'; }
+    if (ob.checked) { this.activeMail = 'Désactiver';
+    } else { this.activeMail = 'Activer'; }
   }
   changed3(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideMail = 'Afficher';
-    } else { this.hideMail = 'Masquer'; }
+    if (ob.checked) { this.hideMail = 'Masquer';
+    } else { this.hideMail = 'Afficher'; }
   }
   changed4(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideBirthdate = 'Afficher';
-    } else { this.hideBirthdate = 'Masquer'; }
+    if (ob.checked) { this.hideBirthdate = 'Masquer';
+    } else { this.hideBirthdate = 'Afficher'; }
   }
   changed5(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideJob = 'Afficher';
-    } else { this.hideJob = 'Masquer'; }
+    if (ob.checked) { this.hideJob = 'Masquer';
+    } else { this.hideJob = 'Afficher'; }
   }
   changed6(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideStatus = 'Afficher';
-    } else { this.hideStatus = 'Masquer'; }
+    if (ob.checked) { this.hideStatus = 'Masquer';
+    } else { this.hideStatus = 'Afficher'; }
   }
   changed7(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideGender = 'Afficher';
-    } else { this.hideGender = 'Masquer'; }
+    if (ob.checked) { this.hideGender = 'Masquer';
+    } else { this.hideGender = 'Afficher'; }
   }
 }
   // onChange(ob: MatSlideToggleChange, id: number) {
