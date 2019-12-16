@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { UserApiService } from '../../user-api.service';
-import { User } from '../../user';
+import { User, UserGender } from '../../user';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -19,6 +19,7 @@ export class UserFormRegisterComponent implements OnInit {
   thirdFormGroup: FormGroup;
   registerUser: FormGroup;
   newUser: User;
+  genre: UserGender;
 
   constructor(
     private fb: FormBuilder,
@@ -26,14 +27,6 @@ export class UserFormRegisterComponent implements OnInit {
     private router: Router,
     private _snackBar: MatSnackBar,
     ) { }
-
-  // registerForm = this.fb.group({
-  //   username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-  //   email: ['', [Validators.required, Validators.email]],
-  //   password: ['', Validators.required],
-  //   confimpassword: ['', Validators.required],
-  //   birthdate: ['', Validators.required]
-  // });
 
   ngOnInit() {
     this.registerUser = this.fb.group({
@@ -45,10 +38,6 @@ export class UserFormRegisterComponent implements OnInit {
       city : new FormControl(''),
     });
   }
-
-  // onSubmit(): void { // Gerer la consequence. const todo: Todo = this.todoForm.value;
-  //    this.userApi.add(this.registerUser.value).subscribe;
-  // }
 
   create() {
     this.newUser = new User(
@@ -84,22 +73,12 @@ export class UserFormRegisterComponent implements OnInit {
       secondCtrl: new FormControl('')
     });
   }
-
-
-  // get username(): AbstractControl {
-  //   return this.registerUser.get('username');
-  // }
-
-  // get email(): AbstractControl {
-  //   return this.registerUser.get('email');
-  // }
-
-  // get password(): AbstractControl {
-  //   return this.registerUser.get('password');
-  // }
-
-  // get birthdate(): AbstractControl {
-  //   return this.registerUser.get('birthdate');
-  // }
-
+export class SelectGenre {
+    genre: UserGender[] = [
+      {value: FEMALE, viewValue: 'Femme'},
+      {value: MALE, viewValue: 'Homme'},
+      {value: NONBINARY, viewValue: 'Non Binaire'},
+      {value: UNSPECIFIED, viewValue: 'Non spécifié'}
+    ];
 }
+

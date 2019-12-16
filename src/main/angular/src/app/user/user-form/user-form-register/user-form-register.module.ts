@@ -4,7 +4,8 @@ import { UserFormRegisterComponent } from './user-form-register.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
 import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule, MatStepperModule, MatMenuModule,
-   MatFormFieldModule } from '@angular/material';
+   MatFormFieldModule,
+   MatSelectModule} from '@angular/material';
 
 @NgModule({
   declarations: [ UserFormRegisterComponent ],
@@ -17,7 +18,8 @@ import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule, MatStepperM
     MatNativeDateModule,
     MatStepperModule,
     MatMenuModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule
   ],
   exports: [ UserFormRegisterComponent ]
 })

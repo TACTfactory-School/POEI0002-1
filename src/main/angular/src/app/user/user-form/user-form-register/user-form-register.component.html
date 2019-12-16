@@ -81,13 +81,15 @@
                 </mat-step>
                 <mat-step [stepControl]="thirdFormGroup">
                   <form [formGroup]="registerUser">
-                    <ng-template matStepLabel>Sex</ng-template>
-                      <button mat-button [matMenuTriggerFor]="menu">Genre</button>
-                      <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Femme</button>
-                        <button mat-menu-item>Homme</button>
-                        <button mat-menu-item>Non Binaire</button>
-                      </mat-menu>
+                    <ng-template matStepLabel>Genre</ng-template>
+                    <mat-form-field>
+                      <mat-label>Genre</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let g of genre" [value]="genre.value">
+                          {{genre.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
                     <div>
                       <button mat-button matStepperPrevious>Retour</button>
                       <button mat-button matStepperNext>Suivant</button>

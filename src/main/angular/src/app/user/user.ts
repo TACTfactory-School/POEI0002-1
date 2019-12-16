@@ -40,7 +40,7 @@ enum UserStatus {
   UNSPECIFIED
 }
 
-enum UserGender {
+export enum UserGender {
   MALE,
   FEMALE,
   NONBINARY,
