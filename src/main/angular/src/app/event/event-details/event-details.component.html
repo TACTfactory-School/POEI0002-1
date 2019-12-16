@@ -10,7 +10,7 @@
               <p class="title">{{ e.label | uppercase }} </p>
               <p class="username">par <a [routerLink]="['/user', e.creator.id]">{{ e.creator.username }}</a></p>
               <span class="spacer"></span>
-              <button mat-raised-button type="submit">Editer</button>
+              <button mat-raised-button *ngIf="isOwner(e.creator.id)" type="submit">Editer</button>
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="event-header-image">
@@ -20,24 +20,29 @@
       </div>
       <div class="login-form">
         <form (ngSubmit)="joinEvent()">
-            <p *ngIf="e.finished">
-                L'évenement est terminé !
-            </p>
-            <p>
-              Nombre de place maximum : {{ e.nbPlaceMax }}
-              Nombre de place restante : {{ e.nbPlaceMax }}
-            </p>
-            <p>
-              Date : {{ e.startAt | date: 'medium' }}
-            </p>
-            <p>
+          <dl>
+            <dd *ngIf="e.finished">
+              L'évenement est terminé !
+            </dd>
+            <dd *ngIf="e.nbPlaceMax != 1; else onePlace">
+              {{ e.nbPlaceMax }} places restantes
+            </dd>
+            <ng-template #onePlace>
+              {{ e.nbPlaceMax }} place restante
+            </ng-template>
+
+            <dd>
+              Le {{ e.startAt | date: 'medium' }}
+            </dd>
+            <dd>
               Description : {{ e.description }}
-            </p>
-            <p>
+            </dd>
+            <dd>
               Lieu : {{ e.address }}, {{ e.postcode }}, {{ e.city }}
-            </p>
+            </dd>
+          </dl>
           <span class="spacer"></span>
-          <button class="btn" mat-raised-button type="submit">Rejoindre</button>
+          <button class="btn" mat-raised-button *ngIf="!isOwner(e.creator.id)" type="submit">Rejoindre</button>
         </form>
       </div>
     </div>

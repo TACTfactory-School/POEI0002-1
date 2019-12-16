@@ -6,8 +6,8 @@
 package fr.dta.ovg.fixtures;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -62,17 +62,17 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
 
     private void loadReal() {
         this.build("Pamwamba",   "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
-                    "Samy",     "Nantes",               "Dev Fullstack", 15.5f, ZonedDateTime.now());
+                    "Samy",     "Nantes",               "Dev Fullstack", 15.5f, LocalDateTime.now());
         this.build("C-ambium",  "joe@me.com",           "colincolin",           LocalDate.of(1990, 06, 05),
-                    "Colin",    "Rennes",               "Dev Fullstack", 14.2f, ZonedDateTime.now());
+                    "Colin",    "Rennes",               "Dev Fullstack", 14.2f, LocalDateTime.now());
         this.build("ListerKred", "fab@4ever.org",       "fabricefabrice",       LocalDate.of(1997, 04, 8),
-                    "Fabrice",   "Angers",              "Dev Fullstack", 17.8f, ZonedDateTime.now());
+                    "Fabrice",   "Angers",              "Dev Fullstack", 17.8f, LocalDateTime.now());
     }
 
     private void build(final String username, final String email,
             final String password, final LocalDate birthdate,
             final String firstname, final String city,
-            final String job, final float rate, final ZonedDateTime lastLogin) {
+            final String job, final float rate, final LocalDateTime lastLogin) {
 
         final User user = new User();
 
@@ -106,7 +106,10 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                 this.fake.address().city(),
                 this.fake.job().title(),
                 rand.nextFloat(),
-                this.fake.date().past(rand.nextInt(2000) + 1, TimeUnit.DAYS).toInstant().atZone(zoneId));
+                this.fake.date()
+                    .past(rand.nextInt(2000) + 1, TimeUnit.DAYS)
+                    .toInstant().atZone(zoneId)
+                    .toLocalDateTime());
     }
 
 }

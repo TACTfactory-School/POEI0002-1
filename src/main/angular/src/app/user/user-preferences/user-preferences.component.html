@@ -1,0 +1,70 @@
+<div class="content">
+  <div class="header">
+    <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Préférences</span>
+          <span class="spacer"></span>
+          <button *ngIf="isModal" mat-icon-button (click)="close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="pref-dialog">
+    <form [formGroup]="preferences" (ngSubmit)="onSubmit()">
+      <div class="pref-notifications">
+          <mat-toolbar>
+              <mat-toolbar-row class="sub">
+                <span>Notifications</span>
+              </mat-toolbar-row>
+            </mat-toolbar>
+        <ul>
+          <li>
+            <!-- Hide Current User Email -->
+            <mat-slide-toggle formControlName="activeApp" (change)="changed1($event)" aria-label="Desactivate application notficiations">{{ activeApp }} les notifications dans l'application.</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Birthate -->
+            <mat-slide-toggle formControlName="activeMail" (change)="changed2($event)" aria-label="Desactivate mail notficiations">{{ activeMail }} les notifications par mail.</mat-slide-toggle>
+          </li>
+        </ul>
+
+      </div>
+      <div class="pref-hide">
+        <mat-toolbar>
+          <mat-toolbar-row class="sub">
+            <span>Confidentialité</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
+        <ul>
+          <li>
+            <!-- Hide Current User Email -->
+            <mat-slide-toggle formControlName="hideMail" (change)="changed3($event)">{{ hideMail }} mon email.</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Birthate -->
+            <mat-slide-toggle formControlName="hideBirthdate" (change)="changed4($event)">{{ hideBirthdate }} ma date de naissance.</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Job -->
+            <mat-slide-toggle formControlName="hideJob" (change)="changed5($event)">{{ hideJob }} ma profession.</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Marital Status -->
+            <mat-slide-toggle formControlName="hideStatus" (change)="changed6($event)">{{ hideStatus }} ma situation familiale.</mat-slide-toggle>
+          </li>
+          <li>
+            <!-- Hide Current User Gender -->
+            <mat-slide-toggle formControlName="hideGender" (change)="changed7($event)">{{ hideGender }} mon genre.</mat-slide-toggle>
+          </li>
+        </ul>
+      </div>
+
+      <button class="btn" mat-stroked-button *ngIf="isModal" (click)="close()">Fermer</button>
+      <span class="spacer"></span>
+      <button class="btn" mat-stroked-button color="primary" (click)="save()">Appliquer</button>
+      <span class="spacer"></span>
+      <button class="gradient" mat-raised-button type="submit">Sauvegarder</button>
+    </form>
+  </div>
+</div>

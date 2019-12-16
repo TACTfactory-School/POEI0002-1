@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { EventApiService } from '../event-api.service';
 import { Event } from '../event';
 import { Observable } from 'rxjs';
+import { CurrentUserService } from 'src/app/auth/current-user.service';
+import { User } from 'src/app/user/user';
 
 @Component({
   selector: 'app-event-details',
@@ -11,11 +13,14 @@ import { Observable } from 'rxjs';
 })
 export class EventDetailsComponent implements OnInit {
 
-
+  currentUser: User;
   event$: Observable<Event>;
-  // event: Event = null;
-  // id: number;
-  constructor(private readonly route: ActivatedRoute, private readonly api: EventApiService) { }
+
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly api: EventApiService,
+    private readonly currentU: CurrentUserService
+    ) {}
 
 
   ngOnInit() {
@@ -24,13 +29,19 @@ export class EventDetailsComponent implements OnInit {
         .params
         .subscribe(params => {
           if (params.id) {
-            console.log('id', params.id);
             this.event$ = this.api.getOne(params.id);
           }
         });
-    // +this.route.snapshot.paramMap.get('id')
-
+    // get the current user
+    this.currentU.observable
+    .subscribe(
+      value => this.currentUser = value,
+      err => console.error(err),
+      () => {});
   }
-
+  isOwner(id: number): boolean {
+    // tslint:disable-next-line: triple-equals
+    return id == this.currentUser.id ? true : false;
+  }
   joinEvent() {}
 }

@@ -1,0 +1,33 @@
+@mixin medium() {
+  @media screen and (min-width: 800) and (max-width: 1200) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @media screen and (min-width: 1200) {
+    @content;
+  }
+}
+
+@mixin mat-table-columns($columns)
+{
+    .mat-column-
+    {
+        @each $colName, $props in $columns {
+
+            $width: map-get($props, 'width');
+
+            &#{$colName}
+            {
+                flex: $width;
+                min-width: $width;
+
+                @if map-has-key($props, 'color')
+                {
+                    color: map-get($props, 'color');
+                }
+            }
+        }
+    }
+}

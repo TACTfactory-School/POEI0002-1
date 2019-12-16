@@ -1,5 +1,6 @@
 import { Hobby } from './hobby';
 import { Language } from './language';
+import { Event } from '../event/event';
 
 export interface User {
   id: number;
@@ -12,6 +13,7 @@ export interface User {
   firstname: string;
   birthdate: Date;
   age: number;
+  job: string;
 
   city: string;
   role: EventRole;

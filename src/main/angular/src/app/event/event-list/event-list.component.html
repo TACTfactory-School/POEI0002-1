@@ -16,8 +16,8 @@
             </app-event-list-card>
         </ng-container>
     </div>
-    <button [routerLink]="['/event/new']" mat-fab class="fab gradient">
-      <mat-icon>create</mat-icon>
+    <button *ngIf="user" [routerLink]="['/event/new']" mat-fab class="fab gradient">
+      <mat-icon>add</mat-icon>
     </button>
   </ng-container>
 

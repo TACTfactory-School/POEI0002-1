@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Event, EventFormDTO } from './event';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
-import { Page } from './page';
+import { Page } from '../shared/paginator/page';
 
 const URL = `${environment.apiUrl}/event`;
 const PAGEABLE = `?page=${environment.p}&quantity=${environment.q}`;
