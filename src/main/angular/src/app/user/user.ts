@@ -46,7 +46,7 @@ export enum UserGender {
   MALE = 'Homme',
   FEMALE = 'Femme',
   NONBINARY = 'Non binaire',
-  UNSPECIFIED = 'Non spécifier',
+  UNSPECIFIED = 'Non spécifié',
 }
 
 export interface UserFormDTO {
