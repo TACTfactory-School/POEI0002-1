@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/user/user';
+import { UserPreferencesComponent } from 'src/app/user/user-preferences/user-preferences.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -34,7 +35,6 @@ export class ToolbarComponent implements OnInit {
     const dialogRef = this.dialog.open(UserFormLoginComponent, {
       width: '40%'
     });
-
     dialogRef.afterClosed().subscribe(result => {
       this.isModal = false;
     });
@@ -44,5 +44,15 @@ export class ToolbarComponent implements OnInit {
     this.auth
         .logout()
         .subscribe(() => this.router.navigate(['event']));
+  }
+
+  openPrefDialog(): void {
+    this.isModal = true;
+    const dialogRef = this.dialog.open(UserPreferencesComponent, {
+      width: '40%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.isModal = false;
+    });
   }
 }

@@ -7,25 +7,36 @@
       </mat-form-field>
     </form>
     <span class="spacer"></span>
-    <!-- Other MatIcon : date_range // calendar_today -->
+    <!-- Event List -->
     <a [routerLink]="['event']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-labelledby="events">event</mat-icon></a>
-    <a [routerLink]="['users']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="users">group</mat-icon></a>
+
+    <!-- User List -->
+    <a [routerLink]="['user']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="users">group</mat-icon></a>
+
+    <!-- Notifications if logged -->
     <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="notifications">notifications</mat-icon></a>
+
+    <!-- Messages if logged -->
     <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">mail</mat-icon></a>
+
+    <!-- Account Dropdown if logged -->
     <a *ngIf="user" class="icon" [matMenuTriggerFor]="menu"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">account_circle</mat-icon></a>
+
+    <!-- Connxion/Login button if !logged -->
     <button *ngIf="!user" mat-stroked-button color="primary" (click)="openDialog()">Connexion</button>
+
     <!-- Dropdown menu -->
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item [routerLink]="['user/me']">
         <mat-icon>person</mat-icon>
         <span *ngIf="user">{{user.username}}</span>
       </button>
-      <!-- Other MatIcon :  face -->
+      <!-- Other MatIcon :  face favorite -->
       <button mat-menu-item>
-        <mat-icon>favorite</mat-icon>
+        <mat-icon>face</mat-icon>
         <span>Mes amis</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="openPrefDialog()">
         <mat-icon>settings</mat-icon>
         <span>Mon compte</span>
       </button>

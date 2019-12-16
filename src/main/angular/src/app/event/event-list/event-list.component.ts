@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventApiService } from '../event-api.service';
 import { Event } from '../event';
 import { MatPaginator } from '@angular/material';
-import { Page } from '../page';
+import { Page } from '../../shared/paginator/page';
 import { Pageable } from 'src/app/shared/paginator/pageable';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
 import { User } from 'src/app/user/user';
