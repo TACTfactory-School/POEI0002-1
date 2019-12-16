@@ -6,7 +6,6 @@ import { PipesModule } from './pipes/pipes.module';
 import { MaterialModule } from './material/material.module';
 import { LoaderModule } from './loader/loader.module';
 import { FooterModule } from './footer/footer.module';
-import { ConfirmDialogModule } from '../event/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   declarations: [],
