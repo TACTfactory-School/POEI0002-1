@@ -6,6 +6,7 @@ import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
 import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule, MatStepperModule, MatMenuModule,
    MatFormFieldModule,
    MatSelectModule} from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ UserFormRegisterComponent ],
@@ -19,7 +20,8 @@ import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule, MatStepperM
     MatStepperModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   exports: [ UserFormRegisterComponent ]
 })

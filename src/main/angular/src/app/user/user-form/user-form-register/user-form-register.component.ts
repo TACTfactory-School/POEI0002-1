@@ -13,22 +13,28 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./user-form-register.component.scss']
 })
 export class UserFormRegisterComponent implements OnInit {
-  private sub: Subscription[] = [];
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  registerUser: FormGroup;
-  newUser: User;
-  genre: UserGender;
-  icon: string;
 
   constructor(
     private fb: FormBuilder,
     private api: UserApiService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    ) { }
+    ) {
+     }
+  private sub: Subscription[] = [];
+
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  registerUser: FormGroup;
+  newUser: User;
+  genders = UserGender;
+  icon: string;
+
+  keys = Object.keys;
+
+  // tslint:disable-next-line: align
 
   ngOnInit() {
     this.registerUser = this.fb.group({
@@ -38,6 +44,7 @@ export class UserFormRegisterComponent implements OnInit {
       birthdate : new FormControl('', Validators.required),
       firstname : new FormControl(''),
       city : new FormControl(''),
+      gender : new FormControl(this.genders),
     });
   }
   ngOnDestroy() {
@@ -52,6 +59,7 @@ export class UserFormRegisterComponent implements OnInit {
       this.registerUser.controls.birthdate.value,
       this.registerUser.controls.firstname.value,
       this.registerUser.controls.city.value,
+      this.registerUser.controls.gender.value
     );
     console.log(this.registerUser.value);
     if (this.api.add(this.newUser) && this.registerUser.valid) {
@@ -79,5 +87,4 @@ export class UserFormRegisterComponent implements OnInit {
       secondCtrl: new FormControl('')
     });
   }
-}
-
+  }

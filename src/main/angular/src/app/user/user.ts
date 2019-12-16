@@ -43,10 +43,10 @@ enum UserStatus {
 }
 
 export enum UserGender {
-  MALE,
-  FEMALE,
-  NONBINARY,
-  UNSPECIFIED
+  MALE = 'Homme',
+  FEMALE = 'Femme',
+  NONBINARY = 'Non binaire',
+  UNSPECIFIED = 'Non spécifier',
 }
 
 export interface UserFormDTO {
@@ -62,7 +62,7 @@ export class User {
     birthdate: Date,
     firstname: string,
     city: string,
-    // gender: UserGender,
+    gender: UserGender,
     ) {
     this.username = username;
     this.email = email;
@@ -70,7 +70,7 @@ export class User {
     this.birthdate = birthdate;
     this.firstname = firstname;
     this.city = city;
-    // this.gender = gender;
+    this.gender = gender;
 
     }
 }

@@ -84,10 +84,8 @@
                     <ng-template matStepLabel>Genre</ng-template>
                     <mat-form-field>
                       <mat-label>Genre</mat-label>
-                      <mat-select>
-                        <mat-option *ngFor="let g of genre" [value]="genre.value">
-                          {{genre.viewValue}}
-                        </mat-option>
+                      <mat-select >
+                        <mat-option *ngFor="let gender of keys(genders)" [value]="gender">{{ genders[gender] }}</mat-option>
                       </mat-select>
                     </mat-form-field>
                     <div>
