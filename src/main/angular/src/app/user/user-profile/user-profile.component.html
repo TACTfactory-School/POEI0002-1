@@ -1,3 +1,152 @@
-<p>
-Get Current user to display profil
-</p>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
+
+<article *ngIf="currentUser as u; else loading" class="content">
+
+  <div class="header">
+    <mat-toolbar>
+        <mat-toolbar-row>
+          <p class="title"> Mon Profil </p>
+          <span class="spacer"></span>
+          <p class="lastlog">Dernière connexion : {{ u.lastLogin | date: 'medium' }}</p>
+          <span class="spacer"></span>
+          <button class="btn" mat-raised-button type="submit">Supprimer mon compte</button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+  <mat-card class="user-avatar-card">
+      <mat-card-header>
+        <mat-card-title>Mon avatar</mat-card-title>
+        <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="user-avatar">
+          <img class="header-image" src="https://png.pngtree.com/svg/20161027/service_default_avatar_182956.png" alt="Avatar de l'utilisateur.">
+          <span class="user-rate">Ma note : {{ u.rate }}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="btn" mat-stroked-button>Editer</button>
+        <!-- <span class="spacer"></!-->
+      </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="user-profile-card">
+    <mat-card-header>
+      <mat-card-title>{{ u.username | uppercase }} - Informations Utilisateur</mat-card-title>
+      <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
+    </mat-card-header>
+
+  <mat-card-content>
+    <div class="view-form">
+      <p *ngIf="!u.enabled; else viewDetails" >
+          Vous avez désactivé votre compte.
+          <button class="btn" mat-raised-button>Cliquer ici pour le réactiver.</button>
+      </p>
+      <ng-template #viewDetails>
+        <dl>
+          <dt>Nom d'utilisateur</dt>
+          <dd>{{ u.username }}</dd>
+
+          <dt>Prénom</dt>
+          <dd>{{ u.firstname }}</dd>
+
+          <dt>Email</dt>
+          <!-- Check user préférences -->
+          <dd>{{ u.email }}</dd>
+
+          <ng-container>
+            <dt>Date de naissance</dt>
+            <dd>{{ u.birthdate | date: 'shortDate' }}</dd>
+            <!-- Check user préférences -->
+            <dt>Age</dt>
+            <dd>{{ u.birthdate | age }}</dd>
+          </ng-container>
+
+          <ng-container *ngIf="u.city">
+            <dt>Ville</dt>
+            <dd>{{ u.city }}</dd>
+          </ng-container>
+          <ng-template #unspecified>
+            <dt>Ville</dt>
+            <dd>{{ unspecifiedText }}. Renseignez une ville pour obtenir des suggestions d'évènements.</dd>
+          </ng-template>
+
+          <ng-container *ngIf="u.maritalStatus; else unspecified1">
+            <dt>Sitation familiale</dt>
+            <dd>{{ u.maritalStatus }}</dd>
+          </ng-container>
+          <ng-template #unspecified1>
+            <dt>Sitation familiale</dt>
+            <dd>{{ unspecifiedText }}</dd>
+          </ng-template>
+
+          <ng-container *ngIf="u.gender; else unspecified2">
+            <dt>Genre</dt>
+            <dd>{{ u.gender }}</dd>
+          </ng-container>
+          <ng-template #unspecified2>
+            <dt>Genre</dt>
+            <dd>{{ unspecifiedText }}</dd>
+          </ng-template>
+
+          <ng-container *ngIf="u.languages && u.languages.length; else unspecified3">
+            <dt>Langues parlés</dt>
+            <dd *ngFor="let lang of u.languages; index as i">{{ lang.default }} {{ lang.level }}</dd>
+          </ng-container>
+          <ng-template #unspecified3>
+            <dt>Langues parlés</dt>
+            <dd>{{ unspecifiedText }}</dd>
+          </ng-template>
+
+          <ng-container *ngIf="u.job; else unspecified4">
+            <dt>Emploi</dt>
+            <dd>{{ u.job }}</dd>
+          </ng-container>
+          <ng-template #unspecified4>
+            <dt>Emploi</dt>
+            <dd>{{ unspecifiedText }}</dd>
+          </ng-template>
+
+          <dt>Date d'inscription</dt>
+          <dd>inscrit depuis le {{ u.createdAt | date: 'short' }}</dd>
+
+          <ng-container *ngIf="u.hobbies && u.hobbies.length; else unspecified5">
+            <dt>Centres d'intérêts</dt>
+            <dd *ngFor="let hobby of u.hobbies; index as i">{{ hobby.label }}</dd>
+          </ng-container>
+          <ng-template #unspecified5>
+            <dt>Centres d'intérêts</dt>
+            <dd>{{ unspecifiedText }}</dd>
+          </ng-template>
+
+          <ng-container *ngIf="u.events && u.events.length; else unspecified6">
+            <dt>Évènements</dt>
+            <dd *ngFor="let event of u.events; index as i">{{ event.label }}</dd>
+          </ng-container>
+          <ng-template #unspecified6>
+            <dt>Évènements</dt>
+            <dd>Vous n'avez pas encore rejoint ou créé un évenement.</dd>
+          </ng-template>
+        </dl>
+      </ng-template>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+      <button class="btn" mat-stroked-button>Editer</button>
+      <!-- <span class="spacer"></!-->
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="user-preferences-card">
+    <mat-card-header>
+      <mat-card-title>Préférences</mat-card-title>
+      <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <app-user-preferences></app-user-preferences>
+    </mat-card-content>
+  </mat-card>
+
+</article>
