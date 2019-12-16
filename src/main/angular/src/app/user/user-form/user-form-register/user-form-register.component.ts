@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class UserFormRegisterComponent implements OnInit {
 
+
   constructor(
     private fb: FormBuilder,
     private api: UserApiService,
@@ -22,7 +23,6 @@ export class UserFormRegisterComponent implements OnInit {
     ) {
      }
   private sub: Subscription[] = [];
-
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -35,7 +35,6 @@ export class UserFormRegisterComponent implements OnInit {
   keys = Object.keys;
 
   // tslint:disable-next-line: align
-
   ngOnInit() {
     this.registerUser = this.fb.group({
       username : new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
@@ -87,4 +86,6 @@ export class UserFormRegisterComponent implements OnInit {
       secondCtrl: new FormControl('')
     });
   }
-  }
+
+
+}
