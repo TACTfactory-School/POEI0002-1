@@ -17,10 +17,6 @@ public class Notification extends EntityBase {
 
     private String label;
 
-    private boolean app;
-
-    private boolean mail;
-
     /**
      * Getter label.
      * @return the label (String).
@@ -34,35 +30,5 @@ public class Notification extends EntityBase {
      */
     public void setLabel(final String label) {
         this.label = label;
-    }
-
-    /**
-     * Get Boolean preference application notification.
-     * @return the app (boolean).
-     */
-    public boolean isApp() {
-        return app;
-    }
-    /**
-     * Set Boolean preference application notification.
-     * @param app (boolean) :the app to set.
-     */
-    public void setApp(final boolean app) {
-        this.app = app;
-    }
-
-    /**
-     * Get Boolean preference mail notification.
-     * @return the mail
-     */
-    public boolean isMail() {
-        return mail;
-    }
-    /**
-     * Set Boolean preference mail notification.
-     * @param mail (boolean) : the mail to set.
-     */
-    public void setMail(final boolean mail) {
-        this.mail = mail;
     }
 }

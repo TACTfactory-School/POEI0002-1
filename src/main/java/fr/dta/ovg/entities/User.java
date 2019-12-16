@@ -14,6 +14,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -86,6 +87,36 @@ public class User extends EntityBase {
     /** Join event List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private final List<JoinEvent> events = new ArrayList<>();
+
+//    @Column(name = "us_preferences", unique = false, nullable = true)
+//    @ApiModelProperty(value = "The notification preferences of the user.")
+    @OneToOne
+    private NotificationSetting preferences;
+
+    /** Birthdate preference setting of the user.. <br> DB Column. */
+    @Column(name = "us_pref_birthdate", unique = false, nullable = true)
+    @ApiModelProperty(value = "Hidden birthdate preference setting of the user.")
+    private boolean birthdateHidden = false;
+
+    /** Mail preference setting of the user.. <br> DB Column. */
+    @Column(name = "us_pref_mail", unique = false, nullable = true)
+    @ApiModelProperty(value = "Hidden email preference setting of the user.")
+    private boolean mailHidden = false;
+
+    /** Job preference setting of the user.. <br> DB Column. */
+    @Column(name = "us_pref_job", unique = false, nullable = true)
+    @ApiModelProperty(value = "Hidden job preference setting of the user.")
+    private boolean jobHidden = false;
+
+    /** Gender preference setting of the user.. <br> DB Column. */
+    @Column(name = "us_pref_gender", unique = false, nullable = true)
+    @ApiModelProperty(value = "Hidden gender preference setting of the user.")
+    private boolean genderHidden = false;
+
+    /** Marital status preference setting of the user.. <br> DB Column. */
+    @Column(name = "us_pref_status", unique = false, nullable = true)
+    @ApiModelProperty(value = "Hidden marital status preference setting of the user.")
+    private boolean statusHidden = false;
 
     /** Override toString() method with User attributes. */
     @Override
@@ -288,16 +319,95 @@ public class User extends EntityBase {
         this.password = password;
     }
 
-    public String getNoEncodedPassword() {
-        // TODO Auto-generated method stub
-        return password;
-    }
-
     /**
-     * @return the role
+     * @return the role.
      */
     public String getRole() {
         return "USER";
+    }
+
+    /**
+     * @return the preferences.
+     */
+    public NotificationSetting getPreferences() {
+        return preferences;
+    }
+
+    /**
+     * @param preferences the preferences to set.
+     */
+    public void setPreferences(NotificationSetting preferences) {
+        this.preferences = preferences;
+    }
+
+    /**
+     * @return the birthdateHidden.
+     */
+    public boolean isBirthdateHidden() {
+        return birthdateHidden;
+    }
+
+    /**
+     * @param birthdateHidden the birthdateHidden to set.
+     */
+    public void setBirthdateHidden(boolean birthdateHidden) {
+        this.birthdateHidden = birthdateHidden;
+    }
+
+    /**
+     * @return the mailHidden.
+     */
+    public boolean isMailHidden() {
+        return mailHidden;
+    }
+
+    /**
+     * @param mailHidden the mailHidden to set.
+     */
+    public void setMailHidden(boolean mailHidden) {
+        this.mailHidden = mailHidden;
+    }
+
+    /**
+     * @return the jobHidden.
+     */
+    public boolean isJobHidden() {
+        return jobHidden;
+    }
+
+    /**
+     * @param jobHidden the jobHidden to set.
+     */
+    public void setJobHidden(boolean jobHidden) {
+        this.jobHidden = jobHidden;
+    }
+
+    /**
+     * @return the genderHidden.
+     */
+    public boolean isGenderHidden() {
+        return genderHidden;
+    }
+
+    /**
+     * @param genderHidden the genderHidden to set.
+     */
+    public void setGenderHidden(boolean genderHidden) {
+        this.genderHidden = genderHidden;
+    }
+
+    /**
+     * @return the statusHidden.
+     */
+    public boolean isStatusHidden() {
+        return statusHidden;
+    }
+
+    /**
+     * @param statusHidden the statusHidden to set.
+     */
+    public void setStatusHidden(boolean statusHidden) {
+        this.statusHidden = statusHidden;
     }
 
 //    @Override

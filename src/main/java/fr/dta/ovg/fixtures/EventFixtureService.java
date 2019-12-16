@@ -40,7 +40,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
     private int userFakerSize;
 
 
-    private final Faker fake = new Faker(Locale.FRENCH);
+    private final Faker fake = new Faker(new Locale("fr"));
 
     /**
      * Local Constructor.

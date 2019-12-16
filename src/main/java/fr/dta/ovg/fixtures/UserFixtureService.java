@@ -61,12 +61,14 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     }
 
     private void loadReal() {
-        this.build("Pamwamba",   "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
+        this.build("Pamwamba",  "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
                     "Samy",     "Nantes",               "Dev Fullstack", 15.5f, LocalDateTime.now());
-        this.build("C-ambium",  "joe@me.com",           "colincolin",           LocalDate.of(1990, 06, 05),
+        this.build("C-ambium",  "joe@me.com",           "colin",                LocalDate.of(1990, 06, 05),
                     "Colin",    "Rennes",               "Dev Fullstack", 14.2f, LocalDateTime.now());
-        this.build("ListerKred", "fab@4ever.org",       "fabricefabrice",       LocalDate.of(1997, 04, 8),
-                    "Fabrice",   "Angers",              "Dev Fullstack", 17.8f, LocalDateTime.now());
+        this.build("ListerKred","fab@4ever.org",        "fabricefabrice",       LocalDate.of(1997, 04, 8),
+                    "Fabrice",  "Angers",               "Dev Fullstack", 17.8f, LocalDateTime.now());
+        this.build("test",      "test@test.org",        "test",                 LocalDate.of(1999, 04, 8),
+                   "test",      "test",                 "test",          0.5f,  LocalDateTime.now());
     }
 
     private void build(final String username, final String email,
@@ -111,5 +113,4 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                     .toInstant().atZone(zoneId)
                     .toLocalDateTime());
     }
-
 }

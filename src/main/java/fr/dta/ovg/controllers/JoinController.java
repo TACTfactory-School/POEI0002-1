@@ -27,7 +27,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.JoinCrudService;
 
 @RestController
-@RequestMapping("/inscription")
+@RequestMapping("api/v1/join")
 public class JoinController {
 
     /** Link to Join CRUD Service. */

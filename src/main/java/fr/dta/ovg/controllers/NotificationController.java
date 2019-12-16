@@ -16,13 +16,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.NotificationCrudService;
+import io.swagger.annotations.Api;
 
+@RestController
+@RequestMapping("api/v1/notification")
+@Api(value = "Notification Management System", tags = "Notification")
 public class NotificationController {
 
     /** Link to Notification CRUD Service. */

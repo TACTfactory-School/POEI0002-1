@@ -23,6 +23,18 @@ public class FixtureService implements Fixture {
     @Autowired
     private UserFixtureService userFixture;
 
+    /** Link to Hobby Fixture Service. */
+    @Autowired
+    private HobbyFixtureService hobbyFixture;
+
+    /** Link to Hobby Fixture Service. */
+    @Autowired
+    private NotificationFixtureService notificationFixture;
+
+    /** Link to Hobby Fixture Service. */
+    @Autowired
+    private MessageFixtureService messageFixture;
+
 //    @Autowired
 //    private SecurityUserFixtureService securityUserFixture;
 
@@ -34,6 +46,10 @@ public class FixtureService implements Fixture {
     public void load() throws NotFoundException {
         this.userFixture.load();
         this.eventFixture.load();
+        this.hobbyFixture.load();
+        this.messageFixture.load();
+        this.notificationFixture.load();
+
 //        this.securityUserFixture.load();
 //        this.securityRoleFixture.load();
     }
