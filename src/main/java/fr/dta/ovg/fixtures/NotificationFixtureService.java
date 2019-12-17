@@ -33,7 +33,7 @@ public class NotificationFixtureService extends FixtureCheck<NotificationReposit
 
     }
 
-    private void build(String label) {
+    private void build(final String label) {
 
         final Notification notification = new Notification();
 

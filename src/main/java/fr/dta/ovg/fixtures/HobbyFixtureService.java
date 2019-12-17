@@ -42,7 +42,7 @@ public class HobbyFixtureService extends FixtureCheck<HobbyRepository>{
         this.build("Dessin");
     }
 
-    private void build(String label) {
+    private void build(final String label) {
 
         final Hobby hobby = new Hobby();
 

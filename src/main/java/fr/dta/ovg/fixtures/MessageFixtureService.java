@@ -28,7 +28,7 @@ public class MessageFixtureService extends FixtureCheck<MessageRepository>{
         this.build("Je viens de créé, tu peux rejoindre si tu veux.");
     }
 
-    private void build(String msg) {
+    private void build(final String msg) {
 
         final Message message = new Message();
 
