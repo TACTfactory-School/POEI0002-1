@@ -54,7 +54,7 @@ public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
 
         final Random rand = new Random();
 
-        for (int i = 0; i < eventFakerSize ; i++) {
+        for (int i = 0; i < eventFakerSize; i++) {
             // ADD some user pending or enrolled
             this.buildJoin(
                     eventService.getOne(rand.nextInt(eventFakerSize)),

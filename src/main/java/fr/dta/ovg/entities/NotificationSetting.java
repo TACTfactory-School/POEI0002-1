@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModel;
 @Entity
 @Table(name = "app_settings")
 @ApiModel(value = "Describes Notification settings for our system")
-public class NotificationSetting extends EntityBase{
+public class NotificationSetting extends EntityBase {
 
     private boolean activeApp;
 

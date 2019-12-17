@@ -12,7 +12,7 @@ import fr.dta.ovg.services.HobbyCrudService;
 /** This class initialize DB with initials fixtures data. */
 @Component
 @Profile("!prod")
-public class HobbyFixtureService extends FixtureCheck<HobbyRepository>{
+public class HobbyFixtureService extends FixtureCheck<HobbyRepository> {
 
     private final HobbyCrudService hobbyService;
 

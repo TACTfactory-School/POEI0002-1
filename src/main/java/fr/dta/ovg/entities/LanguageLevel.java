@@ -2,7 +2,7 @@ package fr.dta.ovg.entities;
 
 public enum LanguageLevel {
     BEGINNER,
-    INTERMEDIATE ,
+    INTERMEDIATE,
     ADVANCED,
     FLUENT,
     NATIVE

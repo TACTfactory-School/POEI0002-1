@@ -67,7 +67,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                     "Samy",     "Nantes",               "Dev Fullstack", 4.5f, LocalDateTime.now());
         this.build("C-ambium",  "joe@me.com",           "colin",                LocalDate.of(1990, 06, 05),
                     "Colin",    "Rennes",               "Dev Fullstack", 3.2f, LocalDateTime.now());
-        this.build("ListerKred","fab@4ever.org",        "fabricefabrice",       LocalDate.of(1997, 04, 8),
+        this.build("ListerKred", "fab@4ever.org",        "fabricefabrice",       LocalDate.of(1997, 04, 8),
                     "Fabrice",  "Angers",               "Dev Fullstack", 5f, LocalDateTime.now());
         this.build("test",      "test@test.org",        "test",                 LocalDate.of(1999, 04, 8),
                    "test",      "test",                 "test",          0.5f,  LocalDateTime.now());

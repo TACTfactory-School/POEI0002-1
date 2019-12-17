@@ -12,7 +12,7 @@ import fr.dta.ovg.services.NotificationCrudService;
 /** This class initialize DB with initials fixtures data. */
 @Component
 @Profile("!prod")
-public class NotificationFixtureService extends FixtureCheck<NotificationRepository>{
+public class NotificationFixtureService extends FixtureCheck<NotificationRepository> {
 
     private final NotificationCrudService notificationService;
 

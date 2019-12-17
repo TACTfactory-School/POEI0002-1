@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "app_us_lang_lvl")
-public class UserLanguage extends EntityBase{
+public class UserLanguage extends EntityBase {
 
     /** Language Level of user. <br> DB Column. */
     @Column(name = "us_lang_lvl", unique = false, nullable = true)

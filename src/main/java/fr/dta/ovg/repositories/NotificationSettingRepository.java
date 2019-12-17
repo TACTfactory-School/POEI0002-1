@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import fr.dta.ovg.entities.NotificationSetting;
 
 @Repository
-public interface NotificationSettingRepository extends JpaRepository<NotificationSetting, Long>{
+public interface NotificationSettingRepository extends JpaRepository<NotificationSetting, Long> {
 
 }

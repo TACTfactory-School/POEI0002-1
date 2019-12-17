@@ -12,7 +12,7 @@ import fr.dta.ovg.services.MessageCrudService;
 /** This class initialize DB with initials fixtures data. */
 @Component
 @Profile("!prod")
-public class MessageFixtureService extends FixtureCheck<MessageRepository>{
+public class MessageFixtureService extends FixtureCheck<MessageRepository> {
 
     private final MessageCrudService messageService;
 
