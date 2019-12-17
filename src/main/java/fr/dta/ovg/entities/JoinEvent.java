@@ -1,5 +1,7 @@
 package fr.dta.ovg.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -15,6 +17,10 @@ public class JoinEvent extends EntityBase {
     /** Validation of event inscription request. */
     @Column(name = "us_ev_valid", unique = false, nullable = false)
     private boolean valid = true;
+
+    /** Validation of event inscription request. */
+    @Column(name = "us_ev_valid", unique = false, nullable = false)
+    private LocalDateTime validatedAt;
 
     /**
      * Event Role of user. <br> DB Column.*/
@@ -59,6 +65,10 @@ public class JoinEvent extends EntityBase {
      */
     public void setValid(final boolean valid) {
         this.valid = valid;
+
+        if (this.valid == true) {
+            this.validatedAt = LocalDateTime.now();
+        }
     }
 
     /**
@@ -99,6 +109,20 @@ public class JoinEvent extends EntityBase {
                 event.addJoinEvent(this);
             }
         }
+    }
+
+    /**
+     * @return the validatedA
+     */
+    public LocalDateTime getValidatedAt() {
+        return validatedAt;
+    }
+
+    /**
+     * @param validatedA the validatedA to set
+     */
+    public void setValidatedAt(LocalDateTime validatedA) {
+        this.validatedAt = validatedA;
     }
 
 }

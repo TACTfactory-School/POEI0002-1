@@ -85,11 +85,10 @@ public class User extends EntityBase {
     private UserStatus maritalStatus;
 
     /** Join event List of the Event. <br>DB Column.*/
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-//    private final List<JoinEvent> joinEvent = new ArrayList<>();
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private final List<JoinEvent> joinEvent = new ArrayList<>();
 
-//    @Column(name = "us_preferences", unique = false, nullable = true)
-//    @ApiModelProperty(value = "The notification preferences of the user.")
+//  @ApiModelProperty(value = "The notification preferences of the user.")
     @OneToOne
     private NotificationSetting preferences;
 
