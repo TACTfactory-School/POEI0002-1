@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import com.github.javafaker.Faker;
 
 import fr.dta.ovg.entities.User;
+import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.UserRepository;
 import fr.dta.ovg.services.user.UserCreateService;
 
@@ -53,9 +54,10 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         this.service = service;
     }
 
-    /** Create-Drop DB - Insert initial data, erasing old data every run. */
+    /** Create-Drop DB - Insert initial data, erasing old data every run.
+     * @throws NotFoundException */
     @Override
-    public void loadIfNoData() {
+    public void loadIfNoData() throws NotFoundException {
         this.loadReal();
         this.loadFake();
     }

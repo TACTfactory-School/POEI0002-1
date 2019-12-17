@@ -14,7 +14,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -89,8 +88,8 @@ public class User extends EntityBase {
     private UserStatus maritalStatus;
 
     /** Join event List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private final List<JoinEvent> joinEvent = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private final List<JoinEvent> joinEvents = new ArrayList<>();
 
 //  @ApiModelProperty(value = "The notification preferences of the user.")
     @OneToOne
@@ -453,12 +452,12 @@ public class User extends EntityBase {
      * @return the events (List).
      */
     public List<JoinEvent> getJoinEvent() {
-        return joinEvent;
+        return joinEvents;
     }
 
     public void addJoinEvent(final JoinEvent joinEvent) {
-        if (!this.joinEvent.contains(joinEvent)) {
-            this.joinEvent.add(joinEvent);
+        if (!this.joinEvents.contains(joinEvent)) {
+            this.joinEvents.add(joinEvent);
             joinEvent.setUser(this);
         }
     }
@@ -498,8 +497,8 @@ public class User extends EntityBase {
         }
     }
     public void removeJoinEvent(final JoinEvent joinEvent) {
-        if (this.joinEvent.contains(joinEvent)) {
-            this.joinEvent.remove(joinEvent);
+        if (this.joinEvents.contains(joinEvent)) {
+            this.joinEvents.remove(joinEvent);
         }
     }
 
