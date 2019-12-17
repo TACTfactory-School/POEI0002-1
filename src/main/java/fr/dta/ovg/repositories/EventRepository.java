@@ -17,6 +17,11 @@ import fr.dta.ovg.entities.Event;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
+    /** Find All Event Function.
+     * @param search : string to process seach.
+     * @param pageable : abstract interface for event pagination.
+     * @return Page of events.
+     */
     @Query(
             value = "SELECT * FROM app_events e WHERE e.ev_title like %?1%",
             nativeQuery = true)

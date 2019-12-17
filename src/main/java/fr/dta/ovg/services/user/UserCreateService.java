@@ -25,7 +25,9 @@ public class UserCreateService {
     @Autowired
     private UserRepository repository;
 
-    /** Create User function implementation. */
+    /** Create User function implementation.
+     * @param user : User entity.
+     * @return save user into repository.*/
     public User create(final User user) {
         LOG.debug("Create User");
 

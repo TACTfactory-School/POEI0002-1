@@ -41,9 +41,9 @@ public class EventController {
     /**
     * Get All function. <br>
     * GET - HTTP.
-    * @return List of all Events.
     * @param page the page number.
     * @param quantity the quantity of return per page.
+    * @param search : String to prpcess search.
     * @return Page page number with quantity asked.
     */
     @GetMapping

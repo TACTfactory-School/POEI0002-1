@@ -28,19 +28,19 @@ public class NotificationSetting extends EntityBase {
     }
 
     /** Set Application Notification setting.
-     * @param hideApp the hideApp to set (boolean) : Enable/Disable application notifications.*/
+     * @param activeApp : boolean to set (boolean) : Enable/Disable application notifications.*/
     public void setActiveApp(final boolean activeApp) {
         this.activeApp = activeApp;
     }
 
     /** Get Mail Notification setting.
-     * @return the hideMail (boolean) : Mail notification settings.*/
+     * @return the activeMail (boolean) : Mail notification settings.*/
     public boolean isActiveMail() {
         return activeMail;
     }
 
     /** Set Mail Notification setting.
-     * @param hideMail the hideMail to set (boolean) : Enable/Disable mail notifications.*/
+     * @param activeMail : boolean to set. Enable/Disable mail notifications.*/
     public void setActiveMail(final boolean activeMail) {
         this.activeMail = activeMail;
     }

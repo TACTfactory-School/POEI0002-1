@@ -266,8 +266,8 @@ public class Event extends EntityBase {
      * Setter Creator.
      * @param creator : the (User) creator to set.
      */
-    public void setCreator(final User author) {
-        this.creator = author;
+    public void setCreator(final User creator) {
+        this.creator = creator;
     }
 
     /**

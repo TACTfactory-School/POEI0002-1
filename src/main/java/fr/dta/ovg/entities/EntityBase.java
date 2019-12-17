@@ -90,18 +90,14 @@ public class EntityBase {
         return enabled;
     }
 
-    /**
-     * Setter setEnabled.
-     * @param boolean enabled : the enabled to set.
-     */
+    /** Setter setEnabled.
+     * @param enabled : the enabled to set.*/
     public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
 
-    /**
-     * Getter created date.
-     * @return LocalDateTime createdAt.
-     */
+    /** Getter created date.
+     * @return LocalDateTime createdAt.*/
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

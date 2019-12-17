@@ -25,7 +25,9 @@ public class EventCreateService {
     @Autowired
     private EventRepository repository;
 
-    /** Create Event function implementation.*/
+    /** Create Event function implementation.
+     * @param event : Event entity.
+     * @return save event into repository.*/
     public Event create(final Event event) {
         LOG.debug("Create event");
 

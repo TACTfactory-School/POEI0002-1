@@ -32,15 +32,24 @@ public interface UserRepository  extends JpaRepository<User, Long> {
 //     * PokemonSpecies findOne(@Param("myId") Long id);
 //     */
 
-     // TODO Delete this function - move to user
+    /** Exist by username function.
+     * @param user : @see User.
+     * @return true if the language already exist in the repository.*/
     @Query("SELECT COUNT(e) > 0" + " FROM User e" + " WHERE LOWER(e.username) = LOWER(:#{#s.username})"
             + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
-    boolean existsByUsername(@Param("s") User user);
+    boolean existsByUsername(@Param("s") User user); // TODO Delete this function - move to user
 
+    /** Find All User Function.
+     * @param search : string to process seach.
+     * @param pageable : abstract interface for user pagination.
+     * @return Page of users.*/
     @Query(
             value = "SELECT * FROM app_users u WHERE u.us_username like %?1%",
             nativeQuery = true)
     Page<User> findAll(String search, Pageable pageable);
 
+    /** Find by username Otionnal Function.
+     * @param login : String.
+     * @return an Optional.*/
     Optional<User> findByUsername(String login);
 }

@@ -45,6 +45,9 @@ public class UserController {
      * Get All function. <br>
      * GET - HTTP.
      * @return List of all Users.
+     *  @param page : the page number.
+     * @param quantity : the quantity of return per page.
+     * @param search :String to prpcess search.
      */
     @GetMapping
     public Page<User> getAll(final int page, final int quantity, final String search) {
@@ -69,7 +72,7 @@ public class UserController {
     /**
      * Create an User.<br>
      * POST - HTTP.
-     * @param event entity.
+     * @param user : User entity.
      * @return the created object User.
      * @throws BadRequestException : Incorrect request.
      */
@@ -86,7 +89,7 @@ public class UserController {
      * Update an User. <br>
      * PUT - HTTP.
      * @param id : number of the selected User.
-     * @param User : entity.
+     * @param user : User entity.
      * @return the updated User object.
      * @throws BadRequestException : Incorrect request.
      * @throws NotFoundException : User entity not found exception.

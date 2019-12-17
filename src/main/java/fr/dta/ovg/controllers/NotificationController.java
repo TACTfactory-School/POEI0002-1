@@ -61,7 +61,7 @@ public class NotificationController {
     /**
      * Create an Notification.<br>
      * POST - HTTP.
-     * @param Notification entity.
+     * @param notification : Notification entity.
      * @return the created object Notification.
      * @throws BadRequestException : Incorrect request (ie Json Body{}).
      */

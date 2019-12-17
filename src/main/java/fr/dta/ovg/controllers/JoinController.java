@@ -47,7 +47,7 @@ public class JoinController {
     /**
      * Get One by ID.<br>
      * GET - HTTP
-     * @param id: number of the selected Join.
+     * @param id : number of the selected Join.
      * @return Entity Join.
      * @throws NotFoundException : (User) Join (Event) entity not found.
      */
@@ -59,7 +59,7 @@ public class JoinController {
     /**
      * Create a Join.<br>
      * POST - HTTP.
-     * @param JoinEvent entity.
+     * @param inscription : JoinEvent entity.
      * @return the created object Join.
      * @throws BadRequestException : Incorrect request.
      */
@@ -71,8 +71,8 @@ public class JoinController {
     /**
      * Update an Join. <br>
      * PUT - HTTP.
-     * @param id: number of the selected event.
-     * @param JoinEvent entity.
+     * @param id : number of the selected event.
+     * @param inscription : JoinEvent entity.
      * @return the updated Join object.
      * @throws BadRequestException : Incorrect request.
      * @throws NotFoundException : JoinEvent entity not found.
@@ -90,7 +90,7 @@ public class JoinController {
     /**
      * Delete one by ID. <br>
      * DELETE - HTTP.
-     * @param id: number of the selected Join.
+     * @param id : number of the selected Join.
      * @throws NotFoundException : JoinEvent entity not found.
      */
     @DeleteMapping("{id}")

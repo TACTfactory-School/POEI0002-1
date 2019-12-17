@@ -58,7 +58,7 @@ public class Language extends EntityBase {
     }
 
     /** Add Language.
-     * @param userLanguage.*/
+     * @param userLanguage : @see UserLanguage.*/
     public void addLanguage(final UserLanguage userLanguage) {
         if (!this.users.contains(userLanguage)) {
             this.users.add(userLanguage);
@@ -67,7 +67,7 @@ public class Language extends EntityBase {
     }
 
     /** Remove Language.
-     * @param userLanguage : UserLangage.*/
+     * @param userLanguage : @see UserLangage.*/
     public void removeLanguage(final UserLanguage userLanguage) {
         if (this.users.contains(userLanguage)) {
             this.users.remove(userLanguage);

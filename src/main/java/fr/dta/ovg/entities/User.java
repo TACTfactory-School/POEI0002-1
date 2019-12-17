@@ -165,7 +165,7 @@ public class User extends EntityBase {
     }
 
     /** Setter user's gender.
-     * @param type (UserGender Enum) : the gender to set.*/
+     * @param UserGender : the gender to set.*/
     public void setGender(final UserGender gender) {
         this.gender = gender;
     }
@@ -404,7 +404,7 @@ public class User extends EntityBase {
         return joinEvents;
     }
 
-    /** @param JoinEvent : Add join event to user */
+    /** @param joinEvent : Add join event to user */
     public void addJoinEvent(final JoinEvent joinEvent) {
         if (!this.joinEvents.contains(joinEvent)) {
             this.joinEvents.add(joinEvent);
@@ -412,7 +412,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param : UserLanguage : association table. Add language to user */
+    /** @param userLanguage : association table. Add language to user */
     public void addUserLanguage(final UserLanguage userLanguage) {
         if (!this.languages.contains(userLanguage)) {
             this.languages.add(userLanguage);
@@ -420,7 +420,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param UserHobby : association table. Add hobby to user */
+    /** @param userHobby : association table. Add hobby to user */
     public void addUserHobby(final UserHobby userHobby) {
         if (!this.hobbies.contains(userHobby)) {
             this.hobbies.add(userHobby);
@@ -428,7 +428,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param Notification : Add notification to user */
+    /** @param notification : Add notification to user */
     public void addUserNotification(final Notification userNotification) {
         if (!this.notifications.contains(userNotification)) {
             this.notifications.add(userNotification);
@@ -436,7 +436,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param Message : Add received message to user */
+    /** @param message : Add received message to user */
     public void addReceivedMessage(final Message messagesReceived) {
         if (!this.messagesReceived.contains(messagesReceived)) {
             this.messagesReceived.add(messagesReceived);

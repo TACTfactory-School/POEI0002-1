@@ -61,7 +61,7 @@ public class MessageController {
     /**
      * Create an Message.<br>
      * POST - HTTP.
-     * @param Message entity.
+     * @param message : Message entity.
      * @return the created object Message.
      * @throws BadRequestException : Incorrect request.
      */

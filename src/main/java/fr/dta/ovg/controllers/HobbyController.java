@@ -61,7 +61,7 @@ public class HobbyController {
     /**
      * Create an Hobby.<br>
      * POST - HTTP.
-     * @param Hobby entity.
+     * @param hobby : Hobby entity.
      * @return the created object Hobby.
      * @throws BadRequestException :  Incorrect request.
      */
