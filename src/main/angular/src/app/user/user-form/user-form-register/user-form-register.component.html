@@ -49,7 +49,7 @@
             <p>
               <mat-form-field appearance="outline">
                 <mat-label>Date de naissance</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdate">
+                <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdate" (click)="picker.open()" autocomplete="off">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <!-- <mat-error *ngIf="birthdate.invalid && !birthdate.pristine" class="alert"> Veuillez saisir une date de naissance valide. </mat-error> -->
@@ -80,19 +80,23 @@
                   </form>
                 </mat-step>
                 <mat-step [stepControl]="thirdFormGroup">
-                  <form [formGroup]="registerUser">
+
+
+                    <!-- selected: {{ registerUser .value | json}}.
+                    <br>
+                    Gender: {{gender|json}} -->
                     <ng-template matStepLabel>Genre</ng-template>
-                    <mat-form-field>
+                    <mat-form-field [formGroup]="registerUser">
                       <mat-label>Genre</mat-label>
-                      <mat-select >
-                        <mat-option *ngFor="let gender of keys(genders)" [value]="gender">{{ genders[gender] }}</mat-option>
+                      <mat-select formControlName="gender">
+                        <mat-option *ngFor="let g of gender" [value]="g.value">{{ g.label }}</mat-option>
+                        <!-- <mat-option *ngFor="let g of genders" [value]="g.value">{{ g.label }}</mat-option> -->
                       </mat-select>
                     </mat-form-field>
                     <div>
                       <button mat-button matStepperPrevious>Retour</button>
-                      <button mat-button matStepperNext>Suivant</button>
                     </div>
-                  </form>
+
                 </mat-step>
                 <!-- <mat-step>
                 </mat-step> -->

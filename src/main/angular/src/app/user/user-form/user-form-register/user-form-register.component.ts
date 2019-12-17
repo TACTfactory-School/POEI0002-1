@@ -14,6 +14,12 @@ import { Subscription } from 'rxjs';
 })
 export class UserFormRegisterComponent implements OnInit {
 
+  readonly gender = [
+    { label: 'Homme', value: UserGender.MALE },
+    { label: 'Femme', value: UserGender.FEMALE },
+    { label: 'Non binaire', value: UserGender.NONBINARY },
+    { label: 'Non spécifié', value: '' },
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +35,6 @@ export class UserFormRegisterComponent implements OnInit {
   thirdFormGroup: FormGroup;
   registerUser: FormGroup;
   newUser: User;
-  genders = UserGender;
   icon: string;
 
   keys = Object.keys;
@@ -43,7 +48,7 @@ export class UserFormRegisterComponent implements OnInit {
       birthdate : new FormControl('', Validators.required),
       firstname : new FormControl(''),
       city : new FormControl(''),
-      gender : new FormControl(this.genders),
+      gender : new FormControl(''),
     });
   }
   ngOnDestroy() {
@@ -85,7 +90,5 @@ export class UserFormRegisterComponent implements OnInit {
     this.thirdFormGroup = this.fb.group({
       secondCtrl: new FormControl('')
     });
-  }
-
-
+    }
 }
