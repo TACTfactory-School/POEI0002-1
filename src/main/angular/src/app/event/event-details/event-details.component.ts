@@ -7,6 +7,7 @@ import { CurrentUserService } from 'src/app/auth/current-user.service';
 import { User } from 'src/app/user/user';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from 'src/app/event/confirm-dialog/confirm-dialog.component';
+import { EventEditComponent } from '../event-edit/event-edit.component';
 
 @Component({
   selector: 'app-event-details',
@@ -61,5 +62,13 @@ export class EventDetailsComponent implements OnInit {
     //   console.log('The dialog was closed');
     // });
   }
+
   joinEvent() {}
+
+  onEdit() {
+    const dialogRef = this.dialog.open(EventEditComponent, {
+      width: '800px',
+      data: this.event
+    });
+  }
 }

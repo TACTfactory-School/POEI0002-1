@@ -40,14 +40,10 @@ export class Event {
     this.city = city;
     this.enabled = enabled;
   }
-  setUser(id: number, creator: User) {
-
-  }
 }
 export interface EventFormDTO {
   id: number;
   label: string;
-  creator: string;
   description: string;
   enabled: boolean;
 }

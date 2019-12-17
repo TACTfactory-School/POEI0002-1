@@ -1,3 +1,82 @@
-<p>
-  event-edit works!
-</p>
+  <div class="content">
+    <div class="header">
+      <mat-toolbar>
+          <mat-toolbar-row>
+            <span>Modifier mon événement</span>
+          </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="event-edit">
+      <mat-dialog-content class="mat-typography">
+      <form [formGroup]="editEvent">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Titre de l'événement</mat-label>
+            <input matInput placeholder="Titre de l'événement" formControlName="label">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Description" formControlName="description">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Débute le</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Débute le" formControlName="startAt">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <!-- <mat-error *ngIf="startedAt.invalid && !startedAt.pristine" class="alert"> Veuillez saisir une date valide. </mat-error> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Adresse" formControlName="address">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Code Postal</mat-label>
+            <input matInput placeholder="Code Postal" formControlName="postcode">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Ville" formControlName="city">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre de places</mat-label>
+            <input matInput type="number" placeholder="Nombre de place" formControlName="nbPlaceMax">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Image d'entête</mat-label>
+            <input matInput placeholder="Image d'entête" formControlName="img">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </p>
+      </form>
+      <span class="spacer"></span>
+      <button  class="btn" mat-raised-button (click)="update()">Modifier</button>
+    </mat-dialog-content>
+    </div>
+  </div>

@@ -97,8 +97,13 @@ public class EventController {
         //  ObjectMapper mapper = new ObjectMapper();
         // ---------
         entity.setLabel(event.getLabel());
-        entity.setCreator(event.getCreator());
         entity.setDescription(event.getDescription());
+        entity.setStartAt(event.getStartAt());
+        entity.setAddress(event.getAddress());
+        entity.setPostcode(event.getPostcode());
+        entity.setCity(event.getCity());
+        entity.setNbPlaceMax(event.getNbPlaceMax());
+        entity.setImg(event.getImg());
 
         return this.service.create(entity);
     }
