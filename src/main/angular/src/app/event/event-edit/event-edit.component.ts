@@ -25,7 +25,6 @@ export class EventEditComponent implements OnInit {
   currentUser: User;
   currentEvent: Observable<Event>;
   constructor(
-    private router: Router,
     private fb: FormBuilder,
     private api: EventApiService,
     private user: UserApiService,
@@ -80,9 +79,9 @@ export class EventEditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-            this.router.navigateByUrl(this.router.url);
-            location.reload();
-            this.dialogRef.close();
+
+            //location.reload();
+            this.dialogRef.close(data);
             this._snackBar.open('Votre événement a bien été modifié !', 'Fermer', {
               duration: 4000,
             });

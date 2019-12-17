@@ -70,5 +70,8 @@ export class EventDetailsComponent implements OnInit {
       width: '800px',
       data: this.event
     });
+    dialogRef.afterClosed().subscribe(data => {
+      this.event = data;
+    });
   }
 }

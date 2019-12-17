@@ -1,7 +1,28 @@
-<h1 mat-dialog-title>Confirmation</h1>
+<!-- <h1 mat-dialog-title>Confirmation</h1>
 <div mat-dialog-content>
   <p>Êtes-vous sûr(e) de vouloir supprimer cet événement ?</p>
 <div mat-dialog-actions>
   <button mat-button (click)="onClose()">Annuler</button>
   <button mat-button (click)="onConfirm()">Confirmer</button>
+</div> -->
+
+
+<div class="container">
+  <div class="header">
+    <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Confirmation</span>
+          <span class="spacer"></span>
+          <button *ngIf="isModal" mat-icon-button (click)="close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="content">
+    <p>Êtes-vous sûr(e) de vouloir supprimer cet événement ?</p>
+    <button class="btn" mat-stroked-button color="primary" (click)="onClose()">Annuler</button>
+    <span class="spacer"></span>
+    <button class="gradient" mat-raised-button (click)="onConfirm()">Supprimer</button>
+  </div>
 </div>
