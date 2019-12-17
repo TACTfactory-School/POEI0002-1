@@ -42,11 +42,11 @@ enum UserStatus {
   UNSPECIFIED
 }
 
-enum UserGender {
+export enum UserGender {
   MALE,
   FEMALE,
   NONBINARY,
-  UNSPECIFIED
+  UNSPECIFIED,
 }
 
 export interface UserFormDTO {
@@ -60,10 +60,17 @@ export class User {
     email: string,
     password: string,
     birthdate: Date,
+    firstname: string,
+    city: string,
+    gender: UserGender,
     ) {
     this.username = username;
     this.email = email;
     this.password = password;
     this.birthdate = birthdate;
+    this.firstname = firstname;
+    this.city = city;
+    this.gender = gender;
+
     }
 }
