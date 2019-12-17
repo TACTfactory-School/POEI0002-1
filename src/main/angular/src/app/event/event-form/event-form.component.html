@@ -27,7 +27,7 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Débute le</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Débute le" formControlName="startAt">
+          <input matInput [matDatepicker]="picker" placeholder="Débute le" formControlName="startAt" (click)="picker.open()" autocomplete="off">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <!-- <mat-error *ngIf="startedAt.invalid && !startedAt.pristine" class="alert"> Veuillez saisir une date valide. </mat-error> -->
