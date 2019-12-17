@@ -339,7 +339,7 @@ public class User extends EntityBase {
     /**
      * @param preferences the preferences to set.
      */
-    public void setPreferences(NotificationSetting preferences) {
+    public void setPreferences(final NotificationSetting preferences) {
         this.preferences = preferences;
     }
 
@@ -353,7 +353,7 @@ public class User extends EntityBase {
     /**
      * @param birthdateHidden the birthdateHidden to set.
      */
-    public void setBirthdateHidden(boolean birthdateHidden) {
+    public void setBirthdateHidden(final boolean birthdateHidden) {
         this.birthdateHidden = birthdateHidden;
     }
 
@@ -367,7 +367,7 @@ public class User extends EntityBase {
     /**
      * @param mailHidden the mailHidden to set.
      */
-    public void setMailHidden(boolean mailHidden) {
+    public void setMailHidden(final boolean mailHidden) {
         this.mailHidden = mailHidden;
     }
 
@@ -381,7 +381,7 @@ public class User extends EntityBase {
     /**
      * @param jobHidden the jobHidden to set.
      */
-    public void setJobHidden(boolean jobHidden) {
+    public void setJobHidden(final boolean jobHidden) {
         this.jobHidden = jobHidden;
     }
 
@@ -395,7 +395,7 @@ public class User extends EntityBase {
     /**
      * @param genderHidden the genderHidden to set.
      */
-    public void setGenderHidden(boolean genderHidden) {
+    public void setGenderHidden(final boolean genderHidden) {
         this.genderHidden = genderHidden;
     }
 
@@ -409,7 +409,7 @@ public class User extends EntityBase {
     /**
      * @param statusHidden the statusHidden to set.
      */
-    public void setStatusHidden(boolean statusHidden) {
+    public void setStatusHidden(final boolean statusHidden) {
         this.statusHidden = statusHidden;
     }
 

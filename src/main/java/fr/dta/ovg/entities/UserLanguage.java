@@ -40,7 +40,7 @@ public class UserLanguage extends EntityBase{
     /**
      * @param user the user to set
      */
-    public void setUser(User user) {
+    public void setUser(final User user) {
         if (this.user != user) {
             this.user = user;
             if (user != null) {
@@ -59,7 +59,7 @@ public class UserLanguage extends EntityBase{
     /**
      * @param language the language to set
      */
-    public void setLanguage(Language language) {
+    public void setLanguage(final Language language) {
         if (this.language != language) {
             this.language = language;
             if (language != null) {
@@ -78,7 +78,7 @@ public class UserLanguage extends EntityBase{
     /**
      * @param level the level to set
      */
-    public void setLevel(LanguageLevel level) {
+    public void setLevel(final LanguageLevel level) {
         this.level = level;
     }
 }

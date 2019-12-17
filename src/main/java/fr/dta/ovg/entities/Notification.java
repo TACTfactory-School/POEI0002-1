@@ -55,7 +55,7 @@ public class Notification extends EntityBase {
     /**
      * @param user the user to set
      */
-    public void setUser(User user) {
+    public void setUser(final User user) {
         if (this.user != user) {
             this.user = user;
             if (user != null) {
@@ -74,7 +74,7 @@ public class Notification extends EntityBase {
     /**
      * @param event the event to set
      */
-    public void setEvent(Event event) {
+    public void setEvent(final Event event) {
         if (this.event != event) {
             this.event = event;
             if (event != null) {

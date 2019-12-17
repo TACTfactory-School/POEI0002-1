@@ -124,7 +124,7 @@ public class JoinEvent extends EntityBase {
     /**
      * @param validatedA the validatedA to set
      */
-    public void setValidatedAt(LocalDateTime validatedA) {
+    public void setValidatedAt(final LocalDateTime validatedA) {
         this.validatedAt = validatedA;
     }
 
