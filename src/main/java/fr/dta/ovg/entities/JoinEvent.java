@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,13 +21,14 @@ public class JoinEvent extends EntityBase {
     private boolean valid = true;
 
     /** Validation of event inscription request. */
-    @Column(name = "us_ev_valid", unique = false, nullable = false)
+    @Column(name = "us_ev_validatedAt", unique = false, nullable = false)
     private LocalDateTime validatedAt;
 
     /**
      * Event Role of user. <br> DB Column.*/
     @Column(name = "us_ev_role", unique = false, nullable = false)
     @ApiModelProperty(value = "The Role of the user in the Event.")
+    @Enumerated(EnumType.ORDINAL)
     private EventRole role;
 
     /** User inscription. */

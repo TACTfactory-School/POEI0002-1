@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -77,11 +79,13 @@ public class User extends EntityBase {
     /** Gender of user. <br> DB Column. */
     @Column(name = "us_gender", unique = false, nullable = true)
     @ApiModelProperty(value = "The gender of the user.")
+    @Enumerated(EnumType.ORDINAL)
     private UserGender gender;
 
     /** Marital status of user. <br> DB Column. */
     @Column(name = "us_status", unique = false, nullable = true)
     @ApiModelProperty(value = "The marital status of the user.")
+    @Enumerated(EnumType.ORDINAL)
     private UserStatus maritalStatus;
 
     /** Join event List of the Event. <br>DB Column.*/
@@ -107,7 +111,7 @@ public class User extends EntityBase {
     @OneToMany(mappedBy = "user")
     private final List<UserHobby> hobbies = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private final List<User> friends = new ArrayList<>();
 
     /** Birthdate preference setting of the user.. <br> DB Column. */

@@ -2,6 +2,8 @@ package fr.dta.ovg.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -15,6 +17,7 @@ public class UserLanguage extends EntityBase{
     /** Language Level of user. <br> DB Column. */
     @Column(name = "us_lang_lvl", unique = false, nullable = true)
     @ApiModelProperty(value = "The language level of the user.")
+    @Enumerated(EnumType.ORDINAL)
     LanguageLevel level;
 
     /** Selected user. */

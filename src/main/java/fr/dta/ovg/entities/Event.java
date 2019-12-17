@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -79,6 +81,7 @@ public class Event extends EntityBase {
     /** Type of the Event. <br>DB Column.*/
     @ApiModelProperty(name = "ev_type", value = "The type of the event.")
     @Column(length = 255, nullable = true, unique = false)
+    @Enumerated(EnumType.ORDINAL)
     private EventType type;
 
     /** Join users List of the Event. <br>DB Column.*/
