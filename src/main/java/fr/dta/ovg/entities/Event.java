@@ -23,13 +23,14 @@ import javax.validation.constraints.NotBlank;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/** Entity Event class.*/
 @Entity
 @Table(name = "app_events")
 @ApiModel(value = "Describes an Event for our system.")
 public class Event extends EntityBase {
 
     /** Creator of the Event. <br>DB Column.*/
-//  @NotBlank
+    // TODO : Restore @NotBlank when DB run in update mode.
     @ApiModelProperty(value = "The author of the event.")
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
@@ -88,16 +89,25 @@ public class Event extends EntityBase {
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
+    /** Notifications List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private final List<Notification> eventNotification = new ArrayList<>();
 
+    /** Messages List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "event")
     private final List<Message> messages = new ArrayList<>();
 
     /** Override toString() method with Event attributes.*/
     @Override
     public String toString() {
-        return String.format("| Title : %s | Description : %s | Creator : %s", label, description, creator);
+
+        StringBuilder eventDetails = new StringBuilder();
+
+        eventDetails
+            .append("| Title : %s | Description : %s | Creator : %s | Finished : %b ")
+            .append("| Start Date : %dt | Max places : %d | Address : %s | Postcode : %s | City: %s ");
+        return String.format(eventDetails.toString(),
+                label, description, creator, isEnabled(), startAt, nbPlaceMax, address, postcode, city);
     }
 
     /**
@@ -269,20 +279,26 @@ public class Event extends EntityBase {
     }
 
     /**
-     * @return the eventNotification
+     * Get notifications list.
+     * @return the eventNotification : List of notification.
      */
     public List<Notification> getEventNotification() {
         return eventNotification;
     }
 
     /**
-     * @return the messages
+     *  Get messages list.
+     * @return the messages : List of messages.
      */
     public List<Message> getMessages() {
         return messages;
     }
 
 
+    /**
+     * Function - Add notification to Event.
+     * @param eventNotification : Notification.
+     */
     public void addEventNotification(final Notification eventNotification) {
         if (!this.eventNotification.contains(eventNotification)) {
             this.eventNotification.add(eventNotification);
@@ -290,6 +306,10 @@ public class Event extends EntityBase {
         }
     }
 
+    /**
+     * Function - Add Join Event.
+     * @param usersJoin : JoinEvent.
+     */
     public void addJoinEvent(final JoinEvent usersJoin) {
         if (!this.usersJoin.contains(usersJoin)) {
             this.usersJoin.add(usersJoin);
@@ -297,6 +317,10 @@ public class Event extends EntityBase {
         }
     }
 
+    /**
+     * Function - Add message to Event.
+     * @param message : Message.
+     */
     public void addEventMessage(final Message message) {
         if (!this.messages.contains(message)) {
             this.messages.add(message);
@@ -304,18 +328,30 @@ public class Event extends EntityBase {
         }
     }
 
+    /**
+     * Function - Remove notification to Event.
+     * @param eventNotification : Notification.
+     */
     public void removeEventNotification(final Notification eventNotification) {
         if (this.eventNotification.contains(eventNotification)) {
             this.eventNotification.remove(eventNotification);
         }
     }
 
+    /**
+     * Function - Remove Join Event.
+     * @param usersJoin : JoinEvent.
+     */
     public void removeJoinEvent(final JoinEvent usersJoin) {
         if (this.usersJoin.contains(usersJoin)) {
             this.usersJoin.remove(usersJoin);
         }
     }
 
+    /**
+     * Function - Remove Event message.
+     * @param message :Message.
+     */
     public void removeEventMessage(final Message message) {
         if (this.messages.contains(message)) {
             this.messages.remove(message);

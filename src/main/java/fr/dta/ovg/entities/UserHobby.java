@@ -1,3 +1,9 @@
+/* User Hobby class. Association table.
+ * @author Colin Cerveaux @C-ambium.
+ * Define Association table between User and Hobby.
+ * License : ©2019 All rights reserved.
+ */
+
 package fr.dta.ovg.entities;
 
 import javax.persistence.Entity;
@@ -5,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/** User Hobby class. Association table.*/
 @Entity
 @Table(name = "app_us_hobby")
 public class UserHobby extends EntityBase {
@@ -19,16 +26,14 @@ public class UserHobby extends EntityBase {
     @JoinColumn(nullable = false)
     private Hobby hobby;
 
-    /**
-     * @return the user
-     */
+    /** Get the hobby's user.
+     * @return the user : @see User.*/
     public User getUser() {
         return user;
     }
 
-    /**
-     * @param user the user to set
-     */
+    /** Set the hobby's user.
+     * @param user the user to set.*/
     public void setUser(final User user) {
         if (this.user != user) {
             this.user = user;
@@ -38,16 +43,14 @@ public class UserHobby extends EntityBase {
         }
     }
 
-    /**
-     * @return the hobby
-     */
+    /** Get the user's hobby.
+     * @return the hobby : @see Hobby.*/
     public Hobby getHobby() {
         return hobby;
     }
 
-    /**
-     * @param hobby the hobby to set
-     */
+    /** Set the user's hobby.
+     * @param hobby the hobby to set.*/
     public void setHobby(final Hobby hobby) {
         if (this.hobby != hobby) {
             this.hobby = hobby;

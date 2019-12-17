@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/** Entity Message class.*/
 @Entity
 @Table(name = "app_messages")
 @ApiModel(value = "Describes a Message for our system")
@@ -35,41 +36,36 @@ public class Message extends EntityBase {
 
     /**
      * Getter Message.
-     * @return the message (String).
-     */
+     * @return the message (String).*/
     public String getMessage() {
         return message;
     }
 
-    /**
-     * @return the userEmitter
-     */
+    /** Get the user emitter.
+     * @return the userEmitter : User.*/
     public User getUserEmitter() {
         return userEmitter;
     }
 
-    /**
-     * @param userEmitter the userEmitter to set
-     */
+    /** Set the user emitter.
+     * @param userEmitter the userEmitter to set.*/
     public void setUserEmitter(final User userEmitter) {
         if (this.userEmitter != userEmitter) {
             this.userEmitter = userEmitter;
             if (userEmitter != null) {
-                userEmitter.addEmmitedMessage(this);
+                userEmitter.addEmmittedMessage(this);
             }
         }
     }
 
-    /**
-     * @return the userReceiver
-     */
+    /** Get the user receiver.
+     * @return the userReceiver : User.*/
     public User getUserReceiver() {
         return userReceiver;
     }
 
-    /**
-     * @param userReceiver the userReceiver to set
-     */
+    /** Set the user receiver.
+     * @param userReceiver the userReceiver to set.*/
     public void setUserReceiver(final User userReceiver) {
         if (this.userReceiver != userReceiver) {
             this.userReceiver = userReceiver;
@@ -79,16 +75,14 @@ public class Message extends EntityBase {
         }
     }
 
-    /**
-     * @return the event
-     */
+    /** Get the event.
+     * @return the event : Event.*/
     public Event getEvent() {
         return event;
     }
 
-    /**
-     * @param event the event to set
-     */
+    /** Set the event.
+     * @param event the Event to set.*/
     public void setEvent(final Event event) {
         if (this.event != event) {
             this.event = event;
@@ -98,9 +92,8 @@ public class Message extends EntityBase {
         }
     }
 
-    /**
-     * @param message the message to set
-     */
+    /** Set Message.
+     * @param message the message to set.*/
     public void setMessage(final String message) {
         this.message = message;
     }

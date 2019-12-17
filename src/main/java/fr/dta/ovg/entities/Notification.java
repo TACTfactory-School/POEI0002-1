@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/** Entity Notification class.*/
 @Entity
 @Table(name = "app_notifications")
 @ApiModel(value = "Describes a Notification for our system")
@@ -30,31 +31,26 @@ public class Notification extends EntityBase {
     @ManyToOne
     private Event event;
 
-    /**
-     * Getter label.
-     * @return the label (String).
-     */
+    /** Getter label.
+     * @return the label (String).*/
     public String getLabel() {
         return label;
     }
 
     /** Setter Label.
-     * @param label (String) : the label to set
-     */
+     * @param label (String) : the label to set.*/
     public void setLabel(final String label) {
         this.label = label;
     }
 
-    /**
-     * @return the user
-     */
+    /** Get the user of notification.
+     * @return the user : User.*/
     public User getUser() {
         return user;
     }
 
-    /**
-     * @param user the user to set
-     */
+    /** Set the user of notification.
+     * @param user the user to set.*/
     public void setUser(final User user) {
         if (this.user != user) {
             this.user = user;
@@ -64,16 +60,14 @@ public class Notification extends EntityBase {
         }
     }
 
-    /**
-     * @return the event
-     */
+    /** Get the event of notification.
+     * @return the event : Event.*/
     public Event getEvent() {
         return event;
     }
 
-    /**
-     * @param event the event to set
-     */
+    /** Set the event of notification.
+     * @param event the event to set.*/
     public void setEvent(final Event event) {
         if (this.event != event) {
             this.event = event;

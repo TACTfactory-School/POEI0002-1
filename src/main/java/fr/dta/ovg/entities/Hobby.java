@@ -17,6 +17,7 @@ import javax.validation.constraints.NotBlank;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/** Entity Hobby class.*/
 @Entity
 @Table(name = "app_hobbies")
 @ApiModel(value = "Describes a Hobby for our system.")
@@ -47,22 +48,31 @@ public class Hobby  extends EntityBase {
     }
 
     /**
-     * @return the users
+     * Get UserHobby.
+     * @return users : UserHobby list.
      */
     public List<UserHobby> getUsers() {
         return users;
     }
 
+    /**
+     * Add Hobby with association table.
+     * @param userHobby : UserHobby.
+     */
     public void addUserHobby(final UserHobby userHobby) {
         if (!this.users.contains(userHobby)) {
             this.users.add(userHobby);
             userHobby.setHobby(this);
         }
     }
+
+    /**
+     * Remove Hobby from association table.
+     * @param userHobby : UserHobby.
+     */
     public void removeUserHobby(final UserHobby userHobby) {
         if (this.users.contains(userHobby)) {
             this.users.remove(userHobby);
         }
     }
-
 }

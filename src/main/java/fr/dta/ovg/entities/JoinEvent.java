@@ -1,3 +1,9 @@
+/* Join Event class. Association table.
+ * @author Colin Cerveaux @C-ambium.
+ * Define Association table between User and Event.
+ * License : ©2019 All rights reserved.
+ */
+
 package fr.dta.ovg.entities;
 
 import java.time.LocalDateTime;
@@ -12,6 +18,7 @@ import javax.persistence.Table;
 
 import io.swagger.annotations.ApiModelProperty;
 
+/** Join Event class. Association table between User and Event.*/
 @Entity
 @Table(name = "app_join_event") //, uniqueConstraints = {@UniqueConstraint(columnNames={"user", "event"})})
 public class JoinEvent extends EntityBase {
@@ -43,31 +50,26 @@ public class JoinEvent extends EntityBase {
     @JoinColumn(nullable = false)
     private Event event;
 
-    /**
-     * @return the role.
-     */
+    /** Get the role.
+     * @return the role : Enum EventRole.*/
     public EventRole getRole() {
         return role;
     }
 
-    /**
-     * @param role the role to set.
-     */
+    /** Set role.
+     * @param role the role to set.*/
     public void setRole(final EventRole role) {
         this.role = role;
     }
 
-    /**
-     * @return the valid.
-     */
+    /** Get valid.
+     * @return valid : is valid boolean.*/
     public boolean isValid() {
         return valid;
     }
 
-    /**
-     * @param valid
-     *            the valid to set.
-     */
+    /** Set Valid - assign validated Date.
+     * @param valid : the valid to set.*/
     public void setValid(final boolean valid) {
         this.valid = valid;
 
@@ -76,37 +78,32 @@ public class JoinEvent extends EntityBase {
         }
     }
 
-    /**
-     * @return the user.
-     */
+    /** Get the Join User.
+     * @return the user : User.*/
     public User getUser() {
         return user;
     }
 
-    /**
-     * @param user
-     *            the user to set.
-     */
+    /** Set the Join User.
+     * @param user the user to set.*/
     public void setUser(final User user) {
         if (this.user != user) {
             this.user = user;
+
             if (user != null) {
                 user.addJoinEvent(this);
             }
         }
     }
 
-    /**
-     * @return the event.
-     */
+    /** Get the Join Event.
+     * @return the event : Event.*/
     public Event getEvent() {
         return event;
     }
 
-    /**
-     * @param event
-     *            the event to set.
-     */
+    /** Set the Join Event.
+     * @param event the event to set.*/
     public void setEvent(final Event event) {
         if (this.event != event) {
             this.event = event;
@@ -116,16 +113,15 @@ public class JoinEvent extends EntityBase {
         }
     }
 
-    /**
-     * @return the validatedA
+    /** Get the join Validated Date.
+     * @return the validatedAt : LocalDateTime.
      */
     public LocalDateTime getValidatedAt() {
         return validatedAt;
     }
 
-    /**
-     * @param validatedA the validatedA to set
-     */
+    /** Set the join Validated Date.
+     * @param validatedA the validatedA to set.*/
     public void setValidatedAt(final LocalDateTime validatedA) {
         this.validatedAt = validatedA;
     }
