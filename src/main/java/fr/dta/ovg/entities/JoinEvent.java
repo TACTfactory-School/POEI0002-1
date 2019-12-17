@@ -73,7 +73,12 @@ public class JoinEvent extends EntityBase {
      *            the user to set.
      */
     public void setUser(final User user) {
-        this.user = user;
+        if (this.user != user) {
+            this.user = user;
+            if (user != null) {
+                user.addJoinEvent(this);
+            }
+        }
     }
 
     /**
@@ -88,7 +93,12 @@ public class JoinEvent extends EntityBase {
      *            the event to set.
      */
     public void setEvent(final Event event) {
-        this.event = event;
+        if (this.event != event) {
+            this.event = event;
+            if (event != null) {
+                event.addJoinEvent(this);
+            }
+        }
     }
 
 }

@@ -27,9 +27,9 @@ public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
 
     private final UserCrudService userService;
 
-    private int eventFakerSize;
+    private final int eventFakerSize;
 
-    private int userFakerSize;
+    private final int userFakerSize;
 
     public JoinEventFixtureService(
             @Autowired final JoinCrudService joinService,
@@ -52,7 +52,7 @@ public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
 
     private void loadReal() throws NotFoundException {
 
-        Random rand = new Random();
+        final Random rand = new Random();
 
         for (int i = 0; i < eventFakerSize ; i++) {
             // ADD some user pending or enrolled
@@ -72,13 +72,20 @@ public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
 
     private void buildJoin(final Event event, final User user, final EventRole role, final boolean valid) {
 
-        JoinEvent join = new JoinEvent();
+        if (!event.getUsersJoin()
+                  .stream()
+                  .filter(e -> e.getUser().equals(user) || event.getCreator().equals(user))
+                  .findFirst()
+                  .isPresent()) {
 
-        join.setEvent(event);
-        join.setUser(user);
-        join.setRole(role);
-        join.setValid(valid);
+            final JoinEvent join = new JoinEvent();
 
-        joinService.create(join);
+            join.setEvent(event);
+            join.setUser(user);
+            join.setRole(role);
+            join.setValid(valid);
+
+            joinService.create(join);
+        }
     }
 }

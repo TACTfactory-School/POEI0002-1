@@ -85,6 +85,12 @@ public class Event extends EntityBase {
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
+    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+    private final List<Notification> eventNotification = new ArrayList<>();
+
+    @OneToMany(mappedBy = "event")
+    private final List<Message> messages = new ArrayList<>();
+
     /** Override toString() method with Event attributes.*/
     @Override
     public String toString() {
@@ -105,24 +111,6 @@ public class Event extends EntityBase {
      */
     public void setType(final EventType type) {
         this.type = type;
-    }
-
-    /**
-     * Getter List of join users.
-     * @return all users who have requested to join event.
-     */
-    public List<JoinEvent> getUsersJoin() {
-        return usersJoin;
-    }
-
-    /**
-     * Setter List of join users.
-     * @param users the users to set
-     */
-    public void setUsers(final List<JoinEvent> usersJoin) {
-        //TODO TO REMOVE
-        this.usersJoin.clear();
-        this.usersJoin.addAll(usersJoin);
     }
 
     /**
@@ -269,17 +257,66 @@ public class Event extends EntityBase {
         this.creator = author;
     }
 
-    /* OLD associations tables notes.
-    // Participants of the Event <br> DB Mapped By
-    @ManyToMany(mappedBy = "events")
-    private List<User> usersEnrolled;
+    /**
+     * Getter List of join users.
+     * @return all users who have requested to join event.
+     */
+    public List<JoinEvent> getUsersJoin() {
+        return usersJoin;
+    }
 
-    //Pending users to join the Event <br> DB Mapped By
-    @ManyToMany(mappedBy = "events")
-    private List<User> usersPending;
+    /**
+     * @return the eventNotification
+     */
+    public List<Notification> getEventNotification() {
+        return eventNotification;
+    }
 
-    // Organizers of the Event <br> DB Mapped By
-    @ManyToMany(mappedBy = "ev_organizers")
-    private List<User> organizers;
-    */
+    /**
+     * @return the messages
+     */
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+
+    public void addEventNotification(final Notification eventNotification) {
+        if (!this.eventNotification.contains(eventNotification)) {
+            this.eventNotification.add(eventNotification);
+            eventNotification.setEvent(this);
+        }
+    }
+
+    public void addJoinEvent(final JoinEvent usersJoin) {
+        if (!this.usersJoin.contains(usersJoin)) {
+            this.usersJoin.add(usersJoin);
+            usersJoin.setEvent(this);
+        }
+    }
+
+    public void addEventMessage(final Message message) {
+        if (!this.messages.contains(message)) {
+            this.messages.add(message);
+            message.setEvent(this);
+        }
+    }
+
+    public void removeEventNotification(final Notification eventNotification) {
+        if (this.eventNotification.contains(eventNotification)) {
+            this.eventNotification.remove(eventNotification);
+        }
+    }
+
+    public void removeJoinEvent(final JoinEvent usersJoin) {
+        if (this.usersJoin.contains(usersJoin)) {
+            this.usersJoin.remove(usersJoin);
+        }
+    }
+
+    public void removeEventMessage(final Message message) {
+        if (this.messages.contains(message)) {
+            this.messages.remove(message);
+        }
+    }
+
 }

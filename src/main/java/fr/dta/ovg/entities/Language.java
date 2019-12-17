@@ -6,18 +6,32 @@
 
 package fr.dta.ovg.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "app_languages")
 @ApiModel(value = "Describes a Language for our system")
 public class Language extends EntityBase {
 
+
+    @NotBlank
+    @Column(name = "lang_label", length = 500, nullable = true, unique = false)
+    @ApiModelProperty(value = "The language to create.")
     private String label;
 
+
+    @OneToMany(mappedBy = "language")
+    private final List<UserLanguage> users = new ArrayList<>();
     /**
      * Getter Language label.
      * @return the label (String).
@@ -32,5 +46,24 @@ public class Language extends EntityBase {
      */
     public void setLabel(final String label) {
         this.label = label;
+    }
+
+    /**
+     * @return the users
+     */
+    public List<UserLanguage> getUsers() {
+        return users;
+    }
+
+    public void addLanguage(final UserLanguage userLanguage) {
+        if (!this.users.contains(userLanguage)) {
+            this.users.add(userLanguage);
+            userLanguage.setLanguage(this);
+        }
+    }
+    public void removeLanguage(final UserLanguage userLanguage) {
+        if (this.users.contains(userLanguage)) {
+            this.users.remove(userLanguage);
+        }
     }
 }

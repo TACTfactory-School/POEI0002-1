@@ -85,13 +85,31 @@ public class User extends EntityBase {
     private UserStatus maritalStatus;
 
     /** Join event List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private final List<JoinEvent> eventsJoin = new ArrayList<>();
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private final List<JoinEvent> joinEvent = new ArrayList<>();
 
 //    @Column(name = "us_preferences", unique = false, nullable = true)
 //    @ApiModelProperty(value = "The notification preferences of the user.")
     @OneToOne
     private NotificationSetting preferences;
+
+    @OneToMany(mappedBy = "user")
+    private final List<Notification> notifications = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userEmitter")
+    private final List<Message> messagesEmited = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userReceiver")
+    private final List<Message> messagesReceived = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private final List<UserLanguage> languages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private final List<UserHobby> hobbies = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private final List<User> friends = new ArrayList<>();
 
     /** Birthdate preference setting of the user.. <br> DB Column. */
     @Column(name = "us_pref_birthdate", unique = false, nullable = true)
@@ -235,24 +253,6 @@ public class User extends EntityBase {
      */
     public void setLastLogin(final LocalDateTime lastLogin) {
         this.lastLogin = lastLogin;
-    }
-
-    /**
-     * Get List of all user's join events.
-     * @return the events (List).
-     */
-    public List<JoinEvent> getEventsJoin() {
-        return eventsJoin;
-    }
-
-    /**
-     * Set List of all user's join event.
-     * @param events (List) : the events to set.
-     */
-    public void setEventsJoin(final List<JoinEvent> events) {
-        // TODO TO REMOVE
-        this.eventsJoin.clear();
-        this.eventsJoin.addAll(events);
     }
 
     /**
@@ -410,18 +410,123 @@ public class User extends EntityBase {
         this.statusHidden = statusHidden;
     }
 
-//    @Override
-//    public String getName() {
-//        // TODO Auto-generated method stub
-//        return this.getUsername();
-//    }
+    /**
+     * @return the notifications
+     */
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
 
-    /* Futures attributees
-    private Language[] languages;
-    private Habbie[] hobbies;
-    private User[] friendsList;
-    private Event[] futureOutings
-    private Event[] pastOutings
-    private Event[] bestOutings
-    */
+    /**
+     * @return the messagesEmited
+     */
+    public List<Message> getMessagesEmited() {
+        return messagesEmited;
+    }
+
+    /**
+     * @return the messagesReceived
+     */
+    public List<Message> getMessagesReceived() {
+        return messagesReceived;
+    }
+
+    /**
+     * @return the languages
+     */
+    public List<UserLanguage> getLanguages() {
+        return languages;
+    }
+
+    /**
+     * @return the hobbies
+     */
+    public List<UserHobby> getHobbies() {
+        return hobbies;
+    }
+
+    /**
+     * Get List of all user's join events.
+     * @return the events (List).
+     */
+    public List<JoinEvent> getJoinEvent() {
+        return joinEvent;
+    }
+
+    public void addJoinEvent(final JoinEvent joinEvent) {
+        if (!this.joinEvent.contains(joinEvent)) {
+            this.joinEvent.add(joinEvent);
+            joinEvent.setUser(this);
+        }
+    }
+
+    public void addUserLanguage(final UserLanguage userLanguage) {
+        if (!this.languages.contains(userLanguage)) {
+            this.languages.add(userLanguage);
+            userLanguage.setUser(this);
+        }
+    }
+
+    public void addUserHobby(final UserHobby userHobby) {
+        if (!this.hobbies.contains(userHobby)) {
+            this.hobbies.add(userHobby);
+            userHobby.setUser(this);
+        }
+    }
+
+    public void addUserNotification(final Notification userNotification) {
+        if (!this.notifications.contains(userNotification)) {
+            this.notifications.add(userNotification);
+            userNotification.setUser(this);
+        }
+    }
+
+    public void addReceivedMessage(final Message messagesReceived) {
+        if (!this.messagesReceived.contains(messagesReceived)) {
+            this.messagesReceived.add(messagesReceived);
+            messagesReceived.setUserReceiver(this);
+        }
+    }
+
+    public void addEmmitedMessage(final Message messagesEmited) {
+        if (!this.messagesEmited.contains(messagesEmited)) {
+            this.messagesEmited.add(messagesEmited);
+            messagesEmited.setUserReceiver(this);
+        }
+    }
+    public void removeJoinEvent(final JoinEvent joinEvent) {
+        if (this.joinEvent.contains(joinEvent)) {
+            this.joinEvent.remove(joinEvent);
+        }
+    }
+
+    public void removeUserLanguage(final UserLanguage userLanguage) {
+        if (this.languages.contains(userLanguage)) {
+            this.languages.remove(userLanguage);
+        }
+    }
+
+    public void removeUserHobby(final UserHobby userHobby) {
+        if (this.hobbies.contains(userHobby)) {
+            this.hobbies.remove(userHobby);
+        }
+    }
+
+    public void removeUserNotification(final Notification userNotification) {
+        if (this.notifications.contains(userNotification)) {
+            this.notifications.remove(userNotification);
+        }
+    }
+
+    public void removeReceivedMessage(final Message messagesReceived) {
+        if (this.messagesReceived.contains(messagesReceived)) {
+            this.messagesReceived.remove(messagesReceived);
+        }
+    }
+
+    public void removeEmmitedMessage(final Message messagesEmited) {
+        if (this.messagesEmited.contains(messagesEmited)) {
+            this.messagesEmited.remove(messagesEmited);
+        }
+    }
 }
