@@ -19,7 +19,7 @@ import fr.dta.ovg.services.UserCrudService;
 
 @Component
 @Profile("!prod")
-public class JoinEventFixture extends FixtureCheck<JoinEventRepository> {
+public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
 
     private final JoinCrudService joinService;
 
@@ -31,7 +31,7 @@ public class JoinEventFixture extends FixtureCheck<JoinEventRepository> {
 
     private int userFakerSize;
 
-    public JoinEventFixture(
+    public JoinEventFixtureService(
             @Autowired final JoinCrudService joinService,
             @Autowired final EventCrudService eventService,
             @Autowired final UserCrudService userService,

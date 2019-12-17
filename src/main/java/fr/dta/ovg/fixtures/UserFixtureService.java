@@ -37,7 +37,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
 
     private final Faker fake = new Faker(new Locale("fr"));
 
-    private UniqFakeStore username = new UniqFakeStore(() -> this.fake.funnyName().toString());
+    private UniqFakeStore username = new UniqFakeStore(() -> this.fake.gameOfThrones().character());
     private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().safeEmailAddress());
 
     /**
