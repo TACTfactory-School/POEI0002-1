@@ -10,7 +10,7 @@
               <p class="title">{{ e.label | uppercase }} </p>
               <p class="username">par <a [routerLink]="['/user', e.creator.id]">{{ e.creator.username }}</a></p>
               <span class="spacer"></span>
-              <button mat-raised-button *ngIf="isOwner">Editer</button>
+              <button mat-raised-button *ngIf="isOwner" (click)="onEdit()">Editer</button>
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="event-header-image">

@@ -1,9 +1,8 @@
+@import '../../../sass/gradient.scss';
+@import '../../../sass/box-content.scss';
 // --------------- GLOBAL --------------- //
 .content {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  width: 100%;
-  margin: auto;
-  background: #fff;
+  @include box-content;
  }
 
 .spacer {
@@ -22,13 +21,13 @@
 
 mat-toolbar {
   color: #fff;
-  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+  background: $gradient;
 }
 
 .btn {
   color: #fff;
   float: right;
-  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+  background: $gradient;
 }
 
 .user-avatar {
@@ -76,7 +75,7 @@ p {
 
 .gradient {
 color: #fff;
-background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+background: $gradient;
 }
 
 

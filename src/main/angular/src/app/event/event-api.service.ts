@@ -41,7 +41,7 @@ export class EventApiService {
     return this.http.post<Event>(URL, data);
   }
 
-  updateOne(id: number, data: EventFormDTO) {
+  updateOne(id: number, data: Event) {
     return this.http.put<Event>(`${URL}/${id}`, data);
     }
 

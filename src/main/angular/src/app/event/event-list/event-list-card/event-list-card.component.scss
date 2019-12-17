@@ -1,3 +1,4 @@
+@import '../../../../sass/gradient';
 .event-card {
   max-width: 400px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -26,16 +27,22 @@ mat-card-actions {
 }
 
 mat-card-actions {
-margin: 0 !important;
-display: flex;
-justify-content: space-between;
+  margin: 0 !important;
+  display: flex;
+  justify-content: space-between;
 }
 
 .gradient {
-color: #fff;
-background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+  color: #fff;
+  background: $gradient;
+  float:right;
 }
 
 mat-card {
   cursor: pointer;
+}
+
+.tooltip-description {
+  font-size: 1rem;
+  background: $gradient;
 }
