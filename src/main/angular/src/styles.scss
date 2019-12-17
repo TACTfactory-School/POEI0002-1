@@ -2,7 +2,7 @@
 // Custom Theming for Angular Material
 @import '~@angular/material/theming';
 
-@import 'assets/ovg-colors'; // import the custom colors for material
+@import 'sass/ovg-colors'; // import the custom colors for material
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.

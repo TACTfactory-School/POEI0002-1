@@ -72,7 +72,8 @@ export class EventFormComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-            this.router.navigate(['/event']);
+            // TODO: make the user join the event
+            this.router.navigate(['/event/' + data.id]);
             this._snackBar.open('Votre événement a bien été ajouté !', 'Fermer', {
               duration: 4000,
             });

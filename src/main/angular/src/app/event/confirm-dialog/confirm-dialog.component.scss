@@ -1,3 +1,4 @@
+@import '../../../sass/gradient';
 * {
   overflow: hidden;
 }
@@ -15,7 +16,7 @@ div {
 
 mat-toolbar {
   color: #fff;
-  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+  background: $gradient;
 }
 
 .spacer {
@@ -29,7 +30,7 @@ mat-toolbar {
 .gradient {
   color: #fff;
   float: right;
-  background: linear-gradient(135deg,  #ffb702, #ff2d3b);
+  background: $gradient;
   margin: 10px;
 }
 

@@ -28,17 +28,17 @@ export class Event {
     postcode: string,
     city: string,
     enabled: boolean) {
-    this.label = label;
-    this.creator = creator;
-    this.description = description;
-    this.finished = finished;
-    this.startAt = startAt;
-    this.img = img;
-    this.nbPlaceMax = nbPlaceMax;
-    this.address = address;
-    this.postcode = postcode;
-    this.city = city;
-    this.enabled = enabled;
+      this.label = label;
+      this.creator = creator;
+      this.description = description;
+      this.finished = finished;
+      this.startAt = startAt;
+      this.img = img;
+      this.nbPlaceMax = nbPlaceMax;
+      this.address = address;
+      this.postcode = postcode;
+      this.city = city;
+      this.enabled = enabled;
   }
 }
 export interface EventFormDTO {
