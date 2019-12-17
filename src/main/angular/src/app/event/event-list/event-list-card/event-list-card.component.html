@@ -1,4 +1,4 @@
-<mat-card class="event-card" [routerLink]="['/event', event.id]">
+<mat-card class="event-card" [routerLink]="['/event', event.id]" matTooltip="{{event.description}}">
   <mat-card-header>
     <div mat-card-avatar class="event-header-image"></div>
     <mat-card-title>{{ event.label }}</mat-card-title>
