@@ -24,6 +24,7 @@ public class GlobalExceptionHandler {
 
     /**
      * Bad Request Exception.
+     * The request is incorrect.
      * @param e Exception.
      * @return Response Entity.
      */
@@ -35,6 +36,7 @@ public class GlobalExceptionHandler {
 
     /**
      * Not Found Exception.
+     * Entity not found in the repository.
      * @param e Exception.
      * @return Response Entity.
      */

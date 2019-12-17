@@ -23,15 +23,17 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/** API "Swagger" Configuration Class. */
 @Configuration
 @EnableSwagger2
 public class OpenApiConfig {
 
+    /** BASE PACKAGE PATTERN */
     private static final String BASE_PACKAGE = "fr.dta.ovg";
 
     /**
-     *  Api Swagger.
-     * @return Docket Object.
+     *  API Swagger.
+     * @return Docket : Spring Web plugin Docket Object.
      */
     @Bean
     public Docket api() {
@@ -69,8 +71,8 @@ public class OpenApiConfig {
     }
 
     /**
-     * Metdata Api.
-     * @return Api Info.
+     * METADATA API.
+     * @return ApiInfo : API informations.
      */
     private ApiInfo metaData() {
         return new ApiInfoBuilder()

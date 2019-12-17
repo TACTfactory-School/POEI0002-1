@@ -28,7 +28,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.EventCrudService;
 import io.swagger.annotations.Api;
 
-
+/** Event Controller Class.*/
 @RestController
 @RequestMapping("api/v1/event")
 @Api(value = "Event Management System", tags = "Event")
@@ -59,7 +59,7 @@ public class EventController {
      * GET - HTTP
      * @param id : number of the selected event.
      * @return Entity Event.
-     * @throws NotFoundException asked object not found.
+     * @throws NotFoundException : Entity event not found.
      */
     @GetMapping("{id}")
     public Event getOne(@PathVariable final Long id) throws NotFoundException {
@@ -71,7 +71,7 @@ public class EventController {
      * POST - HTTP.
      * @param event entity.
      * @return the created object event.
-     * @throws BadRequestException bad request.
+     * @throws BadRequestException : Incorrect request.
      */
     @PostMapping
     public Event create(@Valid @RequestBody final Event event) throws BadRequestException {
@@ -84,8 +84,8 @@ public class EventController {
      * @param id : number of the selected event.
      * @param event : entity.
      * @return the updated event object.
-     * @throws BadRequestException bad request.
-     * @throws NotFoundException asked object not found.
+     * @throws BadRequestException : Incorrect request.
+     * @throws NotFoundException : Event entity not found.
      */
     @PutMapping("{id}")
     public Event update(@PathVariable final Long id, @Valid @RequestBody final Event event)
@@ -112,7 +112,7 @@ public class EventController {
      * Delete one by ID. <br>
      * DELETE - HTTP.
      * @param id : number of the selected event.
-     * @throws NotFoundException object not found.
+     * @throws NotFoundException : Event entity not found.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
