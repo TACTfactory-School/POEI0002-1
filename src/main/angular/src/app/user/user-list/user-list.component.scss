@@ -1,5 +1,5 @@
 @import "../../../sass/_media.scss";
-
+@import '../../../sass/gradient.scss';
 @include mat-table-columns((
     firstname: (width: 6rem),
     createdAt: (width: 6rem)
@@ -37,7 +37,7 @@ th {
   font-weight: 100;
 }
 .mat-header-row {
-  background: linear-gradient(135deg,  #ffb702, #ff2d3b );
+  background: $gradient;
 }
 
 // ::ng-deep .mat-sort-header-container{

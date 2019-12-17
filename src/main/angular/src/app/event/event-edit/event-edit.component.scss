@@ -1,0 +1,49 @@
+@import '../../../sass/gradient';
+@import '../../../sass/box-content.scss';
+.content {
+  @include box-content;
+ }
+
+ .event-edit {
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-toolbar {
+  color: #fff;
+  background: $gradient;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.btn {
+  color: #fff;
+  float: right;
+  background: $gradient;
+}
+
+.incorrect {
+  color: #ff2d3b;
+  padding: 2rem;
+}
+
+mat-icon {
+  color: #757575;
+  margin-right: 8px;
+}
+
+mat-dialog-content {
+  width: 100% !important;
+}

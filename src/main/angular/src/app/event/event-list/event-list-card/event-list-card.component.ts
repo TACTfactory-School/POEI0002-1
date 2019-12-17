@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/user/user';
 import { ActivatedRoute } from '@angular/router';
 import { Event } from '../../event';
@@ -6,7 +6,8 @@ import { Event } from '../../event';
 @Component({
   selector: 'app-event-list-card',
   templateUrl: './event-list-card.component.html',
-  styleUrls: ['./event-list-card.component.scss']
+  styleUrls: ['./event-list-card.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class EventListCardComponent implements OnInit {
   @Input() event: Event;

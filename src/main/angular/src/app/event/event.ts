@@ -28,26 +28,22 @@ export class Event {
     postcode: string,
     city: string,
     enabled: boolean) {
-    this.label = label;
-    this.creator = creator;
-    this.description = description;
-    this.finished = finished;
-    this.startAt = startAt;
-    this.img = img;
-    this.nbPlaceMax = nbPlaceMax;
-    this.address = address;
-    this.postcode = postcode;
-    this.city = city;
-    this.enabled = enabled;
-  }
-  setUser(id: number, creator: User) {
-
+      this.label = label;
+      this.creator = creator;
+      this.description = description;
+      this.finished = finished;
+      this.startAt = startAt;
+      this.img = img;
+      this.nbPlaceMax = nbPlaceMax;
+      this.address = address;
+      this.postcode = postcode;
+      this.city = city;
+      this.enabled = enabled;
   }
 }
 export interface EventFormDTO {
   id: number;
   label: string;
-  creator: string;
   description: string;
   enabled: boolean;
 }

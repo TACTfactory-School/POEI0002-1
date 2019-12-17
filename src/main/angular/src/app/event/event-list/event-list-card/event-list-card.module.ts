@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatTooltipModule } from '@angular/material';
 import { EventListCardComponent } from './event-list-card.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/shared/material/material.module';
@@ -11,7 +11,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     CommonModule,
     MatCardModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    MatTooltipModule
   ],
   exports: [EventListCardComponent]
 })

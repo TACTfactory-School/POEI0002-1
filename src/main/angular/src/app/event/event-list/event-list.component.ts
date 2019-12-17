@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { EventApiService } from '../event-api.service';
 import { Event } from '../event';
 import { MatPaginator } from '@angular/material';
@@ -12,7 +12,8 @@ type Mode = 'list' | 'cards' | null;
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss']
+  styleUrls: ['./event-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EventListComponent implements OnInit {
 

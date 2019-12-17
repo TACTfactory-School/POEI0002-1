@@ -9,6 +9,7 @@ import { LoaderModule } from 'src/app/shared/loader/loader.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { RouterModule } from '@angular/router';
 import { PaginatorModule } from 'src/app/shared/paginator/paginator.module';
+import { MatTooltipModule } from '@angular/material';
 
 @NgModule({
   declarations: [EventListComponent],
@@ -21,7 +22,8 @@ import { PaginatorModule } from 'src/app/shared/paginator/paginator.module';
     LoaderModule,
     MaterialModule,
     RouterModule,
-    PaginatorModule
+    PaginatorModule,
+    MatTooltipModule
   ],
   exports: [EventListComponent]
 })

@@ -14,6 +14,7 @@ import { CguComponent } from './pages/cgu/cgu.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserPreferencesComponent } from './user/user-preferences/user-preferences.component';
 import { ConfirmDialogComponent } from './event/confirm-dialog/confirm-dialog.component';
+import { EventEditComponent } from './event/event-edit/event-edit.component';
 
 const routes: Routes = [
 
@@ -25,6 +26,7 @@ const routes: Routes = [
     children: [
       { path: 'new', component: EventFormComponent , canActivate: [LogguedGuard]},
       { path: ':id', component: EventDetailsComponent}, // Event details
+      { path: ':id/edit', component: EventEditComponent, canActivate: [LogguedGuard]}, // Event details
       { path: '', component: EventListComponent} // Event List
     ]
   },
@@ -64,7 +66,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}), RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

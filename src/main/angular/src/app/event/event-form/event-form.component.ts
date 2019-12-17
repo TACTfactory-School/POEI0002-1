@@ -34,15 +34,15 @@ export class EventFormComponent implements OnInit {
 
   ngOnInit() {
     this.createEvent = this.fb.group({
-      label : new FormControl('label', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])),
-      description : new FormControl('description', Validators.compose([
+      label : new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])),
+      description : new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(3), Validators.maxLength(500)])),
-      startAt : new FormControl('startAt', Validators.required),
-      address : new FormControl('address', Validators.required),
-      postcode : new FormControl('postcode', Validators.compose([
+      startAt : new FormControl('', Validators.required),
+      address : new FormControl('', Validators.required),
+      postcode : new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]+(\.?[0-9]+)?$')])),
-      city : new FormControl('city', Validators.required),
-      nbPlaceMax : new FormControl('nbPlaceMax', Validators.compose([Validators.required, Validators.min(2), Validators.max(50)])),
+      city : new FormControl('', Validators.required),
+      nbPlaceMax : new FormControl('', Validators.compose([Validators.required, Validators.min(2), Validators.max(50)])),
       img: new FormControl(),
     });
     this.currentU.observable
@@ -72,7 +72,8 @@ export class EventFormComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-            this.router.navigate(['/event']);
+            // TODO: make the user join the event
+            this.router.navigate(['/event/' + data.id]);
             this._snackBar.open('Votre événement a bien été ajouté !', 'Fermer', {
               duration: 4000,
             });

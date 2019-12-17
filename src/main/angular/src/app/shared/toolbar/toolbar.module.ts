@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './toolbar.component';
-import { MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatTooltipModule } from '@angular/material';
 import { MaterialModule } from '../material/material.module';
 import { UserFormLoginModule } from 'src/app/user/user-form/user-form-login/user-form-login.module';
 import { RouterModule } from '@angular/router';
@@ -20,7 +20,8 @@ import { UserPreferencesModule } from 'src/app/user/user-preferences/user-prefer
     UserFormLoginModule,
     MatFormFieldModule,
     UserPreferencesModule,
-    MatInputModule
+    MatInputModule,
+    MatTooltipModule
   ],
   exports: [
     ToolbarComponent
