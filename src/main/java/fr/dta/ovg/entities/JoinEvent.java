@@ -9,7 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -27,11 +26,12 @@ public class JoinEvent extends EntityBase {
 
     /**
      * Event Role of user. <br> DB Column.*/
-//    @Column(name = "us_ev_role", unique = false, nullable = false)
-//    @ApiModelProperty(value = "The Role of the user in the Event.")
-//    @Enumerated(EnumType.ORDINAL)
-    @Transient
-    private EventRole role2;
+    @Column(name = "us_ev_role", unique = false, nullable = false)
+    @ApiModelProperty(value = "The Role of the user in the Event.")
+    @Enumerated(EnumType.ORDINAL)
+    private EventRole role;
+ //   @Transient
+
 
     /** User inscription. */
     @ManyToOne(optional = false) // targetEntity = Event.class
@@ -47,14 +47,14 @@ public class JoinEvent extends EntityBase {
      * @return the role.
      */
     public EventRole getRole() {
-        return role2;
+        return role;
     }
 
     /**
      * @param role the role to set.
      */
     public void setRole(final EventRole role) {
-        this.role2 = role;
+        this.role = role;
     }
 
     /**
