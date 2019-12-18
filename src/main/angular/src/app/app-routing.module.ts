@@ -18,7 +18,7 @@ import { EventEditComponent } from './event/event-edit/event-edit.component';
 
 const routes: Routes = [
 
-  { path: '',     redirectTo: 'login', pathMatch: 'full' },
+  { path: '',     redirectTo: 'event', pathMatch: 'full' },
   { path: 'login', component: UserFormLoginComponent }, // Login form
   { path: 'register', component: UserFormRegisterComponent }, // Register form
   {
