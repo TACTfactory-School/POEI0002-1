@@ -43,15 +43,15 @@ public class UserController {
     private UserCrudService service;
 
     @Autowired
-    private PasswordEncoder password;
+    private PasswordEncoder encoder;
 
     /**
      * Get All function. <br>
      * GET - HTTP.
      * @return List of all Users.
-     * @param page : the page number.
+     *  @param page : the page number.
      * @param quantity : the quantity of return per page.
-     * @param search : String to prpcess search.
+     * @param search :String to prpcess search.
      */
     @GetMapping
     public Page<User> getAll(final int page, final int quantity, final String search) {
@@ -83,9 +83,10 @@ public class UserController {
     @PostMapping
     public User create(@Valid @RequestBody final User user) throws BadRequestException {
         if (this.service.existsByUsername(user)) { // delete test
-            this.password.encode(user.getPassword());
             throw new BadRequestException("uniq_name");
         }
+        String encryptedPassword = encoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
 
         return this.service.create(user);
     }
