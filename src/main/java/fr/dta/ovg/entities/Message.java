@@ -29,7 +29,8 @@ public class Message extends EntityBase {
     private String message;
 
     @ManyToOne
-    @JsonIgnoreProperties({"notifications", "languages", "hobbies", "friends", "joinEvents", "preferences"})
+    @JsonIgnoreProperties({"notifications", "languages", "hobbies", "friends", "joinEvents",
+        "preferences", "messagesEmitted", "messagesReceived"})
     private User userEmitter;
 
     @ManyToOne
