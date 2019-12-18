@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,13 +23,14 @@ import javax.validation.constraints.NotBlank;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/** Entity Event class.*/
 @Entity
 @Table(name = "app_events")
 @ApiModel(value = "Describes an Event for our system.")
 public class Event extends EntityBase {
 
     /** Creator of the Event. <br>DB Column.*/
-//  @NotBlank
+    // TODO : Restore @NotBlank when DB run in update mode.
     @ApiModelProperty(value = "The author of the event.")
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
@@ -79,16 +82,32 @@ public class Event extends EntityBase {
     /** Type of the Event. <br>DB Column.*/
     @ApiModelProperty(name = "ev_type", value = "The type of the event.")
     @Column(length = 255, nullable = true, unique = false)
+    @Enumerated(EnumType.ORDINAL)
     private EventType type;
 
     /** Join users List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
-    private final List<JoinEvent> users = new ArrayList<>();
+    private final List<JoinEvent> usersJoin = new ArrayList<>();
+
+    /** Notifications List of the Event. <br>DB Column.*/
+    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+    private final List<Notification> eventNotification = new ArrayList<>();
+
+    /** Messages List of the Event. <br>DB Column.*/
+    @OneToMany(mappedBy = "event")
+    private final List<Message> messages = new ArrayList<>();
 
     /** Override toString() method with Event attributes.*/
     @Override
     public String toString() {
-        return String.format("| Title : %s | Description : %s | Creator : %s", label, description, creator);
+
+        StringBuilder eventDetails = new StringBuilder();
+
+        eventDetails
+            .append("| Title : %s | Description : %s | Creator : %s | Finished : %b ")
+            .append("| Start Date : %dt | Max places : %d | Address : %s | Postcode : %s | City: %s ");
+        return String.format(eventDetails.toString(),
+                label, description, creator, isEnabled(), startAt, nbPlaceMax, address, postcode, city);
     }
 
     /**
@@ -105,24 +124,6 @@ public class Event extends EntityBase {
      */
     public void setType(final EventType type) {
         this.type = type;
-    }
-
-    /**
-     * Getter List of join users.
-     * @return all users who have requested to join event.
-     */
-    public List<JoinEvent> getUsers() {
-        return users;
-    }
-
-    /**
-     * Setter List of join users.
-     * @param users the users to set
-     */
-    public void setUsers(final List<JoinEvent> users) {
-        //TODO TO REMOVE
-        this.users.clear();
-        this.users.addAll(users);
     }
 
     /**
@@ -265,21 +266,96 @@ public class Event extends EntityBase {
      * Setter Creator.
      * @param creator : the (User) creator to set.
      */
-    public void setCreator(final User author) {
-        this.creator = author;
+    public void setCreator(final User creator) {
+        this.creator = creator;
     }
 
-    /* OLD associations tables notes.
-    // Participants of the Event <br> DB Mapped By
-    @ManyToMany(mappedBy = "events")
-    private List<User> usersEnrolled;
+    /**
+     * Getter List of join users.
+     * @return all users who have requested to join event.
+     */
+    public List<JoinEvent> getUsersJoin() {
+        return usersJoin;
+    }
 
-    //Pending users to join the Event <br> DB Mapped By
-    @ManyToMany(mappedBy = "events")
-    private List<User> usersPending;
+    /**
+     * Get notifications list.
+     * @return the eventNotification : List of notification.
+     */
+    public List<Notification> getEventNotification() {
+        return eventNotification;
+    }
 
-    // Organizers of the Event <br> DB Mapped By
-    @ManyToMany(mappedBy = "ev_organizers")
-    private List<User> organizers;
-    */
+    /**
+     *  Get messages list.
+     * @return the messages : List of messages.
+     */
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+
+    /**
+     * Function - Add notification to Event.
+     * @param eventNotification : Notification.
+     */
+    public void addEventNotification(final Notification eventNotification) {
+        if (!this.eventNotification.contains(eventNotification)) {
+            this.eventNotification.add(eventNotification);
+            eventNotification.setEvent(this);
+        }
+    }
+
+    /**
+     * Function - Add Join Event.
+     * @param usersJoin : JoinEvent.
+     */
+    public void addJoinEvent(final JoinEvent usersJoin) {
+        if (!this.usersJoin.contains(usersJoin)) {
+            this.usersJoin.add(usersJoin);
+            usersJoin.setEvent(this);
+        }
+    }
+
+    /**
+     * Function - Add message to Event.
+     * @param message : Message.
+     */
+    public void addEventMessage(final Message message) {
+        if (!this.messages.contains(message)) {
+            this.messages.add(message);
+            message.setEvent(this);
+        }
+    }
+
+    /**
+     * Function - Remove notification to Event.
+     * @param eventNotification : Notification.
+     */
+    public void removeEventNotification(final Notification eventNotification) {
+        if (this.eventNotification.contains(eventNotification)) {
+            this.eventNotification.remove(eventNotification);
+        }
+    }
+
+    /**
+     * Function - Remove Join Event.
+     * @param usersJoin : JoinEvent.
+     */
+    public void removeJoinEvent(final JoinEvent usersJoin) {
+        if (this.usersJoin.contains(usersJoin)) {
+            this.usersJoin.remove(usersJoin);
+        }
+    }
+
+    /**
+     * Function - Remove Event message.
+     * @param message :Message.
+     */
+    public void removeEventMessage(final Message message) {
+        if (this.messages.contains(message)) {
+            this.messages.remove(message);
+        }
+    }
+
 }

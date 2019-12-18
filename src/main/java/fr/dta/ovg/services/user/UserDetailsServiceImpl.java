@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // User user = userServiceImpl.findByUsername(username);
         User user = userRepo.findByUsername(username).orElse(null);
 
-        // TODO: Search on administrator if not found as simple user
+        // TODO Search on administrator if not found as simple user
 
         if (user != null) {
 

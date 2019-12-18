@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import fr.dta.ovg.exceptions.NotFoundException;
 
 public interface Fixture {
+
     @Transactional
     void load() throws NotFoundException;
 }

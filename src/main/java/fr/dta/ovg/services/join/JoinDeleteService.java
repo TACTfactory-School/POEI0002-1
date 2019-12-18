@@ -18,6 +18,10 @@ public class JoinDeleteService {
     @Autowired
     private JoinEventRepository repository;
 
+    /** Delete JoinEvent function implementation.
+     * @param id : join id to delete.
+     * @throws NotFoundException : JoinEvent Not Found.
+     */
     public void delete(final long id) throws NotFoundException {
         this.repository.delete(
                 this.repository

@@ -5,31 +5,97 @@
  */
 package fr.dta.ovg.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+/** Entity Message class.*/
 @Entity
 @Table(name = "app_messages")
 @ApiModel(value = "Describes a Message for our system")
 public class Message extends EntityBase {
 
+    @NotBlank
+    @Column(name = "mess_label", length = 500, nullable = false, unique = false)
+    @ApiModelProperty(value = "The message to send.")
     private String message;
+
+    @ManyToOne
+    private User userEmitter;
+
+    @ManyToOne
+    private User userReceiver;
+
+    @ManyToOne
+    private Event event;
 
     /**
      * Getter Message.
-     * @return the message (String).
-     */
+     * @return the message (String).*/
     public String getMessage() {
         return message;
     }
 
-    /**
-     * Setter Message.
-     * @param message  (String) : the message to set.
-     */
+    /** Get the user emitter.
+     * @return the userEmitter : User.*/
+    public User getUserEmitter() {
+        return userEmitter;
+    }
+
+    /** Set the user emitter.
+     * @param userEmitter the userEmitter to set.*/
+    public void setUserEmitter(final User userEmitter) {
+        if (this.userEmitter != userEmitter) {
+            this.userEmitter = userEmitter;
+            if (userEmitter != null) {
+                userEmitter.addEmmittedMessage(this);
+            }
+        }
+    }
+
+    /** Get the user receiver.
+     * @return the userReceiver : User.*/
+    public User getUserReceiver() {
+        return userReceiver;
+    }
+
+    /** Set the user receiver.
+     * @param userReceiver the userReceiver to set.*/
+    public void setUserReceiver(final User userReceiver) {
+        if (this.userReceiver != userReceiver) {
+            this.userReceiver = userReceiver;
+            if (userReceiver != null) {
+                userReceiver.addReceivedMessage(this);
+            }
+        }
+    }
+
+    /** Get the event.
+     * @return the event : Event.*/
+    public Event getEvent() {
+        return event;
+    }
+
+    /** Set the event.
+     * @param event the Event to set.*/
+    public void setEvent(final Event event) {
+        if (this.event != event) {
+            this.event = event;
+            if (event != null) {
+                event.addEventMessage(this);
+            }
+        }
+    }
+
+    /** Set Message.
+     * @param message the message to set.*/
     public void setMessage(final String message) {
         this.message = message;
     }
+
 }

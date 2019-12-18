@@ -16,13 +16,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.NotificationCrudService;
+import io.swagger.annotations.Api;
 
+/** Notification Controller Class.*/
+@RestController
+@RequestMapping("api/v1/notification")
+@Api(value = "Notification Management System", tags = "Notification")
 public class NotificationController {
 
     /** Link to Notification CRUD Service. */
@@ -44,7 +51,7 @@ public class NotificationController {
      * GET - HTTP
      * @param id : number of the selected Notification.
      * @return Entity Notification.
-     * @throws NotFoundException
+     * @throws NotFoundException :  Notification entity not found.
      */
     @GetMapping("{id}")
     public  Notification getOne(@PathVariable final Long id) throws NotFoundException {
@@ -54,9 +61,9 @@ public class NotificationController {
     /**
      * Create an Notification.<br>
      * POST - HTTP.
-     * @param Notification entity.
+     * @param notification : Notification entity.
      * @return the created object Notification.
-     * @throws BadRequestException
+     * @throws BadRequestException : Incorrect request (ie Json Body{}).
      */
     @PostMapping
     public  Notification create(@Valid @RequestBody final  Notification  notification) throws BadRequestException {
@@ -68,7 +75,7 @@ public class NotificationController {
      * Delete one by ID. <br>
      * DELETE - HTTP.
      * @param id : number of the selected Notification.
-     * @throws NotFoundException
+     * @throws NotFoundException : Notification entity not found.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

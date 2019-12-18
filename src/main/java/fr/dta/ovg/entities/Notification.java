@@ -5,64 +5,76 @@
  */
 package fr.dta.ovg.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+/** Entity Notification class.*/
 @Entity
 @Table(name = "app_notifications")
 @ApiModel(value = "Describes a Notification for our system")
 public class Notification extends EntityBase {
 
+    @NotBlank
+    @Column(name = "notif_label", length = 255, nullable = false, unique = false)
+    @ApiModelProperty(value = "The notification to send.")
     private String label;
 
-    private boolean app;
+    @ManyToOne
+    private User user;
 
-    private boolean mail;
+    @ManyToOne
+    private Event event;
 
-    /**
-     * Getter label.
-     * @return the label (String).
-     */
+    /** Getter label.
+     * @return the label (String).*/
     public String getLabel() {
         return label;
     }
 
     /** Setter Label.
-     * @param label (String) : the label to set
-     */
+     * @param label (String) : the label to set.*/
     public void setLabel(final String label) {
         this.label = label;
     }
 
-    /**
-     * Get Boolean preference application notification.
-     * @return the app (boolean).
-     */
-    public boolean isApp() {
-        return app;
-    }
-    /**
-     * Set Boolean preference application notification.
-     * @param app (boolean) :the app to set.
-     */
-    public void setApp(final boolean app) {
-        this.app = app;
+    /** Get the user of notification.
+     * @return the user : User.*/
+    public User getUser() {
+        return user;
     }
 
-    /**
-     * Get Boolean preference mail notification.
-     * @return the mail
-     */
-    public boolean isMail() {
-        return mail;
+    /** Set the user of notification.
+     * @param user the user to set.*/
+    public void setUser(final User user) {
+        if (this.user != user) {
+            this.user = user;
+            if (user != null) {
+                user.addUserNotification(this);
+            }
+        }
     }
-    /**
-     * Set Boolean preference mail notification.
-     * @param mail (boolean) : the mail to set.
-     */
-    public void setMail(final boolean mail) {
-        this.mail = mail;
+
+    /** Get the event of notification.
+     * @return the event : Event.*/
+    public Event getEvent() {
+        return event;
     }
+
+    /** Set the event of notification.
+     * @param event the event to set.*/
+    public void setEvent(final Event event) {
+        if (this.event != event) {
+            this.event = event;
+            if (event != null) {
+                event.addEventNotification(this);
+            }
+        }
+    }
+
 }

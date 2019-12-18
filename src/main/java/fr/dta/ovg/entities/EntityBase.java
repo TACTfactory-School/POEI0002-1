@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import io.swagger.annotations.ApiModelProperty;
 
+/** Entity base class. MAPPED SUPER CLASS */
 @MappedSuperclass
 public class EntityBase {
 
@@ -35,16 +36,14 @@ public class EntityBase {
     @ApiModelProperty(value = "Specifies if the entity if enabled or not", readOnly = true)
     private boolean enabled = true;
 
-    @CreatedDate
+    @CreatedDate //  @Temporal(TemporalType.TIMESTAMP)
     @ApiModelProperty(value = "The generated date of creation", readOnly = true)
-//  @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = Access.READ_ONLY)
     @Column(name = "created", nullable = false)
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
+    @LastModifiedDate//  @Temporal(TemporalType.TIMESTAMP)
     @ApiModelProperty(value = "The updated date of entity", readOnly = true)
-//  @Temporal(TemporalType.TIMESTAMP)
     @JsonProperty(access = Access.READ_ONLY)
     @Column(name = "updated", nullable = false)
     private LocalDateTime updatedAt;
@@ -52,7 +51,9 @@ public class EntityBase {
     /** CREATION: On DB fixtures load and when event is created.*/
     @PrePersist
     protected void onCreate() {
-        updatedAt = createdAt = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now();
+        updatedAt = now;
+        createdAt = now;
         }
 
     /** UPDATE: On DB fixtures load and when event is updated. */
@@ -77,7 +78,7 @@ public class EntityBase {
 
     /**
      * Setter id.
-     * @param id the id to set (Long)
+     * @param id the id to set (Long).
      */
     public void setId(final Long id) {
         this.id = id;
@@ -85,31 +86,27 @@ public class EntityBase {
 
     /**
      * Getter Function isEnabled.
-     * @return boolean : enabled
+     * @return boolean : enabled.
      */
     public boolean isEnabled() {
         return enabled;
     }
 
-    /**
-     * Setter setEnabled.
-     * @param boolean enabled : the enabled to set
-     */
+    /** Setter setEnabled.
+     * @param enabled : the enabled to set.*/
     public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
 
-    /**
-     * Getter created date.
-     * @return LocalDateTime createdAt
-     */
+    /** Getter created date.
+     * @return LocalDateTime createdAt.*/
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     /**
      * Getter updated date.
-     * @return LocalDateTime updatedAt
+     * @return LocalDateTime updatedAt.
      */
     public LocalDateTime getUpdatedAt() {
         return updatedAt;

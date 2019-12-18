@@ -26,6 +26,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.HobbyCrudService;
 import io.swagger.annotations.Api;
 
+/** Hobby Controller Class.*/
 @RestController
 @RequestMapping("api/v1/hobby")
 @Api(value = "Hobby Management System", tags = "Hobby")
@@ -50,7 +51,7 @@ public class HobbyController {
      * GET - HTTP
      * @param id : number of the selected hobby.
      * @return Entity Hobby.
-     * @throws NotFoundException
+     * @throws NotFoundException : Hobby entity not found.
      */
     @GetMapping("{id}")
     public Hobby getOne(@PathVariable final Long id) throws NotFoundException {
@@ -60,9 +61,9 @@ public class HobbyController {
     /**
      * Create an Hobby.<br>
      * POST - HTTP.
-     * @param Hobby entity.
+     * @param hobby : Hobby entity.
      * @return the created object Hobby.
-     * @throws BadRequestException
+     * @throws BadRequestException :  Incorrect request.
      */
     @PostMapping
     public Hobby create(@Valid @RequestBody final Hobby hobby) throws BadRequestException {
@@ -77,7 +78,7 @@ public class HobbyController {
      * Delete one by ID. <br>
      * DELETE - HTTP.
      * @param id : number of the selected Hobby.
-     * @throws NotFoundException
+     * @throws NotFoundException : Hobby entity not found.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

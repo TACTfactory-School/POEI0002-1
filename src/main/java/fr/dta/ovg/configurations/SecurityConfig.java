@@ -1,3 +1,8 @@
+/* Security Configuration Class
+ * @author Samy Moussaoui.
+ * License : ©2019 All rights reserved.
+ */
+
 package fr.dta.ovg.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +20,22 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import fr.dta.ovg.services.user.UserDetailsServiceImpl;
 
+/** Security Configuration Class (Web Security Configurer Adapter)*/
 @EnableWebSecurity
 @EnableAutoConfiguration
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /** Link to User Details Service Implementation */
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
 
     /**
-     *
+     * Security configure function.
+     * Override HttpSecurity configure to open route & put httpBasic security.
+     * @see #configure (org.springframework.security.config.annotation.web.builders.HttpSecurity).
+     * @throws Exception : Handle HTTP Security exception.
      */
-
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -43,7 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     *
+     * Authentication Manager Builder class.<br>
+     * Call super HttpSecurity configure().
+     * @see org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder.
+     * @throws Exception : Handle AuthenticationManagerBuilder exception.
      */
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
@@ -52,11 +64,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         super.configure(auth);
     }
 
+    /**
+     * Authenticate Manager Function.
+     * @return authenticationManager : customAuthenticationManager.
+     * @throws Exception : Handle AUTH exception.
+     */
     @Bean
     public AuthenticationManager customAuthenticationManager() throws Exception {
       return authenticationManager();
     }
 
+    /**
+     * Password Encoder Function.
+     * Bean of system.
+     * @return BCryptPasswordEncoder : BCrypt Encoder.
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

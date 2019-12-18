@@ -26,8 +26,9 @@ import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.JoinCrudService;
 
+/** Join Controller Class.*/
 @RestController
-@RequestMapping("/inscription")
+@RequestMapping("api/v1/join")
 public class JoinController {
 
     /** Link to Join CRUD Service. */
@@ -36,7 +37,6 @@ public class JoinController {
     /**
      * Get All function. <br>
      * GET - HTTP.
-     *
      * @return List of all Users who joined Events.
      */
     @GetMapping
@@ -47,9 +47,9 @@ public class JoinController {
     /**
      * Get One by ID.<br>
      * GET - HTTP
-     * @param id: number of the selected Join.
+     * @param id : number of the selected Join.
      * @return Entity Join.
-     * @throws NotFoundException
+     * @throws NotFoundException : (User) Join (Event) entity not found.
      */
     @GetMapping("{id}")
     public JoinEvent getOne(@PathVariable final Long id) throws NotFoundException {
@@ -59,9 +59,9 @@ public class JoinController {
     /**
      * Create a Join.<br>
      * POST - HTTP.
-     * @param JoinEvent entity.
+     * @param inscription : JoinEvent entity.
      * @return the created object Join.
-     * @throws BadRequestException
+     * @throws BadRequestException : Incorrect request.
      */
     @PostMapping
     public JoinEvent create(@Valid @RequestBody final JoinEvent inscription) throws BadRequestException {
@@ -71,11 +71,11 @@ public class JoinController {
     /**
      * Update an Join. <br>
      * PUT - HTTP.
-     * @param id: number of the selected event.
-     * @param JoinEvent entity.
+     * @param id : number of the selected event.
+     * @param inscription : JoinEvent entity.
      * @return the updated Join object.
-     * @throws BadRequestException
-     * @throws NotFoundException
+     * @throws BadRequestException : Incorrect request.
+     * @throws NotFoundException : JoinEvent entity not found.
      */
     @PutMapping("{id}")
     public JoinEvent update(@PathVariable final Long id, @Valid @RequestBody final JoinEvent inscription)
@@ -83,17 +83,15 @@ public class JoinController {
 
         final JoinEvent entity = this.service.getOne(id);
 
-        // Use mapper.
-        // ObjectMapper mapper = new ObjectMapper();
-        // ---------
+        // Use ObjectMapper mapper = new ObjectMapper();
         return this.service.create(entity);
     }
 
     /**
      * Delete one by ID. <br>
      * DELETE - HTTP.
-     * @param id: number of the selected Join.
-     * @throws NotFoundException
+     * @param id : number of the selected Join.
+     * @throws NotFoundException : JoinEvent entity not found.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

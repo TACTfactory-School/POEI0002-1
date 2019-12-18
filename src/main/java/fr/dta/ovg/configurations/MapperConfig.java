@@ -18,7 +18,7 @@ public class MapperConfig {
 
     /**
      * Build Mapper.
-     * @return ModelMapper Object.
+     * @return ModelMapper Model Mapper Object.
      */
     @Bean
     public ModelMapper buildMapper() {

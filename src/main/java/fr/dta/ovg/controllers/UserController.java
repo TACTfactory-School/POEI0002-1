@@ -31,6 +31,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.UserCrudService;
 import io.swagger.annotations.Api;
 
+/** User Controller Class.*/
 @RestController
 @RequestMapping("api/v1/user")
 @Api(value = "User Management System", tags = "User")
@@ -44,6 +45,9 @@ public class UserController {
      * Get All function. <br>
      * GET - HTTP.
      * @return List of all Users.
+     *  @param page : the page number.
+     * @param quantity : the quantity of return per page.
+     * @param search :String to prpcess search.
      */
     @GetMapping
     public Page<User> getAll(final int page, final int quantity, final String search) {
@@ -58,7 +62,7 @@ public class UserController {
      * GET - HTTP
      * @param id : number of the selected event.
      * @return Entity User.
-     * @throws NotFoundException
+     * @throws NotFoundException : User entity not found.
      */
     @GetMapping("{id}")
     public User getOne(@PathVariable final Long id) throws NotFoundException {
@@ -68,9 +72,9 @@ public class UserController {
     /**
      * Create an User.<br>
      * POST - HTTP.
-     * @param event entity.
+     * @param user : User entity.
      * @return the created object User.
-     * @throws BadRequestException
+     * @throws BadRequestException : Incorrect request.
      */
     @PostMapping
     public User create(@Valid @RequestBody final User user) throws BadRequestException {
@@ -85,10 +89,10 @@ public class UserController {
      * Update an User. <br>
      * PUT - HTTP.
      * @param id : number of the selected User.
-     * @param User : entity.
+     * @param user : User entity.
      * @return the updated User object.
-     * @throws BadRequestException
-     * @throws NotFoundException
+     * @throws BadRequestException : Incorrect request.
+     * @throws NotFoundException : User entity not found exception.
      */
     @PutMapping("{id}")
     public User update(@PathVariable final Long id, @Valid @RequestBody final User user)
@@ -99,9 +103,7 @@ public class UserController {
 
         final User entity = this.service.getOne(id);
 
-        //  Use mapper.
-        //  ObjectMapper mapper = new ObjectMapper();
-        // ---------
+        //  Use ObjectMapper.
         entity.setUsername(user.getUsername());
         entity.setEmail(user.getEmail());
         entity.setPassword(user.getPassword());
@@ -114,7 +116,7 @@ public class UserController {
      * Delete one by ID. <br>
      * DELETE - HTTP.
      * @param id : number of the selected User.
-     * @throws NotFoundException
+     * @throws NotFoundException : User entity not found exception.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -122,6 +124,12 @@ public class UserController {
         this.service.delete(id);
     }
 
+    /**
+     * Function Get Me. Get the current logged user.
+     * @param principal : Principal.
+     * @return User : current User.
+     * @throws NotFoundException : User entity not found exception.
+     */
     @GetMapping("me")
     public User getMe(final Principal principal) throws NotFoundException {
         this.service.getOne(principal.getName()).setLastLogin(LocalDateTime.now());

@@ -16,7 +16,7 @@ import fr.dta.ovg.services.user.UserDeleteService;
 public class NotificationCrudServiceImpl implements NotificationCrudService {
 
     @Autowired
-    NotificationRepository repository;
+    private NotificationRepository repository;
 
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 

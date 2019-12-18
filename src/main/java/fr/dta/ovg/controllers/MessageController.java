@@ -26,7 +26,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.MessageCrudService;
 import io.swagger.annotations.Api;
 
-
+/** Message Controller Class.*/
 @RestController
 @RequestMapping("api/v1/message")
 @Api(value = "Message Management System", tags = "Message")
@@ -51,7 +51,7 @@ public class MessageController {
      * GET - HTTP
      * @param id : number of the selected Message.
      * @return Entity Message.
-     * @throws NotFoundException
+     * @throws NotFoundException : Message entity not found.
      */
     @GetMapping("{id}")
     public  Message getOne(@PathVariable final Long id) throws NotFoundException {
@@ -61,9 +61,9 @@ public class MessageController {
     /**
      * Create an Message.<br>
      * POST - HTTP.
-     * @param Message entity.
+     * @param message : Message entity.
      * @return the created object Message.
-     * @throws BadRequestException
+     * @throws BadRequestException : Incorrect request.
      */
     @PostMapping
     public  Message create(@Valid @RequestBody final  Message  message) throws BadRequestException {
@@ -75,7 +75,7 @@ public class MessageController {
      * Delete one by ID. <br>
      * DELETE - HTTP.
      * @param id : number of the selected Message.
-     * @throws NotFoundException
+     * @throws NotFoundException : Message entity not found.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

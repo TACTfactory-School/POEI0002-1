@@ -16,7 +16,7 @@ import fr.dta.ovg.services.HobbyCrudService;
 public class HobbyCrudServiceImpl implements HobbyCrudService {
 
     @Autowired
-    HobbyRepository repository;
+    private HobbyRepository repository;
 
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 

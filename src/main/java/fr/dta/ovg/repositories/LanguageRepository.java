@@ -11,6 +11,9 @@ import fr.dta.ovg.entities.Language;
 @Repository
 public interface LanguageRepository extends JpaRepository<Language, Long> {
 
+    /** Exist by language label Function.
+     * @param language : @see Language.
+     * @return true if the language already exist in the repository.*/
     @Query("SELECT COUNT(h) > 0" + " FROM Language h" + " WHERE LOWER(h.label) = LOWER(:#{#s.label})"
             + " AND (:#{#s.id} = NULL OR h.id != :#{#s.id})")
       boolean existsByLabel(@Param("s") Language language);

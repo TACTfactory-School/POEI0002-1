@@ -25,7 +25,9 @@ public class UserDeleteService {
     @Autowired
     private UserRepository repository;
 
-    /** Delete User function implementation.*/
+    /** Delete User function implementation.
+     * @param id : user id to delete.
+     * @throws NotFoundException : User not found */
     void delete(final long id)  throws NotFoundException {
         LOG.debug("Delete User");
 

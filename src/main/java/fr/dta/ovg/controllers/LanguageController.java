@@ -26,7 +26,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.LanguageCrudService;
 import io.swagger.annotations.Api;
 
-
+/** Language Controller Class.*/
 @RestController
 @RequestMapping("api/v1/language")
 @Api(value = "Language Management System", tags = "Language")
@@ -51,7 +51,7 @@ public class LanguageController {
      * GET - HTTP
      * @param id : number of the selected Language.
      * @return Entity Language.
-     * @throws NotFoundException
+     * @throws NotFoundException : Language entity not found.
      */
     @GetMapping("{id}")
     public Language getOne(@PathVariable final Long id) throws NotFoundException {
@@ -63,7 +63,7 @@ public class LanguageController {
      * POST - HTTP.
      * @param language entity.
      * @return the created object Language.
-     * @throws BadRequestException
+     * @throws BadRequestException : Incorrect request.
      */
     @PostMapping
     public Language create(@Valid @RequestBody final Language language) throws BadRequestException {
@@ -77,7 +77,7 @@ public class LanguageController {
      * Delete one by ID. <br>
      * DELETE - HTTP.
      * @param id : number of the selected Language.
-     * @throws NotFoundException
+     * @throws NotFoundException : Language entity not found.
      */
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

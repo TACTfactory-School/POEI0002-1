@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Controller Configuration Class.*/
 @ControllerAdvice
 public class ControllerConfig {
 
