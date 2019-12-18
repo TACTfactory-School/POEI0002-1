@@ -17,11 +17,11 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.EventRepository;
 import fr.dta.ovg.services.EventCrudService;
 
-
+/** Implementation CRUD service on Event. */
 @Service
 public class EventCrudServiceImpl implements EventCrudService {
 
-    /** Link to Event Repo. */
+    /** Link to Event Repository. */
     @Autowired
     private EventRepository repository;
 
@@ -33,13 +33,9 @@ public class EventCrudServiceImpl implements EventCrudService {
     @Autowired
     private EventDeleteService deleteService;
 
-    /*
-    @Transactional(readOnly = true)
-    @Override
-    public List<Event> getAll() {
-        return this.repository.findAll();
-    } */
-
+    /** Get All function.<br>Return Page of event.
+     * @param pageable : @see Pageable.
+     * @param search : String to prpcess search.*/
     @Transactional(readOnly = true)
     @Override
     public Page<Event> getAll(final Pageable pageable, final String search) {
@@ -57,6 +53,10 @@ public class EventCrudServiceImpl implements EventCrudService {
         return paginateResult;
     }
 
+    /** Get One by ID.
+     * @param id : number of the selected event.
+     * @return Entity Event.
+     * @throws NotFoundException : Event entity not found.*/
     @Transactional(readOnly = true)
     @Override
     public Event getOne(final long id) throws NotFoundException {
@@ -65,15 +65,23 @@ public class EventCrudServiceImpl implements EventCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
+    /**
+     * Create an Event.<br>
+     * @param event : Event entity.
+     * @return the created object User.*/
     @Transactional()
     @Override
     public Event create(final Event event) {
         return this.createService.create(event);
     }
 
+    /** Delete one by ID. <br>
+     * @param id : number of the selected Event.
+     * @throws NotFoundException : Event entity not found exception.
+     */
     @Override
     public void delete(final long id) throws NotFoundException {
-        // TODO Auto-generated method stub
+
         this.deleteService.delete(id);
     }
 

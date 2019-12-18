@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.repositories.EventRepository;
 
-/** Implementation Create CRUD on Event. */
+/** Implementation Create Service on Event. */
 @Component
 @Transactional
 public class EventCreateService {
