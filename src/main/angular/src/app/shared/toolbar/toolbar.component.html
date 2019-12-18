@@ -18,7 +18,7 @@
     <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="notifications" matTooltip="Consulter mes notifications">notifications</mat-icon></a>
 
     <!-- Messages if logged -->
-    <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages" matTooltip="Consulter mes messages">mail</mat-icon></a>
+    <a *ngIf="user" class="icon" [matMenuTriggerFor]="messages"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages" matTooltip="Consulter mes messages">mail</mat-icon></a>
 
     <!-- Account Dropdown if logged -->
     <a *ngIf="user" class="icon" [matMenuTriggerFor]="menu"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">account_circle</mat-icon></a>
@@ -26,7 +26,7 @@
     <!-- Connxion/Login button if !logged -->
     <button *ngIf="!user" mat-stroked-button color="primary" (click)="openDialog()">Connexion</button>
 
-    <!-- Dropdown menu -->
+    <!-- Account Dropdown menu -->
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="['user/me']">
         <mat-icon>person</mat-icon>
@@ -45,6 +45,16 @@
         <mat-icon>power_settings_new</mat-icon>
         <span>Déconnexion</span>
       </button>
+    </mat-menu>
+
+     <!-- Messages Dropdown menu   *ngIf="user.messagesReceived && user.messagesReceived.length" -->
+     <mat-menu #messages="matMenu" *ngIf="user">
+       <ng-container *ngFor="let m of page.content; index as i">
+        <button mat-menu-item [routerLink]="['user/me']">
+          <span>{{ m.createdAt }}</span>
+          <span>{{ m.label }}</span>
+        </button>
+    </ng-container>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UserFormLoginComponent } from 'src/app/user/user-form/user-form-login/user-form-login.component';
 import { AuthApiService } from 'src/app/auth/auth-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
-import { Observable } from 'rxjs';
 import { User } from 'src/app/user/user';
 import { UserPreferencesComponent } from 'src/app/user/user-preferences/user-preferences.component';
+import { MessageApiService } from 'src/app/models/message-api.service';
+import { Message } from 'src/app/models/message';
+import { Page } from '../paginator/page';
 
 @Component({
   selector: 'app-toolbar',
@@ -17,18 +19,22 @@ export class ToolbarComponent implements OnInit {
 
   user: User;
   isModal: boolean;
+  page: Page<Message>;
 
   constructor(
       public dialog: MatDialog,
       private readonly currentUser: CurrentUserService,
       private readonly router: Router,
-      private readonly auth: AuthApiService) { }
+      private readonly auth: AuthApiService,
+      private readonly message: MessageApiService,
+      private readonly route: ActivatedRoute,
+    ) { }
 
   ngOnInit() {
     this.currentUser
         .observable
         .subscribe(user => this.user = user);
-  }
+    }
 
   openDialog(): void {
     this.isModal = true;
