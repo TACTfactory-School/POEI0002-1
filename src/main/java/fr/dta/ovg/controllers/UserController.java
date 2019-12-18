@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +41,9 @@ public class UserController {
     /** Link to Event CRUD Service. */
     @Autowired
     private UserCrudService service;
+
+    @Autowired
+    private PasswordEncoder password;
 
     /**
      * Get All function. <br>
@@ -79,6 +83,7 @@ public class UserController {
     @PostMapping
     public User create(@Valid @RequestBody final User user) throws BadRequestException {
         if (this.service.existsByUsername(user)) { // delete test
+            this.password.encode(user.getPassword());
             throw new BadRequestException("uniq_name");
         }
 
