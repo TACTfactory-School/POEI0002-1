@@ -15,6 +15,7 @@ import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.EventRepository;
 
+/** Event Delete Service.*/
 @Component
 @Transactional
 public class EventDeleteService {
@@ -25,7 +26,8 @@ public class EventDeleteService {
     @Autowired
     private EventRepository repository;
 
-    /** Delete Event function implementation.*/
+    /** Delete Event function implementation.
+     * @param id : number of the selected Event.*/
     void delete(final long id)  throws NotFoundException {
         LOG.debug("Delete event");
 

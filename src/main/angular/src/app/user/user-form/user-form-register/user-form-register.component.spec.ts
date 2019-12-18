@@ -5,7 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatToolbarModule, MatDatepickerModule, MatNativeDateModule, MatInputModule,
+  MatStepperModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { EventModule } from 'src/app/event/event.module';
+import { UserModule } from '../../user.module';
+import { UserFormModule } from '../user-form.module';
+import { PagesModule } from 'src/app/pages/pages.module';
+import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
 
 describe('UserFormRegisterComponent', () => {
   let component: UserFormRegisterComponent;
@@ -13,18 +20,24 @@ describe('UserFormRegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        UserFormRegisterComponent
-      ],
+      declarations: [],
       imports: [
         HttpClientModule,
         BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
+        OvgFormsModule,
         SharedModule,
         MatToolbarModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatInputModule,
+        MatStepperModule,
+        MatOptionModule,
+        MatSelectModule,
+        AppRoutingModule,
+        EventModule,
+        UserModule,
+        UserFormModule,
+        PagesModule
       ]
     })
     .compileComponents();

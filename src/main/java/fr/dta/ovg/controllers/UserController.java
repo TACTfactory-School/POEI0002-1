@@ -49,9 +49,9 @@ public class UserController {
      * Get All function. <br>
      * GET - HTTP.
      * @return List of all Users.
-     *  @param page : the page number.
+     * @param page : the page number.
      * @param quantity : the quantity of return per page.
-     * @param search :String to prpcess search.
+     * @param search : String to prpcess search.
      */
     @GetMapping
     public Page<User> getAll(final int page, final int quantity, final String search) {

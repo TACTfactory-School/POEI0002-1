@@ -15,6 +15,7 @@ import fr.dta.ovg.services.LanguageCrudService;
 @Service
 public class LanguageCrudServiceImpl implements LanguageCrudService {
 
+    /** Link to entity repository. */
     @Autowired
     private LanguageRepository repository;
 

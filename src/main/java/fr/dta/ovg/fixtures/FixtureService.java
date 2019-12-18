@@ -50,11 +50,11 @@ public class FixtureService implements Fixture {
      *  @throws NotFoundException */
     @Transactional
     public void load() throws NotFoundException {
-        this.hobbyFixture.load();
-        this.messageFixture.load();
         this.userFixture.load();
         this.eventFixture.load();
+        this.messageFixture.load();
         this.notificationFixture.load();
+        this.hobbyFixture.load();
         this.joinFixture.load();
 
 //        this.securityUserFixture.load();
