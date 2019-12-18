@@ -5,11 +5,12 @@
  */
 package fr.dta.ovg.controllers;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.services.NotificationCrudService;
+import fr.dta.ovg.services.notification.NotificationCrudService;
 import io.swagger.annotations.Api;
 
 /** Notification Controller Class.*/
@@ -39,11 +40,16 @@ public class NotificationController {
     /**
      * Get All function. <br>
      * GET - HTTP.
+     * @param page the page number.
+     * @param quantity the quantity of return per page.
      * @return List of all Notifications.
      */
     @GetMapping
-    public List<Notification> getAll() {
-        return this.service.getAll();
+    public Page<Notification> getAll(final int page, final int quantity, final long userId) {
+
+        Pageable pageable = PageRequest.of(page, quantity);
+
+        return this.service.getAll(pageable, userId);
     }
 
     /**

@@ -52,9 +52,9 @@ public class FixtureService implements Fixture {
     public void load() throws NotFoundException {
         this.hobbyFixture.load();
         this.messageFixture.load();
-        this.notificationFixture.load();
         this.userFixture.load();
         this.eventFixture.load();
+        this.notificationFixture.load();
         this.joinFixture.load();
 
 //        this.securityUserFixture.load();

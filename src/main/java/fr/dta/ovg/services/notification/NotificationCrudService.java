@@ -1,18 +1,28 @@
-package fr.dta.ovg.services;
+/* Interface Notification Crud Service.
+ * @author Colin Cerveaux @C-ambium
+ * Genericity of crud service.
+ * License : ©2019 All rights reserved
+ */
 
-import java.util.List;
+package fr.dta.ovg.services.notification;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Interface Notification Crud Service.*/
 public interface NotificationCrudService {
 
     /**
      * Get all Notification entity.<br>
      * Must be redefined in implemented class.<br>
+     * @param pageable : @see Pageable.
+     * @param userId : User Id notification.
      * @return List of all Notifications.
      * */
-    List<Notification> getAll();
+    Page<Notification> getAll(Pageable pageable, Long userId);
 
     /**
      * Get one Notification entity by ID.<br>
