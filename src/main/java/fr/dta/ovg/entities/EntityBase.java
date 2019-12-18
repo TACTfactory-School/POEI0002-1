@@ -51,7 +51,9 @@ public class EntityBase {
     /** CREATION: On DB fixtures load and when event is created.*/
     @PrePersist
     protected void onCreate() {
-        updatedAt = createdAt = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now();
+        updatedAt = now;
+        createdAt = now;
         }
 
     /** UPDATE: On DB fixtures load and when event is updated. */

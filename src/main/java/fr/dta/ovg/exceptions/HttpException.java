@@ -1,6 +1,11 @@
-package fr.dta.ovg.exceptions;
+/* HTTP Exception Class.
+ * Custom exception.
+ * @author Colin Cerveaux @C-ambium.
+ * License : ©2019 All rights reserved.
+ */
+package fr.dta.ovg.exceptions; // @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 
-//@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+/** HTTP Exception Class.*/
 public class HttpException extends Exception {
 
   /** The serial number. */
@@ -11,35 +16,31 @@ public class HttpException extends Exception {
       super();
   }
 
-  /**
-   * @param message
-   * @param cause
-   * @param enableSuppression
-   * @param writableStackTrace
-   */
+  /** Full Constructor with message, cause, suppression option & stack trace options.
+   * @param message : (String) : message to return.
+   * @param cause:  cause to return. @see Throwable.
+   * @param enableSuppression : enable suppression option.
+   * @param writableStackTrace Stack trace option.*/
   public HttpException(final String message, final Throwable cause, final boolean enableSuppression,
           final boolean writableStackTrace) {
       super(message, cause, enableSuppression, writableStackTrace);
   }
 
-  /**
-   * @param message
-   * @param cause
-   */
+  /** Constructor with message and cause parameters.
+   * @param message : (String) : message to return.
+   * @param cause : cause to return. @see Throwable.*/
   public HttpException(final String message, final Throwable cause) {
       super(message, cause);
   }
 
-  /**
-   * @param message
-   */
+  /** Constructor with message parameter.
+   * @param message (String) : message to return.*/
   public HttpException(final String message) {
       super(message);
   }
 
-  /**
-   * @param cause
-   */
+  /** Constructor with cause parameter.
+   * @param cause : cause to return. @see Throwable.*/
   public HttpException(final Throwable cause) {
       super(cause);
   }

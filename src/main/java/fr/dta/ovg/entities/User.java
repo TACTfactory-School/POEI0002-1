@@ -165,7 +165,7 @@ public class User extends EntityBase {
     }
 
     /** Setter user's gender.
-     * @param UserGender : the gender to set.*/
+     * @param gender : the user gender to set.*/
     public void setGender(final UserGender gender) {
         this.gender = gender;
     }
@@ -428,7 +428,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param notification : Add notification to user */
+    /** @param userNotification : Add notification to user */
     public void addUserNotification(final Notification userNotification) {
         if (!this.notifications.contains(userNotification)) {
             this.notifications.add(userNotification);
@@ -436,7 +436,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param message : Add received message to user */
+    /** @param messagesReceived : Add received message to user */
     public void addReceivedMessage(final Message messagesReceived) {
         if (!this.messagesReceived.contains(messagesReceived)) {
             this.messagesReceived.add(messagesReceived);
@@ -444,7 +444,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param Message : Add emitted message to user */
+    /** @param messagesEmitted : Add emitted message to user */
     public void addEmmittedMessage(final Message messagesEmitted) {
         if (!this.messagesEmitted.contains(messagesEmitted)) {
             this.messagesEmitted.add(messagesEmitted);
@@ -452,41 +452,41 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param JoinEvent : Remove user join event.*/
+    /** @param joinEvent : Remove user join event.*/
     public void removeJoinEvent(final JoinEvent joinEvent) {
         if (this.joinEvents.contains(joinEvent)) {
             this.joinEvents.remove(joinEvent);
         }
     }
-    /** @param UserLanguage : Remove user language from association table.*/
+    /** @param userLanguage : Remove user language from association table.*/
     public void removeUserLanguage(final UserLanguage userLanguage) {
         if (this.languages.contains(userLanguage)) {
             this.languages.remove(userLanguage);
         }
     }
 
-    /** @param UserHobby : Remove user hobby from association table.*/
+    /** @param userHobby : Remove user hobby from association table.*/
     public void removeUserHobby(final UserHobby userHobby) {
         if (this.hobbies.contains(userHobby)) {
             this.hobbies.remove(userHobby);
         }
     }
 
-    /** @param Notification : Remove user notification.*/
+    /** @param userNotification : Remove user notification.*/
     public void removeUserNotification(final Notification userNotification) {
         if (this.notifications.contains(userNotification)) {
             this.notifications.remove(userNotification);
         }
     }
 
-    /** @param Message : Remove user received message.*/
+    /** @param messagesReceived : Remove user received message.*/
     public void removeReceivedMessage(final Message messagesReceived) {
         if (this.messagesReceived.contains(messagesReceived)) {
             this.messagesReceived.remove(messagesReceived);
         }
     }
 
-    /** @param Message : Remove user emitted message.*/
+    /** @param messagesEmitted : Remove user emitted message.*/
     public void removeEmmittedMessage(final Message messagesEmitted) {
         if (this.messagesEmitted.contains(messagesEmitted)) {
             this.messagesEmitted.remove(messagesEmitted);

@@ -24,7 +24,7 @@ public class UserLanguage extends EntityBase {
     @Column(name = "us_lang_lvl", unique = false, nullable = true)
     @ApiModelProperty(value = "The language level of the user.")
     @Enumerated(EnumType.ORDINAL)
-    LanguageLevel level;
+    private LanguageLevel level;
 
     /** Selected user. */
     @ManyToOne(optional = false)

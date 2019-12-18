@@ -16,7 +16,7 @@ import fr.dta.ovg.services.user.UserDeleteService;
 public class MessageCrudServiceImpl implements MessageCrudService {
 
     @Autowired
-   MessageRepository repository;
+    private MessageRepository repository;
 
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 

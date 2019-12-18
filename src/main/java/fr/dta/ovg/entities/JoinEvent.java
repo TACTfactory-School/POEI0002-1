@@ -73,7 +73,7 @@ public class JoinEvent extends EntityBase {
     public void setValid(final boolean valid) {
         this.valid = valid;
 
-        if (this.valid == true) {
+        if (this.valid) {
             this.validatedAt = LocalDateTime.now();
         }
     }
