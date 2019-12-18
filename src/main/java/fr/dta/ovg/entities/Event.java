@@ -20,6 +20,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -34,6 +37,8 @@ public class Event extends EntityBase {
     @ApiModelProperty(value = "The author of the event.")
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
+    @JsonIgnoreProperties({"joinEvents", "notifications", "languages", "hobbies", "friends", "messagesEmitted",
+        "messagesReceived"})
     private User creator;
 
     /** Title of the Event. <br>DB Column.*/
@@ -87,14 +92,19 @@ public class Event extends EntityBase {
 
     /** Join users List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("event")
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
     /** Notifications List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties("event")
+//    @JsonIgnore
     private final List<Notification> eventNotification = new ArrayList<>();
 
     /** Messages List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "event")
+//    @JsonIgnoreProperties("event")
+//    @JsonIgnore
     private final List<Message> messages = new ArrayList<>();
 
     /** Override toString() method with Event attributes.*/
@@ -170,7 +180,7 @@ public class Event extends EntityBase {
      * Setter max places of the event.
      * @param nbPlaceMax (int) : the nbPlaceMax to set.
      */
-    public final void setNbPlaceMax(final int nbPlaceMax) {
+    public void setNbPlaceMax(final int nbPlaceMax) {
         this.nbPlaceMax = nbPlaceMax;
     }
 

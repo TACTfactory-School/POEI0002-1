@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -92,6 +93,8 @@ public class User extends EntityBase {
 
     /** Join event List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties({"user"})
+//    @JsonIgnore
     private final List<JoinEvent> joinEvents = new ArrayList<>();
 
     /** The notifications preference of the user.*/
@@ -100,7 +103,7 @@ public class User extends EntityBase {
 
     /** The notifications list of the user.*/
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
+    @JsonIgnoreProperties("user")
     private final List<Notification> notifications = new ArrayList<>();
 
     /** The emitted messages list of the user.*/
@@ -113,14 +116,17 @@ public class User extends EntityBase {
 
     /** The languages list of the user.*/
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private final List<UserLanguage> languages = new ArrayList<>();
 
     /** The hobbies list of the user.*/
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private final List<UserHobby> hobbies = new ArrayList<>();
 
     /** The friends list of the user.*/
     @OneToMany
+    @JsonIgnoreProperties("friends")
     private final List<User> friends = new ArrayList<>();
 
     /** Birthdate preference setting of the user.. <br> DB Column. */
@@ -403,7 +409,7 @@ public class User extends EntityBase {
 
     /** Get List of all user's join events.
      * @return the events (List).*/
-    public List<JoinEvent> getJoinEvent() {
+    public List<JoinEvent> getJoinEvents() {
         return joinEvents;
     }
 
