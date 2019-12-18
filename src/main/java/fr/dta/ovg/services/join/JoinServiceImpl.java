@@ -16,6 +16,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.JoinEventRepository;
 import fr.dta.ovg.services.JoinCrudService;
 
+/** JoinEvent Service Implementation.*/
 @Transactional
 @Service
 public class JoinServiceImpl implements JoinCrudService {
@@ -35,24 +36,26 @@ public class JoinServiceImpl implements JoinCrudService {
         return this.repository.findAll();
     }
 
-    /** Delete one join from join repository. */
+    /** Delete one join from join repository.
+     * @param id : number of the selected Event.*/
     @Override
     public void delete(final long id) throws NotFoundException {
         this.service.delete(id);
     }
 
-    /** Create one join from join repository. */
+    /** Create one join from join repository.
+     * @param entity : @see JoinEvent.*/
     @Transactional()
     @Override
     public JoinEvent create(final JoinEvent entity) {
         return this.repository.save(entity);
     }
 
-    /** Get one join from join repository. */
+    /** Get one joinEvent from repository.
+     * @param id : number of the selected JoinEvent.*/
     @Override
     public JoinEvent getOne(final long id) throws NotFoundException {
         // TODO Auto-generated method stub
         return this.repository.getOne(id);
-
     }
 }

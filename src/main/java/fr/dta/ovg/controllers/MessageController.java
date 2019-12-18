@@ -5,11 +5,12 @@
  */
 package fr.dta.ovg.controllers;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,9 +43,10 @@ public class MessageController {
      * @return List of all Messages.
      */
     @GetMapping
-    public List<Message> getAll() {
-        return this.service.getAll();
-    }
+    public Page<Message> getAll(final int page, final int quantity, final long userId) {
+        Pageable pageable = PageRequest.of(page, quantity);
+
+        return this.service.getAll(pageable, userId);    }
 
     /**
      * Get One by ID.<br>

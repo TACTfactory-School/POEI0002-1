@@ -1,3 +1,9 @@
+/* Hobby CRUD Service Interface.
+ * @author Colin Cerveaux @C-ambium
+ * Action get and update / Link to Delete Service
+ * License : ©2019 All rights reserved
+ */
+
 package fr.dta.ovg.services;
 
 import java.util.List;
@@ -5,6 +11,7 @@ import java.util.List;
 import fr.dta.ovg.entities.Hobby;
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Hobby CRUD Service Interface.*/
 public interface HobbyCrudService {
 
     /**
@@ -17,6 +24,7 @@ public interface HobbyCrudService {
     /**
      * Get one Hobby entity by ID.<br>
      * Must be redefined in implemented class.<br>
+     * @param id of Hobby entity.
      * @return Hobby : entity.
      * */
     Hobby getOne(long id) throws NotFoundException;
@@ -24,6 +32,7 @@ public interface HobbyCrudService {
     /**
      * Create one Hobby entity.<br>
      * Must be redefined in implemented class.<br>
+     * @param hobby : @see Hobby.
      * @return Created Hobby : entity.
      * */
     Hobby create(Hobby hobby);
@@ -31,9 +40,14 @@ public interface HobbyCrudService {
     /**
      * Delete one Hobby entity by ID.<br>
      * Must be redefined in implemented class.<br>
+     * @param id of Hobby entity.
      * @return void : nothing.
      * */
     void delete(long id) throws NotFoundException;
 
+    /** Exists by Label function.
+     * @param hobby : @see Hobby.
+     * @return true if entity exists by label.
+     */
     boolean existsByLabel(Hobby hobby);
 }

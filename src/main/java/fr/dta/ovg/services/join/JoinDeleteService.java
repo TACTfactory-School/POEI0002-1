@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.JoinEventRepository;
 
+/** Join Delete Service.*/
 @Component
 public class JoinDeleteService {
 
@@ -19,7 +20,7 @@ public class JoinDeleteService {
     private JoinEventRepository repository;
 
     /** Delete JoinEvent function implementation.
-     * @param id : join id to delete.
+     * @param id : joinEvent id to delete.
      * @throws NotFoundException : JoinEvent Not Found.
      */
     public void delete(final long id) throws NotFoundException {
