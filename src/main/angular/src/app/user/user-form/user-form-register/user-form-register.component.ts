@@ -18,7 +18,8 @@ export class UserFormRegisterComponent implements OnInit {
     { label: 'Homme', value: UserGender.MALE },
     { label: 'Femme', value: UserGender.FEMALE },
     { label: 'Non binaire', value: UserGender.NONBINARY },
-    { label: 'Non spécifié', value: '' },
+    { label: 'Non spécifié', value: UserGender.UNSPECIFIED},
+    { label: '', value: ''}
   ];
 
   constructor(

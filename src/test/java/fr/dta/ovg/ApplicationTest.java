@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/** Test class og the application main entry. @SpringBootTest */
+/** Test class ovg the application main entry. @SpringBootTest */
 @ActiveProfiles("test")
 @ContextConfiguration
 @RunWith(SpringRunner.class)
