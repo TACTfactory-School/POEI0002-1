@@ -1,10 +1,17 @@
-package fr.dta.ovg.services;
+/* Interface Notification Crud Service.
+ * @author Colin Cerveaux @C-ambium
+ * Genericity of crud service.
+ * License : ©2019 All rights reserved
+ */
+
+package fr.dta.ovg.services.notification;
 
 import java.util.List;
 
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Interface Notification Crud Service.*/
 public interface NotificationCrudService {
 
     /**

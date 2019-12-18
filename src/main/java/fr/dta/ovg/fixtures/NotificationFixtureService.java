@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.NotificationRepository;
-import fr.dta.ovg.services.NotificationCrudService;
+import fr.dta.ovg.services.notification.NotificationCrudService;
 
 /** This class initialize DB with initials fixtures data. */
 @Component
