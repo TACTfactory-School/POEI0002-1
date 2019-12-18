@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -26,12 +29,15 @@ public class Message extends EntityBase {
     private String message;
 
     @ManyToOne
+    @JsonIgnoreProperties({"notifications", "languages", "hobbies", "friends", "joinEvents", "preferences"})
     private User userEmitter;
 
     @ManyToOne
+    @JsonIgnore
     private User userReceiver;
 
     @ManyToOne
+    @JsonIgnore
     private Event event;
 
     /**
