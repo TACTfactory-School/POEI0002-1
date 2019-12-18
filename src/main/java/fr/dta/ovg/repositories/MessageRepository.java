@@ -14,8 +14,8 @@ import fr.dta.ovg.entities.Message;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-      @Query("SELECT m FROM Message m "
-                + "INNER JOIN m.user u "
+      @Query("SELECT m.message FROM Message m "
+                + "INNER JOIN m.userReceiver u "
                 + "WHERE u.id = :userId "
                 + "ORDER BY m.createdAt DESC")
     Page<Message> findAllByUserId(Pageable pageableFinal, @Param("userId") long userId);
