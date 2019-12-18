@@ -17,6 +17,7 @@ import fr.dta.ovg.services.user.UserDeleteService;
 @Service
 public class MessageCrudServiceImpl implements MessageCrudService {
 
+    /** Link to entity repository.*/
     @Autowired
     private MessageRepository repository;
 

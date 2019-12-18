@@ -76,16 +76,21 @@ public class UserCrudServiceImpl implements UserCrudService {
         this.deleteService.delete(id);
     }
 
+    /* (non-Javadoc)
+     * @see fr.dta.ovg.services.UserCrudService#existsByUsername(fr.dta.ovg.entities.User)
+     */
     @Override
-//    @Query("SELECT COUNT(e) > 0"
-//            + " FROM Event e"
-//            + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"
-//            + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
     public boolean existsByUsername(final User user) {
-        // TODO Auto-generated method stub
+//      TODO @Query("SELECT COUNT(e) > 0"
+//      + " FROM Event e"
+//      + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"
+//      + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
         return this.repository.existsByUsername(user);
     }
 
+    /* (non-Javadoc)
+     * @see fr.dta.ovg.services.UserCrudService#existsByUsernameIgnoreCaseAndIdNot(java.lang.String, java.lang.Long)
+     */
     @Override
     public boolean existsByUsernameIgnoreCaseAndIdNot(final String label, final Long id) {
         // TODO Auto-generated method stub

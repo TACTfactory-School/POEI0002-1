@@ -14,10 +14,10 @@ import fr.dta.ovg.entities.Message;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-      @Query("SELECT n FROM Notification n "
-                + "INNER JOIN n.user u "
+      @Query("SELECT m FROM Message m "
+                + "INNER JOIN m.user u "
                 + "WHERE u.id = :userId "
-                + "ORDER BY n.createdAt DESC")
-    Page<Message> findAllByUserId(Pageable pageableFinal, @Param("userId") final long userId);
+                + "ORDER BY m.createdAt DESC")
+    Page<Message> findAllByUserId(Pageable pageableFinal, @Param("userId") long userId);
 
 }

@@ -13,45 +13,33 @@ import fr.dta.ovg.exceptions.NotFoundException;
 
 public interface EventCrudService {
 
-    /**
-     * Get all Event entity.<br>
-     * Must be redefined in implemented class.<br>
-     * @return List of all Event.
-     * @see EventCrudServiceImpl EventCrudServiceImpl
-     *
-    List<Event> getAll(); */
-
-    /**
-     * Get all Event entity with pageable.<br>
+    /** Get all Event entity with pageable.<br>
      * Must be redefined in implemented class.<br>
      * @return List of all Event.
      * @param pageable (Pageable) object with page number and quantity.
-     * @see EventCrudServiceImpl EventCrudServiceImpl
-     * */
+     * @param search : string to process search.
+     * @see EventCrudServiceImpl EventCrudServiceImpl.*/
     Page<Event> getAll(Pageable pageable, String search);
 
-    /**
-     * Get one Event entity by ID.<br>
+    /** Get one Event entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @return Event : entity.
-     * @see EventCrudServiceImpl EventCrudServiceImpl
-     * */
+     * @param id of the Event.
+     * @see EventCrudServiceImpl EventCrudServiceImpl.*/
     Event getOne(long id) throws NotFoundException;
 
-    /**
-     * Create one Event entity.<br>
+    /** Create one Event entity.<br>
      * Must be redefined in implemented class.<br>
-     * @return Created Event : entity.
-     * @see EventCreateService EventCreateService.
-     * */
+     * @return Created Event entity.
+     * @param event : Event entity
+     * @see EventCreateService EventCreateService.*/
     Event create(Event event);
 
-    /**
-     * Delete one Event entity by ID.<br>
+    /** Delete one Event entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @return void : nothing.
-     * @see EventDeleteService EventDeleteService.
-     * */
+     * @param id of the Event.
+     * @see EventDeleteService EventDeleteService.*/
     void delete(long id) throws NotFoundException;
 
 

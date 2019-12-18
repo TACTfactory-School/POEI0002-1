@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.NotFoundException;
 
-/** Interface Notification Crud Service.*/
+/** Interface Notification CRUD Service.*/
 public interface NotificationCrudService {
 
     /**
@@ -27,6 +27,7 @@ public interface NotificationCrudService {
     /**
      * Get one Notification entity by ID.<br>
      * Must be redefined in implemented class.<br>
+     * @param id : Notification id.
      * @return Notification : entity.
      * */
     Notification getOne(long id) throws NotFoundException;
@@ -34,6 +35,7 @@ public interface NotificationCrudService {
     /**
      * Create one Notification entity.<br>
      * Must be redefined in implemented class.<br>
+     * @param notification : @see Notification.
      * @return Created Notification : entity.
      * */
     Notification create(Notification notification);
@@ -41,6 +43,7 @@ public interface NotificationCrudService {
     /**
      * Delete one Notification entity by ID.<br>
      * Must be redefined in implemented class.<br>
+     * @param id : Notification id.
      * @return void : nothing.
      * */
     void delete(long id) throws NotFoundException;

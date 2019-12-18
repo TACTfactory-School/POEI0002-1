@@ -1,3 +1,8 @@
+/* Hobby CRUD Service Implementation.
+ * @author Colin Cerveaux @C-ambium
+ * Action get and update / Link to Delete Service
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.services.user;
 
 import java.util.List;
@@ -12,14 +17,18 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.HobbyRepository;
 import fr.dta.ovg.services.HobbyCrudService;
 
+/** Hobby CRUD Service Implementation.*/
 @Service
 public class HobbyCrudServiceImpl implements HobbyCrudService {
 
+    /** Link to entity repository.*/
     @Autowired
     private HobbyRepository repository;
 
+    /** Logger instance. */
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
+    /** {@inheritDoc}.*/
     @Override
     public List<Hobby> getAll() {
 
@@ -27,6 +36,7 @@ public class HobbyCrudServiceImpl implements HobbyCrudService {
         return this.repository.findAll();
     }
 
+    /** {@inheritDoc}.*/
     @Override
     public Hobby getOne(final long id) throws NotFoundException {
 
@@ -36,6 +46,7 @@ public class HobbyCrudServiceImpl implements HobbyCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
+    /** {@inheritDoc}.*/
     @Override
     public Hobby create(final Hobby hobby) {
 
@@ -43,6 +54,7 @@ public class HobbyCrudServiceImpl implements HobbyCrudService {
         return this.repository.save(hobby);
     }
 
+    /** {@inheritDoc}.*/
     @Override
     public void delete(final long id) throws NotFoundException {
         LOG.debug("Delete one Hobby by ID");
@@ -53,6 +65,7 @@ public class HobbyCrudServiceImpl implements HobbyCrudService {
         this.repository.delete(hobby);
     }
 
+    /** {@inheritDoc}.*/
     @Override
     public boolean existsByLabel(final Hobby hobby) {
 

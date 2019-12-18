@@ -1,3 +1,9 @@
+/* User Details Service Implementation.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Delete an Event.
+ * License : ©2019 All rights reserved
+ */
+
 package fr.dta.ovg.services.user;
 
 import java.util.HashSet;
@@ -15,37 +21,29 @@ import org.springframework.stereotype.Service;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.repositories.UserRepository;
 
+/** User Details Service Implementation.*/
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-//    @Autowired
-//    private UserServiceImpl userServiceImpl;
-////
-//    @Autowired
-//    private SecurityRoleRepository roleRepo;
-
+    /** Link to user repository. */
     @Autowired
     private UserRepository userRepo;
 
+    /** Load by username function.
+     * @param username of the user.
+     * @return UserDetails with security builder.
+     */
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 
-        // Role d'un utilisateur Springboot
         UserDetails result = null;
 
-        // User user = userServiceImpl.findByUsername(username);
         User user = userRepo.findByUsername(username).orElse(null);
-
-        // TODO Search on administrator if not found as simple user
 
         if (user != null) {
 
-            // List<SecurityRole> roles = roleRepo.findByUsername(username);
-
             Set<GrantedAuthority> grantedAutorities = new HashSet<>();
 
-            // for (SecurityRole role : roles) { }
-            // Simple = role springboot
             grantedAutorities.add(new SimpleGrantedAuthority(user.getRole()));
 
             UserBuilder userBuilder = org.springframework.security.core.userdetails.User.builder();

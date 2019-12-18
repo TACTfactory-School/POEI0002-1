@@ -41,9 +41,7 @@ public class NotificationCrudServiceImpl implements NotificationCrudService {
         return this.repository.findAllByUserId(pageableFinal, userId);
     }
 
-    /** Get One Notification.
-     * @param id : id of the notification.
-     * @return the notification.*/
+    /** {@inheritDoc}.*/
     @Override
     public Notification getOne(final long id) throws NotFoundException {
 
@@ -53,9 +51,7 @@ public class NotificationCrudServiceImpl implements NotificationCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
-    /** Create Notification function.
-     * @param notification : Notification entity.
-     * @return the saved notification.*/
+    /** {@inheritDoc}.*/
     @Override
     public Notification create(final Notification notification) {
 
@@ -63,8 +59,7 @@ public class NotificationCrudServiceImpl implements NotificationCrudService {
         return this.repository.save(notification);
     }
 
-    /** Delete Notification function.
-     * @param id : id of the notification.*/
+    /** {@inheritDoc}.*/
     @Override
     public void delete(final long id) throws NotFoundException {
         LOG.debug("Delete Notification");
