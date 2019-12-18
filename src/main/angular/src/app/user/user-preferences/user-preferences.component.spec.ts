@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserPreferencesComponent } from './user-preferences.component';
+import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MatToolbarModule, MatSlideToggleModule } from '@angular/material';
+import { OvgFormsModule } from 'src/app/shared/forms/ovg-forms.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { UserFormModule } from '../user-form/user-form.module';
+import { EventModule } from 'src/app/event/event.module';
+import { UserModule } from '../user.module';
+import { PagesModule } from 'src/app/pages/pages.module';
 
 describe('UserPreferencesComponent', () => {
   let component: UserPreferencesComponent;
@@ -8,7 +16,18 @@ describe('UserPreferencesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserPreferencesComponent ]
+      declarations: [],
+      imports: [
+        MaterialModule,
+        MatToolbarModule,
+        OvgFormsModule,
+        MatSlideToggleModule,
+        AppRoutingModule,
+        UserFormModule,
+        EventModule,
+        UserModule,
+        PagesModule
+      ]
     })
     .compileComponents();
   }));

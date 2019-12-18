@@ -13,7 +13,7 @@ import { MatButtonModule, MatIconModule, MatButtonToggleModule, MatDialogModule,
     MatDialogModule,
     MatSnackBarModule
   ],
-  exports:[
+  exports: [
     MatButtonModule,
     MatIconModule,
     MatButtonToggleModule,

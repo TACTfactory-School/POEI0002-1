@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.swagger.annotations.ApiModelProperty;
 
 /** Join Event class. Association table between User and Event.*/
@@ -43,6 +45,7 @@ public class JoinEvent extends EntityBase {
     /** User inscription. */
     @ManyToOne(optional = false) // targetEntity = Event.class
     @JoinColumn(nullable = false)
+    @JsonIgnoreProperties({"joinEvents", "notifications", "messagesEmitted", "messagesReceived"})
     private User user;
 
     /** Selected event. */

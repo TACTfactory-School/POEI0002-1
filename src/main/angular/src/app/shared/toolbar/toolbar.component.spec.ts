@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule, MatMenuModule, MatToolbarModule, MatFormFieldModule } from '@angular/material';
 import { ToolbarModule } from './toolbar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -21,7 +22,8 @@ describe('ToolbarComponent', () => {
          MatMenuModule,
          MatToolbarModule,
          MatFormFieldModule,
-         BrowserAnimationsModule
+         BrowserAnimationsModule,
+         HttpClientModule
 
        ]
     })

@@ -3,8 +3,9 @@ import { EventListCardComponent } from './event-list-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { Event } from '../../event';
 
 describe('EventListCardComponent', () => {
   let component: EventListCardComponent;
@@ -21,6 +22,10 @@ describe('EventListCardComponent', () => {
          FormsModule,
          MatCardModule,
          RouterModule.forRoot([]),
+         MatTooltipModule
+       ],
+       providers: [
+         { provide: Event, useValue: {}}
        ]
     })
     .compileComponents();
