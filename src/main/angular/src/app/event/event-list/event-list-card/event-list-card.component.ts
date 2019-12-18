@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { User } from 'src/app/user/user';
-import { ActivatedRoute } from '@angular/router';
 import { Event } from '../../event';
 
 @Component({
