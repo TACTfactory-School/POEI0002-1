@@ -1,6 +1,8 @@
 <mat-card class="event-card" [routerLink]="['/event', event.id]" matTooltip="{{event.description}}" matTooltipClass="tooltip-description">
   <mat-card-header>
-    <div mat-card-avatar class="event-header-image"></div>
+    <div mat-card-avatar class="event-header-image">
+      <img src="https://png.pngtree.com/svg/20161027/service_default_avatar_182956.png" width="38px"/>
+    </div>
     <mat-card-title>{{ event.label }}</mat-card-title>
     <mat-card-subtitle>{{ event.creator.username }}</mat-card-subtitle>
 
@@ -21,10 +23,3 @@
     <button class="gradient" mat-flat-button>Rejoindre</button>
   </mat-card-actions>
 </mat-card>
-
-<style>
-.event-header-image {
-  background-image: url('https://png.pngtree.com/svg/20161027/service_default_avatar_182956.png');
-  background-size: cover;
-}
-</style>
