@@ -19,6 +19,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -98,6 +100,7 @@ public class User extends EntityBase {
 
     /** The notifications list of the user.*/
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private final List<Notification> notifications = new ArrayList<>();
 
     /** The emitted messages list of the user.*/

@@ -5,12 +5,14 @@
  */
 package fr.dta.ovg.services.notification;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.exceptions.NotFoundException;
@@ -27,13 +29,16 @@ public class NotificationCrudServiceImpl implements NotificationCrudService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
-    /** Get All Notifications.
-     * @see Notification.*/
+    /** {@inheritDoc}.*/
+    @Transactional(readOnly = true)
     @Override
-    public List<Notification> getAll() {
+    public Page<Notification> getAll(final Pageable pageable, final Long userId) {
+
+        final Pageable pageableFinal = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
 
         LOG.debug("Get All Notifications");
-        return this.repository.findAll();
+
+        return this.repository.findAllByUserId(pageableFinal, userId);
     }
 
     /** Get One Notification.
