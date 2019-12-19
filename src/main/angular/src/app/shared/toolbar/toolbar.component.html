@@ -47,15 +47,15 @@
       </button>
     </mat-menu>
 
-     <!-- Messages Dropdown menu   *ngIf="user.messagesReceived && user.messagesReceived.length" -->
-     <mat-menu #messages="matMenu" *ngIf="user">
-       <ng-container *ngFor="let m of page.content; index as i">
+     <!-- Messages Dropdown menu   *ngIf="user.messagesReceived && user.messagesReceived.length"
+     <mat-menu #messages="matMenu">
+      <ng-container *ngFor="let m of page.content">
         <button mat-menu-item [routerLink]="['user/me']">
-          <span>{{ m.createdAt }}</span>
-          <span>{{ m.label }}</span>
+          <span>{{ user.messagesReceived }}</span>
+          <span>{{ user.messagesEmitted }}</span>
         </button>
-    </ng-container>
-    </mat-menu>
+      </ng-container>
+    </mat-menu> -->
   </mat-toolbar-row>
 </mat-toolbar>
 <!-- <ng-container *ngIf="displayForm">

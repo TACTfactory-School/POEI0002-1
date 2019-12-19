@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventApiService } from '../event-api.service';
 import { Event } from '../event';
-import { Observable } from 'rxjs';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
 import { User } from 'src/app/user/user';
 import { MatDialog } from '@angular/material';
