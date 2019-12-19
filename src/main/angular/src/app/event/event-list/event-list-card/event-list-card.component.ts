@@ -49,7 +49,7 @@ export class EventListCardComponent implements OnInit {
         },
         error => {
             console.log(error);
-            this._snackBar.open('Impossible de rejoindre l\'événement ... :(', 'Fermer', {
+            this._snackBar.open('Impossible de rejoindre l\'événement ... Peut-être l\'avez-vous déjà rejoint ?', 'Fermer', {
               duration: 4000,
             });
         });
