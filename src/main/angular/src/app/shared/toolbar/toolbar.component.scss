@@ -1,9 +1,24 @@
 .mat-toolbar {
   background: #fff;
 }
+
+// .mat-menu-item.drop-message span::after {
+//   content:"\A" !important;
+// }
+
+::ng-deep .mat-menu-panel {
+  max-width: inherit!important;
+}
+
+span.date {
+  font-size: 0.8em;
+  color: silver;
+}
+
 i {
   color: rgba(0, 0, 0, 0.87);
 }
+
 .toolbar-icon {
   margin:auto;
   padding: 14px 14px;

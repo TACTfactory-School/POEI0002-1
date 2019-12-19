@@ -15,10 +15,10 @@
     <span class="spacer"></span>
 
     <!-- Notifications if logged -->
-    <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="notifications" matTooltip="Consulter mes notifications">notifications</mat-icon></a>
+    <a *ngIf="user" class="icon" [matMenuTriggerFor]="notifications"><mat-icon matBadge="5" matBadgeColor="warn" matBadgePosition="before below" class="toolbar-icon" aria-hidden="false" aria-label="notifications" matTooltip="Consulter mes notifications">notifications</mat-icon></a>
 
     <!-- Messages if logged -->
-    <a *ngIf="user" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages" matTooltip="Consulter mes messages">mail</mat-icon></a>
+    <a *ngIf="user" class="icon" [matMenuTriggerFor]="messages"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages" matTooltip="Consulter mes messages">mail</mat-icon></a>
 
     <!-- Account Dropdown if logged -->
     <a *ngIf="user" class="icon" [matMenuTriggerFor]="menu"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">account_circle</mat-icon></a>
@@ -26,7 +26,7 @@
     <!-- Connxion/Login button if !logged -->
     <button *ngIf="!user" mat-stroked-button color="primary" (click)="openDialog()">Connexion</button>
 
-    <!-- Dropdown menu -->
+    <!-- Account Dropdown menu -->
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="['user/me']">
         <mat-icon>person</mat-icon>
@@ -46,9 +46,38 @@
         <span>Déconnexion</span>
       </button>
     </mat-menu>
+
+     <!-- Messages Dropdown menu   *ngIf="user.messagesReceived && user.messagesReceived.length" -->
+     <div>
+        <mat-menu #messages="matMenu">
+            <ng-container *ngIf="messagePage">
+              <button mat-menu-item class="drop-message" [routerLink]="['user/me']" *ngFor="let m of messagePage.content">
+                <span class="test">
+                  {{ m.message }}
+                  <span class="date">{{ m.createdAt | date:'shortDate' }}</span>
+                </span>
+              </button>
+            </ng-container>
+          </mat-menu>
+     </div>
+
+    <!-- Notification Dropdown menu   *ngIf="user.notifications && user.notifications.length" -->
+    <mat-menu #notifications="matMenu">
+      <ng-container *ngIf="notificationPage">
+        <button mat-menu-item class="drop-message" *ngFor="let n of notificationPage.content">
+          <span class="test">
+            {{ n.label }}
+            <span class="date">{{ n.createdAt | date:"shortDate" }}</span>
+          </span>
+        </button>
+        <button mat-menu-item (click)="openPrefDialog()">
+            <mat-icon>settings</mat-icon>
+            <span>Mon compte</span>
+          </button>
+      </ng-container>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 <!-- <ng-container *ngIf="displayForm">
     <app-user-form-login></app-user-form-login>
 </ng-container> -->
-
