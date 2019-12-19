@@ -18,7 +18,7 @@ import fr.dta.ovg.entities.Event;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
     /** Find All Event Function.
-     * @param search : string to process seach.
+     * @param search : string to process search.
      * @param pageable : abstract interface for event pagination.
      * @return Page of events.
      */

@@ -93,7 +93,7 @@ public class Event extends EntityBase {
 
     /** Join users List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = EventContract.MAPPED_BY, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("event")
+    @JsonIgnoreProperties(value = {"event"}, allowSetters = true)
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
     /** Notifications List of the Event. <br>DB Column.*/

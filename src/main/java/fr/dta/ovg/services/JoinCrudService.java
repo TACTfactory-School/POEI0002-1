@@ -41,4 +41,12 @@ public interface JoinCrudService {
      * @return The entity after hydratation.
      */
     JoinEvent create(JoinEvent entity);
+
+    /** Get one joinEvent by event ID and user ID.<br>
+     * Must be redefined in implemented class.<br>
+     * @param eventId : the ID of the event we're looking for.
+     * @param userId : the ID of the user we're looking for.
+     * @return a JoinEvent.
+     */
+    JoinEvent getOneByEventAndUser(long eventId, long userId);
 }
