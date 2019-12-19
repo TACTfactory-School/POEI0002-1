@@ -24,42 +24,36 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = HobbyContract.TABLE_API)
 public class Hobby  extends EntityBase {
 
+    /** Label of the Hobby. <br>DB Column.*/
     @NotBlank
     @Column(name = HobbyContract.COL_LABEL, length = 100, nullable = true, unique = false)
     @ApiModelProperty(value = HobbyContract.COL_LABEL_API)
     private String label;
 
+    /** Join Table UserHobby. <br>DB Column.*/
     @OneToMany(mappedBy = HobbyContract.MAPPED_BY_HOBBY)
     private final List<UserHobby> users = new ArrayList<>();
 
-    /**
-     * Getter label.
-     * @return the label (String).
-     */
+    /** Getter label.
+     * @return the label (String).*/
     public String getLabel() {
         return label;
     }
 
-    /**
-     * Setter Label.
-     * @param label the label to set (String).
-     */
+    /** Setter Label.
+     * @param label the label to set (String).*/
     public void setLabel(final String label) {
         this.label = label;
     }
 
-    /**
-     * Get UserHobby.
-     * @return users : UserHobby list.
-     */
+    /** Get UserHobby.
+     * @return users : UserHobby list.*/
     public List<UserHobby> getUsers() {
         return users;
     }
 
-    /**
-     * Add Hobby with association table.
-     * @param userHobby : UserHobby.
-     */
+    /** Add Hobby with association table.
+     * @param userHobby : UserHobby.*/
     public void addUserHobby(final UserHobby userHobby) {
         if (!this.users.contains(userHobby)) {
             this.users.add(userHobby);
@@ -67,10 +61,8 @@ public class Hobby  extends EntityBase {
         }
     }
 
-    /**
-     * Remove Hobby from association table.
-     * @param userHobby : UserHobby.
-     */
+    /** Remove Hobby from association table.
+     * @param userHobby : UserHobby. */
     public void removeUserHobby(final UserHobby userHobby) {
         if (this.users.contains(userHobby)) {
             this.users.remove(userHobby);

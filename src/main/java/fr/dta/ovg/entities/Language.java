@@ -24,35 +24,30 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "Describes a Language for our system")
 public class Language extends EntityBase {
 
-
+    /** Label of the Language. <br>DB Column.*/
     @NotBlank
     @Column(name = "lang_label", length = 500, nullable = true, unique = false)
     @ApiModelProperty(value = "The language to create.")
     private String label;
 
-
+    /** Join Table UserLanguage. <br>DB Column.*/
     @OneToMany(mappedBy = "language")
     private final List<UserLanguage> users = new ArrayList<>();
 
-    /**
-     * Getter Language label.
-     * @return the label (String).
-     */
+    /** Getter Language label.
+     * @return the label (String).*/
     public String getLabel() {
         return label;
     }
 
-    /**
-     * Setter Language label.
-     * @param label the label to set (String).
-     */
+    /** Setter Language label.
+     * @param label the label to set (String).*/
     public void setLabel(final String label) {
         this.label = label;
     }
 
     /** Get UserLangage.
-     * @return the users : UserLangage list.
-     */
+     * @return the users : UserLangage list.*/
     public List<UserLanguage> getUsers() {
         return users;
     }

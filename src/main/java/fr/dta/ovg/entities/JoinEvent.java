@@ -19,7 +19,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.dta.ovg.contracts.JoinEventContract;
-import fr.dta.ovg.contracts.JsonIgnore;
+import fr.dta.ovg.contracts.JsonIgnoreContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -52,10 +52,10 @@ public class JoinEvent extends EntityBase {
     @ManyToOne(optional = false) // targetEntity = Event.class
     @JoinColumn(nullable = false)
     @JsonIgnoreProperties({
-        JsonIgnore.JOIN_EVENTS,
-        JsonIgnore.NOTIFICATIONS,
-        JsonIgnore.MESSAGES_EMITTED,
-        JsonIgnore.MESSAGES_RECEIVED})
+        JsonIgnoreContract.JOIN_EVENTS,
+        JsonIgnoreContract.NOTIFICATIONS,
+        JsonIgnoreContract.MESSAGES_EMITTED,
+        JsonIgnoreContract.MESSAGES_RECEIVED})
     private User user;
 
     /** Selected event. */

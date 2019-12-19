@@ -7,10 +7,10 @@
 package fr.dta.ovg.contracts;
 
 /** JSON Ignore CONTRACT - Constants Term.*/
-public final class JsonIgnore {
+public final class JsonIgnoreContract {
 
     /** Private empty constructor of JsonIgnoreContract.*/
-    private JsonIgnore() {
+    private JsonIgnoreContract() {
         // nothing here.
     }
 
@@ -29,5 +29,9 @@ public final class JsonIgnore {
     public static final String MESSAGES_EMITTED = "messagesEmitted";
     /** JSON ignore "messagesReceived". */
     public static final String MESSAGES_RECEIVED = "messagesReceived";
+    /** JSON ignore "messages". */
+    public static final String MESSAGES = "messages";
+    /** JSON ignore "usersJoin". */
+    public static final String JOIN_USERS = "usersJoin";
 
 }
