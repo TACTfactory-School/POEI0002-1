@@ -3,7 +3,6 @@
  * @author Colin Cerveaux @C-ambium.
  * License : ©2019 All rights reserved.
  */
-
 package fr.dta.ovg.contracts;
 
 /** HOBBY CONTRACT - Constants Term.*/
@@ -17,6 +16,8 @@ public final class HobbyContract {
     // TABLE DEFINITION
     /** Table app_hobbies. */
     public static final String TABLE = "app_hobbies";
+    /** Join Table app_us_hobby. */
+    public static final String JOIN_TABLE = "app_us_hobby";
     /** Table app_hobbies API description. */
     public static final String TABLE_API = "Describes a Hobby for our system.";
 

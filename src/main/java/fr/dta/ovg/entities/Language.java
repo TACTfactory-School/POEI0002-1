@@ -15,23 +15,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import fr.dta.ovg.contracts.LanguageContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /* Entity Language class.*/
 @Entity
-@Table(name = "app_languages")
-@ApiModel(value = "Describes a Language for our system")
+@Table(name = LanguageContract.TABLE)
+@ApiModel(value = LanguageContract.TABLE_API)
 public class Language extends EntityBase {
 
     /** Label of the Language. <br>DB Column.*/
     @NotBlank
-    @Column(name = "lang_label", length = 500, nullable = true, unique = false)
-    @ApiModelProperty(value = "The language to create.")
+    @Column(name = LanguageContract.COL_LABEL, length = 500, nullable = true, unique = false)
+    @ApiModelProperty(value = LanguageContract.COL_LABEL_API)
     private String label;
 
     /** Join Table UserLanguage. <br>DB Column.*/
-    @OneToMany(mappedBy = "language")
+    @OneToMany(mappedBy = LanguageContract.MAPPED_BY_LANGUAGE)
     private final List<UserLanguage> users = new ArrayList<>();
 
     /** Getter Language label.

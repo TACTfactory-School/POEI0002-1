@@ -29,26 +29,23 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = JoinEventContract.TABLE_API)
 public class JoinEvent extends EntityBase {
 
-    /** Validation of event inscription request. */
+    /** Validation of event inscription request.*/
     @Column(name = JoinEventContract.COL_VALID, unique = false, nullable = false)
     @ApiModelProperty(value = JoinEventContract.COL_VALID_API)
     private boolean valid = true;
 
-    /** Validation of event inscription request. */
+    /** Validation of event inscription request.*/
     @Column(name = JoinEventContract.COL_VALIDATED_AT, unique = false, nullable = false)
     @ApiModelProperty(value = JoinEventContract.COL_VALIDATED_AT_API)
     private LocalDateTime validatedAt;
 
-    /**
-     * Event Role of user. <br> DB Column.*/
+    /** Event Role of user. <br> DB Column.*/
     @Column(name = JoinEventContract.COL_ROLE, unique = false, nullable = false)
     @ApiModelProperty(value = JoinEventContract.COL_ROLE_API)
     @Enumerated(EnumType.ORDINAL)
     private EventRole role;
- //   @Transient
 
-
-    /** User inscription. */
+    /** User inscription.*/
     @ManyToOne(optional = false) // targetEntity = Event.class
     @JoinColumn(nullable = false)
     @JsonIgnoreProperties({
@@ -58,7 +55,7 @@ public class JoinEvent extends EntityBase {
         JsonIgnoreContract.MESSAGES_RECEIVED})
     private User user;
 
-    /** Selected event. */
+    /** Selected event.*/
     @ManyToOne(optional = false) // targetEntity = User.class
     @JoinColumn(nullable = false)
     private Event event;

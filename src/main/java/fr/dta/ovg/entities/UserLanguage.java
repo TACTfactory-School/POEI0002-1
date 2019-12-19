@@ -13,11 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import fr.dta.ovg.contracts.LanguageContract;
 import io.swagger.annotations.ApiModelProperty;
 
 /** User Language class. Association table.*/
 @Entity
-@Table(name = "app_us_lang_lvl")
+@Table(name = LanguageContract.JOIN_TABLE)
 public class UserLanguage extends EntityBase {
 
     /** Language Level of user. <br> DB Column. */
