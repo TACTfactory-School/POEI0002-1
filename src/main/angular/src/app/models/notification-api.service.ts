@@ -32,7 +32,7 @@ export class NotificationApiService {
     return this.http.delete<void>(`${URL}/${id}`);
   }
 
-  create(data: Event) {
+  create(data: Notification) {
     return this.http.post<Notification>(URL, data);
   }
 }
