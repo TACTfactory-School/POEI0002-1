@@ -6,7 +6,7 @@
 package fr.dta.ovg.contracts;
 
 /** LANGUAGE CONTRACT - Constants Term.*/
-public class LanguageContract {
+public final class LanguageContract {
 
     /** Private empty constructor of LanguageContract.*/
     private LanguageContract() {

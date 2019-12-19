@@ -19,7 +19,7 @@ import fr.dta.ovg.contracts.LanguageContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-/* Entity Language class.*/
+/** Entity Language class.*/
 @Entity
 @Table(name = LanguageContract.TABLE)
 @ApiModel(value = LanguageContract.TABLE_API)
