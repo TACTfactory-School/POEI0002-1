@@ -1,9 +1,16 @@
 .mat-toolbar {
   background: #fff;
 }
+
+::ng-deep .mat-menu-panel {
+  padding: 0 10px!important;
+  width: 100%!important;
+}
+
 i {
   color: rgba(0, 0, 0, 0.87);
 }
+
 .toolbar-icon {
   margin:auto;
   padding: 14px 14px;

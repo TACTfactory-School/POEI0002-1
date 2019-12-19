@@ -46,7 +46,9 @@ public class MessageController {
     public Page<Message> getAll(final int page, final int quantity, final long userId) {
         Pageable pageable = PageRequest.of(page, quantity);
 
-        return this.service.getAll(pageable, userId);    }
+        Page<Message> temp = this.service.getAll(pageable, userId);
+        return temp;
+    }
 
     /**
      * Get One by ID.<br>

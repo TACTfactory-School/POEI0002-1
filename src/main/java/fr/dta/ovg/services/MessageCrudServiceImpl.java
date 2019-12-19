@@ -28,11 +28,11 @@ public class MessageCrudServiceImpl implements MessageCrudService {
     @Override
     public Page<Message> getAll(final Pageable pageable, final Long userId) {
 
-        final Pageable pageableFinal = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+        //final Pageable pageableFinal = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
 
         LOG.debug("Get All Messages");
 
-        return this.repository.findAllByUserId(pageableFinal, userId);    }
+        return this.repository.findAllByUserId(pageable, userId);    }
 
     @Override
     public Message getOne(final long id) throws NotFoundException {

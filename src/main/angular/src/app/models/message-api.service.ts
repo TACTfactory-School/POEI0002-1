@@ -25,7 +25,7 @@ export class MessageApiService {
   }
 
   getOne(id: number) {
-    return this.http.get<Event>(`${URL}/${id}`);
+    return this.http.get<Message>(`${URL}/${id}`);
   }
 
   deleteOne(id: number) {
@@ -33,7 +33,7 @@ export class MessageApiService {
   }
 
   create(data: Event) {
-    return this.http.post<Event>(URL, data);
+    return this.http.post<Message>(URL, data);
   }
 
 }
