@@ -67,7 +67,7 @@ public class JoinController {
     public JoinEvent create(@Valid @RequestBody final JoinEvent inscription) throws BadRequestException {
         JoinEvent result;
         if (this.service.getOneByEventAndUser(inscription.getEvent().getId(), inscription.getUser().getId()) == null) {
-            result = this.service.create(inscription);;
+            result = this.service.create(inscription);
         } else {
             throw new BadRequestException("already_join");
         }

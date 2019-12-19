@@ -46,6 +46,7 @@ public interface JoinCrudService {
      * Must be redefined in implemented class.<br>
      * @param eventId : the ID of the event we're looking for.
      * @param userId : the ID of the user we're looking for.
+     * @return a JoinEvent.
      */
     JoinEvent getOneByEventAndUser(long eventId, long userId);
 }
