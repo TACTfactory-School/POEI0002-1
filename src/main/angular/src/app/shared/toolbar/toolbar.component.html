@@ -70,6 +70,10 @@
             <span class="date">{{ n.createdAt | date:"shortDate" }}</span>
           </span>
         </button>
+        <button mat-menu-item (click)="openPrefDialog()">
+            <mat-icon>settings</mat-icon>
+            <span>Mon compte</span>
+          </button>
       </ng-container>
     </mat-menu>
   </mat-toolbar-row>
