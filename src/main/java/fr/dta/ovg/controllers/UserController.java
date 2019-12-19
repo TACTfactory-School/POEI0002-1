@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,13 +42,16 @@ public class UserController {
     @Autowired
     private UserCrudService service;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     /**
      * Get All function. <br>
      * GET - HTTP.
      * @return List of all Users.
-     * @param page : the page number.
+     *  @param page : the page number.
      * @param quantity : the quantity of return per page.
-     * @param search : String to prpcess search.
+     * @param search :String to prpcess search.
      */
     @GetMapping
     public Page<User> getAll(final int page, final int quantity, final String search) {
@@ -81,6 +85,8 @@ public class UserController {
         if (this.service.existsByUsername(user)) { // delete test
             throw new BadRequestException("uniq_name");
         }
+        String encryptedPassword = encoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
 
         return this.service.create(user);
     }
