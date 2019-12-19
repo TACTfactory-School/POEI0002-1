@@ -51,7 +51,7 @@ public class UserController {
      * @return List of all Users.
      * @param page : the page number.
      * @param quantity : the quantity of return per page.
-     * @param search :String to prpcess search.
+     * @param search :String to process search.
      */
     @GetMapping
     public Page<User> getAll(final int page, final int quantity, final String search) {
