@@ -14,21 +14,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import fr.dta.ovg.contracts.HobbyContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /** Entity Hobby class.*/
 @Entity
-@Table(name = "app_hobbies")
-@ApiModel(value = "Describes a Hobby for our system.")
+@Table(name = HobbyContract.TABLE)
+@ApiModel(value = HobbyContract.TABLE_API)
 public class Hobby  extends EntityBase {
 
     @NotBlank
-    @Column(name = "lang_label", length = 100, nullable = true, unique = false)
-    @ApiModelProperty(value = "The language to create.")
+    @Column(name = HobbyContract.COL_LABEL, length = 100, nullable = true, unique = false)
+    @ApiModelProperty(value = HobbyContract.COL_LABEL_API)
     private String label;
 
-    @OneToMany(mappedBy = "hobby")
+    @OneToMany(mappedBy = HobbyContract.MAPPED_BY_HOBBY)
     private final List<UserHobby> users = new ArrayList<>();
 
     /**

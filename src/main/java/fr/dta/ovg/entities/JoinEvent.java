@@ -18,25 +18,31 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import fr.dta.ovg.contracts.JoinEventContract;
+import fr.dta.ovg.contracts.JsonIgnore;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /** Join Event class. Association table between User and Event.*/
 @Entity
-@Table(name = "app_join_event") //, uniqueConstraints = {@UniqueConstraint(columnNames={"user", "event"})})
+@Table(name = JoinEventContract.TABLE) // TODO uniqueConstraints = {@UniqueConstraint(columnNames={"user", "event"})})
+@ApiModel(value = JoinEventContract.TABLE_API)
 public class JoinEvent extends EntityBase {
 
     /** Validation of event inscription request. */
-    @Column(name = "us_ev_valid", unique = false, nullable = false)
+    @Column(name = JoinEventContract.COL_VALID, unique = false, nullable = false)
+    @ApiModelProperty(value = JoinEventContract.COL_VALID_API)
     private boolean valid = true;
 
     /** Validation of event inscription request. */
-    @Column(name = "us_ev_validatedAt", unique = false, nullable = false)
+    @Column(name = JoinEventContract.COL_VALIDATED_AT, unique = false, nullable = false)
+    @ApiModelProperty(value = JoinEventContract.COL_VALIDATED_AT_API)
     private LocalDateTime validatedAt;
 
     /**
      * Event Role of user. <br> DB Column.*/
-    @Column(name = "us_ev_role", unique = false, nullable = false)
-    @ApiModelProperty(value = "The Role of the user in the Event.")
+    @Column(name = JoinEventContract.COL_ROLE, unique = false, nullable = false)
+    @ApiModelProperty(value = JoinEventContract.COL_ROLE_API)
     @Enumerated(EnumType.ORDINAL)
     private EventRole role;
  //   @Transient
@@ -45,7 +51,11 @@ public class JoinEvent extends EntityBase {
     /** User inscription. */
     @ManyToOne(optional = false) // targetEntity = Event.class
     @JoinColumn(nullable = false)
-    @JsonIgnoreProperties({"joinEvents", "notifications", "messagesEmitted", "messagesReceived"})
+    @JsonIgnoreProperties({
+        JsonIgnore.JOIN_EVENTS,
+        JsonIgnore.NOTIFICATIONS,
+        JsonIgnore.MESSAGES_EMITTED,
+        JsonIgnore.MESSAGES_RECEIVED})
     private User user;
 
     /** Selected event. */

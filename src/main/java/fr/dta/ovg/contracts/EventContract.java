@@ -69,20 +69,6 @@ public class EventContract {
     /** Column ev_ype API Description. */
     public static final String COL_TYPE_API = "The type of the event.";
 
-    /** JSON ignore "joinEvents". */
-    public static final String IGN_JOINEVENTS = "joinEvents";
-    /** JSON ignore "notifications". */
-    public static final String IGN_NOTIFICATIONS = "notifications";
-    /** JSON ignore "languages". */
-    public static final String IGN_LANGUAGES = "languages";
-    /** JSON ignore "hobbies". */
-    public static final String IGN_HOBBIES = "hobbies";
-    /** JSON ignore "friends". */
-    public static final String IGN_FRIENDS = "friends";
-    /** JSON ignore "messagesEmitted". */
-    public static final String IGN_MESSAGES_E = "messagesEmitted";
-    /** JSON ignore "messagesReceived". */
-    public static final String IGN_MESSAGES_R = "messagesReceived";
 
     /** Mapped by "event".*/
     public static final String MAPPED_BY_EVENT = "event";

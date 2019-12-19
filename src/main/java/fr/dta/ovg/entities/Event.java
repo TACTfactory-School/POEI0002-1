@@ -23,6 +23,7 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.dta.ovg.contracts.EventContract;
+import fr.dta.ovg.contracts.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -38,13 +39,13 @@ public class Event extends EntityBase {
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
     @JsonIgnoreProperties({
-        EventContract.IGN_JOINEVENTS,
-        EventContract.IGN_NOTIFICATIONS,
-        EventContract.IGN_LANGUAGES,
-        EventContract.IGN_HOBBIES,
-        EventContract.IGN_FRIENDS,
-        EventContract.IGN_MESSAGES_E,
-        EventContract.IGN_MESSAGES_R})
+        JsonIgnore.JOIN_EVENTS,
+        JsonIgnore.NOTIFICATIONS,
+        JsonIgnore.LANGUAGES,
+        JsonIgnore.HOBBIES,
+        JsonIgnore.FRIENDS,
+        JsonIgnore.MESSAGES_EMITTED,
+        JsonIgnore.MESSAGES_RECEIVED})
     private User creator;
 
     /** Title of the Event. <br>DB Column.*/
