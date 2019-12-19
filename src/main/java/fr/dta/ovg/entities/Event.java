@@ -20,7 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.dta.ovg.contracts.EventContract;
@@ -38,8 +37,14 @@ public class Event extends EntityBase {
     @ApiModelProperty(value = EventContract.COL_CREATOR_API)
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
-    @JsonIgnoreProperties({"joinEvents", "notifications", "languages", "hobbies", "friends", "messagesEmitted",
-        "messagesReceived"})
+    @JsonIgnoreProperties({
+        EventContract.IGN_JOINEVENTS,
+        EventContract.IGN_NOTIFICATIONS,
+        EventContract.IGN_LANGUAGES,
+        EventContract.IGN_HOBBIES,
+        EventContract.IGN_FRIENDS,
+        EventContract.IGN_MESSAGES_E,
+        EventContract.IGN_MESSAGES_R})
     private User creator;
 
     /** Title of the Event. <br>DB Column.*/
@@ -92,18 +97,18 @@ public class Event extends EntityBase {
     private EventType type;
 
     /** Join users List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = EventContract.MAPPED_BY, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = EventContract.MAPPED_BY_EVENT, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"event"}, allowSetters = true)
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
     /** Notifications List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = EventContract.MAPPED_BY, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = EventContract.MAPPED_BY_EVENT, fetch = FetchType.LAZY)
 //    @JsonIgnoreProperties("event")
 //    @JsonIgnore
     private final List<Notification> eventNotification = new ArrayList<>();
 
     /** Messages List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = EventContract.MAPPED_BY)
+    @OneToMany(mappedBy = EventContract.MAPPED_BY_EVENT)
 //    @JsonIgnoreProperties("event")
 //    @JsonIgnore
     private final List<Message> messages = new ArrayList<>();
