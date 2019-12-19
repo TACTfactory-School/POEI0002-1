@@ -40,16 +40,15 @@ public class FixtureService implements Fixture {
     @Autowired
     private JoinEventFixtureService  joinFixture;
 
-//    @Autowired
-//    private SecurityUserFixtureService securityUserFixture;
-
-//    @Autowired
-//    private SecurityRoleFixtureService securityRoleFixture;
+    /** Link to Notification Setting Fixture Service. */
+    @Autowired
+    private NotificationSettingFixtureService prefFixture;
 
     /** Call loading initials fixtures @see {@link EventFixtureService}.
      *  @throws NotFoundException */
     @Transactional
     public void load() throws NotFoundException {
+        this.prefFixture.load();
         this.userFixture.load();
         this.eventFixture.load();
         this.messageFixture.load();
