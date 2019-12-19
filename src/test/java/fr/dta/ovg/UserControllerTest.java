@@ -1,36 +1,94 @@
 package fr.dta.ovg;
 
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.http.MediaType;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MockMvc;
 
 import fr.dta.ovg.controllers.UserController;
+import fr.dta.ovg.entities.User;
+import fr.dta.ovg.repositories.UserRepository;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(UserController.class)
-public class UserControllerTest {
+@Transactional
+public class UserControllerTest extends UnitTestBase {
+
+    private static final String CREATE_BODY = "{\"username\": \"fzedeafrzaxxzafea\", \"birthdate\": \"1989-10-10\","
+            + " \"email\": \"fzedeafrzaxxzafeaa3@gmail.com\", \"password\": \"fucku\"}";
 
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
-    private UserController user;
+    @Autowired
+    private UserRepository repository;
 
+    /** Tests simple {@link UserController#getAll get all} without search filter. */
     @Test
-    public void getAllUser() throws Exception {
-        this.mvc.perform(get("/api/v1/user"))
-        .andExpect(status().isOk())
-        .andExpect(content().json(c);
-
+    public void testGetAll() throws Exception {
+        this.mvc.perform(get("/api/v1/user?page=0&quantity=5"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.content").exists())
+            .andExpect(jsonPath("$.content", hasSize(5)));
     }
 
+    @Test
+    public void testGetAllWithoutPassword() throws Exception {
+        this.mvc.perform(get("/api/v1/user?page=0&quantity=5"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.content[0].password").doesNotExist());
+    }
 
+    /** Tests default filter of {@link UserController#getAll}.. */
+    @Test
+    public void testGetAllDefaultFilter() throws Exception {
+        this.mvc.perform(get("/api/v1/user?page=0&quantity=5"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.content[0].username").value("Pamwamba"));
+    }
+
+    /** Tests search parameter of {@link UserController#getAll get all} action. */
+    @Test
+    public void testGetAllSearch() throws Exception {
+        this.mvc.perform(get("/api/v1/user?page=0&quantity=5&search=amwam"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.content", hasSize(1)))
+            .andExpect(jsonPath("$.content[0].username").value("Pamwamba"));
+    }
+
+//    /**
+//     * @throws Exception
+//     */
+//    @Rollback
+//    @Test
+//    public void testCreate() throws Exception {
+//        this.mvc
+//            .perform(post("/api/v1/user")
+//                    .content(CREATE_BODY)
+//                    .contentType(MediaType.APPLICATION_JSON)
+//                    .accept(MediaType.APPLICATION_JSON))
+//            .andExpect(status().isCreated())
+//            .andExpect(jsonPath("$.username").value("fzedeafrzaxxzafea"))
+//            .andExpect(jsonPath("$.password").doesNotExist());
+//    }
+
+    // TODO: NE devrait PAS etre la !
+    @Test
+    public void foundByUsername() throws Exception {
+        final Optional<User> found = this.repository.findByUsername("Pamwamba");
+
+        assertTrue(found.isPresent());
+        assertEquals("Pamwamba", found.get().getUsername());
+    }
 }

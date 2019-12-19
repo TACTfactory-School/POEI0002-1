@@ -52,4 +52,5 @@ public interface UserRepository  extends JpaRepository<User, Long> {
      * @param login : String.
      * @return an Optional.*/
     Optional<User> findByUsername(String login);
+
 }

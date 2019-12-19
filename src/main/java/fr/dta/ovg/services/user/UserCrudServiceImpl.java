@@ -35,14 +35,12 @@ public class UserCrudServiceImpl implements UserCrudService {
     @Transactional(readOnly = true)
     @Override
     public Page<User> getAll(final Pageable pageable, final String search) {
+        final Page<User> paginateResult;
 
-        Pageable pageableFinal = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
-        Page<User> paginateResult;
-
-        if (search != null) {
-            paginateResult = this.repository.findAll(search, pageableFinal);
+        if (search == null) {
+            paginateResult = this.repository.findAll(pageable);
         } else {
-            paginateResult = this.repository.findAll(pageableFinal);
+            paginateResult = this.repository.findAll(search, pageable);
         }
 
         return paginateResult;
