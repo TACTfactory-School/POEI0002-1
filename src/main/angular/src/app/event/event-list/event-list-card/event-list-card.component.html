@@ -1,4 +1,4 @@
-<mat-card class="event-card" [routerLink]="['/event', event.id]" matTooltip="{{event.description}}" matTooltipClass="tooltip-description">
+<mat-card class="event-card" *ngIf="event && event.id" [routerLink]="['/event', event.id]" matTooltip="{{event.description}}" matTooltipClass="tooltip-description">
   <mat-card-header>
     <div mat-card-avatar class="event-header-image">
       <img src="https://png.pngtree.com/svg/20161027/service_default_avatar_182956.png" width="38px"/>
