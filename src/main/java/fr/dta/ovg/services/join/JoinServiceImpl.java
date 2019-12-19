@@ -58,4 +58,13 @@ public class JoinServiceImpl implements JoinCrudService {
         // TODO Auto-generated method stub
         return this.repository.getOne(id);
     }
+
+    /** Get one joinEvent by event ID and user ID.
+     * @param eventId : the ID of the event we're looking for.
+     * @param userId : the ID of the user we're looking for.
+     */
+   @Override
+   public JoinEvent getOneByEventAndUser(final long eventId, final long userId) {
+       return this.repository.findAllByEventAndUser(eventId, userId);
+   }
 }
