@@ -21,15 +21,11 @@ i {
 
 .toolbar-icon {
   margin:auto;
-  padding: 14px 14px;
   font-size: 32px;
-  background: -webkit-linear-gradient(135deg, #ff2d3b, #ffb702 );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ff791c;
 }
 .toolbar-icon:hover {
   background-color: #eee;
-
 }
 .spacer {
   flex: 1 1 auto;
@@ -43,7 +39,9 @@ a {
   cursor: pointer;
 }
 .icon {
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);}
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding: 14px;
+}
 .icon:hover {
   background-color: #eee;
 }

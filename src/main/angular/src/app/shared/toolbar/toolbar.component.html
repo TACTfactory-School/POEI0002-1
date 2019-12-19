@@ -15,10 +15,31 @@
     <span class="spacer"></span>
 
     <!-- Notifications if logged -->
-    <a *ngIf="user" class="icon" [matMenuTriggerFor]="notifications"><mat-icon matBadge="5" matBadgeColor="warn" matBadgePosition="before below" class="toolbar-icon" aria-hidden="false" aria-label="notifications" matTooltip="Consulter mes notifications">notifications</mat-icon></a>
+    <a *ngIf="user" class="icon" [matMenuTriggerFor]="notifications">
+      <mat-icon
+        matBadgeColor="accent"
+        matBadge="5"
+        matBadgeColor="warn"
+        matBadgePosition="above after"
+        matBadgeSize="medium"
+        class="toolbar-icon"
+        aria-hidden="false"
+        aria-label="notifications"
+        matTooltip="Consulter mes notifications">notifications</mat-icon>
+      </a>
 
     <!-- Messages if logged -->
-    <a *ngIf="user" class="icon" [matMenuTriggerFor]="messages"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages" matTooltip="Consulter mes messages">mail</mat-icon></a>
+    <a *ngIf="user" class="icon" [matMenuTriggerFor]="messages">
+      <mat-icon
+        matBadgeColor="accent"
+        matBadge="2"
+        matBadgeColor="warn"
+        matBadgePosition="above after"
+        matBadgeSize="medium"
+        class="toolbar-icon"
+        aria-hidden="false"
+        aria-label="messages"
+        matTooltip="Consulter mes messages">mail</mat-icon></a>
 
     <!-- Account Dropdown if logged -->
     <a *ngIf="user" class="icon" [matMenuTriggerFor]="menu"><mat-icon class="toolbar-icon" aria-hidden="false" aria-label="messages">account_circle</mat-icon></a>
