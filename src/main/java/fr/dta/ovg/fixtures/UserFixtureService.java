@@ -28,6 +28,7 @@ import fr.dta.ovg.repositories.UserRepository;
 import fr.dta.ovg.services.notification.NotificationSettingCrudService;
 import fr.dta.ovg.services.user.UserCreateService;
 
+/** This class initialize DB with initials fixtures data. */
 @Component
 @Profile("!prod")
 public class UserFixtureService extends FixtureCheck<UserRepository> {
