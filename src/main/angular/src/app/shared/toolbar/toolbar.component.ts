@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UserFormLoginComponent } from 'src/app/user/user-form/user-form-login/user-form-login.component';
 import { AuthApiService } from 'src/app/auth/auth-api.service';
@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
 

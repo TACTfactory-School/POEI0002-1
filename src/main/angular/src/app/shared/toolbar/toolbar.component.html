@@ -48,23 +48,27 @@
     </mat-menu>
 
      <!-- Messages Dropdown menu   *ngIf="user.messagesReceived && user.messagesReceived.length" -->
-     <mat-menu #messages="matMenu">
-      <ng-container *ngIf="messagePage">
-        <button mat-menu-item [routerLink]="['user/me']" *ngFor="let m of messagePage.content">
-          <span>{{ m.createdAt | date:'shortDate' }}<br></span>
-          <span>{{ m.label }}</span>
-        </button>
-      </ng-container>
-    </mat-menu>
+     <div>
+        <mat-menu #messages="matMenu">
+            <ng-container *ngIf="messagePage">
+              <button mat-menu-item class="drop-message" [routerLink]="['user/me']" *ngFor="let m of messagePage.content">
+                <span class="test">
+                  {{ m.message }}
+                  <span class="date">{{ m.createdAt | date:'shortDate' }}</span>
+                </span>
+              </button>
+            </ng-container>
+          </mat-menu>
+     </div>
 
     <!-- Notification Dropdown menu   *ngIf="user.notifications && user.notifications.length" -->
     <mat-menu #notifications="matMenu">
       <ng-container *ngIf="notificationPage">
-        <button mat-menu-item *ngFor="let n of notificationPage.content">
-          <span>
-            {{ n.createdAt | date:"shortDate" }}
-            <br>}
-            {{ n.label }}</span>
+        <button mat-menu-item class="drop-message" *ngFor="let n of notificationPage.content">
+          <span class="test">
+            {{ n.label }}
+            <span class="date">{{ n.createdAt | date:"shortDate" }}</span>
+          </span>
         </button>
       </ng-container>
     </mat-menu>
@@ -73,4 +77,3 @@
 <!-- <ng-container *ngIf="displayForm">
     <app-user-form-login></app-user-form-login>
 </ng-container> -->
-

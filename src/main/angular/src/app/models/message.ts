@@ -1,10 +1,10 @@
 export interface Message {
   createdAt: Date;
-  label: string;
+  message: string;
 }
 
 export class Message {
-  constructor(label: string) {
-    this.label = label;
+  constructor(message: string) {
+    this.message = message;
     }
 }

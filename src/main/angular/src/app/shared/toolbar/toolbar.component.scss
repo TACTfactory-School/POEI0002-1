@@ -2,9 +2,17 @@
   background: #fff;
 }
 
+// .mat-menu-item.drop-message span::after {
+//   content:"\A" !important;
+// }
+
 ::ng-deep .mat-menu-panel {
-  padding: 0 10px!important;
-  width: 100%!important;
+  max-width: inherit!important;
+}
+
+span.date {
+  font-size: 0.8em;
+  color: silver;
 }
 
 i {
