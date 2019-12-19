@@ -7,7 +7,7 @@
 package fr.dta.ovg.contracts;
 
 /** JSON Ignore CONTRACT - Constants Term.*/
-public class JsonIgnore {
+public final class JsonIgnore {
 
     /** Private empty constructor of JsonIgnoreContract.*/
     private JsonIgnore() {

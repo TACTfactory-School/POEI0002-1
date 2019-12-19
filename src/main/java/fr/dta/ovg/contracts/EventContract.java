@@ -42,12 +42,12 @@ public class EventContract {
     /** Column ev_img. */
     public static final String COL_IMG = "ev_img";
     /** Column ev_img API Description. */
-    public static final String COL_IMG_API = "The custom picture of the event." ;
+    public static final String COL_IMG_API = "The custom picture of the event.";
 
     /** Column ev_nbplaces_max. */
     public static final String COL_NB_PLACES = "ev_nbplaces_max";
     /** Column ev_nbplaces_max API Description. */
-    public static final String COL_NB_PLACES_API = "Th max places amount of the event." ;
+    public static final String COL_NB_PLACES_API = "Th max places amount of the event.";
 
     /** Column ev_address. */
     public static final String COL_ADDRESS = "ev_address";

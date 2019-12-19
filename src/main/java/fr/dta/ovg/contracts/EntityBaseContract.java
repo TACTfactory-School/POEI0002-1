@@ -6,7 +6,7 @@
 package fr.dta.ovg.contracts;
 
 /** ENTITY BASE CONTRACT - Constants Term. MappedSuperClass.*/
-public class EntityBaseContract {
+public final class EntityBaseContract {
 
     /** Private empty constructor of EntityBaseContract.*/
     private EntityBaseContract() {

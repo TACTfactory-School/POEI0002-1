@@ -7,7 +7,7 @@
 package fr.dta.ovg.contracts;
 
 /** HOBBY CONTRACT - Constants Term.*/
-public class HobbyContract {
+public final class HobbyContract {
 
     /** Private empty constructor of HobbyContract.*/
     private HobbyContract() {

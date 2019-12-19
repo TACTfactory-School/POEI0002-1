@@ -6,7 +6,7 @@
 package fr.dta.ovg.contracts;
 
 /** JOIN_EVENT CONTRACT - Constants Term.*/
-public class JoinEventContract {
+public final class JoinEventContract {
 
     /** Private empty constructor of JoinEventContract.*/
     private JoinEventContract() {
