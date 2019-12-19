@@ -1,4 +1,4 @@
-<mat-card class="event-card" *ngIf="event && event.id" [routerLink]="['/event', event.id]" matTooltip="{{event.description}}" matTooltipClass="tooltip-description">
+<mat-card class="event-card" *ngIf="event && event.id"  matTooltip="{{event.description}}" matTooltipClass="tooltip-description">
   <mat-card-header>
     <div mat-card-avatar class="event-header-image">
       <img src="https://png.pngtree.com/svg/20161027/service_default_avatar_182956.png" width="38px"/>
@@ -20,6 +20,6 @@
   <mat-card-actions>
     <a [routerLink]="['/event', event.id]"><button color="primary" mat-stroked-button>Détails</button></a>
     <span class="spacer"></span>
-    <button class="gradient" mat-flat-button>Rejoindre</button>
+    <button class="gradient" mat-flat-button (click)="onJoin(event)">Rejoindre</button>
   </mat-card-actions>
 </mat-card>
