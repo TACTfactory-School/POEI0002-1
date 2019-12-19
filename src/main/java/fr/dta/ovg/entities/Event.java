@@ -23,18 +23,19 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import fr.dta.ovg.contracts.EventContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /** Entity Event class.*/
 @Entity
-@Table(name = "app_events")
-@ApiModel(value = "Describes an Event for our system.")
+@Table(name = EventContract.TABLE)
+@ApiModel(value = EventContract.TABLE_API)
 public class Event extends EntityBase {
 
     /** Creator of the Event. <br>DB Column.*/
     // TODO : Restore @NotBlank when DB run in update mode.
-    @ApiModelProperty(value = "The author of the event.")
+    @ApiModelProperty(value = EventContract.COL_CREATOR_API)
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
     @JsonIgnoreProperties({"joinEvents", "notifications", "languages", "hobbies", "friends", "messagesEmitted",
@@ -43,66 +44,66 @@ public class Event extends EntityBase {
 
     /** Title of the Event. <br>DB Column.*/
     @NotBlank
-    @Column(name = "ev_title", length = 100, nullable = false, unique = false)
-    @ApiModelProperty(value = "The label of the event.")
+    @ApiModelProperty(value = EventContract.COL_LABEL_API)
+    @Column(name = EventContract.COL_LABEL, length = 100, nullable = false, unique = false)
     private String label;
 
     /** Description of the Event. <br>DB Column.*/
-    @Column(name = "ev_description", length = 510, nullable = true, unique = false)
-    @ApiModelProperty(value = "The description of the event.")
+    @ApiModelProperty(value = EventContract.COL_DESC_API)
+    @Column(name = EventContract.COL_DESC, length = 510, nullable = true, unique = false)
     private String description;
 
     /** The started date/time of the Event. <br> DB Column.*/
-    @ApiModelProperty(value = "The started time date of the event.")
-    @Column(name = "ev_start_date", nullable = false, unique = false)
+    @ApiModelProperty(value = EventContract.COL_START_DATE_API)
+    @Column(name = EventContract.COL_START_DATE, nullable = false, unique = false)
     private ZonedDateTime startAt;
 
     /** Custom photo of the Event. <br>DB Column.*/
-    @ApiModelProperty(name = "ev_img", value = "The custom picture of the event.")
-    @Column(length = 255, nullable = true, unique = false)
+    @ApiModelProperty(value = EventContract.COL_IMG_API)
+    @Column(name = EventContract.COL_IMG, length = 255, nullable = true, unique = false)
     private String img;
 
     /** Max places of the Event. <br>DB Column.*/
-    @ApiModelProperty(name = "ev_nb_max_places", value = "Th max places amount of the event.")
-    @Column(nullable = true, unique = false) // false
+    @ApiModelProperty(value = EventContract.COL_NB_PLACES_API)
+    @Column(name = EventContract.COL_NB_PLACES, nullable = true, unique = false) // false
     private int nbPlaceMax;
 
     /** Address of the Event. <br>DB Column.*/
-    @ApiModelProperty(name = "ev_address", value = "The place of the event.")
-    @Column(length = 255, nullable = true, unique = false)
+    @ApiModelProperty(value = EventContract.COL_ADDRESS_API)
+    @Column(name = EventContract.COL_ADDRESS, length = 255, nullable = true, unique = false)
     private String address;
 
     /**
      * City postcode of the Event. <br>DB Column.*/
-    @ApiModelProperty(name = "ev_city", value = "The city postcode of the event.")
-    @Column(nullable = true, unique = false)
+    @ApiModelProperty(value = EventContract.COL_POSTCODE_API)
+    @Column(name = EventContract.COL_POSTCODE, nullable = true, unique = false)
     private String postcode;
 
     /** City of the Event. <br>DB Column.*/
     @NotBlank
-    @ApiModelProperty(name = "ev_postcode", value = "The city of the event.")
-    @Column(length = 255, nullable = false, unique = false)
+    @ApiModelProperty(value = EventContract.COL_CITY_API)
+    @Column(name = EventContract.COL_CITY, length = 255, nullable = false, unique = false)
     private String city;
 
     /** Type of the Event. <br>DB Column.*/
-    @ApiModelProperty(name = "ev_type", value = "The type of the event.")
-    @Column(length = 255, nullable = true, unique = false)
+    @ApiModelProperty(value = EventContract.COL_TYPE_API)
+    @Column(name = EventContract.COL_TYPE, length = 255, nullable = true, unique = false)
     @Enumerated(EnumType.ORDINAL)
     private EventType type;
 
     /** Join users List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("event")
+    @OneToMany(mappedBy = EventContract.MAPPED_BY, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"event"}, allowSetters = true)
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
     /** Notifications List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = EventContract.MAPPED_BY, fetch = FetchType.LAZY)
 //    @JsonIgnoreProperties("event")
 //    @JsonIgnore
     private final List<Notification> eventNotification = new ArrayList<>();
 
     /** Messages List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = EventContract.MAPPED_BY)
 //    @JsonIgnoreProperties("event")
 //    @JsonIgnore
     private final List<Message> messages = new ArrayList<>();
@@ -111,12 +112,7 @@ public class Event extends EntityBase {
     @Override
     public String toString() {
 
-        StringBuilder eventDetails = new StringBuilder();
-
-        eventDetails
-            .append("| Title : %s | Description : %s | Creator : %s | Finished : %b ")
-            .append("| Start Date : %dt | Max places : %d | Address : %s | Postcode : %s | City: %s ");
-        return String.format(eventDetails.toString(),
+        return String.format(EventContract.TO_STRING,
                 label, description, creator, isEnabled(), startAt, nbPlaceMax, address, postcode, city);
     }
 

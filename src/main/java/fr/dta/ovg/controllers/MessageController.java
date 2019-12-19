@@ -44,9 +44,11 @@ public class MessageController {
      */
     @GetMapping
     public Page<Message> getAll(final int page, final int quantity, final long userId) {
+        
         Pageable pageable = PageRequest.of(page, quantity);
 
-        return this.service.getAll(pageable, userId);    }
+        return this.service.getAll(pageable, userId);
+    }
 
     /**
      * Get One by ID.<br>

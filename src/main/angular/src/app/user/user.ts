@@ -1,6 +1,8 @@
 import { Hobby } from './hobby';
 import { Language } from './language';
 import { Event } from '../event/event';
+import { Message } from '../models/message';
+import { Notification } from '../models/notification';
 
 export interface User {
   id: number;
@@ -23,9 +25,9 @@ export interface User {
   gender: UserGender;
 
   enabled: boolean;
-  events: Event[];
-  hobbies: Hobby[];
-  languages: Language[];
+  // events: Event[];
+  // hobbies: Hobby[];
+  // languages: Language[];
 }
 
 enum EventRole {

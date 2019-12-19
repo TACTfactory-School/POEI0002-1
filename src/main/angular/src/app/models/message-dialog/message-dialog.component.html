@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="header">
+      <mat-toolbar>
+          <mat-toolbar-row>
+            <span>Nouveau message</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="onClose()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+
+
+    <div class="content">
+      <p>Rédaction d'un nouveau message :</p>
+
+      <form class="message-form">
+
+          <mat-form-field class="message-full-width">
+            <textarea matInput cdkAutosizeMinRows="7" cdkTextareaAutosize #message maxlength="500" placeholder="Message"></textarea>
+            <mat-hint align="start"><strong>Ne divulguez pas d'informations personnelles ou sensibles.</strong> </mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 500</mat-hint>
+          </mat-form-field>
+        </form>
+
+      <button class="btn" mat-stroked-button color="primary" (click)="onClose()">Annuler</button>
+      <span class="spacer"></span>
+      <button class="gradient" mat-raised-button (click)="onConfirm()">Envoyer</button>
+    </div>
+  </div>

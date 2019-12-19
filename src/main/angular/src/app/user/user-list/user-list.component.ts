@@ -42,12 +42,11 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   get totalElements() {
-    return (this.page || {totalElements: null}).totalElements;
+    return this.page && this.page.totalElements ? this.page.totalElements : null;
   }
 
   get quantity() {
-    return (this.page.content.length || {content: null});
-
+    return this.page && this.page.content ? this.page.content.length : null;
   }
 
   ngOnDestroy() {

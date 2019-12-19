@@ -9,6 +9,7 @@ import { UserFormModule } from '../user-form/user-form.module';
 import { EventModule } from 'src/app/event/event.module';
 import { UserModule } from '../user.module';
 import { PagesModule } from 'src/app/pages/pages.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -26,7 +27,8 @@ describe('UserListComponent', () => {
         UserFormModule,
         EventModule,
         UserModule,
-        PagesModule
+        PagesModule,
+        BrowserAnimationsModule
       ]
     })
     .compileComponents();

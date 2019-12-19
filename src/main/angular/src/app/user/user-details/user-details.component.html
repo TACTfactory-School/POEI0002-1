@@ -79,7 +79,7 @@
                 <dd *ngFor="let hobby of u.hobbies; index as i">{{ hobby.label }}</dd>
               </ng-container>
 
-              <ng-container *ngIf="u.events.values">
+              <ng-container *ngIf="u.events && u.events.values">
                 <dt>Evenements</dt>
                 <dd *ngFor="let event of u.events; index as i">{{ event.label }}</dd>
               </ng-container>

@@ -19,7 +19,7 @@ export class EventApiService {
 
     const params = new HttpParams()
         .set('page', `${page}`)
-        .set('quantity', `${perPage}`)
+        .set('quantity', `${perPage}`);
 
     return this.http.get<Page<Event>>(`${URL}`, {params});
   }
