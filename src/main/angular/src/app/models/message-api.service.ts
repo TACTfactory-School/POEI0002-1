@@ -32,7 +32,7 @@ export class MessageApiService {
     return this.http.delete<void>(`${URL}/${id}`);
   }
 
-  create(data: Event) {
+  create(data: Message) {
     return this.http.post<Message>(URL, data);
   }
 

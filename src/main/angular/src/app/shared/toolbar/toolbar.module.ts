@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { UserFormLoginModule } from 'src/app/user/user-form/user-form-login/user-form-login.module';
 import { RouterModule } from '@angular/router';
 import { UserPreferencesModule } from 'src/app/user/user-preferences/user-preferences.module';
+import { MessageDialogModule } from 'src/app/models/message-dialog/message-dialog.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserPreferencesModule } from 'src/app/user/user-preferences/user-prefer
     UserPreferencesModule,
     MatInputModule,
     MatBadgeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MessageDialogModule
   ],
   exports: [
     ToolbarComponent

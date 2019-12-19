@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UserFormLoginComponent } from 'src/app/user/user-form/user-form-login/user-form-login.component';
 import { AuthApiService } from 'src/app/auth/auth-api.service';
@@ -12,6 +12,7 @@ import { Page } from '../paginator/page';
 import { Notification } from 'src/app/models/notification';
 import { NotificationApiService } from 'src/app/models/notification-api.service';
 import { Subscription } from 'rxjs';
+import { MessageDialogComponent } from 'src/app/models/message-dialog/message-dialog.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -56,6 +57,16 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   openDialog(): void {
     this.isModal = true;
     const dialogRef = this.dialog.open(UserFormLoginComponent, {
+      width: '40%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.isModal = false;
+    });
+  }
+
+  openMessageDialog(): void {
+    this.isModal = true;
+    const dialogRef = this.dialog.open(MessageDialogComponent, {
       width: '40%'
     });
     dialogRef.afterClosed().subscribe(result => {
