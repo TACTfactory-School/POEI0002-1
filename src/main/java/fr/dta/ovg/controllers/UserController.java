@@ -81,7 +81,6 @@ public class UserController {
      * @throws BadRequestException : Incorrect request.
      */
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public User create(@Valid @RequestBody final User user) throws BadRequestException {
         if (this.service.existsByUsername(user)) { // delete test
             throw new BadRequestException("uniq_name");
