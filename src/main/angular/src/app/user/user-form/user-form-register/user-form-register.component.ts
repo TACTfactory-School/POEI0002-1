@@ -13,13 +13,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./user-form-register.component.scss']
 })
 export class UserFormRegisterComponent implements OnInit {
+  defaultGender: UserGender;
 
   readonly gender = [
     { label: 'Homme', value: UserGender.MALE },
     { label: 'Femme', value: UserGender.FEMALE },
     { label: 'Non binaire', value: UserGender.NONBINARY },
     { label: 'Non spécifié', value: UserGender.UNSPECIFIED},
-    { label: '', value: ''}
   ];
 
   constructor(
@@ -57,6 +57,11 @@ export class UserFormRegisterComponent implements OnInit {
     this.sub = [];
   }
   create() {
+    if (!this.registerUser.controls.gender.value) {
+      this.defaultGender = 3;
+    } else {
+      this.defaultGender = this.registerUser.controls.gender.value;
+    }
     this.newUser = new User(
       this.registerUser.controls.username.value,
       this.registerUser.controls.email.value,
@@ -64,7 +69,7 @@ export class UserFormRegisterComponent implements OnInit {
       this.registerUser.controls.birthdate.value,
       this.registerUser.controls.firstname.value,
       this.registerUser.controls.city.value,
-      this.registerUser.controls.gender.value
+      this.defaultGender
     );
     console.log(this.registerUser.value);
     if (this.api.add(this.newUser) && this.registerUser.valid) {
@@ -74,7 +79,7 @@ export class UserFormRegisterComponent implements OnInit {
       .subscribe(
         data => {
             this.router.navigate(['/login']);
-            this._snackBar.open('Bienvenue ${newUser.username}. Vous êtes inscrit !', 'Fermer', {
+            this._snackBar.open('Bienvenue ' + this.newUser.username + ' vous êtes inscrit !', 'Fermer', {
               duration: 4000,
             });
         },
@@ -89,7 +94,7 @@ export class UserFormRegisterComponent implements OnInit {
       secondCtrl: new FormControl('')
     });
     this.thirdFormGroup = this.fb.group({
-      secondCtrl: new FormControl('')
+      thirdCtrl: new FormControl('')
     });
     }
 }
