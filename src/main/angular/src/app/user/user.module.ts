@@ -6,6 +6,7 @@ import { UserFormRegisterModule } from './user-form/user-form-register/user-form
 import { UserDetailsModule } from './user-details/user-details.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { UserPreferencesModule } from './user-preferences/user-preferences.module';
+import { UserEditModule } from './user-edit/user-edit.module';
 
 @NgModule({
   declarations: [],
@@ -16,7 +17,8 @@ import { UserPreferencesModule } from './user-preferences/user-preferences.modul
     UserListModule,
     UserDetailsModule,
     UserProfileModule,
-    UserPreferencesModule
+    UserPreferencesModule,
+    UserEditModule
     ],
   exports: [ ]
 })
