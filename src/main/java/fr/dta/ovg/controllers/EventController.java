@@ -28,7 +28,6 @@ import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.EventCrudService;
 import fr.dta.ovg.services.join.JoinDeleteService;
-import fr.dta.ovg.services.join.JoinServiceImpl;
 import io.swagger.annotations.Api;
 
 /** Event Controller Class.*/

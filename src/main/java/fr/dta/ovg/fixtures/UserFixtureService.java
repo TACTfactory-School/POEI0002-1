@@ -8,6 +8,7 @@ package fr.dta.ovg.fixtures;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,8 @@ import com.github.javafaker.Faker;
 
 import fr.dta.ovg.entities.NotificationSetting;
 import fr.dta.ovg.entities.User;
+import fr.dta.ovg.entities.UserGender;
+import fr.dta.ovg.entities.UserStatus;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.UserRepository;
 import fr.dta.ovg.services.notification.NotificationSettingCrudService;
@@ -33,16 +36,24 @@ import fr.dta.ovg.services.user.UserCreateService;
 @Profile("!prod")
 public class UserFixtureService extends FixtureCheck<UserRepository> {
 
+    /** Password encoder. */
     private final PasswordEncoder encoder;
 
+    /** Link to User Create Service. */
     private final UserCreateService service;
 
+    /** Link to User Create Service. */
     private final NotificationSettingCrudService prefService;
+
+    /** Faker Size. */
     private int fakerSize;
 
+    /** Define new Faker and set Local to french FR. */
     private final Faker fake = new Faker(new Locale("fr"));
 
+    /** Check Uniq name with UniFakeStore Function. */
     private UniqFakeStore username = new UniqFakeStore(() -> this.fake.gameOfThrones().character());
+    /** Check Uniq name with UniFakeStore Function. */
     private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().safeEmailAddress());
 
     /**
@@ -71,23 +82,31 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     private void loadReal() throws NotFoundException {
         this.build("Pamwamba",  "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
                     "Samy",     "Nantes",               "Dev Fullstack", 4.5f, LocalDateTime.now(),
-                    prefService.getOne(1));
+                    prefService.getOne(1), (byte) 1,    UserStatus.MARRIED,     UserGender.MALE,
+                    false,      false,        false,    false,           false);
         this.build("C-ambium",  "joe@me.com",           "colin",                LocalDate.of(1990, 06, 05),
                     "Colin",    "Rennes",               "Dev Fullstack", 3.2f, LocalDateTime.now(),
-                    prefService.getOne(2));
+                    prefService.getOne(2), (byte) 2,    UserStatus.DIVORCED,     UserGender.MALE,
+                    false,      false,        false,    false,           false);
         this.build("ListerKred", "fab@4ever.org",        "fabricefabrice",       LocalDate.of(1997, 04, 8),
                     "Fabrice",  "Angers",               "Dev Fullstack", 5f, LocalDateTime.now(),
-                    prefService.getOne(3));
+                    prefService.getOne(3), (byte) 3,    UserStatus.SINGLE,     UserGender.MALE,
+                    false,      false,        false,    false,           false);
         this.build("test",      "test@test.org",        "test",                 LocalDate.of(1999, 04, 8),
                    "test",      "test",                 "test",          0.5f,  LocalDateTime.now(),
-                   prefService.getOne(4));
+                   prefService.getOne(4), (byte) 4,     UserStatus.UNSPECIFIED,     UserGender.UNSPECIFIED,
+                   false,      false,        false,    false,           false);
     }
 
-    private void build(final String username, final String email,
-            final String password, final LocalDate birthdate,
-            final String firstname, final String city,
-            final String job, final float rate, final LocalDateTime lastLogin,
-            final NotificationSetting pref) {
+    private void build(
+            final String username,      final String email,     final String password,
+            final LocalDate birthdate,  final String firstname, final String city,
+            final String job,           final float rate,       final LocalDateTime lastLogin,
+            final NotificationSetting pref,     final byte avatar,
+            final UserStatus maritalStatus,     final UserGender gender,
+            final boolean birthdateHidden,      final boolean mailHidden,
+            final boolean jobHidden,            final boolean genderHidden,
+            final boolean statusHidden) {
 
         final User user = new User();
 
@@ -101,6 +120,14 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         user.setRate(rate);
         user.setLastLogin(lastLogin);
         user.setPreferences(pref);
+        user.setAvatar(avatar);
+        user.setMaritalStatus(maritalStatus);
+        user.setGender(gender);
+        user.setBirthdateHidden(birthdateHidden);
+        user.setMailHidden(mailHidden);
+        user.setJobHidden(jobHidden);
+        user.setGenderHidden(genderHidden);
+        user.setStatusHidden(statusHidden);
 
         service.create(user);
     }
@@ -127,9 +154,47 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                         .past(rand.nextInt(2000) + 1, TimeUnit.DAYS)
                         .toInstant().atZone(zoneId)
                         .toLocalDateTime(),
-                    prefService.getOne(4));
+                    prefService.getOne(4),
+                    (byte) rand.nextInt(5),
+                    UserStatusStore().get(rand.nextInt(4)),
+                    UserGenderStore().get(rand.nextInt(3)),
+                    rand.nextBoolean(),
+                    rand.nextBoolean(),
+                    rand.nextBoolean(),
+                    rand.nextBoolean(),
+                    rand.nextBoolean());
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+
+    /** User Status Storage Function.
+     * @return List of User Status.*/
+    private ArrayList<UserStatus> UserStatusStore() {
+
+        ArrayList<UserStatus> status = new ArrayList<UserStatus>();
+
+        status.add(UserStatus.DIVORCED);
+        status.add(UserStatus.MARRIED);
+        status.add(UserStatus.SINGLE);
+        status.add(UserStatus.WIDOWED);
+        status.add(UserStatus.UNSPECIFIED);
+
+        return status;
+    }
+
+    /** User Gender Storage Function.
+     * @return List of User gender.*/
+    private ArrayList<UserGender> UserGenderStore() {
+
+        ArrayList<UserGender> gender = new ArrayList<UserGender>();
+
+        gender.add(UserGender.FEMALE);
+        gender.add(UserGender.MALE);
+        gender.add(UserGender.NONBINARY);
+        gender.add(UserGender.UNSPECIFIED);
+
+        return gender;
     }
 }

@@ -7,6 +7,7 @@ package fr.dta.ovg.fixtures;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +22,7 @@ import com.github.javafaker.Faker;
 
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.entities.EventRole;
+import fr.dta.ovg.entities.EventType;
 import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
@@ -78,24 +80,28 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
         this.build("Supra Party One",   userService.getOne(1),          "C'est super génial Viendez",
                     start,              "img1",                         25,
-                    "5 rue du chat",    "35000",                        "Rennes");
+                    "5 rue du chat",    "35000",                        "Rennes",
+                    this.EventTypeStore().get(1));
 
         this.build("Poke GO",           userService.getOne(2),          "Chasse aux pokemons",
                     start,              "img1",                         25,
-                    "5 chemin des eaux", "49000",                        "Angers");
+                    "5 chemin des eaux", "49000",                        "Angers",
+                    this.EventTypeStore().get(2));
 
         this.build("GameBox",           userService.getOne(3),          "RetroGamin Event #7",
                     start,              "img1",                         25,
-                    "5 bld Nerobi",     "69000",                        "Lyon");
+                    "5 bld Nerobi",     "69000",                        "Lyon",
+                    this.EventTypeStore().get(3));
 
         this.build("Dotball",           userService.getOne(4),          "Jeux de sports & pinball",
                     start,              "img1",                         25,
-                    "15 rue Paul Bert", "75000",                        "Paris");
+                    "15 rue Paul Bert", "75000",                        "Paris",
+                    this.EventTypeStore().get(4));
     }
 
     private void build(final String label, final User creator, final String description,
             final ZonedDateTime startAt, final String img, final int nbPlaceMax,
-            final String address, final String postcode, final String city) {
+            final String address, final String postcode, final String city, final EventType type) {
 
         final Event event = new Event();
         final JoinEvent join = new JoinEvent();
@@ -109,6 +115,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         event.setAddress(address);
         event.setPostcode(postcode);
         event.setCity(city);
+        event.setType(type);
 
         eventService.create(event);
 
@@ -141,10 +148,35 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
                     rand.nextInt(100),
                     this.fake.address().streetAddress(),
                     this.fake.address().zipCode(),
-                    this.fake.address().city());
+                    this.fake.address().city(),
+                    this.EventTypeStore().get(rand.nextInt(13)));
         } catch (NotFoundException e) {
             e.getMessage();
         }
+    }
+
+    /** Event Type Storage Function.
+     * @return List of Event type.*/
+    private ArrayList<EventType> EventTypeStore() {
+
+        ArrayList<EventType> type = new ArrayList<EventType>();
+
+        type.add(EventType.ARCADE);
+        type.add(EventType.BIRTHDAY);
+        type.add(EventType.COCKTAIL);
+        type.add(EventType.CONFERENCE);
+        type.add(EventType.ESPORT);
+        type.add(EventType.FESTIVAL);
+        type.add(EventType.LAN);
+        type.add(EventType.OTHER);
+        type.add(EventType.RESTAURANT);
+        type.add(EventType.RETROGAMING);
+        type.add(EventType.SPORT);
+        type.add(EventType.THEMATICPARTY);
+        type.add(EventType.TOURNAMENTS);
+        type.add(EventType.VIDEOGAMES);
+
+        return type;
     }
 }
 
