@@ -28,6 +28,7 @@ export interface User {
   // events: Event[];
   // hobbies: Hobby[];
   // languages: Language[];
+  avatar: number;
 }
 
 enum EventRole {

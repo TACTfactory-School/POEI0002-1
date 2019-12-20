@@ -1,14 +1,14 @@
 <mat-card class="event-card" *ngIf="event && event.id"  matTooltip="{{event.description}}" matTooltipClass="tooltip-description">
   <mat-card-header>
-    <div mat-card-avatar class="event-header-image">
-      <img src="https://png.pngtree.com/svg/20161027/service_default_avatar_182956.png" width="38px"/>
+    <div mat-card-avatar >
+      <img class="event-header-image" src="{{avatar}}/{{event.creator.avatar}}.png" width="38px"/>
     </div>
     <mat-card-title>{{ event.label }}</mat-card-title>
     <mat-card-subtitle>{{ event.creator.username }}</mat-card-subtitle>
 
   </mat-card-header >
   <div class="event-cover-image" [routerLink]="['/event', event.id]">
-      <img mat-card-image src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/video-game-party-event-poster-template-d24834c33b7191eb994c1e50354d6be2_screen.jpg?ts=1561447845" alt="Photo de {{ event.label }}">
+      <img mat-card-image src="{{eventimg}}/{{event.type}}.png" alt="Photo de {{ event.label }}">
   </div>
   <mat-card-content>
     <ul>

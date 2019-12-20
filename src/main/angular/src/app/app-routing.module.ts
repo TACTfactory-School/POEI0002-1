@@ -16,6 +16,7 @@ import { UserPreferencesComponent } from './user/user-preferences/user-preferenc
 import { ConfirmDialogComponent } from './event/confirm-dialog/confirm-dialog.component';
 import { EventEditComponent } from './event/event-edit/event-edit.component';
 import { MessageDialogComponent } from './models/message-dialog/message-dialog.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 const routes: Routes = [
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   },
   { path: 'dialog', component: ConfirmDialogComponent },
   { path: 'message', component: MessageDialogComponent },
+  { path: 'useredit', component: UserEditComponent },
 
   {
     path: 'user',
