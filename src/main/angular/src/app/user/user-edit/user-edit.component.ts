@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserApiService } from '../user-api.service';
-import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { User } from '../user';
 import { first } from 'rxjs/operators';
+import { AuthApiService } from 'src/app/auth/auth-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -19,7 +21,10 @@ export class UserEditComponent implements OnInit {
     private api: UserApiService,
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<UserEditComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: User
+    @Inject(MAT_DIALOG_DATA) private data: User,
+    private auth: AuthApiService,
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -28,11 +33,14 @@ export class UserEditComponent implements OnInit {
       name: [this.data.firstname, Validators.required],
       email: [this.data.email, Validators.required],
       city: [this.data.city, Validators.required],
-      job: [this.data.job, Validators.required]
+      job: [this.data.job, Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   update() {
+    if (this.editUser.valid) {
+    console.log(this.data.username + '-' + this.editUser.controls.password.value);
     this.newUser = new User(
       this.data.username,
       this.editUser.controls.email.value,
@@ -42,23 +50,36 @@ export class UserEditComponent implements OnInit {
       this.editUser.controls.city.value,
       this.data.gender
     );
-
-    if(this.editUser.valid) {
-      this.api.updateOne(this.data.id, this.newUser)
-        .pipe(first())
-        .subscribe(
+    console.log(this.data.username + '-' + this.newUser.password);
+    this.auth.login(this.data.username, this.editUser.controls.password.value)
+      .pipe(first())
+      .subscribe(
           data => {
-              this.dialogRef.close(data);
-              this._snackBar.open('Votre profil a bien été modifié !', 'Fermer', {
-                duration: 4000,
-              });
+              this.api.updateOne(this.data.id, this.newUser)
+              .pipe(first())
+              .subscribe(
+                data => {
+                    this.dialogRef.close(data);
+                    this._snackBar.open('Votre profil a bien été modifié !', 'Fermer', {
+                      duration: 4000,
+                    });
+                },
+                error => {
+                    console.log(error);
+                    this._snackBar.open('Votre profil n\'a pu être modifié... Veuillez vérifier que vous êtes bien connecté(e)', 'Fermer', {
+                      duration: 4000,
+                    });
+                });
           },
           error => {
-              console.log(error);
-              this._snackBar.open('Votre profil n\'a pu être modifié... Veuillez vérifier que vous êtes bien connecté(e)', 'Fermer', {
+              this._snackBar.open('Mot de passe incorrect', 'Fermer', {
                 duration: 4000,
               });
           });
+
+
+
+
     }
   }
 }

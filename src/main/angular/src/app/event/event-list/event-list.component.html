@@ -3,7 +3,7 @@
 </ng-template>
 <app-event-list-toggle class="toggle-btn" (change)="onDrawModeChange($event)"></app-event-list-toggle>
 
-<div [ngSwitch]="drawMode">
+<ng-container [ngSwitch]="drawMode">
   <ng-container *ngIf="page; else loading">
     <div class="event-list" *ngSwitchCase="'list'">
         <ng-container>
@@ -26,5 +26,4 @@
     (page)="onPaginate($event)"
   >
   </app-paginator>
-</div>
-
+</ng-container>

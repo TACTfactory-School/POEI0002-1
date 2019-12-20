@@ -18,7 +18,7 @@ export class EventDetailsComponent implements OnInit {
   currentUser: User;
   event: Event;
   message: string;
-
+  readonly eventimg: string = '../../../assets/events';
   constructor(
     private readonly route: ActivatedRoute,
     private readonly api: EventApiService,

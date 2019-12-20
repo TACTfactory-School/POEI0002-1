@@ -14,8 +14,7 @@
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="event-header-image">
-          <img *ngIf="e.img" class="header-image" src="{{ e.img }}" alt="image de l'événement {{ e.label }}">
-          <img *ngIf="!e.img" class="header-image" src="https://www.prendsmaplace.fr/wp-content/themes/prendsmaplace/images/defaut_image.gif" alt="L'évènement n'a pas d'image.">
+          <img *ngIf="e.img" class="header-image" src="{{eventimg}}/{{e.type}}.png" alt="image de l'événement {{ e.label }}">
         </div>
       </div>
       <div class="event-detail">

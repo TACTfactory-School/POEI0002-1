@@ -13,8 +13,24 @@ export interface Event {
   postcode: string;
   city: string;
   enabled: boolean;
+  type: EventType;
 }
-
+export enum EventType {
+  VIDEOGAMES,
+  RETROGAMING,
+  TOURNAMENTS,
+  LAN,
+  ARCADE,
+  THEMATICPARTY,
+  FESTIVAL,
+  BIRTHDAY,
+  COCKTAIL,
+  RESTAURANT,
+  SPORT,
+  ESPORT,
+  CONFERENCE,
+  OTHER
+}
 export class Event {
   constructor(
     label: string,
