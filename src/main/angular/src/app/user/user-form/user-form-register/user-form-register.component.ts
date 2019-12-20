@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./user-form-register.component.scss']
 })
 export class UserFormRegisterComponent implements OnInit {
+  minDate = new Date(1900, 1, 1);
+  maxDate = new Date(2006, 11, 20);
   defaultGender: UserGender;
 
   readonly gender = [
@@ -43,7 +45,8 @@ export class UserFormRegisterComponent implements OnInit {
   // tslint:disable-next-line: align
   ngOnInit() {
     this.registerUser = this.fb.group({
-      username : new FormControl('', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])),
+      username : new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z0-9_#@-]{3,20}'),
+      Validators.minLength(3), Validators.maxLength(20) ])),
       email : new FormControl('', Validators.compose([Validators.required, Validators.email])),
       password : new FormControl('', Validators.compose([Validators.required, Validators.minLength(7), Validators.maxLength(25)])),
       birthdate : new FormControl('', Validators.required),

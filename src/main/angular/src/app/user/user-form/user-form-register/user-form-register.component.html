@@ -49,7 +49,7 @@
             <p>
               <mat-form-field appearance="outline">
                 <mat-label>Date de naissance</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdate" (click)="picker.open()" autocomplete="off">
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdate" (click)="picker.open()" autocomplete="off">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <!-- <mat-error *ngIf="birthdate.invalid && !birthdate.pristine" class="alert"> Veuillez saisir une date de naissance valide. </mat-error> -->

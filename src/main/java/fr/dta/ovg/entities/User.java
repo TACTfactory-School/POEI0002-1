@@ -47,7 +47,7 @@ public class User extends EntityBase {
     @NotBlank
     @Column(name = "us_password", unique = false, nullable = true)
     @ApiModelProperty(value = "The password of the user.")
-    @JsonIgnore
+    @JsonIgnoreProperties(allowSetters = true)
     private String password; // TODO must be encrypted.
 
     /** Birthdate of user. <br> DB Column. */
