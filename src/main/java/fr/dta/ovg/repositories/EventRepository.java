@@ -6,6 +6,9 @@
 package fr.dta.ovg.repositories;
 
 import org.springframework.data.domain.Pageable;
+
+import java.time.ZonedDateTime;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,5 +29,35 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             value = "SELECT * FROM app_events e WHERE e.ev_title like %?1%",
             nativeQuery = true)
     Page<Event> findAll(String search, Pageable pageable);
+
+    /** Find All by past date Event Function.
+     * @param date : date to process search.
+     * @param pageable : abstract interface for event pagination.
+     * @return Page of events.
+     */
+    @Query(
+            value = "SELECT * FROM app_events e WHERE DATEDIFF(e.ev_start_date, NOW()) < 0",
+            nativeQuery = true)
+    Page<Event> findAllByPastDate(ZonedDateTime date, Pageable pageable);
+
+    /** Find All by coming date Event Function.
+     * @param date : date to process search.
+     * @param pageable : abstract interface for event pagination.
+     * @return Page of events.
+     */
+    @Query(
+            value = "SELECT * FROM app_events e WHERE DATEDIFF(e.ev_start_date, NOW()) > 0",
+            nativeQuery = true)
+    Page<Event> findAllByComingDate(ZonedDateTime date, Pageable pageable);
+
+    /** Find All by date Event Function.
+     * @param date : date to process search.
+     * @param pageable : abstract interface for event pagination.
+     * @return Page of events.
+     */
+    @Query(
+            value = "SELECT * FROM app_events e WHERE DATEDIFF(e.ev_start_date, NOW()) = 0",
+            nativeQuery = true)
+    Page<Event> findAllByDate(ZonedDateTime date, Pageable pageable);
 
 }
