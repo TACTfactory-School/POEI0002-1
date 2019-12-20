@@ -130,10 +130,15 @@ public class User extends EntityBase {
     @JsonIgnoreProperties("user")
     private final List<UserHobby> hobbies = new ArrayList<>();
 
-    /** The friends list of the user.*/
+    /** The requested friends list of the user.*/
     @OneToMany
-    @JsonIgnoreProperties("friends")
-    private final List<User> friends = new ArrayList<>();
+    @JsonIgnoreProperties("friendsRequest")
+    private final List<UserFriend> friendsRequest = new ArrayList<>();
+
+    /** The accepted friends list of the user.*/
+    @OneToMany
+    @JsonIgnoreProperties("friendsAccept")
+    private final List<UserFriend> friendsAccept = new ArrayList<>();
 
     /** Birthdate preference setting of the user.. <br> DB Column. */
     @Column(name = "us_pref_birthdate", unique = false, nullable = true)
@@ -431,11 +436,32 @@ public class User extends EntityBase {
         return joinEvents;
     }
 
+    /** Get List of all user's friends request.
+     * @return the friendsRequest.*/
+    public List<UserFriend> getFriendsRequest() {
+        return friendsRequest;
+    }
 
-    /** Get List of all user's friends.
-     * @return the friends*/
-    public List<User> getFriends() {
-        return friends;
+    /** Get List of all user's friends accept.
+     * @return the friendsAccept.*/
+    public List<UserFriend> getFriendsAccept() {
+        return friendsAccept;
+    }
+
+    /** @param userFriend : Add Friend to user. @see UserFriend.*/
+    public void addFriendAccept(final UserFriend userFriend) {
+        if (!this.friendsAccept.contains(userFriend)) {
+            this.friendsAccept.add(userFriend);
+            userFriend.setFriendAccept(this);
+        }
+    }
+
+    /** @param userFriend : Add Friend to user. @see UserFriend.*/
+    public void addFriendRequest(final UserFriend userFriend) {
+        if (!this.friendsRequest.contains(userFriend)) {
+            this.friendsRequest.add(userFriend);
+            userFriend.setFriendRequest(this);
+        }
     }
 
     /** @param joinEvent : Add join event to user */

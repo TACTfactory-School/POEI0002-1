@@ -48,6 +48,10 @@ public class FixtureService implements Fixture {
     @Autowired
     private LanguageFixtureService langFixture;
 
+    /** Link to Language Fixture Service. */
+    @Autowired
+    private UserFriendFixtureService friendFixture;
+
     /** Call loading initials fixtures @see {@link EventFixtureService}.
      *  @throws NotFoundException */
     @Transactional
@@ -60,5 +64,6 @@ public class FixtureService implements Fixture {
         this.hobbyFixture.load();
         this.joinFixture.load();
         this.langFixture.load();
+        this.friendFixture.load();
     }
 }

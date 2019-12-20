@@ -5,6 +5,7 @@ import java.util.List;
 import fr.dta.ovg.entities.Language;
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Language CRUD Service Interface.*/
 public interface LanguageCrudService {
 
     /**
@@ -35,5 +36,8 @@ public interface LanguageCrudService {
      * */
     void delete(long id) throws NotFoundException;
 
+    /** Exists by label function.
+     * @param language : @see Language.
+     * @return true if the language label already existing in the repository.*/
     boolean existsByLabel(Language language);
 }

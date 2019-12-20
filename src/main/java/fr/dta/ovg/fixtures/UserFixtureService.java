@@ -1,4 +1,4 @@
-/* ùser Fixtures DB Service.
+/* User Fixtures DB Service.
  * @author Colin Cerveaux @C-ambium
  * Action : Initialize DB with initials data.
  * License : ©2019 All rights reserved
@@ -56,8 +56,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     /** Check Uniq name with UniFakeStore Function. */
     private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().safeEmailAddress());
 
-    /**
-     * Local Constructor.
+    /** Local Constructor.
      * Link to User Repository by UserCreateService.
      * Get Value of fakerSize @see application.properties. */
     public UserFixtureService(
@@ -79,6 +78,8 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         this.loadFake();
     }
 
+    /** Load Real fixture function.
+     * @throws NotFoundException : Preferences not found.*/
     private void loadReal() throws NotFoundException {
         this.build("Pamwamba",  "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
                     "Samy",     "Nantes",               "Dev Fullstack", 4.5f, LocalDateTime.now(),
@@ -98,6 +99,25 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                    false,      false,        false,    false,           false);
     }
 
+    /** User Builder.
+     * @param username : username.
+     * @param email : user email.
+     * @param password : user password.
+     * @param birthdate : user birthdate.
+     * @param firstname : user firstname.
+     * @param city : user city.
+     * @param job : user job.
+     * @param rate : user rate.
+     * @param lastLogin : user last login date.
+     * @param pref : user preferences.
+     * @param avatar : user avatar.
+     * @param maritalStatus : user marital status.
+     * @param gender: user gender.
+     * @param birthdateHidden : hide birthdate option.
+     * @param mailHidden : hide mail option.
+     * @param jobHidden : hide job option.
+     * @param genderHidden : hide gender option.
+     * @param statusHidden : hide marital status option.*/
     private void build(
             final String username,      final String email,     final String password,
             final LocalDate birthdate,  final String firstname, final String city,
@@ -136,6 +156,8 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         IntStream.range(0, this.fakerSize).forEach(this::buildFake);
     }
 
+    /** User Faker Builder.
+     * @param i : TODO DELETE.*/
     private void buildFake(final int i) {
 
         Random rand = new Random();
@@ -167,7 +189,6 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
             e.printStackTrace();
         }
     }
-
 
     /** User Status Storage Function.
      * @return List of User Status.*/

@@ -12,6 +12,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.LanguageRepository;
 import fr.dta.ovg.services.LanguageCrudService;
 
+/** Language CRUD service Implementation.*/
 @Service
 public class LanguageCrudServiceImpl implements LanguageCrudService {
 
@@ -19,8 +20,10 @@ public class LanguageCrudServiceImpl implements LanguageCrudService {
     @Autowired
     private LanguageRepository repository;
 
+    /** Logger instance. */
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
+    /**{@inheritDoc}*/
     @Override
     public List<Language> getAll() {
 
@@ -28,6 +31,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService {
         return this.repository.findAll();
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Language getOne(final long id) throws NotFoundException {
 
@@ -37,6 +41,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Language create(final Language language) {
 
@@ -44,6 +49,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService {
         return this.repository.save(language);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void delete(final long id) throws NotFoundException {
         LOG.debug("Delete Language");
@@ -54,6 +60,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService {
         this.repository.delete(language);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public boolean existsByLabel(final Language language) {
 
