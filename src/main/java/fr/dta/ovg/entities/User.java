@@ -93,6 +93,11 @@ public class User extends EntityBase {
     @Enumerated(EnumType.ORDINAL)
     private UserStatus maritalStatus;
 
+    /** User Avatar. <br> DB Column. */
+    @Column(name = "us_avatar", unique = false, nullable = true)
+    @ApiModelProperty(value = "The avatar of the user.")
+    private byte avatar;
+
     /** Join event List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user"})
@@ -377,6 +382,18 @@ public class User extends EntityBase {
      * @param statusHidden the statusHidden to set.*/
     public void setStatusHidden(final boolean statusHidden) {
         this.statusHidden = statusHidden;
+    }
+
+    /**Set User Avatar.
+     * @return the avatar of the user.*/
+    public byte getAvatar() {
+        return avatar;
+    }
+
+    /** Get User Avatar.
+     * @param avatar the user avatar to set*/
+    public void setAvatar(final byte avatar) {
+        this.avatar = avatar;
     }
 
     /** Get user notifications list.
