@@ -52,7 +52,8 @@ public class JoinEvent extends EntityBase {
         JsonIgnoreContract.JOIN_EVENTS,
         JsonIgnoreContract.NOTIFICATIONS,
         JsonIgnoreContract.MESSAGES_EMITTED,
-        JsonIgnoreContract.MESSAGES_RECEIVED})
+        JsonIgnoreContract.MESSAGES_RECEIVED,
+        JsonIgnoreContract.LANGUAGES})
     private User user;
 
     /** Selected event.*/
