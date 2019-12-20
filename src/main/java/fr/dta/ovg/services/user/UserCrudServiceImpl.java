@@ -7,7 +7,6 @@ package fr.dta.ovg.services.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +35,7 @@ public class UserCrudServiceImpl implements UserCrudService {
     @Override
     public Page<User> getAll(final Pageable pageable, final String search) {
         final Page<User> paginateResult;
-        
+
         if (search == null) {
             paginateResult = this.repository.findAll(pageable);
         } else {
