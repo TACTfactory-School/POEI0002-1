@@ -37,6 +37,7 @@ public class UserControllerTest extends UnitTestBase {
     private static final String CREATE_BODY = "{\"username\": \"fzedeafrzaxxzafea\", \"birthdate\": \"1989-10-10\","
             + " \"email\": \"fzedeafrzaxxzafeaa3@gmail.com\", \"password\": \"fucku\"}";
 
+    @Test
     public void testGetAll() throws Exception {
         this.mvc.perform(get("/api/v1/user?page=0&quantity=5"))
             .andExpect(status().isOk())
