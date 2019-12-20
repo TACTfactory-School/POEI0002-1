@@ -9,96 +9,69 @@
   <div class="register-form">
     <form [formGroup]="registerUser" (ngSubmit)="create()">
       <fieldset class="register">
-          <p>
-              <mat-form-field appearance="outline">
-                <mat-label>Pseudo</mat-label>
-                <input matInput placeholder="Pseudo" formControlName="username">
-                <!-- <mat-error *ngIf="username.invalid && !username.pristine" class="alert"> Veuillez saisir un pseudo valide.</mat-error> -->
-                <mat-icon matSuffix *ngIf="icon">{{ icon }}</mat-icon>
+        <mat-form-field appearance="outline">
+          <mat-label>Pseudo</mat-label>
+            <input matInput placeholder="Pseudo" formControlName="username">
+              <mat-icon matSuffix *ngIf="icon">{{ icon }}</mat-icon>
                 <mat-hint>Caractères autorisés : 0..9 # @ _ - </mat-hint>
-              </mat-form-field>
-            </p>
-            <p>
-              <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email" type="email" formControlName="email">
-                <!-- <mat-error *ngIf="email.invalid && !email.pristine" class="alert"> Veuillez saisir un email valide.</mat-error> -->
-                <mat-icon matSuffix *ngIf="icon">{{ icon }}</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" type="email" formControlName="email">
+              <mat-icon matSuffix *ngIf="icon">{{ icon }}</mat-icon>
                 <mat-hint>Hint</mat-hint>
-              </mat-form-field>
-            </p>
-            <p>
-              <!-- [ng-container] -->
-              <mat-form-field appearance="outline">
-                <mat-label>Mot de Passe</mat-label>
-                <input matInput placeholder="Password" type="password" formControlName="password">
-                <!-- <mat-error *ngIf="password.invalid && !password.pristine" class="alert"> Veuillez saisir un mot de passe valide.</mat-error> -->
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de Passe</mat-label>
+            <input matInput placeholder="Password" type="password" formControlName="password">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-hint>Hint</mat-hint>
-              </mat-form-field>
-            </p>
-            <!-- <p>
-                <mat-form-field appearance="outline">
-                  <mat-label>Confirmez le mot de passe</mat-label>
-                  <input matInput placeholder="Placeholder" type="password" formControlName="confimpassword">
-                  <mat-error *ngIf="password.invalid && !password.pristine" class="alert"> Le mot de passe n'est pas identique.</mat-error>
-                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                  <mat-hint>Hint</mat-hint>
-                </mat-form-field>
-            </p> -->
-            <p>
-              <mat-form-field appearance="outline">
-                <mat-label>Date de naissance</mat-label>
-                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdate" (click)="picker.open()" autocomplete="off">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date de naissance</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdate" (click)="picker.open()" autocomplete="off">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <!-- <mat-error *ngIf="birthdate.invalid && !birthdate.pristine" class="alert"> Veuillez saisir une date de naissance valide. </mat-error> -->
-                <mat-hint>Hint</mat-hint>
+                  <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="registerUser">
+              <ng-template matStepLabel>Prénom</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Prenom" formControlName="firstname">
               </mat-form-field>
-              <mat-horizontal-stepper [linear]="isLinear" #stepper>
-                <mat-step [stepControl]="firstFormGroup">
-                  <form [formGroup]="registerUser">
-                    <ng-template matStepLabel>Prénom</ng-template>
-                    <mat-form-field>
-                      <input matInput placeholder="Prenom" formControlName="firstname">
-                    </mat-form-field>
-                    <div>
-                      <button mat-button matStepperNext>Suivant</button>
-                    </div>
-                  </form>
-                </mat-step>
-                <mat-step [stepControl]="secondFormGroup">
-                  <form [formGroup]="registerUser">
-                    <ng-template matStepLabel>Ville</ng-template>
-                    <mat-form-field>
-                      <input matInput placeholder="Ville" formControlName="city">
-                    </mat-form-field>
-                    <div>
-                      <button mat-button matStepperPrevious>Retour</button>
-                      <button mat-button matStepperNext>Suivant</button>
-                    </div>
-                  </form>
-                </mat-step>
-                <mat-step [stepControl]="thirdFormGroup">
-                    <!-- selected: {{ registerUser .value | json}}.
-                    <br>
-                    Gender: {{gender|json}} -->
-                    <ng-template matStepLabel>Genre</ng-template>
-                    <mat-form-field [formGroup]="registerUser">
-                      <mat-label>Genre</mat-label>
-                      <mat-select formControlName="gender">
-                        <mat-option *ngFor="let g of gender" [value]="g.value">{{ g.label }}</mat-option>
-                        <!-- <mat-option *ngFor="let g of genders" [value]="g.value">{{ g.label }}</mat-option> -->
-                      </mat-select>
-                    </mat-form-field>
-                    <div>
-                      <button mat-button matStepperPrevious>Retour</button>
-                    </div>
-
-                </mat-step>
-              </mat-horizontal-stepper>
-            </p>
-            <button mat-raised-button class="btn" type="submit" [disabled]="!registerUser.valid">Continuer</button>
+              <div>
+                <button mat-button matStepperNext>Suivant</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="registerUser">
+              <ng-template matStepLabel>Ville</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Ville" formControlName="city">
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Retour</button>
+                  <button mat-button matStepperNext>Suivant</button>
+                </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="thirdFormGroup">
+              <ng-template matStepLabel>Genre</ng-template>
+                <mat-form-field [formGroup]="registerUser">
+                  <mat-label>Genre</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option *ngFor="let g of gender" [value]="g.value">{{ g.label }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                  <div>
+                    <button mat-button matStepperPrevious>Retour</button>
+                  </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+          <button mat-raised-button class="btn" type="submit" [disabled]="!registerUser.valid">Continuer</button>
       </fieldset>
     </form>
   </div>
