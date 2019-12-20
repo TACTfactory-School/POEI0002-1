@@ -19,7 +19,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.annotations.ApiModel;
@@ -412,6 +411,13 @@ public class User extends EntityBase {
      * @return the events (List).*/
     public List<JoinEvent> getJoinEvents() {
         return joinEvents;
+    }
+
+
+    /** Get List of all user's friends.
+     * @return the friends*/
+    public List<User> getFriends() {
+        return friends;
     }
 
     /** @param joinEvent : Add join event to user */

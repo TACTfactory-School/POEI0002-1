@@ -23,9 +23,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.ovg.entities.Event;
+import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.services.EventCrudService;
+import fr.dta.ovg.services.join.JoinDeleteService;
+import fr.dta.ovg.services.join.JoinServiceImpl;
 import io.swagger.annotations.Api;
 
 /** Event Controller Class.*/
@@ -38,6 +41,8 @@ public class EventController {
     @Autowired
     private EventCrudService service;
 
+    @Autowired
+    private JoinDeleteService joinServ;
     /**
     * Get All function. <br>
     * GET - HTTP.
@@ -117,6 +122,10 @@ public class EventController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable final Long id) throws NotFoundException {
+        Event event = this.service.getOne(id);
+        for(JoinEvent j : event.getUsersJoin()) {
+            this.joinServ.delete(j.getId());
+        }
         this.service.delete(id);
     }
 }

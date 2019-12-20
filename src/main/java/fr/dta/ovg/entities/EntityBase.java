@@ -21,6 +21,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
+import fr.dta.ovg.contracts.EntityBaseContract;
 import io.swagger.annotations.ApiModelProperty;
 
 /** Entity base class. MAPPED SUPER CLASS */
@@ -29,23 +30,24 @@ public class EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "The generated database ID", readOnly = true)
+    @ApiModelProperty(value = EntityBaseContract.COL_ID_API, readOnly = true)
     private Long id;
 
     @JsonProperty(access = Access.READ_ONLY)
-    @ApiModelProperty(value = "Specifies if the entity if enabled or not", readOnly = true)
+    @ApiModelProperty(value = EntityBaseContract.COL_ENABLED_API, readOnly = true)
+    @Column(name = EntityBaseContract.COL_ENABLED)
     private boolean enabled = true;
 
     @CreatedDate //  @Temporal(TemporalType.TIMESTAMP)
-    @ApiModelProperty(value = "The generated date of creation", readOnly = true)
+    @ApiModelProperty(value = EntityBaseContract.COL_CREATED_AT_API, readOnly = true)
     @JsonProperty(access = Access.READ_ONLY)
-    @Column(name = "created", nullable = false)
+    @Column(name = EntityBaseContract.COL_CREATED_AT, nullable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate//  @Temporal(TemporalType.TIMESTAMP)
-    @ApiModelProperty(value = "The updated date of entity", readOnly = true)
+    @ApiModelProperty(value = EntityBaseContract.COL_UPDATED_AT_API, readOnly = true)
     @JsonProperty(access = Access.READ_ONLY)
-    @Column(name = "updated", nullable = false)
+    @Column(name = EntityBaseContract.COL_UPDATED_AT, nullable = false)
     private LocalDateTime updatedAt;
 
     /** CREATION: On DB fixtures load and when event is created.*/
