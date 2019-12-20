@@ -11,9 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import fr.dta.ovg.contracts.HobbyContract;
+
 /** User Hobby class. Association table.*/
 @Entity
-@Table(name = "app_us_hobby")
+@Table(name = HobbyContract.JOIN_TABLE)
 public class UserHobby extends EntityBase {
 
     /** Selected user. */
