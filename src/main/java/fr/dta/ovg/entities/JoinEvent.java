@@ -45,7 +45,7 @@ public class JoinEvent extends EntityBase {
     /** User inscription. */
     @ManyToOne(optional = false) // targetEntity = Event.class
     @JoinColumn(nullable = false)
-    @JsonIgnoreProperties({"joinEvents", "notifications", "messagesEmitted", "messagesReceived"})
+    @JsonIgnoreProperties({"joinEvents", "notifications", "messagesEmitted", "messagesReceived", "languages"})
     private User user;
 
     /** Selected event. */
