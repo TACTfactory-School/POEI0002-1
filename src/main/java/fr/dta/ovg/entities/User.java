@@ -21,6 +21,8 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -47,7 +49,7 @@ public class User extends EntityBase {
     @NotBlank
     @Column(name = "us_password", unique = false, nullable = true)
     @ApiModelProperty(value = "The password of the user.")
-    @JsonIgnoreProperties(allowSetters = true)
+    @JsonProperty(access = Access.READ_ONLY)
     private String password; // TODO must be encrypted.
 
     /** Birthdate of user. <br> DB Column. */
