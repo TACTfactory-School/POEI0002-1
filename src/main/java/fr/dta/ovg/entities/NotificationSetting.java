@@ -6,19 +6,28 @@
 
 package fr.dta.ovg.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import fr.dta.ovg.contracts.SettingContract;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /** Entity NotificationSetting  class.*/
 @Entity
-@Table(name = "app_settings")
-@ApiModel(value = "Describes Notification settings for our system")
+@Table(name = SettingContract.TABLE)
+@ApiModel(value = SettingContract.TABLE_API)
 public class NotificationSetting extends EntityBase {
 
+    /** Application notifications setting. <br>DB Column.*/
+    @Column(name = SettingContract.COL_ACTIVE_APP, nullable = false, unique = false)
+    @ApiModelProperty(value = SettingContract.COL_ACTIVE_APP_API)
     private boolean activeApp;
 
+    /** Mail notifications setting. <br>DB Column.*/
+    @Column(name = SettingContract.COL_ACTIVE_MAIL, nullable = false, unique = false)
+    @ApiModelProperty(value = SettingContract.COL_ACTIVE_MAIL_API)
     private boolean activeMail;
 
     /** Get application Notification setting.

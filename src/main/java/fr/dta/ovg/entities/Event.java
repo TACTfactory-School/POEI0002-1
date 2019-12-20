@@ -20,10 +20,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.dta.ovg.contracts.EventContract;
+import fr.dta.ovg.contracts.JsonIgnoreContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -38,8 +38,14 @@ public class Event extends EntityBase {
     @ApiModelProperty(value = EventContract.COL_CREATOR_API)
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
-    @JsonIgnoreProperties({"joinEvents", "notifications", "languages", "hobbies", "friends", "messagesEmitted",
-        "messagesReceived"})
+    @JsonIgnoreProperties({
+        JsonIgnoreContract.JOIN_EVENTS,
+        JsonIgnoreContract.NOTIFICATIONS,
+        JsonIgnoreContract.LANGUAGES,
+        JsonIgnoreContract.HOBBIES,
+        JsonIgnoreContract.FRIENDS,
+        JsonIgnoreContract.MESSAGES_EMITTED,
+        JsonIgnoreContract.MESSAGES_RECEIVED})
     private User creator;
 
     /** Title of the Event. <br>DB Column.*/
@@ -92,20 +98,16 @@ public class Event extends EntityBase {
     private EventType type;
 
     /** Join users List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = EventContract.MAPPED_BY, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = EventContract.MAPPED_BY_EVENT, fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"event"}, allowSetters = true)
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
     /** Notifications List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = EventContract.MAPPED_BY, fetch = FetchType.LAZY)
-//    @JsonIgnoreProperties("event")
-//    @JsonIgnore
+    @OneToMany(mappedBy = EventContract.MAPPED_BY_EVENT, fetch = FetchType.LAZY) // @JsonIgnoreProperties("event")
     private final List<Notification> eventNotification = new ArrayList<>();
 
     /** Messages List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = EventContract.MAPPED_BY)
-//    @JsonIgnoreProperties("event")
-//    @JsonIgnore
+    @OneToMany(mappedBy = EventContract.MAPPED_BY_EVENT) // @JsonIgnoreProperties("event")
     private final List<Message> messages = new ArrayList<>();
 
     /** Override toString() method with Event attributes.*/
@@ -116,195 +118,150 @@ public class Event extends EntityBase {
                 label, description, creator, isEnabled(), startAt, nbPlaceMax, address, postcode, city);
     }
 
-    /**
-     * Getter type of event.
-     * @return the type (EventType Enum).
-     */
+    /** Get the type of event.
+     * @return the type (EventType Enum).*/
     public EventType getType() {
         return type;
     }
 
-    /**
-     * Setter type of event.
-     * @param type (EventType Enum) : the type to set.
-     */
+    /** Set the type of event.
+     * @param type (EventType Enum) : the type to set.*/
     public void setType(final EventType type) {
         this.type = type;
     }
 
-    /**
-     * Getter started date time.
-     * @return the startedAt (ZoneDateTime).
-     */
+    /** Get the event started date time.
+     * @return the startedAt (ZoneDateTime).*/
     public ZonedDateTime getStartAt() {
         return startAt;
     }
 
-    /**
-     * Setter started date time.
-     * @param startedAt (ZonedDateTime) : the startedAt to set.
-     */
+    /** Set the event started date time.
+     * @param startedAt (ZonedDateTime) : the startedAt to set.*/
     public void setStartAt(final ZonedDateTime startedAt) {
         this.startAt = startedAt;
     }
 
-    /**
-     * Getter the img mock.
-     * @return the img (String).
-     */
+    /** Get the event IMG (for mock).
+     * @return the IMG (String).*/
     public String getImg() {
         return img;
     }
 
-    /**
-     * Setter img mock.
-     * @param img (String) : the img to set.
-     */
+    /** Set the event IMG (for mock).
+     * @param img (String) : the IMH to set.*/
     public void setImg(final String img) {
         this.img = img;
     }
 
-    /**
-     * Getter max places of the event.
-     * @return the nbPlaceMax (int).
-     */
+    /** Get max places of the event.
+     * @return the nbPlaceMax (int).*/
     public int getNbPlaceMax() {
         return nbPlaceMax;
     }
 
-    /**
-     * Setter max places of the event.
-     * @param nbPlaceMax (int) : the nbPlaceMax to set.
-     */
+    /** Set max places of the event.
+     * @param nbPlaceMax (int) : the nbPlaceMax to set.*/
     public void setNbPlaceMax(final int nbPlaceMax) {
         this.nbPlaceMax = nbPlaceMax;
     }
 
-    /**
-     * Getter address.
-     * @return the address (String).
-     */
+    /** Get event address.
+     * @return the address (String).*/
     public String getAddress() {
         return address;
     }
 
-    /**
-     * Setter address.
-     * @param address (String) : the address to set.
-     */
+    /** Set event address.
+     * @param address (String) : the address to set.*/
     public void setAddress(final String address) {
         this.address = address;
     }
 
-    /**
-     * Getter Postcode.
-     * @return the postcode (String).
-     */
+    /** Get event Postcode.
+     * @return the postcode (String).*/
     public String getPostcode() {
         return postcode;
     }
 
-    /**
-     * Setter Postcode.
+    /** Set event Postcode.
      * @param postcode (String) : the postcode to set.
      */
     public void setPostcode(final String postcode) {
         this.postcode = postcode;
     }
 
-    /**
-     * Getter city.
+    /** Get event city.
      * @return the city (String).
      */
     public String getCity() {
         return city;
     }
 
-    /**
-     * Setter city.
-     * @param city (String) the city to set.
-     */
+    /** Set event city.
+     * @param city (String) the city to set.*/
     public void setCity(final String city) {
         this.city = city;
     }
 
-    /**
-     * Getter Label/Title.
-     * @return label (String) : the label.
-     */
+    /** Get event Label/Title.
+     * @return label (String) : the event label.*/
     public String getLabel() {
         return label;
     }
 
-    /**
-     * Setter Label/Title.
-     * @param label (String) : label to set.
-     */
+    /** Set event Label/Title.
+     * @param label (String) : event label to set.*/
     public void setLabel(final String label) {
         this.label = label;
     }
 
-    /**
-     * Getter Description.
-     * @return description  (String) : the description.
-     */
+    /** Get event Description.
+     * @return description  (String) : the event description.*/
     public String getDescription() {
         return description;
     }
 
-    /**
-     * Setter Description.
-     * @param description  (String) : the description to set.
-     */
+    /** Set event Description.
+     * @param description  (String) : the event description to set.*/
     public void setDescription(final String description) {
         this.description = description;
     }
 
-    /**
-     * Getter Creator.
-     * @return creator (String) : the User creator.
+    /** Get event Creator.
+     * @return creator (String) : the Event User creator.
      */
     public User getCreator() {
         return creator;
     }
 
-    /**
-     * Setter Creator.
-     * @param creator : the (User) creator to set.
-     */
+    /** Set event Creator.
+     * @param creator : the (User Event) creator to set.*/
     public void setCreator(final User creator) {
         this.creator = creator;
     }
 
-    /**
-     * Getter List of join users.
-     * @return all users who have requested to join event.
-     */
+    /** Get List of join users.
+     * @return all users who have requested to join event.*/
     public List<JoinEvent> getUsersJoin() {
         return usersJoin;
     }
 
-    /**
-     * Get notifications list.
-     * @return the eventNotification : List of notification.
-     */
+    /** Get event notifications list.
+     * @return the eventNotification : List of event notification.*/
     public List<Notification> getEventNotification() {
         return eventNotification;
     }
 
-    /**
-     *  Get messages list.
-     * @return the messages : List of messages.
-     */
+    /** Get messages list.
+     * @return the messages : List of messages.*/
     public List<Message> getMessages() {
         return messages;
     }
 
 
-    /**
-     * Function - Add notification to Event.
-     * @param eventNotification : Notification.
-     */
+    /** Function - Add notification to Event.
+     * @param eventNotification : Notification.*/
     public void addEventNotification(final Notification eventNotification) {
         if (!this.eventNotification.contains(eventNotification)) {
             this.eventNotification.add(eventNotification);
@@ -312,10 +269,8 @@ public class Event extends EntityBase {
         }
     }
 
-    /**
-     * Function - Add Join Event.
-     * @param usersJoin : JoinEvent.
-     */
+    /** Function - Add Join Event.
+     * @param usersJoin : JoinEvent.*/
     public void addJoinEvent(final JoinEvent usersJoin) {
         if (!this.usersJoin.contains(usersJoin)) {
             this.usersJoin.add(usersJoin);
@@ -323,10 +278,8 @@ public class Event extends EntityBase {
         }
     }
 
-    /**
-     * Function - Add message to Event.
-     * @param message : Message.
-     */
+    /** Function - Add message to Event.
+     * @param message : Message.*/
     public void addEventMessage(final Message message) {
         if (!this.messages.contains(message)) {
             this.messages.add(message);
@@ -334,30 +287,24 @@ public class Event extends EntityBase {
         }
     }
 
-    /**
-     * Function - Remove notification to Event.
-     * @param eventNotification : Notification.
-     */
+    /** Function - Remove notification to Event.
+     * @param eventNotification : Notification.*/
     public void removeEventNotification(final Notification eventNotification) {
         if (this.eventNotification.contains(eventNotification)) {
             this.eventNotification.remove(eventNotification);
         }
     }
 
-    /**
-     * Function - Remove Join Event.
-     * @param usersJoin : JoinEvent.
-     */
+    /** Function - Remove Join Event.
+     * @param usersJoin : JoinEvent.*/
     public void removeJoinEvent(final JoinEvent usersJoin) {
         if (this.usersJoin.contains(usersJoin)) {
             this.usersJoin.remove(usersJoin);
         }
     }
 
-    /**
-     * Function - Remove Event message.
-     * @param message :Message.
-     */
+    /** Function - Remove Event message.
+     * @param message :Message.*/
     public void removeEventMessage(final Message message) {
         if (this.messages.contains(message)) {
             this.messages.remove(message);

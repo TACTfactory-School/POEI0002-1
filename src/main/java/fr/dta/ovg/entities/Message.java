@@ -23,26 +23,29 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "Describes a Message for our system")
 public class Message extends EntityBase {
 
+    /** Message String container. <br>DB Column.*/
     @NotBlank
     @Column(name = "mess_label", length = 500, nullable = false, unique = false)
     @ApiModelProperty(value = "The message to send.")
     private String message;
 
+    /** Join Table UserEmitter. <br>DB Column.*/
     @ManyToOne
     @JsonIgnoreProperties({"notifications", "languages", "hobbies", "friends", "joinEvents",
         "preferences", "messagesEmitted", "messagesReceived"})
     private User userEmitter;
 
+    /** Join Table UserReceiver. <br>DB Column.*/
     @ManyToOne
     @JsonIgnore
     private User userReceiver;
 
+    /** Join Table Event. <br>DB Column.*/
     @ManyToOne
     @JsonIgnore
     private Event event;
 
-    /**
-     * Getter Message.
+    /** Getter Message.
      * @return the message (String).*/
     public String getMessage() {
         return message;
