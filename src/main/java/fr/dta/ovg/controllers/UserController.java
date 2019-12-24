@@ -111,11 +111,11 @@ public class UserController {
         final User entity = this.service.getOne(id);
 
         //  Use ObjectMapper.
-        entity.setUsername(user.getUsername());
-        entity.setEmail(user.getEmail());
+        entity.setFirstname(user.getFirstname());
         entity.setPassword(user.getPassword());
-        entity.setBirthdate(user.getBirthdate());
-
+        entity.setEmail(user.getEmail());
+        entity.setCity(user.getCity());
+        entity.setJob(user.getJob());
         return this.service.create(entity);
     }
 
