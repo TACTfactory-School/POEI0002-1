@@ -23,8 +23,6 @@ public final class JsonIgnoreContract {
     public static final String LANGUAGES = "languages";
     /** JSON ignore "hobbies". */
     public static final String HOBBIES = "hobbies";
-    /** JSON ignore "friends". */
-    public static final String FRIENDS = "friends";
     /** JSON ignore "messagesEmitted". */
     public static final String MESSAGES_EMITTED = "messagesEmitted";
     /** JSON ignore "messagesReceived". */
@@ -33,5 +31,9 @@ public final class JsonIgnoreContract {
     public static final String MESSAGES = "messages";
     /** JSON ignore "usersJoin". */
     public static final String JOIN_USERS = "usersJoin";
+    /** JSON ignore "friendRequest". */
+    public static final String USER_FRIENDS_REQUEST = "friendRequest";
+    /** JSON ignore "friendAccept". */
+    public static final String USER_FRIENDS_ACCEPT = "friendAccept";
 
 }

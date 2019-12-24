@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import fr.dta.ovg.contracts.JsonIgnoreContract;
 import io.swagger.annotations.ApiModelProperty;
 
 /** User Friends class. Association table.*/
@@ -34,11 +37,27 @@ public class UserFriend extends EntityBase {
     /** Selected user. */
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
+    @JsonIgnoreProperties({
+        JsonIgnoreContract.USER_FRIENDS_ACCEPT,
+        JsonIgnoreContract.HOBBIES,
+        JsonIgnoreContract.JOIN_EVENTS,
+        JsonIgnoreContract.NOTIFICATIONS,
+        JsonIgnoreContract.MESSAGES_EMITTED,
+        JsonIgnoreContract.MESSAGES_RECEIVED,
+        JsonIgnoreContract.LANGUAGES})
     private User friendRequest;
 
     /** Selected Hobby. */
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
+    @JsonIgnoreProperties({
+        JsonIgnoreContract.USER_FRIENDS_REQUEST,
+        JsonIgnoreContract.HOBBIES,
+        JsonIgnoreContract.JOIN_EVENTS,
+        JsonIgnoreContract.NOTIFICATIONS,
+        JsonIgnoreContract.MESSAGES_EMITTED,
+        JsonIgnoreContract.MESSAGES_RECEIVED,
+        JsonIgnoreContract.LANGUAGES})
     private User friendAccept;
 
     /** Get valid.

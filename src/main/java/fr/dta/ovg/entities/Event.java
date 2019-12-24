@@ -43,7 +43,8 @@ public class Event extends EntityBase {
         JsonIgnoreContract.NOTIFICATIONS,
         JsonIgnoreContract.LANGUAGES,
         JsonIgnoreContract.HOBBIES,
-        JsonIgnoreContract.FRIENDS,
+        JsonIgnoreContract.USER_FRIENDS_ACCEPT,
+        JsonIgnoreContract.USER_FRIENDS_REQUEST,
         JsonIgnoreContract.MESSAGES_EMITTED,
         JsonIgnoreContract.MESSAGES_RECEIVED})
     private User creator;

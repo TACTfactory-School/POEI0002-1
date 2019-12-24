@@ -22,6 +22,7 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import fr.dta.ovg.contracts.JsonIgnoreContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -132,12 +133,12 @@ public class User extends EntityBase {
 
     /** The requested friends list of the user.*/
     @OneToMany
-    @JsonIgnoreProperties("friendsRequest")
+    @JsonIgnoreProperties({JsonIgnoreContract.USER_FRIENDS_REQUEST, JsonIgnoreContract.USER_FRIENDS_ACCEPT})
     private final List<UserFriend> friendsRequest = new ArrayList<>();
 
     /** The accepted friends list of the user.*/
     @OneToMany
-    @JsonIgnoreProperties("friendsAccept")
+    @JsonIgnoreProperties({JsonIgnoreContract.USER_FRIENDS_REQUEST, JsonIgnoreContract.USER_FRIENDS_ACCEPT})
     private final List<UserFriend> friendsAccept = new ArrayList<>();
 
     /** Birthdate preference setting of the user.. <br> DB Column. */
