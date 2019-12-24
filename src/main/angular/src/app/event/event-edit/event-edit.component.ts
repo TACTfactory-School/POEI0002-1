@@ -17,7 +17,6 @@ import { first } from 'rxjs/operators';
 })
 export class EventEditComponent implements OnInit {
 
-
   newEvent: Event;
   editEvent: FormGroup;
   secondStep: FormGroup;
@@ -36,9 +35,6 @@ export class EventEditComponent implements OnInit {
 
   ngOnInit() {
     const stringValidator = (min: number, max: number) => [Validators.required, Validators.minLength(min), Validators.maxLength(max)];
-
-    console.log(this.event);
-    console.log(this.event.id);
     this.editEvent = this.fb.group({
       label: [this.event.label, stringValidator(3, 50)],
       description : [this.event.description, stringValidator(3, 500)],
@@ -79,8 +75,6 @@ export class EventEditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-
-            //location.reload();
             this.dialogRef.close(data);
             this._snackBar.open('Votre événement a bien été modifié !', 'Fermer', {
               duration: 4000,

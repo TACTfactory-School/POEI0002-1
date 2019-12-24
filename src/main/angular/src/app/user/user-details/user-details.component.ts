@@ -13,7 +13,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
   user$: Observable<User>;
   private sub: Subscription[] = [];
-
+  readonly avatar: string = '../../../assets/avatars';
 
   constructor(private readonly route: ActivatedRoute, private readonly api: UserApiService) { }
 

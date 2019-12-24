@@ -18,7 +18,8 @@ import { MatSnackBar } from '@angular/material';
 export class EventListCardComponent implements OnInit {
 
   readonly role: EventRole = 2; // GUEST
-  // [routerLink]="['/event', event.id]" on html
+  readonly avatar: string = '../../../../assets/avatars';
+  readonly eventimg: string = '../../../../assets/events';
   @Input() event: Event;
   currentUser: User;
   userJoin: JoinEvent;

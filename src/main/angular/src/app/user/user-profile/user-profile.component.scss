@@ -9,14 +9,16 @@
   flex: 1 1 auto;
 }
 
-//  .view-form {
-//   padding: 2rem;
-//   margin: auto;
-//   display: flex;
-//   justify-content: center;
-//   //flex-direction: row;
-// }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
 
+mat-card {
+  width: auto;
+}
 // --------------- Mat ToolBar --------------- //
 
 mat-toolbar {
@@ -55,18 +57,22 @@ a {
   font-weight: 500;
 }
 
+.delete {
+  background: #fff;
+  color: #ff2d3b;
+}
  // --------------- EVENT CARD --------------- //
 .user-profile-card, .user-avatar-card, .user-preferences-card {
-  //max-width: 600px;
+  max-width: 600px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   display: inline-table;
-  //width: 250px;
+  // width: 250px;
   margin: 1rem;
 }
 
 .user-profile-card:hover, .user-avatar-card:hover, .user-preferences-card:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 p {

@@ -1,0 +1,53 @@
+<div class="content">
+  <div class="header">
+    <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Modifier mes infos</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="user-edit">
+    <mat-dialog-content class="mat-typography">
+    <form [formGroup]="editUser">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Prénom</mat-label>
+          <input matInput placeholder="Prénom" formControlName="name">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" type="email" formControlName="email">
+          <mat-icon matSuffix *ngIf="icon">{{ icon }}</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Ville</mat-label>
+          <input matInput placeholder="Ville" formControlName="city">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Emploi</mat-label>
+          <input matInput placeholder="Emploi" formControlName="job">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Confirmez votre mot de passe</mat-label>
+          <input matInput placeholder="Confirmez votre mot de passe" formControlName="password">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+    </form>
+    <span class="spacer"></span>
+    <button  class="btn" mat-raised-button (click)="update()">Modifier</button>
+  </mat-dialog-content>
+  </div>
+</div>
