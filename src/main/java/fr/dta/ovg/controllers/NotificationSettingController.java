@@ -68,7 +68,8 @@ public class NotificationSettingController {
      * @throws BadRequestException : Incorrect request (ie Json Body{}).
      */
     @PostMapping
-    public  NotificationSetting create(@Valid @RequestBody final  NotificationSetting  notificationSetting) throws BadRequestException {
+    public  NotificationSetting create(@Valid @RequestBody final  NotificationSetting  notificationSetting)
+            throws BadRequestException {
 
         return this.service.create(notificationSetting);
     }

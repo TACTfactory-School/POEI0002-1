@@ -30,7 +30,7 @@ public final class UserContract {
     /** Column us_email. */
     public static final String COL_EMAIL = "us_email";
     /** Column us_email length. */
-    public static final int COL_EMAIL_LENGTH = 50 ;
+    public static final int COL_EMAIL_LENGTH = 50;
     /** Column us_email API Description. */
     public static final String COL_EMAIL_API = "The email of the user.";
 

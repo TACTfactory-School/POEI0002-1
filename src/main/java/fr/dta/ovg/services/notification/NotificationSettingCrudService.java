@@ -39,7 +39,6 @@ public interface NotificationSettingCrudService {
      * Delete one Notification setting entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id of notification setting entity.
-     * @return void : nothing.
      * @throws NotFoundException : Setting not found.*/
     void delete(long id) throws NotFoundException;
 }

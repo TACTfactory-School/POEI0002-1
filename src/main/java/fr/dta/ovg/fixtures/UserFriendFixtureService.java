@@ -20,7 +20,7 @@ import fr.dta.ovg.services.UserFriendCrudService;
 /** This class initialize DB with initials fixtures data. */
 @Component
 @Profile("!prod")
-public class UserFriendFixtureService  extends FixtureCheck<UserFriendRepository>{
+public class UserFriendFixtureService extends FixtureCheck<UserFriendRepository> {
 
     /** Link to entity repository. */
     private final UserFriendCrudService friendService;
@@ -54,7 +54,7 @@ public class UserFriendFixtureService  extends FixtureCheck<UserFriendRepository
 
         for (int i = 1; i < 100; i++) {
 
-            this.build(rand.nextBoolean(), userService.getOne(i), userService.getOne(i+1));
+            this.build(rand.nextBoolean(), userService.getOne(i), userService.getOne(i + 1));
 
             this.build(
                     rand.nextBoolean(),

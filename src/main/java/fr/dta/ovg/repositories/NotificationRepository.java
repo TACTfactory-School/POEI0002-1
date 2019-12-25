@@ -27,6 +27,6 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
                 + "INNER JOIN n.user u "
                 + "WHERE u.id = :userId "
                 + "ORDER BY n.createdAt DESC")
-    Page<Notification> findAllByUserId(Pageable pageableFinal, @Param("userId") final long userId);
+    Page<Notification> findAllByUserId(Pageable pageableFinal, @Param("userId") long userId);
 
 }
