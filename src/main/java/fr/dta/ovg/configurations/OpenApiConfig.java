@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fr.dta.ovg.contracts.ConfigurationContract;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -28,18 +29,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class OpenApiConfig {
 
-    /** BASE PACKAGE PATTERN */
-    private static final String BASE_PACKAGE = "fr.dta.ovg";
-
-    /**
-     *  API Swagger.
-     * @return Docket : Spring Web plugin Docket Object.
-     */
+    /** API Swagger.
+     * @return Docket : Spring Web plugin Docket Object.*/
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                     .select()
-                    .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
+                    .apis(RequestHandlerSelectors.basePackage(ConfigurationContract.API_BASE_PACKAGE))
                     .paths(PathSelectors.any())
                     .build()
                     .globalResponseMessage(
@@ -70,25 +66,21 @@ public class OpenApiConfig {
                     .apiInfo(this.metaData());
     }
 
-    /**
-     * METADATA API.
-     * @return ApiInfo : API informations.
-     */
+    /** METADATA API.
+     * @return ApiInfo : API informations.*/
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
-                .title("OVG API documentation")
-                .description("Documentation of the back-end API of On Va Geeker")
-                .license("© Tous droits réservés")
-                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("1.0.0")
+                .title(         ConfigurationContract.API_INFO_TITLE)
+                .description(   ConfigurationContract.API_INFO_DESCRIPTION)
+                .license(       ConfigurationContract.API_INFO_LICENSE)
+                .licenseUrl(    ConfigurationContract.API_INFO_LICENSE_URL)
+                .version(       ConfigurationContract.API_INFO_VERSION)
                 .build();
     }
 
-    /**
-     * Http Error Responses.
+    /** HTTP Error Responses.
      * @param status HttpStatus.
-     * @return List of Response Message.
-     */
+     * @return List of Response Message.*/
     private List<ResponseMessage> httpErrorResponses(final HttpStatus...status) {
         return Stream
                 .of(status)
@@ -96,11 +88,9 @@ public class OpenApiConfig {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Http Error Responses.
+    /** HTTP Error Responses.
      * @param status HttpStatus.
-     * @return Single Response Message.
-     */
+     * @return Single Response Message.*/
     private ResponseMessage httpErrorResponse(final HttpStatus status) {
         return new ResponseMessageBuilder()
                 .code(status.value())

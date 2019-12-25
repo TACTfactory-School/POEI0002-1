@@ -18,6 +18,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import fr.dta.ovg.contracts.ConfigurationContract;
 import fr.dta.ovg.services.user.UserDetailsServiceImpl;
 
 /** Security Configuration Class (Web Security Configurer Adapter)*/
@@ -41,9 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
             .cors().disable()
             .authorizeRequests()
-                .antMatchers("/api/v1/user/me").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/v1/event").authenticated()
-                .antMatchers(HttpMethod.POST, "/api/v1/user").anonymous()
+                .antMatchers(ConfigurationContract.REQUEST_URI_USER_ME).permitAll()
+                .antMatchers(HttpMethod.POST, ConfigurationContract.REQUEST_URI_EVENT).authenticated()
+                .antMatchers(HttpMethod.POST, ConfigurationContract.REQUEST_URI_MESSAGE).authenticated()
+                .antMatchers(HttpMethod.POST, ConfigurationContract.REQUEST_URI_HOBBY).authenticated()
+                .antMatchers(HttpMethod.POST, ConfigurationContract.REQUEST_URI_LANGUAGE).authenticated()
+                .antMatchers(HttpMethod.POST, ConfigurationContract.REQUEST_URI_USER).anonymous()
                 .anyRequest().permitAll()
             .and()
             .httpBasic()

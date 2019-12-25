@@ -11,6 +11,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import fr.dta.ovg.contracts.ConfigurationContract;
 import fr.dta.ovg.exceptions.NotFoundException;
 
 /** Controller Configuration Class.*/
@@ -27,8 +28,8 @@ public class ControllerConfig {
 
         final Map<String, Object> result = new HashMap<>();
 
-        result.put("date", ZonedDateTime.now());
-        result.put("error", e.getMessage());
+        result.put(ConfigurationContract.CONTROLLER_404_DATE, ZonedDateTime.now());
+        result.put(ConfigurationContract.CONTROLLER_404_ERROR, e.getMessage());
 
         return result;
     }
