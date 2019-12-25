@@ -24,84 +24,85 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import fr.dta.ovg.contracts.JsonIgnoreContract;
+import fr.dta.ovg.contracts.UserContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /** Entity User class.*/
 @Entity
-@Table(name = "app_users")
-@ApiModel(value = "Describes an User for our system")
+@Table(name = UserContract.TABLE)
+@ApiModel(value = UserContract.TABLE_API)
 public class User extends EntityBase {
 
     /** Username of user. <br> DB Column. */
     @NotBlank
-    @Column(name = "us_username", length = 32, nullable = false, unique = true)
-    @ApiModelProperty(value = "The username of the user.")
+    @Column(name = UserContract.COL_USERNAME, length = 32, nullable = false, unique = true)
+    @ApiModelProperty(value = UserContract.COL_USERNAME_API)
     private String username;
 
     /** Email of user. <br> DB Column. */
     @NotBlank
-    @Column(name = "us_email", length = 50, nullable = false, unique = true)
-    @ApiModelProperty(value = "The email of the user.")
+    @Column(name = UserContract.COL_EMAIL, length = 50, nullable = false, unique = true)
+    @ApiModelProperty(value = UserContract.COL_EMAIL_API)
     private String email;
 
     /** Password of user. <br> DB Column. */
     @NotBlank
-    @Column(name = "us_password", unique = false, nullable = true)
-    @ApiModelProperty(value = "The password of the user.")
+    @Column(name = UserContract.COL_PASSWORD, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_PASSWORD_API)
     @JsonProperty(access = Access.WRITE_ONLY)
     private String password; // TODO must be encrypted.
 
     /** Birthdate of user. <br> DB Column. */
-    @Column(name = "us_birthdate", unique = false, nullable = false)
-    @ApiModelProperty(value = "The birthdate of the user.")
+    @Column(name = UserContract.COL_BIRTHDATE, unique = false, nullable = false)
+    @ApiModelProperty(value = UserContract.COL_BIRTHDATE_API)
     private LocalDate birthdate;
 
     /** Firstname of user. <br> DB Column. */
-    @Column(name = "us_firstname", unique = false, nullable = true)
-    @ApiModelProperty(value = "The firstname of the user.")
+    @Column(name = UserContract.COL_FIRSTNAME, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_FIRSTNAME_API)
     private String firstname;
 
     /** City of user. <br> DB Column. */
-    @Column(name = "us_city", unique = false, nullable = true)
-    @ApiModelProperty(value = "The city of the user.")
+    @Column(name = UserContract.COL_CITY, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_CITY_API)
     private String city;
 
     /** Job of user. <br> DB Column. */
-    @Column(name = "us_job", unique = false, nullable = true)
-    @ApiModelProperty(value = "The job of the user.")
+    @Column(name = UserContract.COL_JOB, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_JOB_API)
     private String job;
 
     /** Fiability rate of user. <br> DB Column. */
-    @Column(name = "us_rate", unique = false, nullable = true)
-    @ApiModelProperty(value = "The fiability rate of the user.")
+    @Column(name = UserContract.COL_RATE, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_RATE_API)
     private float rate;
 
     /** Last Login Date of user. <br> DB Column. */
-    @Column(name = "us_lastlog", unique = false, nullable = true)
-    @ApiModelProperty(value = "The last login date rate of the user.")
+    @Column(name = UserContract.COL_LAST_LOGIN, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_LAST_LOGIN_API)
     private LocalDateTime lastLogin;
 
     /** Gender of user. <br> DB Column. */
-    @Column(name = "us_gender", unique = false, nullable = true)
-    @ApiModelProperty(value = "The gender of the user.")
+    @Column(name = UserContract.COL_GENDER, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_GENDER_API)
     @Enumerated(EnumType.ORDINAL)
     private UserGender gender;
 
     /** Marital status of user. <br> DB Column. */
-    @Column(name = "us_status", unique = false, nullable = true)
-    @ApiModelProperty(value = "The marital status of the user.")
+    @Column(name = UserContract.COL_STATUS, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_STATUS_API)
     @Enumerated(EnumType.ORDINAL)
     private UserStatus maritalStatus;
 
     /** User Avatar. <br> DB Column. */
-    @Column(name = "us_avatar", unique = false, nullable = true)
-    @ApiModelProperty(value = "The avatar of the user.")
+    @Column(name = UserContract.COL_AVATAR, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_AVATAR_API)
     private byte avatar;
 
     /** Join event List of the Event. <br>DB Column.*/
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties({"user"})
+    @OneToMany(mappedBy = UserContract.MAPPED_BY_USER)
+    @JsonIgnoreProperties({JsonIgnoreContract.USER})
 //    @JsonIgnore
     private final List<JoinEvent> joinEvents = new ArrayList<>();
 
@@ -110,26 +111,26 @@ public class User extends EntityBase {
     private NotificationSetting preferences;
 
     /** The notifications list of the user.*/
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("user")
+    @OneToMany(mappedBy = UserContract.MAPPED_BY_USER)
+    @JsonIgnoreProperties(JsonIgnoreContract.USER)
     private final List<Notification> notifications = new ArrayList<>();
 
     /** The emitted messages list of the user.*/
-    @OneToMany(mappedBy = "userEmitter")
+    @OneToMany(mappedBy = UserContract.MAPPED_BY_USER_EMITTER)
     private final List<Message> messagesEmitted = new ArrayList<>();
 
     /** The received messages list of the user.*/
-    @OneToMany(mappedBy = "userReceiver")
+    @OneToMany(mappedBy = UserContract.MAPPED_BY_USER_RECEIVER)
     private final List<Message> messagesReceived = new ArrayList<>();
 
     /** The languages list of the user.*/
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("user")
+    @OneToMany(mappedBy = UserContract.MAPPED_BY_USER)
+    @JsonIgnoreProperties(JsonIgnoreContract.USER)
     private final List<UserLanguage> languages = new ArrayList<>();
 
     /** The hobbies list of the user.*/
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("user")
+    @OneToMany(mappedBy = UserContract.MAPPED_BY_USER)
+    @JsonIgnoreProperties(JsonIgnoreContract.USER)
     private final List<UserHobby> hobbies = new ArrayList<>();
 
     /** The requested friends list of the user.*/
@@ -143,40 +144,35 @@ public class User extends EntityBase {
     private final List<UserFriend> friendsAccept = new ArrayList<>();
 
     /** Birthdate preference setting of the user.. <br> DB Column. */
-    @Column(name = "us_pref_birthdate", unique = false, nullable = true)
-    @ApiModelProperty(value = "Hidden birthdate preference setting of the user.")
+    @Column(name = UserContract.COL_PREF_BIRTHDATE, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_PREF_BIRTHDATE_API)
     private boolean birthdateHidden = false;
 
     /** Mail preference setting of the user.. <br> DB Column. */
-    @Column(name = "us_pref_mail", unique = false, nullable = true)
-    @ApiModelProperty(value = "Hidden email preference setting of the user.")
+    @Column(name = UserContract.COL_PREF_MAIL, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_PREF_MAIL_API)
     private boolean mailHidden = false;
 
     /** Job preference setting of the user.. <br> DB Column. */
-    @Column(name = "us_pref_job", unique = false, nullable = true)
-    @ApiModelProperty(value = "Hidden job preference setting of the user.")
+    @Column(name = UserContract.COL_PREF_JOB, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_PREF_JOB_API)
     private boolean jobHidden = false;
 
     /** Gender preference setting of the user.. <br> DB Column. */
-    @Column(name = "us_pref_gender", unique = false, nullable = true)
-    @ApiModelProperty(value = "Hidden gender preference setting of the user.")
+    @Column(name = UserContract.COL_PREF_GENDER, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_PREF_GENDER_API)
     private boolean genderHidden = false;
 
     /** Marital status preference setting of the user.. <br> DB Column. */
-    @Column(name = "us_pref_status", unique = false, nullable = true)
-    @ApiModelProperty(value = "Hidden marital status preference setting of the user.")
+    @Column(name = UserContract.COL_PREF_STATUS, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_PREF_STATUS_API)
     private boolean statusHidden = false;
 
     /** Override toString() method with User attributes. */
     @Override
     public String toString() {
 
-        StringBuilder eventDetails = new StringBuilder();
-
-        eventDetails
-            .append("| Username : %s | Email : %s | Firstname : %s | Birthdate : %dt ")
-            .append("| Job : %s | City : %s | Rate : %d |");
-        return String.format(eventDetails.toString(),
+        return String.format(UserContract.TO_STRING,
                 username, email, firstname, birthdate, job, city, rate);
     }
 

@@ -114,6 +114,7 @@ public class UserController {
     }
 
     /** Create an User Friend.<br>POST - HTTP.
+     * @param id : current user id.
      * @param friendRequestId : User id of the friend request.
      * @return the created object UserFriend.
      * @throws BadRequestException : Incorrect request.
@@ -125,9 +126,9 @@ public class UserController {
 
         if (this.friendService.existsByUsernameIgnoreCaseAndIdNot(
                 this.service.getOne(id).getUsername(), friendRequestId)) {
-
             throw new BadRequestException("uniq_friend");
         }
+
         UserFriend userFriend = new UserFriend();
 
         userFriend.setValid(false);
