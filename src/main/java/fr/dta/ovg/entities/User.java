@@ -36,13 +36,15 @@ public class User extends EntityBase {
 
     /** Username of user. <br> DB Column. */
     @NotBlank
-    @Column(name = UserContract.COL_USERNAME, length = 32, nullable = false, unique = true)
+    @Column(name = UserContract.COL_USERNAME,
+            length = UserContract.COL_USERNAME_LENGTH, nullable = false, unique = true)
     @ApiModelProperty(value = UserContract.COL_USERNAME_API)
     private String username;
 
     /** Email of user. <br> DB Column. */
     @NotBlank
-    @Column(name = UserContract.COL_EMAIL, length = 50, nullable = false, unique = true)
+    @Column(name = UserContract.COL_EMAIL,
+            length = UserContract.COL_EMAIL_LENGTH, nullable = false, unique = true)
     @ApiModelProperty(value = UserContract.COL_EMAIL_API)
     private String email;
 

@@ -1,3 +1,8 @@
+/* Join Event Repository class.
+ * @author Colin Cerveaux @C-ambium
+ * Shared attributes between entity.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.repositories;
 
 import fr.dta.ovg.entities.JoinEvent;

@@ -27,7 +27,8 @@ public class EventDeleteService {
     private EventRepository repository;
 
     /** Delete Event function implementation.
-     * @param id : number of the selected Event.*/
+     * @param id : number of the selected Event.
+     * @throws NotFoundException : Event entity not found.*/
     void delete(final long id)  throws NotFoundException {
         LOG.debug("Delete event");
 

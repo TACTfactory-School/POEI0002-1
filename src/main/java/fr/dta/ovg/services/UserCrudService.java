@@ -49,13 +49,13 @@ public interface UserCrudService {
 
     // TODO Delete this functions from event.
 
-    /** existsByUsernameIgnoreCaseAndIdNot
+    /** existsByUsernameIgnoreCaseAndIdNot function.
      * @param username of the user.
      * @param id of the user.
      * @return true if user existing by username and id not.*/
     boolean existsByUsernameIgnoreCaseAndIdNot(String username, Long id);
 
-    /** existsByUsername function
+    /** existsByUsername function.
      * @param user : @see User entity.
      * @return true if the username exists.*/
     boolean existsByUsername(User user);

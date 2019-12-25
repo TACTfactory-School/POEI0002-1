@@ -26,7 +26,7 @@ import fr.dta.ovg.services.user.UserCrudServiceImpl;
 /** This class initialize DB with initials languages fixtures data. */
 @Component
 @Profile("!prod")
-public class LanguageFixtureService  extends FixtureCheck<LanguageRepository>{
+public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
 
     /** Link to Language CRUD Service. */
     private final LanguageCrudService langService;

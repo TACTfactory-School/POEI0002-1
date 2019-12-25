@@ -24,12 +24,13 @@ public interface NotificationSettingCrudService {
      * Must be redefined in implemented class.<br>
      * @param id of notification setting.
      * @return Notification : entity.
-     * */
+     * @throws NotFoundException : Setting not found.*/
     NotificationSetting getOne(long id) throws NotFoundException;
 
     /**
      * Create one Notification setting entity.<br>
      * Must be redefined in implemented class.<br>
+     * @param notificationSetting : @see NotificationSetting entity.
      * @return Created Notification setting : entity.
      * */
     NotificationSetting create(NotificationSetting notificationSetting);
@@ -39,6 +40,6 @@ public interface NotificationSettingCrudService {
      * Must be redefined in implemented class.<br>
      * @param id of notification setting entity.
      * @return void : nothing.
-     * */
+     * @throws NotFoundException : Setting not found.*/
     void delete(long id) throws NotFoundException;
 }

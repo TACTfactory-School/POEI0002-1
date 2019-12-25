@@ -1,3 +1,9 @@
+/* Notifications Repository class.
+ * @author Colin Cerveaux @C-ambium
+ * Shared attributes between entity.
+ * License : ©2019 All rights reserved
+ */
+
 package fr.dta.ovg.repositories;
 
 import org.springframework.data.domain.Page;
@@ -13,6 +19,10 @@ import fr.dta.ovg.entities.Notification;
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
 
+    /** Find all notifications by User id.
+   * @param pageableFinal : @see Pageable.
+   * @param userId : User id Notifications.
+   * @return Notifications page object.*/
     @Query("SELECT n FROM Notification n "
                 + "INNER JOIN n.user u "
                 + "WHERE u.id = :userId "

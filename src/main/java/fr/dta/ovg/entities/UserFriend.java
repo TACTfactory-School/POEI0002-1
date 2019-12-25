@@ -97,7 +97,7 @@ public class UserFriend extends EntityBase {
 
     /** Set the requested friend user.
      * @param friendRequest : the friendRequest to set.*/
-    public void setFriendRequest(User friendRequest) {
+    public void setFriendRequest(final User friendRequest) {
         if (this.friendRequest != friendRequest) {
             this.friendRequest = friendRequest;
             if (friendRequest != null) {
@@ -114,7 +114,7 @@ public class UserFriend extends EntityBase {
 
     /** Set the accepted friend user.
      * @param friendAccept : the friendAccept to set.*/
-    public void setFriendAccept(User friendAccept) {
+    public void setFriendAccept(final User friendAccept) {
         if (this.friendAccept != friendAccept) {
             this.friendAccept = friendAccept;
             if (friendAccept != null) {

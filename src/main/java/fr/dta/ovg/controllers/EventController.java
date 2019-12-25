@@ -122,7 +122,7 @@ public class EventController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable final Long id) throws NotFoundException {
         Event event = this.service.getOne(id);
-        for(JoinEvent j : event.getUsersJoin()) {
+        for (JoinEvent j : event.getUsersJoin()) {
             this.joinServ.delete(j.getId());
         }
         this.service.delete(id);

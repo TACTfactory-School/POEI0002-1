@@ -8,7 +8,7 @@ import fr.dta.ovg.entities.User;
 import fr.dta.ovg.entities.UserFriend;
 
 /** User Friend Repository extends JPA Repository. */
-public interface UserFriendRepository extends JpaRepository<UserFriend, Long>{
+public interface UserFriendRepository extends JpaRepository<UserFriend, Long> {
 
     /** Exist by username function.
      * @param user : @see User.

@@ -21,13 +21,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import fr.dta.ovg.contracts.ConfigurationContract;
 import fr.dta.ovg.services.user.UserDetailsServiceImpl;
 
-/** Security Configuration Class (Web Security Configurer Adapter)*/
+/** Security Configuration Class (Web Security Configurer Adapter).*/
 @EnableWebSecurity
 @EnableAutoConfiguration
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    /** Link to User Details Service Implementation */
+    /** Link to User Details Service Implementation.*/
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
 

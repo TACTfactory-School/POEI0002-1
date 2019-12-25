@@ -22,11 +22,15 @@ public final class UserContract {
     // COLUMNS DEFINITION
     /** Column us_username. */
     public static final String COL_USERNAME = "us_username";
+    /** Column us_username length. */
+    public static final int COL_USERNAME_LENGTH = 32;
     /** Column us_username API Description. */
     public static final String COL_USERNAME_API = "The username of the user.";
 
     /** Column us_email. */
     public static final String COL_EMAIL = "us_email";
+    /** Column us_email length. */
+    public static final int COL_EMAIL_LENGTH = 50 ;
     /** Column us_email API Description. */
     public static final String COL_EMAIL_API = "The email of the user.";
 
@@ -120,10 +124,5 @@ public final class UserContract {
                                         + "| Job : %s "
                                         + "| City : %s "
                                         + "| Rate : %d |";
-
-    /** Column us_avatar. */
-    public static final String COL_ = "";
-    /** Column us_avatar API Description. */
-    public static final String _API = "";
 
 }

@@ -29,7 +29,9 @@ public class UserFriendFixtureService  extends FixtureCheck<UserFriendRepository
     private final UserCrudService userService;
 
     /** Local Constructor.
-     * Link to UserFriend Repository by UserFriendCrudService.*/
+     * Link to UserFriend Repository by UserFriendCrudService.
+     * @param friendService : @see UserFriendCrudService.
+     * @param userService : @see UserCrudService.*/
     public UserFriendFixtureService(
             @Autowired final UserFriendCrudService friendService,
             @Autowired final UserCrudService userService) {

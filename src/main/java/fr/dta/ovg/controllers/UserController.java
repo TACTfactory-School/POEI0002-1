@@ -68,8 +68,7 @@ public class UserController {
     /** Get All Friends function.<br>GET - HTTP.
      * @return List of all user's friends.
      * @param page : the page number.
-     * @param quantity : the quantity of return per page.
-     * @param search :String to process search.*/
+     * @param quantity : the quantity of return per page.*/
     @GetMapping("/friend")
     public Page<UserFriend> getAllFriends(final int page, final int quantity) {
 
@@ -118,7 +117,7 @@ public class UserController {
      * @param friendRequestId : User id of the friend request.
      * @return the created object UserFriend.
      * @throws BadRequestException : Incorrect request.
-     * @throws NotFoundException. User entity not found exception.*/
+     * @throws NotFoundException : User entity not found exception.*/
     @PostMapping("/friend")
     @ResponseStatus(HttpStatus.CREATED)
     public UserFriend addNewFriend(@PathVariable final Long id, final Long friendRequestId)

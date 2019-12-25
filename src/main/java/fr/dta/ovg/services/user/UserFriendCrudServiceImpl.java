@@ -15,7 +15,7 @@ import fr.dta.ovg.services.UserFriendCrudService;
 
 /** User Friend CRUD service Implementation.*/
 @Service
-public class UserFriendCrudServiceImpl implements UserFriendCrudService{
+public class UserFriendCrudServiceImpl implements UserFriendCrudService {
 
     /** Link to entity repository. */
     @Autowired
@@ -63,7 +63,7 @@ public class UserFriendCrudServiceImpl implements UserFriendCrudService{
     }
 
     @Override
-    public boolean existsByUsernameIgnoreCaseAndIdNot(String username, Long friendRequestId) {
+    public boolean existsByUsernameIgnoreCaseAndIdNot(final String username, final Long friendRequestId) {
         // TODO Auto-generated method stub
         return false;
     }

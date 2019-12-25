@@ -70,11 +70,11 @@ public class OpenApiConfig {
      * @return ApiInfo : API informations.*/
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
-                .title(         ConfigurationContract.API_INFO_TITLE)
-                .description(   ConfigurationContract.API_INFO_DESCRIPTION)
-                .license(       ConfigurationContract.API_INFO_LICENSE)
-                .licenseUrl(    ConfigurationContract.API_INFO_LICENSE_URL)
-                .version(       ConfigurationContract.API_INFO_VERSION)
+                .title(ConfigurationContract.API_INFO_TITLE)
+                .description(ConfigurationContract.API_INFO_DESCRIPTION)
+                .license(ConfigurationContract.API_INFO_LICENSE)
+                .licenseUrl(ConfigurationContract.API_INFO_LICENSE_URL)
+                .version(ConfigurationContract.API_INFO_VERSION)
                 .build();
     }
 
