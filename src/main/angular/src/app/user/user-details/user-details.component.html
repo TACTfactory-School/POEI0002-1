@@ -35,9 +35,9 @@
               <!-- Check user préférences -->
               <dd>{{ u.email }}</dd>
 
-              <ng-container *ngIf="u.languages.values">
+              <ng-container *ngIf="u.languages && u.languages.length">
                 <dt>Langues parlés</dt>
-                <dd *ngFor="let l of u.languages; index as i">{{ l.language.label }} {{ l.level }}</dd>
+                <dd *ngFor="let l of u.languages; index as i">{{ l.language.label }} {{ l.level | translate }}</dd>
               </ng-container>
 
               <ng-container *ngIf="u.birthdate">
@@ -60,7 +60,7 @@
 
               <ng-container *ngIf="u.maritalStatus">
                 <dt>Sitation familiale</dt>
-                <dd>{{ u.maritalStatus }}</dd>
+                <dd>{{ u.maritalStatus | translate }}</dd>
               </ng-container>
 
               <ng-container *ngIf="u.gender">
@@ -74,12 +74,12 @@
               <dt>Dernière modification</dt>
               <dd>{{ u.updatedAt | date: 'short' }}</dd>
 
-              <ng-container *ngIf="u.hobbies">
+              <ng-container *ngIf="u.hobbies && u.hobbies.length">
                 <dt>Centres d'intérêts</dt>
                 <dd *ngFor="let hobby of u.hobbies; index as i">{{ hobby.label }}</dd>
               </ng-container>
 
-              <ng-container *ngIf="u.events && u.events.values">
+              <ng-container *ngIf="u.events && u.events.length">
                 <dt>Evenements</dt>
                 <dd *ngFor="let event of u.events; index as i">{{ event.label }}</dd>
               </ng-container>

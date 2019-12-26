@@ -40,6 +40,11 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
     /** Declare new Random object.*/
     private final Random rand = new Random();
 
+    /** Number of level choices minus one (because random object can hit zero).*/
+    private final static byte NB_LEVELS = 4;
+    /** Number of languages default choices minus one (because random object can hit zero).*/
+    private final static byte NB_LANGS = 4;
+
     /** LanguageFixtureService Constructor. Initialize Language CRUD service.
      * @param langService : @see LanguageCrudService.
      * @param userLanguageRepo : @see UserLanguageRepository.
@@ -62,10 +67,22 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
         Stream.of("FRANÇAIS", "ENGLISH", "DEUTSCH", "ITALIANO", "ESPAÑOL", "中国的", "ไทย", "РУССКИЙ")
             .forEach(this::build);
 
-        this.buildUserLanguage(
-                this.languageLevelStore().get(rand.nextInt(4)),
-                this.langService.getOne(rand.nextInt(7) + 1),
-                this.userService.getOne(rand.nextInt(99) + 1));
+        // Build real fixtures.
+        for (int i = 1; i < 4; i++) {
+            this.buildUserLanguage(
+                    this.languageLevelStore().get(4),// Here we use 0 index because its an array.
+                    this.langService.getOne(1),
+                    this.userService.getOne(i));
+        }
+
+        // Build fake fixtures.
+        for (int i = 4; i < 100; i++) {
+            this.buildUserLanguage(
+                    this.languageLevelStore().get(rand.nextInt(NB_LEVELS)),// Here we use 0 index because its an array.
+                    this.langService.getOne(rand.nextInt(NB_LANGS) + 1),
+                    this.userService.getOne(rand.nextInt(i) + 1));
+        }
+
     }
 
     /** Language Builder Function.
