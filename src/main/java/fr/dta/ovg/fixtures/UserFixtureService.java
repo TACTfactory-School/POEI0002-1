@@ -57,8 +57,10 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().safeEmailAddress());
 
     /** Local Constructor.
-     * Link to User Repository by UserCreateService.
-     * Get Value of fakerSize @see application.properties. */
+     * @param fakerSize : @see application-dev.properties.
+     * @param encoder : @see PasswordEncoder.
+     * @param service : @see UserCreateService.
+     * @param prefService : @see NotificationSettingCrudService.*/
     public UserFixtureService(
             @Value("${app.user.fixtures.fakersize:100}") final int fakerSize,
             @Autowired() final PasswordEncoder encoder,
@@ -70,16 +72,17 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         this.prefService = prefService;
     }
 
-    /** Create-Drop DB - Insert initial data, erasing old data every run.
-     * @throws NotFoundException */
+    /** Create-Drop DB - Insert initial data, erasing old data every run (create-drop mode).
+     * Fixtures are loaded only if no data.
+     * @throws NotFoundException : User entity not found.*/
     @Override
     public void loadIfNoData() throws NotFoundException {
         this.loadReal();
         this.loadFake();
     }
 
-    /** Load Real fixture function.
-     * @throws NotFoundException : Preferences not found.*/
+    /** Build some real user fixture.
+     * @throws NotFoundException : Entity requested not found.*/
     private void loadReal() throws NotFoundException {
         this.build("Pamwamba",  "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
                     "Samy",     "Nantes",               "Dev Fullstack", 4.5f, LocalDateTime.now(),

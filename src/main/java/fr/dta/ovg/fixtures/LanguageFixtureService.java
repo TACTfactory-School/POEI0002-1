@@ -54,8 +54,8 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
     }
 
 
-    /** Insert initial data - Create-drop mode will erasing old data in the DB at every run.
-     * @throws NotFoundException */
+    /** Fixtures are loaded only if no data.
+     * @throws NotFoundException : Language entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
 
@@ -68,7 +68,7 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
                 this.userService.getOne(rand.nextInt(99) + 1));
     }
 
-    /** Build Language Function.
+    /** Language Builder Function.
      * @param label : the language label.*/
     private void build(final String label) {
 
@@ -80,7 +80,9 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
     }
 
     /** Build UserLanguage Join table Function.
-     * @param label : the language label.*/
+     * @param level : user language level.
+     * @param language : language choosed.
+     * @param user : current user.*/
     private void buildUserLanguage(final LanguageLevel level, final Language language, final User user) {
 
         final UserLanguage userLang = new UserLanguage();

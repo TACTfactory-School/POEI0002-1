@@ -1,3 +1,9 @@
+/* Message Fixtures DB Service.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Initialize DB with initials data.
+ * License : ©2019 All rights reserved
+ */
+
 package fr.dta.ovg.fixtures;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +22,24 @@ import fr.dta.ovg.services.UserCrudService;
 @Profile("!prod")
 public class MessageFixtureService extends FixtureCheck<MessageRepository> {
 
+    /** Link to Message CRUD Service. */
     private final MessageCrudService messageService;
 
+    /** Link to User CRUD Service. */
     private final UserCrudService userService;
 
-
+    /** Local Constructor.
+     * @param messageService : @see MessageCrudService.
+     * @param userService : @see UserCrudService.*/
     public MessageFixtureService(
             @Autowired final MessageCrudService messageService,
             @Autowired final UserCrudService userService) {
         this.messageService = messageService;
         this.userService = userService;
     }
+
+    /** Fixtures are loaded only if no data.
+     * @throws NotFoundException : Message entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
         this.build("Salut Pamwamba, Comment tu vas ?",                  userService.getOne(2), userService.getOne(1));
@@ -41,6 +54,10 @@ public class MessageFixtureService extends FixtureCheck<MessageRepository> {
         }
     }
 
+    /** Message Builder.
+     * @param msg : the message.
+     * @param userEmitter : User who emit.
+     * @param userReceiver : User who receive.*/
     private void build(final String msg, final User userEmitter, final User userReceiver) {
 
         final Message message = new Message();

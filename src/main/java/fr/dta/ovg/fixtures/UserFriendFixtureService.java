@@ -39,8 +39,8 @@ public class UserFriendFixtureService extends FixtureCheck<UserFriendRepository>
         this.userService = userService;
     }
 
-    /** Create-Drop DB - Insert initial data, erasing old data every run.
-     * @throws NotFoundException if one entity not found.*/
+    /** Fixtures are loaded only if no data.
+     * @throws NotFoundException : entity not found.*/
     @Override
     public void loadIfNoData() throws NotFoundException {
         this.loadFriend();

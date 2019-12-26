@@ -52,7 +52,16 @@ public class FixtureService implements Fixture {
     @Autowired
     private UserFriendFixtureService friendFixture;
 
-    /** Call loading initials fixtures @see {@link EventFixtureService}.
+    /** Call loading initials fixtures
+     * @see {@link EventFixtureService}
+     * @see {@link UserFixtureService}
+     * @see {@link HobbyFixtureService}
+     * @see {@link NotificationFixtureService}
+     * @see {@link MessageFixtureService}
+     * @see {@link JoinEventFixtureService}
+     * @see {@link NotificationSettingFixtureService}
+     * @see {@link LanguageFixtureService}
+     * @see {@link UserFriendFixtureService}
      *  @throws NotFoundException */
     @Transactional
     public void load() throws NotFoundException {

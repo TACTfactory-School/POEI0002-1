@@ -9,8 +9,11 @@ import javax.transaction.Transactional;
 
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Fixture Interface. */
 public interface Fixture {
 
+    /** Load function.
+     * @throws NotFoundException : Entity not found.*/
     @Transactional
     void load() throws NotFoundException;
 }

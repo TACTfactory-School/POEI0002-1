@@ -20,14 +20,16 @@ public class NotificationSettingFixtureService extends FixtureCheck<Notification
 
     /**
      * Local Constructor.
-     *  Link to Notification Setting Service. */
+     *  Link to Notification Setting Service.
+     * @param notificationSettingService : @see NotificationSettingCrudService.*/
     public NotificationSettingFixtureService(
             @Autowired final NotificationSettingCrudService notificationSettingService) {
         this.notificationSettingService = notificationSettingService;
     }
 
-    /** Create-Drop DB - Insert initial data, erasing old data every run.
-     * @throws NotFoundException */
+
+    /** Fixtures are loaded only if no data.
+     * @throws NotFoundException : NotificationSetting entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
         this.build(false, false);
@@ -37,11 +39,9 @@ public class NotificationSettingFixtureService extends FixtureCheck<Notification
 
     }
 
-    /**
-     * The build function to create fixtures.
-     * @param activeApp : the boolean that indicate if in-App notifications are activated
-     * @param activeMail : the boolean that indicate if mail notifications are activated
-     */
+    /** NotificationSetting builder function (to create fixtures).
+     * @param activeApp : the boolean that indicate if in-App notifications are activated.
+     * @param activeMail : the boolean that indicate if mail notifications are activated.*/
     private void build(final boolean activeApp, final boolean activeMail) {
         final NotificationSetting notificationSetting = new NotificationSetting();
 

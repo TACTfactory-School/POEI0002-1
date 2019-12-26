@@ -1,3 +1,8 @@
+/* Hobby Fixtures DB Service.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Initialize DB with initials data.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.fixtures;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +19,20 @@ import fr.dta.ovg.services.HobbyCrudService;
 @Profile("!prod")
 public class HobbyFixtureService extends FixtureCheck<HobbyRepository> {
 
+    /** Link to Hobby CRUD Service. */
     private final HobbyCrudService hobbyService;
 
+    /** Local Constructor.
+     * Link to Event Create Service.
+     * @param hobbyService : @see HobbyCrudService.*/
     public HobbyFixtureService(@Autowired final HobbyCrudService hobbyService) {
         this.hobbyService = hobbyService;
     }
 
 
-    /** Insert initial data - Create-drop mode will erasing old data in the DB at every run. */
+    /** Insert initial data - Create-drop mode will erasing old data in the DB at every run.
+     * Fixtures are loaded only if no data.
+     * @throws NotFoundException : Hobby entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
         this.build("Bénévolat");
@@ -42,6 +53,8 @@ public class HobbyFixtureService extends FixtureCheck<HobbyRepository> {
         this.build("Dessin");
     }
 
+    /** Hobby Builder.
+     * @param label : hobby name.*/
     private void build(final String label) {
 
         final Hobby hobby = new Hobby();

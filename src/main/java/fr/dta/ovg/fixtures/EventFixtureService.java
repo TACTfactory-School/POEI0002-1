@@ -36,24 +36,31 @@ import fr.dta.ovg.services.event.EventCreateService;
 @Profile("!prod")
 public class EventFixtureService extends FixtureCheck<EventRepository> {
 
+    /** Link to Event Create Service. */
     private final EventCreateService eventService;
 
+    /** Link to User CRUD Service. */
     private final UserCrudService userService;
 
+    /** Link to Join CRUD Service. */
     private final JoinCrudService joinService;
 
+    /** Event Faker Size. */
     private int eventFakerSize;
 
+    /** User Faker Size. */
     private int userFakerSize;
 
-
+    /** Define new Faker and set Local to french FR. */
     private final Faker fake = new Faker(new Locale("fr"));
 
-    /**
-     * Local Constructor.
-     *  Link to Event Create Service.
-     *  Get Value of fakerSize @see application.properties. */
-     public EventFixtureService(
+    /** Local Constructor.
+     * @param eventFakerSize : @see application-dev.properties.
+     * @param userFakerSize : @see application-dev.properties.
+     * @param eventService : @see EventCreateService.
+     * @param userService : @see UserCrudService.
+     * @param joinService: @see JoinCrudService.*/
+    public EventFixtureService(
             @Value("${app.event.fixtures.fakersize:100}") final int eventFakerSize,
             @Value("${app.user.fixtures.fakersize:100}") final int userFakerSize,
             @Autowired final EventCreateService eventService,
@@ -66,14 +73,17 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         this.joinService = joinService;
     }
 
-    /** Create-Drop DB - Insert initial data, erasing old data every run.
-     * @throws NotFoundException */
+    /** Create-Drop DB - Insert initial data, erasing old data every run (create-drop mode).
+     * Fixtures are loaded only if no data.
+     * @throws NotFoundException : Event entity not found.*/
     @Override
     public void loadIfNoData() throws NotFoundException {
         this.loadReal();
         this.loadFake();
     }
 
+    /** Build manually some real Event fixture.
+     * @throws NotFoundException : Event entity not found.*/
     private void loadReal() throws NotFoundException {
 
         ZonedDateTime start = ZonedDateTime.now();
@@ -99,6 +109,17 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
                     this.EventTypeStore().get(4));
     }
 
+    /** Event Builder function.
+     * @param label : event label.
+     * @param creator : event creator.
+     * @param description : event description.
+     * @param startAt : event start date.
+     * @param img : event image.
+     * @param nbPlaceMax : event max places.
+     * @param address : event address.
+     * @param postcode : event postcode.
+     * @param city : event city.
+     * @param type : event type.*/
     private void build(final String label, final User creator, final String description,
             final ZonedDateTime startAt, final String img, final int nbPlaceMax,
             final String address, final String postcode, final String city, final EventType type) {
@@ -129,10 +150,14 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
     }
 
+    /** Build fake event fixtures function.*/
     private void loadFake() {
         IntStream.range(0, this.eventFakerSize).forEach(this::buildFake);
     }
 
+
+    /** Faker builder Function.
+     * @param i : faker size option.*/
     private void buildFake(final int i) {
 
         Random rand = new Random();

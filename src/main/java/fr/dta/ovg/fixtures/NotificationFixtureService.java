@@ -1,3 +1,8 @@
+/* Notification Fixtures DB Service.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Initialize DB with initials data.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.fixtures;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +21,15 @@ import fr.dta.ovg.services.notification.NotificationCrudService;
 @Profile("!prod")
 public class NotificationFixtureService extends FixtureCheck<NotificationRepository> {
 
+    /** Link to Notification CRUD Service. */
     private final NotificationCrudService notificationService;
 
+    /** Link to User CRUD Service. */
     private final UserCrudService userService;
 
-
+    /**  Local Constructor.
+     * @param notificationService : @see NotificationCrudService.
+     * @param userService : @see UserCrudService.*/
     public NotificationFixtureService(
             @Autowired  final NotificationCrudService notificationService,
             @Autowired final UserCrudService userService) {
@@ -28,6 +37,8 @@ public class NotificationFixtureService extends FixtureCheck<NotificationReposit
         this.userService = userService;
     }
 
+    /** Fixtures are loaded only if no data.
+     * @throws NotFoundException : Notification entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
 
@@ -44,6 +55,9 @@ public class NotificationFixtureService extends FixtureCheck<NotificationReposit
         }
     }
 
+    /** Notification Builder function.
+     * @param label : notification label.
+     * @param user : notification user.*/
     private void build(final String label, final User user) {
 
         final Notification notification = new Notification();
