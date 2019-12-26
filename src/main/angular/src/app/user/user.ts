@@ -1,6 +1,6 @@
-import { Hobby } from '../models/hobby';
-import { Event } from '../event/event';
 import { UserLanguage } from '../models/user-language';
+import { UserHobby } from '../models/user-hobby';
+import { JoinEvent } from '../join-event/join-event';
 
 export interface User {
   id: number;
@@ -48,8 +48,8 @@ export interface UserDetail {
   gender: UserGender;
 
   enabled: boolean;
-  events: Event[];
-  hobbies: Hobby[];
+  events: JoinEvent[];
+  hobbies: UserHobby[];
   languages: UserLanguage[];
   avatar: number;
 }

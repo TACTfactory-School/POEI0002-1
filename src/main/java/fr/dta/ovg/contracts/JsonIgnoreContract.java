@@ -23,6 +23,8 @@ public final class JsonIgnoreContract {
     public static final String LANGUAGES = "languages";
     /** JSON ignore "hobbies". */
     public static final String HOBBIES = "hobbies";
+    /** JSON ignore "hobby". */
+    public static final String HOBBY = "hobby";
     /** JSON ignore "messagesEmitted". */
     public static final String MESSAGES_EMITTED = "messagesEmitted";
     /** JSON ignore "messagesReceived". */

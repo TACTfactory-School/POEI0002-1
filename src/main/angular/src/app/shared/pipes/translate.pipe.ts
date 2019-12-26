@@ -30,6 +30,9 @@ export class TranslatePipe implements PipeTransform {
       case 'MARRIED':
         translation = 'Marrié(e)';
         break;
+      case 'DIVORCED':
+        translation = 'Divorcé(e)';
+        break;
       case 'SINGLE':
         translation = 'Célibataire';
         break;
