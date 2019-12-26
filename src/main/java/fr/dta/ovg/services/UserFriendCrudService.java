@@ -43,7 +43,7 @@ public interface UserFriendCrudService {
 
     /** existsByUsernameIgnoreCaseAndIdNot.
      * @param username of the user.
-     * @param id of the user.
+     * @param friendRequestId : user id to process friend request.
      * @return true if user existing by username and id not.*/
     boolean existsByUsernameIgnoreCaseAndIdNot(String username, Long friendRequestId);
 }

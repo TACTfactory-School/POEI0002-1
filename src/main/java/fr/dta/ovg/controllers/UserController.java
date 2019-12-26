@@ -48,6 +48,7 @@ public class UserController {
     @Autowired
     private UserFriendCrudService friendService;
 
+    /** Local PasswordEncoder instance.*/
     @Autowired
     private PasswordEncoder encoder;
 

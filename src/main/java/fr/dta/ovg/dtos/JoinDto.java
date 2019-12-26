@@ -11,13 +11,17 @@ import javax.validation.constraints.NotNull;
 /** Join DTO Class.*/
 public class JoinDto {
 
+    /** The stated join date.*/
     @NotNull
     private ZonedDateTime startedAt;
 
+    /** The validation user join event.*/
     private boolean valid;
 
+    /** The join user id.*/
     private long userId;
 
+    /** The join event id.*/
     private long eventId;
 
     /**

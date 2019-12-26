@@ -17,6 +17,7 @@ public interface UserCrudService {
     /** Get all User entity (paginate).<br>
      * Must be redefined in implemented class.<br>
      * @param pageable : @see Pageable.
+     * @param search : the string to process search.
      * @return List of all User.
      * @see UserCrudServiceImpl.*/
     Page<User> getAll(Pageable pageable, String search);
@@ -38,8 +39,8 @@ public interface UserCrudService {
     /** Create one User entity.<br>
      * Must be redefined in implemented class.<br>
      * @return Created User : entity.
-     * @see UserCreateService.
-     * */
+     * @param user : User entity.
+     * @see UserCreateService.*/
     User create(User user);
 
     /** Delete one User entity by ID.<br>

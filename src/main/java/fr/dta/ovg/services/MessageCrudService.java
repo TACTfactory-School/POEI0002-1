@@ -30,6 +30,7 @@ public interface MessageCrudService {
 
     /** Create one Message entity.<br>
      * Must be redefined in implemented class.<br>
+     * @param message : @see Message.
      * @return Created Message : entity.*/
     Message create(Message message);
 

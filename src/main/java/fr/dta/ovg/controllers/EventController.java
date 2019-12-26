@@ -40,16 +40,16 @@ public class EventController {
     @Autowired
     private EventCrudService service;
 
+    /** Link to JoinDelete Service. */
     @Autowired
     private JoinDeleteService joinServ;
-    /**
-    * Get All function. <br>
+
+    /** Get All function. <br>
     * GET - HTTP.
     * @param page the page number.
     * @param quantity the quantity of return per page.
     * @param search : String to prpcess search.
-    * @return Page page number with quantity asked.
-    */
+    * @return Page page number with quantity asked.*/
     @GetMapping
     public Page<Event> getAll(final int page, final int quantity, final String search) {
 

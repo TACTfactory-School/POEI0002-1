@@ -63,7 +63,7 @@ public class UserFriendFixtureService extends FixtureCheck<UserFriendRepository>
         }
     }
 
-    /** UserFriend Builder
+    /** UserFriend Builder.
      * @param valid : validation parameter.
      * @param friendAccept : (User) friend accepted.
      * @param friendRequest : (User) friend request.*/

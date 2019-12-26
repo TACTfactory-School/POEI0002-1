@@ -34,7 +34,7 @@ public class Application implements CommandLineRunner {
 
     /** Initialize DB with fixtures data.
      * Run method for fixtures initialization.
-     * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[]).*/
+     * @param args : ellipsis - variables arguments.*/
     @Override
     public void run(final String... args) throws Exception {
         if (this.fixtures != null) {
