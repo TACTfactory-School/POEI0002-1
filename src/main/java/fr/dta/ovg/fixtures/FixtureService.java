@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Fixtures Service implementation Class.*/
 @Component
 @Profile("!prod")
 public class FixtureService implements Fixture {

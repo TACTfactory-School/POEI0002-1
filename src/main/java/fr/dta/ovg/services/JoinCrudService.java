@@ -17,14 +17,14 @@ public interface JoinCrudService {
      * @return List of all JoinEvent.*/
     List<JoinEvent> getAll();
 
-    /**
-     * Deletes the {@link RendezVous rendez-vous} for given
+    /** Deletes the {@link JoinEvent} for given.
      * @param id : the id of the {@link JoinEvent} to delete.
      * @throws NotFoundException : Throws if {@link JoinEvent} entity not found.*/
     void delete(long id) throws NotFoundException;
 
     /** Get one JoinEvent entity by ID.<br>
      * Must be redefined in implemented class.<br>
+     * @param id : JoinEvent id.
      * @return JoinEvent : entity.
      * @see EventCrudServiceImpl.*/
     JoinEvent getOne(long id) throws NotFoundException;

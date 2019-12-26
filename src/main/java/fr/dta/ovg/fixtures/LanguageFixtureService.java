@@ -63,7 +63,7 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
             .forEach(this::build);
 
         this.buildUserLanguage(
-                this.LanguageLevelStore().get(rand.nextInt(4)),
+                this.languageLevelStore().get(rand.nextInt(4)),
                 this.langService.getOne(rand.nextInt(7) + 1),
                 this.userService.getOne(rand.nextInt(99) + 1));
     }
@@ -96,7 +96,7 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
 
     /** User Language Level Storage Function.
      * @return List of Language Level.*/
-    private ArrayList<LanguageLevel> LanguageLevelStore() {
+    private ArrayList<LanguageLevel> languageLevelStore() {
 
         ArrayList<LanguageLevel> level = new ArrayList<LanguageLevel>();
 

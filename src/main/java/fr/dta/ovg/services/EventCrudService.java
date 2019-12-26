@@ -39,7 +39,6 @@ public interface EventCrudService {
 
     /** Delete one Event entity by ID.<br>
      * Must be redefined in implemented class.<br>
-     * @return void : nothing.
      * @param id of the Event.
      * @throws NotFoundException : Event not found.
      * @see EventDeleteService EventDeleteService.*/

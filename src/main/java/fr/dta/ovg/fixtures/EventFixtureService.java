@@ -103,22 +103,22 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         this.build("Supra Party One",   userService.getOne(SAMY),       "C'est super génial Viendez",
                     start,              "img1",                         25,
                     "5 rue du chat",    "35000",                        "Rennes",
-                    this.EventTypeStore().get(1));
+                    this.eventTypeStore().get(1));
 
         this.build("Poke GO",           userService.getOne(COLIN),      "Chasse aux pokemons",
                     start,              "img1",                         20,
                     "5 chemin des eaux", "49000",                       "Angers",
-                    this.EventTypeStore().get(2));
+                    this.eventTypeStore().get(2));
 
         this.build("GameBox",           userService.getOne(FAB),        "RetroGamin Event #7",
                     start,              "img1",                         15,
                     "5 bld Nerobi",     "69000",                        "Lyon",
-                    this.EventTypeStore().get(3));
+                    this.eventTypeStore().get(3));
 
         this.build("Dotball",           userService.getOne(TEST),       "Jeux de sports & pinball",
                     start,              "img1",                         5,
                     "15 rue Paul Bert", "75000",                        "Paris",
-                    this.EventTypeStore().get(4));
+                    this.eventTypeStore().get(4));
     }
 
     /** Event Builder function.
@@ -186,7 +186,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
                     this.fake.address().streetAddress(),
                     this.fake.address().zipCode(),
                     this.fake.address().city(),
-                    this.EventTypeStore().get(rand.nextInt(13)));
+                    this.eventTypeStore().get(rand.nextInt(13)));
         } catch (NotFoundException e) {
             e.getMessage();
         }
@@ -194,7 +194,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
     /** Event Type Storage Function.
      * @return List of Event type.*/
-    private ArrayList<EventType> EventTypeStore() {
+    private ArrayList<EventType> eventTypeStore() {
 
         ArrayList<EventType> type = new ArrayList<EventType>();
 

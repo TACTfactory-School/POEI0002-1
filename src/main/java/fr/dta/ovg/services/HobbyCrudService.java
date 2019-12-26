@@ -21,7 +21,8 @@ public interface HobbyCrudService {
     /**  Get one Hobby entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id of Hobby entity.
-     * @return Hobby : entity.*/
+     * @return Hobby : entity.
+     * @throws NotFoundException : Hobby not found.*/
     Hobby getOne(long id) throws NotFoundException;
 
     /** Create one Hobby entity.<br>
@@ -30,16 +31,14 @@ public interface HobbyCrudService {
      * @return Created Hobby : entity.*/
     Hobby create(Hobby hobby);
 
-    /**
-     * Delete one Hobby entity by ID.<br>
+    /** Delete one Hobby entity by ID.<br>
      * Must be redefined in implemented class.<br>
-     * @param id of Hobby entity.*/
+     * @param id of Hobby entity.
+     * @throws NotFoundException : hobby not found.*/
     void delete(long id) throws NotFoundException;
 
     /** Exists by Label function.
      * @param hobby : @see Hobby.
-     * @return true if entity exists by label.
-     */
+     * @return true if entity exists by label.*/
     boolean existsByLabel(Hobby hobby);
-
 }

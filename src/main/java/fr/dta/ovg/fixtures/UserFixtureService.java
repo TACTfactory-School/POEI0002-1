@@ -115,7 +115,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
      * @param pref : user preferences.
      * @param avatar : user avatar.
      * @param maritalStatus : user marital status.
-     * @param gender: user gender.
+     * @param gender : user gender.
      * @param birthdateHidden : hide birthdate option.
      * @param mailHidden : hide mail option.
      * @param jobHidden : hide job option.
@@ -155,6 +155,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         service.create(user);
     }
 
+    /** Build fake user fixtures function.*/
     private void loadFake() {
         IntStream.range(0, this.fakerSize).forEach(this::buildFake);
     }
@@ -181,8 +182,8 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                         .toLocalDateTime(),
                     prefService.getOne(4),
                     (byte) rand.nextInt(5),
-                    UserStatusStore().get(rand.nextInt(4)),
-                    UserGenderStore().get(rand.nextInt(3)),
+                    userStatusStore().get(rand.nextInt(4)),
+                    userGenderStore().get(rand.nextInt(3)),
                     rand.nextBoolean(),
                     rand.nextBoolean(),
                     rand.nextBoolean(),
@@ -195,7 +196,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
 
     /** User Status Storage Function.
      * @return List of User Status.*/
-    private ArrayList<UserStatus> UserStatusStore() {
+    private ArrayList<UserStatus> userStatusStore() {
 
         ArrayList<UserStatus> status = new ArrayList<UserStatus>();
 
@@ -210,7 +211,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
 
     /** User Gender Storage Function.
      * @return List of User gender.*/
-    private ArrayList<UserGender> UserGenderStore() {
+    private ArrayList<UserGender> userGenderStore() {
 
         ArrayList<UserGender> gender = new ArrayList<UserGender>();
 

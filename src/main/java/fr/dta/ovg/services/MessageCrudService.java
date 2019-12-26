@@ -24,18 +24,18 @@ public interface MessageCrudService {
     /** Get one Message entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id : message id.
-     * @return Message : entity.*/
+     * @return Message : entity.
+     * @throws NotFoundException : Message not found.*/
     Message getOne(long id) throws NotFoundException;
 
     /** Create one Message entity.<br>
      * Must be redefined in implemented class.<br>
-     * @return Created Message : entity.
-     * */
+     * @return Created Message : entity.*/
     Message create(Message message);
 
     /** Delete one Message entity by ID.<br>
      * Must be redefined in implemented class.<br>
-     * @param id : message id to process delete.*/
+     * @param id : message id to process delete.
+     * @throws NotFoundException : Message not found.*/
     void delete(long id) throws NotFoundException;
-
 }

@@ -25,7 +25,8 @@ public interface UserCrudService {
      * Must be redefined in implemented class.<br>
      * @param id : the user id to find.
      * @return User : entity.
-     * @see UserCrudServiceImpl .*/
+     * @see UserCrudServiceImpl .
+     * @throws NotFoundException : User not found.*/
     User getOne(long id) throws NotFoundException;
 
     /** Get one user by Username function.
@@ -44,6 +45,7 @@ public interface UserCrudService {
     /** Delete one User entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id : User id to process delete.
+     * @throws NotFoundException : User not found.
      * @see UserDeleteService.*/
     void delete(long id) throws NotFoundException;
 
@@ -57,5 +59,4 @@ public interface UserCrudService {
      * @param user : @see User entity.
      * @return true if the username exists.*/
     boolean existsByUsername(User user);
-
 }

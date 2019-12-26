@@ -15,28 +15,26 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.dta.ovg.fixtures.FixtureService;
 
 
+/** This is the main entry of OVG application.*/
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
+    /** Local Logger declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
     /**Link to Fixture Service. */
     @Autowired(required = false)
     private FixtureService fixtures;
 
-    /**
-     * Main. This is the main entry of OVG application.
-     * @param args String array.
-     */
+    /** Main. This is the main entry of OVG application.
+     * @param args String array.*/
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
-    /**
-     * Initialize DB with fixtures data.
+    /** Initialize DB with fixtures data.
      * Run method for fixtures initialization.
-     * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[]).
-     */
+     * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[]).*/
     @Override
     public void run(final String... args) throws Exception {
         if (this.fixtures != null) {

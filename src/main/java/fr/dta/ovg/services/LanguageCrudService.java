@@ -21,7 +21,8 @@ public interface LanguageCrudService {
     /** Get one Language entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id : language id.
-     * @return Language : entity.*/
+     * @return Language : entity.
+     * @throws NotFoundException : Language not found.*/
     Language getOne(long id) throws NotFoundException;
 
     /** Create one Language entity.<br>
@@ -32,7 +33,8 @@ public interface LanguageCrudService {
 
     /** Delete one Language entity by ID.<br>
      * Must be redefined in implemented class.<br>
-     * @param id : Language id to process delete.*/
+     * @param id : Language id to process delete.
+     * @throws NotFoundException : Language not found.*/
     void delete(long id) throws NotFoundException;
 
     /** Exists by label function.

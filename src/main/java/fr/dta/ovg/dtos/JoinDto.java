@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 
 import javax.validation.constraints.NotNull;
 
+/** Join DTO Class.*/
 public class JoinDto {
 
     @NotNull
