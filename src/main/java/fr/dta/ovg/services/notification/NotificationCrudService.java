@@ -3,7 +3,6 @@
  * Genericity of crud service.
  * License : ©2019 All rights reserved
  */
-
 package fr.dta.ovg.services.notification;
 
 import org.springframework.data.domain.Page;

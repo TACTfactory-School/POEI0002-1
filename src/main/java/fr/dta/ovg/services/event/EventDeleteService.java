@@ -20,6 +20,7 @@ import fr.dta.ovg.repositories.EventRepository;
 @Transactional
 public class EventDeleteService {
 
+    /** Local Logger instance declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(EventDeleteService.class);
 
     /** Link to Event Repository. */

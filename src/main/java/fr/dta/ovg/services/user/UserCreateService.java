@@ -19,6 +19,7 @@ import fr.dta.ovg.repositories.UserRepository;
 @Transactional
 public class UserCreateService {
 
+    /** Local Logger declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(UserCreateService.class);
 
     /** Link to User repository. */

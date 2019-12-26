@@ -1,9 +1,7 @@
 /* User Details Service Implementation.
  * @author Colin Cerveaux @C-ambium
  * Action : Delete an Event.
- * License : ©2019 All rights reserved
- */
-
+ * License : ©2019 All rights reserved.*/
 package fr.dta.ovg.services.user;
 
 import java.util.HashSet;
@@ -32,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     /** Load by username function.
      * @param username of the user.
      * @return UserDetails with security builder.
-     */
+     * @throws UsernameNotFoundException : User with this username not found.*/
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 

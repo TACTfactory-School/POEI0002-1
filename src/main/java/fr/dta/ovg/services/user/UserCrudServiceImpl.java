@@ -16,6 +16,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.UserRepository;
 import fr.dta.ovg.services.UserCrudService;
 
+/** User CRUD Service Implementation Class.*/
 @Service
 public class UserCrudServiceImpl implements UserCrudService {
 
@@ -31,6 +32,7 @@ public class UserCrudServiceImpl implements UserCrudService {
     @Autowired
     private UserDeleteService deleteService;
 
+    /** {@inheritDoc}.*/
     @Transactional(readOnly = true)
     @Override
     public Page<User> getAll(final Pageable pageable, final String search) {
@@ -46,6 +48,7 @@ public class UserCrudServiceImpl implements UserCrudService {
         return paginateResult;
     }
 
+    /** {@inheritDoc}.*/
     @Transactional(readOnly = true)
     @Override
     public User getOne(final long id) throws NotFoundException {
@@ -54,6 +57,7 @@ public class UserCrudServiceImpl implements UserCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
+    /** {@inheritDoc}.*/
     @Transactional(readOnly = true)
     @Override
     public User getOne(final String username) throws NotFoundException {
@@ -62,33 +66,28 @@ public class UserCrudServiceImpl implements UserCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
+    /** {@inheritDoc}.*/
     @Transactional()
     @Override
     public User create(final User user) {
         return this.createService.create(user);
     }
 
+    /** {@inheritDoc}.*/
     @Override
     public void delete(final long id) throws NotFoundException {
         // TODO Auto-generated method stub
         this.deleteService.delete(id);
     }
 
-    /* (non-Javadoc)
-     * @see fr.dta.ovg.services.UserCrudService#existsByUsername(fr.dta.ovg.entities.User)
-     */
+    /** {@inheritDoc}.*/
     @Override
     public boolean existsByUsername(final User user) {
-//      TODO @Query("SELECT COUNT(e) > 0"
-//      + " FROM Event e"
-//      + " WHERE LOWER(e.label) = LOWER(:#{#s.label})"
-//      + " AND (:#{#s.id} = NULL OR e.id != :#{#s.id})")
+
         return this.repository.existsByUsername(user);
     }
 
-    /* (non-Javadoc)
-     * @see fr.dta.ovg.services.UserCrudService#existsByUsernameIgnoreCaseAndIdNot(java.lang.String, java.lang.Long)
-     */
+    /** {@inheritDoc}.*/
     @Override
     public boolean existsByUsernameIgnoreCaseAndIdNot(final String label, final Long id) {
         // TODO Auto-generated method stub

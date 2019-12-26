@@ -1,3 +1,8 @@
+/* Language CRUD Service Implementation Class.
+ * @author Colin Cerveaux @C-ambium
+ * Genericity of crud service.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.services.user;
 
 import java.util.List;
@@ -20,7 +25,7 @@ public class LanguageCrudServiceImpl implements LanguageCrudService {
     @Autowired
     private LanguageRepository repository;
 
-    /** Logger instance. */
+    /** Local Logger instance. */
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     /**{@inheritDoc}*/

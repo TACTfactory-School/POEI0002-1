@@ -25,10 +25,10 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
     @Autowired
     private NotificationSettingRepository repository;
 
+    /** Local Logger instance declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
-    /** Get All Notifications Settings.
-     * @see NotificationSetting.*/
+    /** {@inheritDoc}.*/
     @Override
     public List<NotificationSetting> getAll() {
 
@@ -36,9 +36,7 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
         return this.repository.findAll();
     }
 
-    /** Get One Notification Settings.
-     * @param id : id of the notification setting.
-     * @return the notification settings.*/
+    /** {@inheritDoc}.*/
     @Override
     public NotificationSetting getOne(final long id) throws NotFoundException {
 
@@ -48,9 +46,7 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
                 .orElseThrow(() -> new NotFoundException());
     }
 
-    /** Create Notification setting function.
-     * @param notificationSetting : NotificationSetting entity.
-     * @return the saved notification setting.*/
+    /** {@inheritDoc}.*/
     @Override
     public NotificationSetting create(final NotificationSetting notificationSetting) {
 
@@ -58,8 +54,7 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
         return this.repository.save(notificationSetting);
     }
 
-    /** Delete Notification setting function.
-     * @param id : id of the notification setting.*/
+    /** {@inheritDoc}.*/
     @Override
     public void delete(final long id) throws NotFoundException {
         LOG.debug("Delete Notification setting.");

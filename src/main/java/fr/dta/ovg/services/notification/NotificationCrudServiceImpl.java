@@ -27,6 +27,7 @@ public class NotificationCrudServiceImpl implements NotificationCrudService {
     @Autowired
     private NotificationRepository repository;
 
+    /** Local Logger instance declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     /** {@inheritDoc}.*/

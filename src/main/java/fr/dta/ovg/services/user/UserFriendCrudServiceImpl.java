@@ -62,9 +62,9 @@ public class UserFriendCrudServiceImpl implements UserFriendCrudService {
         this.repository.delete(userFriend);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public boolean existsByUsernameIgnoreCaseAndIdNot(final String username, final Long friendRequestId) {
-        // TODO Auto-generated method stub
         return false;
     }
 }

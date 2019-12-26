@@ -1,3 +1,9 @@
+/* Interface UserFriend Crud Service.
+ * @author Colin Cerveaux @C-ambium
+ * Genericity of crud service.
+ * License : ©2019 All rights reserved
+ */
+
 package fr.dta.ovg.services;
 
 import org.springframework.data.domain.Page;
@@ -12,13 +18,14 @@ public interface UserFriendCrudService {
     /**
      * Get all UserFriend entity.<br>
      * Must be redefined in implemented class.<br>
-     * @return List of all UserFriend.
-     * */
+     * @param pageable : @see Pageable.
+     * @return List of all UserFriend.*/
     Page<UserFriend> getAll(Pageable pageable);
 
     /**
      * Get one UserFriend entity by ID.<br>
      * Must be redefined in implemented class.<br>
+     * @param id : UserFriend id.
      * @return UserFriend : entity.
      * */
     UserFriend getOne(long id) throws NotFoundException;
@@ -26,6 +33,7 @@ public interface UserFriendCrudService {
     /**
      * Create one UserFriend entity.<br>
      * Must be redefined in implemented class.<br>
+     * @param userFriend : @see UserFriend.
      * @return Created UserFriend : entity.
      * */
     UserFriend create(UserFriend userFriend);
@@ -33,6 +41,7 @@ public interface UserFriendCrudService {
     /**
      * Delete one UserFriend entity by ID.<br>
      * Must be redefined in implemented class.<br>
+     * @param id : UserFriend id.
      * @return void : nothing.
      * */
     void delete(long id) throws NotFoundException;
