@@ -75,7 +75,7 @@
 
               <ng-container *ngIf="u.maritalStatus; else unspecified1">
                 <dt>Sitation familiale</dt>
-                <dd>{{ u.maritalStatus }}</dd>
+                <dd>{{ u.maritalStatus | translate }}</dd>
               </ng-container>
               <ng-template #unspecified1>
                 <dt>Sitation familiale</dt>
@@ -84,7 +84,7 @@
 
               <ng-container *ngIf="u.gender; else unspecified2">
                 <dt>Genre</dt>
-                <dd>{{ u.gender }}</dd>
+                <dd>{{ u.gender | translate }}</dd>
               </ng-container>
               <ng-template #unspecified2>
                 <dt>Genre</dt>
@@ -93,7 +93,7 @@
 
               <ng-container *ngIf="u.languages && u.languages.length; else unspecified3">
                 <dt>Langues parlés</dt>
-                <dd *ngFor="let lang of u.languages; index as i">{{ lang.default }} {{ lang.level }}</dd>
+                <dd *ngFor="let l of u.languages; index as i">{{ l.language.label }} {{ l.level | translate }}</dd>
               </ng-container>
               <ng-template #unspecified3>
                 <dt>Langues parlés</dt>

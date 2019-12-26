@@ -35,9 +35,9 @@
               <!-- Check user préférences -->
               <dd>{{ u.email }}</dd>
 
-              <ng-container *ngIf="u.languages">
+              <ng-container *ngIf="u.languages.values">
                 <dt>Langues parlés</dt>
-                <dd *ngFor="let lang of u.languages; index as i">{{ lang.default }} {{ lang.level }}</dd>
+                <dd *ngFor="let l of u.languages; index as i">{{ l.language.label }} {{ l.level }}</dd>
               </ng-container>
 
               <ng-container *ngIf="u.birthdate">
@@ -65,7 +65,7 @@
 
               <ng-container *ngIf="u.gender">
                 <dt>Genre</dt>
-                <dd>{{ u.gender }}</dd>
+                <dd>{{ u.gender | translate }}</dd>
               </ng-container>
 
               <dt>Date d'inscription</dt>

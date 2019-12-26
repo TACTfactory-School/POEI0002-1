@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../user';
+import { User, UserDetail } from '../user';
 import { Observable, Subscription } from 'rxjs';
 import { UserApiService } from '../user-api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserDetailsComponent implements OnInit, OnDestroy {
 
-  user$: Observable<User>;
+  user$: Observable<UserDetail>;
   private sub: Subscription[] = [];
   readonly avatar: string = '../../../assets/avatars';
 
@@ -25,7 +25,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
           .subscribe(params => {
             if (params.id) {
               console.log('id', params.id);
-              this.user$ = this.api.getOne(params.id);
+              this.user$ = this.api.getOneDetail(params.id);
             }
           }));
   }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { UserDetail, User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
-import { Observable } from 'rxjs';
 import { UserApiService } from '../user-api.service';
 import { tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -15,7 +14,7 @@ import { UserEditComponent } from '../user-edit/user-edit.component';
 })
 export class UserProfileComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: UserDetail;
   unspecifiedText = 'Non renseigné';
 
   constructor(

@@ -1,10 +1,33 @@
-import { Hobby } from './hobby';
-import { Language } from './language';
+import { Hobby } from '../models/hobby';
 import { Event } from '../event/event';
-import { Message } from '../models/message';
-import { Notification } from '../models/notification';
+import { UserLanguage } from '../models/user-language';
 
 export interface User {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  lastLogin: Date;
+
+  username: string;
+  email: string;
+  password: string;
+  firstname: string;
+  birthdate: Date;
+  age: number;
+
+  city: string;
+  gender: UserGender;
+
+  //job: string;
+  //role: EventRole;
+  // rate: number;
+  maritalStatus: UserStatus;
+
+  enabled: boolean;
+  avatar: number;
+}
+
+export interface UserDetail {
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -25,19 +48,19 @@ export interface User {
   gender: UserGender;
 
   enabled: boolean;
-  // events: Event[];
-  // hobbies: Hobby[];
-  // languages: Language[];
+  events: Event[];
+  hobbies: Hobby[];
+  languages: UserLanguage[];
   avatar: number;
 }
 
-enum EventRole {
+export enum EventRole {
   CREATOR,
   ORGANIZER,
   GUEST
 }
 
-enum UserStatus {
+export enum UserStatus {
   MARRIED,
   SINGLE,
   DIVORCED,
@@ -74,6 +97,31 @@ export class User {
     this.firstname = firstname;
     this.city = city;
     this.gender = gender;
-
     }
+  }
+
+export class UserDetail {
+    constructor(
+      username: string,
+      email: string,
+      password: string,
+      birthdate: Date,
+      firstname: string,
+      city: string,
+      gender: UserGender,
+      job: string,
+      role: EventRole,
+      maritalStatus: UserStatus
+      ) {
+      this.username = username;
+      this.email = email;
+      this.password = password;
+      this.birthdate = birthdate;
+      this.firstname = firstname;
+      this.city = city;
+      this.gender = gender;
+      this.job = job;
+      this.role = role;
+      this.maritalStatus = maritalStatus;
+      }
 }
