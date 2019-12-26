@@ -52,7 +52,7 @@ public class FixtureService implements Fixture {
     @Autowired
     private UserFriendFixtureService friendFixture;
 
-    /** Call loading initials fixtures
+    /** Call loading initials fixtures.
      * @see {@link EventFixtureService}
      * @see {@link UserFixtureService}
      * @see {@link HobbyFixtureService}

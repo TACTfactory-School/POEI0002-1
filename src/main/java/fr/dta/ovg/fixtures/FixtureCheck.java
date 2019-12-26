@@ -11,7 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.dta.ovg.exceptions.NotFoundException;
 
-/** Fixtures Checking Service Class.*/
+/** Fixtures Checking Service Class.
+ * @param <R> : generic object.*/
 public abstract class FixtureCheck<R extends JpaRepository<?, ?>> implements Fixture {
 
     /** Link to Generic object/entity repository.*/

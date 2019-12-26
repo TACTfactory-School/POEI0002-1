@@ -85,21 +85,21 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
      * @throws NotFoundException : Entity requested not found.*/
     private void loadReal() throws NotFoundException {
         this.build("Pamwamba",  "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
-                    "Samy",     "Nantes",               "Dev Fullstack", 4.5f, LocalDateTime.now(),
+                    "Samy",     "Nantes",               "Dev Fullstack", 4.5f,  LocalDateTime.now(),
                     prefService.getOne(1), (byte) 1,    UserStatus.MARRIED,     UserGender.MALE,
-                    false,      false,        false,    false,           false);
+                    true,       false,        false,    false,                  false);
         this.build("C-ambium",  "joe@me.com",           "colin",                LocalDate.of(1990, 06, 05),
-                    "Colin",    "Rennes",               "Dev Fullstack", 3.2f, LocalDateTime.now(),
+                    "Colin",    "Rennes",               "Dev Fullstack", 3.2f,  LocalDateTime.now(),
                     prefService.getOne(2), (byte) 2,    UserStatus.DIVORCED,     UserGender.MALE,
-                    false,      false,        false,    false,           false);
-        this.build("ListerKred", "fab@4ever.org",        "fabricefabrice",       LocalDate.of(1997, 04, 8),
-                    "Fabrice",  "Angers",               "Dev Fullstack", 5f, LocalDateTime.now(),
-                    prefService.getOne(3), (byte) 3,    UserStatus.SINGLE,     UserGender.MALE,
-                    false,      false,        false,    false,           false);
+                    false,      false,        false,    false,                  false);
+        this.build("ListerKred", "fab@4ever.org",        "fabricefabrice",      LocalDate.of(1997, 04, 8),
+                    "Fabrice",  "Angers",               "Dev Fullstack", 5f,    LocalDateTime.now(),
+                    prefService.getOne(3), (byte) 3,    UserStatus.SINGLE,      UserGender.MALE,
+                    false,      true,          true,    false,                  false);
         this.build("test",      "test@test.org",        "test",                 LocalDate.of(1999, 04, 8),
                    "test",      "test",                 "test",          0.5f,  LocalDateTime.now(),
-                   prefService.getOne(4), (byte) 4,     UserStatus.UNSPECIFIED,     UserGender.UNSPECIFIED,
-                   false,      false,        false,    false,           false);
+                   prefService.getOne(4), (byte) 4,     UserStatus.UNSPECIFIED, UserGender.UNSPECIFIED,
+                   false,       false,       false,     false,                  false);
     }
 
     /** User Builder.

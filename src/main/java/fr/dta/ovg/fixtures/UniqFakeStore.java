@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Supplier;
 
-/* UniqFakeStore Fixture Class.*/
+/** UniqFakeStore Fixture Class.*/
 public class UniqFakeStore {
 
     /** Unique local storage.*/

@@ -51,6 +51,18 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
     /** User Faker Size. */
     private int userFakerSize;
 
+    /** Samy ID.*/
+    private static final byte SAMY = 1;
+
+    /** Colin ID.*/
+    private static final byte COLIN = 1;
+
+    /** Fabrice ID.*/
+    private static final byte FAB = 1;
+
+    /** Test ID.*/
+    private static final byte TEST = 1;
+
     /** Define new Faker and set Local to french FR. */
     private final Faker fake = new Faker(new Locale("fr"));
 
@@ -59,7 +71,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
      * @param userFakerSize : @see application-dev.properties.
      * @param eventService : @see EventCreateService.
      * @param userService : @see UserCrudService.
-     * @param joinService: @see JoinCrudService.*/
+     * @param joinService : @see JoinCrudService.*/
     public EventFixtureService(
             @Value("${app.event.fixtures.fakersize:100}") final int eventFakerSize,
             @Value("${app.user.fixtures.fakersize:100}") final int userFakerSize,
@@ -88,23 +100,23 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
         ZonedDateTime start = ZonedDateTime.now();
 
-        this.build("Supra Party One",   userService.getOne(1),          "C'est super génial Viendez",
+        this.build("Supra Party One",   userService.getOne(SAMY),       "C'est super génial Viendez",
                     start,              "img1",                         25,
                     "5 rue du chat",    "35000",                        "Rennes",
                     this.EventTypeStore().get(1));
 
-        this.build("Poke GO",           userService.getOne(2),          "Chasse aux pokemons",
-                    start,              "img1",                         25,
-                    "5 chemin des eaux", "49000",                        "Angers",
+        this.build("Poke GO",           userService.getOne(COLIN),      "Chasse aux pokemons",
+                    start,              "img1",                         20,
+                    "5 chemin des eaux", "49000",                       "Angers",
                     this.EventTypeStore().get(2));
 
-        this.build("GameBox",           userService.getOne(3),          "RetroGamin Event #7",
-                    start,              "img1",                         25,
+        this.build("GameBox",           userService.getOne(FAB),        "RetroGamin Event #7",
+                    start,              "img1",                         15,
                     "5 bld Nerobi",     "69000",                        "Lyon",
                     this.EventTypeStore().get(3));
 
-        this.build("Dotball",           userService.getOne(4),          "Jeux de sports & pinball",
-                    start,              "img1",                         25,
+        this.build("Dotball",           userService.getOne(TEST),       "Jeux de sports & pinball",
+                    start,              "img1",                         5,
                     "15 rue Paul Bert", "75000",                        "Paris",
                     this.EventTypeStore().get(4));
     }
