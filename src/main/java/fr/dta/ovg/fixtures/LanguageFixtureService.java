@@ -76,11 +76,11 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
         }
 
         // Build fake fixtures.
-        for (int i = 4; i < 100; i++) {
+        for (int i = 4; i < 101; i++) {
             this.buildUserLanguage(
                     this.languageLevelStore().get(rand.nextInt(NB_LEVELS)),// Here we use 0 index because its an array.
                     this.langService.getOne(rand.nextInt(NB_LANGS) + 1),
-                    this.userService.getOne(rand.nextInt(i) + 1));
+                    this.userService.getOne(i));
         }
 
     }
