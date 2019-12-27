@@ -145,7 +145,7 @@
         <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <app-user-preferences></app-user-preferences>
+        <app-user-preferences [displayHeader]="displayHeader"></app-user-preferences>
       </mat-card-content>
     </mat-card>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserDetail, User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
@@ -16,6 +16,7 @@ export class UserProfileComponent implements OnInit {
 
   currentUser: UserDetail;
   unspecifiedText = 'Non renseigné';
+  displayHeader: boolean;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -28,6 +29,8 @@ export class UserProfileComponent implements OnInit {
     this.currentU.observable
         .pipe(tap(console.log))
         .subscribe(value => this.currentUser = value);
+    // Hide Settings Header
+    this.displayHeader = false;
   }
 
   onDelete() {

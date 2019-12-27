@@ -13,6 +13,7 @@ export class UserPreferencesComponent implements OnInit {
   preferences: FormGroup;
   private app: boolean;
   private mail: boolean;
+  @Input() displayHeader = true;
 
   // Hide label manual TODO refacto ?
   activeApp = 'Activer';
