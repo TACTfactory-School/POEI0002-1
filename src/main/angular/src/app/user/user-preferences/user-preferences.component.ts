@@ -3,6 +3,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { MatDialog, MatSlideToggleChange } from '@angular/material';
 import { Router } from '@angular/router';
 
+const DISPLAY = 'Afficher';
+const HIDE = 'Masquer';
+const ACTIVE = 'Activer';
+const DESACTIVE = 'Désactiver';
+
+
 @Component({
   selector: 'app-user-preferences',
   templateUrl: './user-preferences.component.html',
@@ -39,10 +45,10 @@ export class UserPreferencesComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.preferences.controls.activeApp.value === 'Désactiver') {
+    if (this.preferences.controls.activeApp.value === DESACTIVE) {
       this.app = true;
     }
-    if (this.preferences.controls.activeMail.value === 'Désactiver') {
+    if (this.preferences.controls.activeMail.value === DESACTIVE) {
       this.app = true;
     }
     this.close();
@@ -58,49 +64,31 @@ export class UserPreferencesComponent implements OnInit {
   }
 
   changed1(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.activeApp = 'Désactiver';
-    } else { this.activeApp = 'Activer'; }
+    if (ob.checked) { this.activeApp = DESACTIVE;
+    } else { this.activeApp = ACTIVE; }
   }
   changed2(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.activeMail = 'Désactiver';
-    } else { this.activeMail = 'Activer'; }
+    if (ob.checked) { this.activeMail = DESACTIVE;
+    } else { this.activeMail = ACTIVE; }
   }
   changed3(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideMail = 'Masquer';
-    } else { this.hideMail = 'Afficher'; }
+    if (ob.checked) { this.hideMail = HIDE;
+    } else { this.hideMail = DISPLAY; }
   }
   changed4(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideBirthdate = 'Masquer';
-    } else { this.hideBirthdate = 'Afficher'; }
+    if (ob.checked) { this.hideBirthdate = HIDE;
+    } else { this.hideBirthdate = DISPLAY; }
   }
   changed5(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideJob = 'Masquer';
-    } else { this.hideJob = 'Afficher'; }
+    if (ob.checked) { this.hideJob = HIDE;
+    } else { this.hideJob = DISPLAY; }
   }
   changed6(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideStatus = 'Masquer';
-    } else { this.hideStatus = 'Afficher'; }
+    if (ob.checked) { this.hideStatus = HIDE;
+    } else { this.hideStatus = DISPLAY; }
   }
   changed7(ob: MatSlideToggleChange) {
-    if (ob.checked) { this.hideGender = 'Masquer';
-    } else { this.hideGender = 'Afficher'; }
+    if (ob.checked) { this.hideGender = HIDE;
+    } else { this.hideGender = DISPLAY; }
   }
 }
-  // onChange(ob: MatSlideToggleChange, id: number) {
-  //   if (ob.checked) {
-  //     switch (id) {
-  //       case 3: this.hideMail = 'Afficher';
-  //               break;
-  //       case 4: this.hideBirthdate = 'Afficher';
-  //               break;
-  //       case 5: this.hideJob = 'Afficher';
-  //               break;
-  //       case 6: this.hideMail = 'Afficher';
-  //               break;
-  //       case 7: this.hideStatus = 'Afficher';
-  //               break;
-  //     }
-  //   } else {
-  //     this.hideMail = this.hideBirthdate = this.hideJob = this.hideMail = this.hideStatus = 'Masquer';
-  //   }
-  //this.hideText = ob.source ? 'Afficher' : 'Masquer';

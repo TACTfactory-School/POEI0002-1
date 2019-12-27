@@ -7,6 +7,8 @@ import { tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 
+const UNSPECIFIED = 'Non renseigné';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -15,7 +17,7 @@ import { UserEditComponent } from '../user-edit/user-edit.component';
 export class UserProfileComponent implements OnInit {
 
   currentUser: UserDetail;
-  unspecifiedText = 'Non renseigné';
+  unspecifiedText = UNSPECIFIED;
   displayHeader: boolean;
 
   constructor(
@@ -33,13 +35,9 @@ export class UserProfileComponent implements OnInit {
     this.displayHeader = false;
   }
 
-  onDelete() {
+  onDelete() { }
 
-  }
-
-  onEditAvatar() {
-
-  }
+  onEditAvatar() { }
 
   onEditInfo() {
     const dialogRef = this.dialog.open(UserEditComponent, {
