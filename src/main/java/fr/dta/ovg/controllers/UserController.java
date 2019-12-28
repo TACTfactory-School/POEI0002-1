@@ -159,6 +159,13 @@ public class UserController {
         entity.setEmail(user.getEmail());
         entity.setCity(user.getCity());
         entity.setJob(user.getJob());
+        entity.setMailHidden(user.isMailHidden());
+        entity.setJobHidden(user.isJobHidden());
+        entity.setBirthdateHidden(user.isBirthdateHidden());
+        entity.setGenderHidden(user.isGenderHidden());
+        entity.setStatusHidden(user.isStatusHidden());
+        entity.setPreferences(user.getPreferences());
+
         return this.service.create(entity);
     }
 
