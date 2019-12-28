@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import fr.dta.ovg.contracts.FixturesContract;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.entities.UserFriend;
 import fr.dta.ovg.exceptions.NotFoundException;
@@ -52,14 +53,14 @@ public class UserFriendFixtureService extends FixtureCheck<UserFriendRepository>
 
         final Random rand = new Random();
 
-        for (int i = 1; i < 100; i++) {
+        for (int i = 1; i < FixturesContract.NB_USERS; i++) {
 
             this.build(rand.nextBoolean(), userService.getOne(i), userService.getOne(i + 1));
 
             this.build(
                     rand.nextBoolean(),
-                    userService.getOne(rand.nextInt(99) + 1),
-                    userService.getOne(rand.nextInt(99) + 1));
+                    userService.getOne(rand.nextInt(FixturesContract.NB_RAND) + 1),
+                    userService.getOne(rand.nextInt(FixturesContract.NB_RAND) + 1));
         }
     }
 

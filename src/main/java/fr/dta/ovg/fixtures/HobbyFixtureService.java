@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import fr.dta.ovg.contracts.FixturesContract;
 import fr.dta.ovg.entities.Hobby;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.entities.UserHobby;
@@ -33,9 +34,6 @@ public class HobbyFixtureService extends FixtureCheck<HobbyRepository> {
 
     /** Link to User CRUD Service. */
     private final UserCrudServiceImpl userService;
-
-    /** Number of initial real hobbies minus one (because random object can hit zero).*/
-    private final static byte NB_HOBBIES = 15;
 
     /** Local Constructor.
      * Link to Event Create Service.
@@ -98,10 +96,10 @@ public class HobbyFixtureService extends FixtureCheck<HobbyRepository> {
 
         Random rand = new Random();
 
-        for (int j = 1; j < 100; j++) {
+        for (int j = 1; j < FixturesContract.NB_USERS; j++) {
             this.buildUserHobby(
                     userService.getOne(j),
-                    hobbyService.getOne(rand.nextInt(NB_HOBBIES) + 1));
+                    hobbyService.getOne(rand.nextInt(FixturesContract.NB_HOBBIES) + 1));
         }
     }
 

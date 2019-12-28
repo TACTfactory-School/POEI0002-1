@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import fr.dta.ovg.contracts.FixturesContract;
 import fr.dta.ovg.entities.Notification;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
@@ -42,11 +43,11 @@ public class NotificationFixtureService extends FixtureCheck<NotificationReposit
     @Override
     protected void loadIfNoData() throws NotFoundException {
 
-        this.build("Nouveau message de Pamwamba.",      userService.getOne(3));
-        this.build("Nouveau message de C-ambium.",      userService.getOne(1));
-        this.build("Nouveau message de ListerKred.",    userService.getOne(2));
+        this.build("Nouveau message de Pamwamba.",      userService.getOne(FixturesContract.FAB));
+        this.build("Nouveau message de C-ambium.",      userService.getOne(FixturesContract.SAMY));
+        this.build("Nouveau message de ListerKred.",    userService.getOne(FixturesContract.COLIN));
 
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < FixturesContract.NB_REAL; i++) {
             this.build("Paul à accepté votre demande d'ami.",           userService.getOne(i));
             this.build("Jacques vous a envoyé une demande d'ami.",      userService.getOne(i));
             this.build("Votre demande d'inscritption à été validée.",   userService.getOne(i));

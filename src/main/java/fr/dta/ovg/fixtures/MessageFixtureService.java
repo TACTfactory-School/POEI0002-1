@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import fr.dta.ovg.contracts.FixturesContract;
 import fr.dta.ovg.entities.Message;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
@@ -42,11 +43,16 @@ public class MessageFixtureService extends FixtureCheck<MessageRepository> {
      * @throws NotFoundException : Message entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
-        this.build("Salut Pamwamba, Comment tu vas ?",                  userService.getOne(2), userService.getOne(1));
-        this.build("Salut tu viens demain ?",                           userService.getOne(1), userService.getOne(2));
-        this.build("Hello, on se retrouve là bas ?",                    userService.getOne(3), userService.getOne(2));
-        this.build("C'est toi qui à créé l'event sur Nantes ?",         userService.getOne(1), userService.getOne(3));
-        this.build("Je viens de créé, tu peux rejoindre si tu veux.",   userService.getOne(3), userService.getOne(2));
+        this.build("Salut Pamwamba, Comment tu vas ?",
+                    userService.getOne(FixturesContract.COLIN),         userService.getOne(FixturesContract.SAMY));
+        this.build("Salut tu viens demain ?",
+                    userService.getOne(FixturesContract.SAMY),          userService.getOne(FixturesContract.COLIN));
+        this.build("Hello, on se retrouve là bas ?",
+                    userService.getOne(FixturesContract.FAB),           userService.getOne(FixturesContract.COLIN));
+        this.build("C'est toi qui à créé l'event sur Nantes ?",
+                    userService.getOne(FixturesContract.SAMY),          userService.getOne(FixturesContract.FAB));
+        this.build("Je viens de créé, tu peux rejoindre si tu veux.",
+                    userService.getOne(FixturesContract.FAB),           userService.getOne(FixturesContract.COLIN));
 
         for (int i = 3; i < 4; i++) {
             this.build("Bienvenue sur OVG.fr :)",   userService.getOne(i + 1), userService.getOne(i));

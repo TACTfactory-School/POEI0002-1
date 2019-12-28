@@ -70,7 +70,7 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
 
     /** {@inheritDoc}.*/
     @Override
-    public NotificationSetting getOneByUserId(long userId) {
+    public NotificationSetting getOneByUserId(final long userId) {
         return this.repository.findOneByUserId(userId);
     }
 }
