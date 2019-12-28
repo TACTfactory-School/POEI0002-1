@@ -8,6 +8,8 @@ package fr.dta.ovg.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import fr.dta.ovg.contracts.SettingContract;
@@ -19,6 +21,10 @@ import io.swagger.annotations.ApiModelProperty;
 @Table(name = SettingContract.TABLE)
 @ApiModel(value = SettingContract.TABLE_API)
 public class NotificationSetting extends EntityBase {
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private User user;
 
     /** Application notifications setting. <br>DB Column.*/
     @Column(name = SettingContract.COL_ACTIVE_APP, nullable = false, unique = false)

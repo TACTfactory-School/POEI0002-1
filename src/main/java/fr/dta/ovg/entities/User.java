@@ -109,7 +109,7 @@ public class User extends EntityBase {
     private final List<JoinEvent> joinEvents = new ArrayList<>();
 
     /** The notifications preference of the user.*/
-    @OneToOne
+    @OneToOne(mappedBy = UserContract.MAPPED_BY_USER)
     private NotificationSetting preferences;
 
     /** The notifications list of the user.*/

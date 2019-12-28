@@ -99,7 +99,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
         this.build("test",      "test@test.org",        "test",                 LocalDate.of(1999, 04, 8),
                    "test",      "test",                 "test",          0.5f,  LocalDateTime.now(),
                    prefService.getOne(4), (byte) 4,     UserStatus.UNSPECIFIED, UserGender.UNSPECIFIED,
-                   false,       false,       false,     false,                  false);
+                   true,        false,         true,    false,                  true);
     }
 
     /** User Builder.

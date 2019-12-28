@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.dta.ovg.entities.NotificationSetting;
 import fr.dta.ovg.exceptions.NotFoundException;
@@ -29,6 +30,7 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     /** {@inheritDoc}.*/
+    @Transactional(readOnly = true)
     @Override
     public List<NotificationSetting> getAll() {
 
@@ -41,9 +43,10 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
     public NotificationSetting getOne(final long id) throws NotFoundException {
 
         LOG.debug("Get one Notification setting.");
-        return this.repository
-                .findById(id)
-                .orElseThrow(() -> new NotFoundException());
+//        return this.repository
+//                .findById(id)
+//                .orElseThrow(() -> new NotFoundException());
+        return this.repository.findOneByUserId(id);
     }
 
     /** {@inheritDoc}.*/
@@ -63,6 +66,12 @@ public class NotificationSettingCrudServiceImpl implements NotificationSettingCr
                 .orElseThrow(() -> new NotFoundException());
 
         this.repository.delete(notificationSetting);
+    }
+
+    /** {@inheritDoc}.*/
+    @Override
+    public NotificationSetting getOneByUserId(long userId) {
+        return this.repository.findOneByUserId(userId);
     }
 }
 

@@ -1,6 +1,7 @@
 import { UserLanguage } from '../models/user-language';
 import { UserHobby } from '../models/user-hobby';
 import { JoinEvent } from '../join-event/join-event';
+import { NotificationSetting } from '../models/notification-setting';
 
 export interface User {
   id: number;
@@ -25,6 +26,14 @@ export interface User {
 
   enabled: boolean;
   avatar: number;
+
+  birthdateHidden: boolean;
+  mailHidden: boolean;
+  jobHidden: boolean;
+  genderHidden: boolean;
+  statusHidden: boolean;
+
+  preferences: NotificationSetting;
 }
 
 export interface UserDetail {
@@ -52,6 +61,18 @@ export interface UserDetail {
   hobbies: UserHobby[];
   languages: UserLanguage[];
   avatar: number;
+}
+
+export interface UserSetting {
+  id: number;
+
+  birthdateHidden: boolean;
+  mailHidden: boolean;
+  jobHidden: boolean;
+  genderHidden: boolean;
+  statusHidden: boolean;
+
+  preferences: NotificationSetting;
 }
 
 export enum EventRole {
