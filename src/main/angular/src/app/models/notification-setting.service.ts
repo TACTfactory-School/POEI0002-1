@@ -14,11 +14,7 @@ export class NotificationSettingService {
 
 
   getAll() {
-    // userId: number
-    // const params = new HttpParams()
-    //     .set('userId', `${userId}`);
-
-    return this.http.get<NotificationSetting>(`${URL}`);// , {params});
+    return this.http.get<NotificationSetting>(`${URL}`);
   }
 
   getOne(id: number) {

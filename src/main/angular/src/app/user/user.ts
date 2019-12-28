@@ -65,6 +65,8 @@ export interface UserDetail {
 
 export interface UserSetting {
   id: number;
+  username: string;
+  password: string;
 
   birthdateHidden: boolean;
   mailHidden: boolean;
@@ -146,3 +148,21 @@ export class UserDetail {
       this.maritalStatus = maritalStatus;
       }
 }
+
+export class UserSetting {
+  constructor(
+    birthdateHidden: boolean,
+    mailHidden: boolean,
+    jobHidden: boolean,
+    genderHidden: boolean,
+    statusHidden: boolean,
+    preferences: NotificationSetting
+    ) {
+    this.birthdateHidden = birthdateHidden;
+    this.mailHidden = mailHidden;
+    this.jobHidden = jobHidden;
+    this.genderHidden = genderHidden;
+    this.statusHidden = statusHidden;
+    this.preferences = preferences;
+    }
+  }

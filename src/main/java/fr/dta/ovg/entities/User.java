@@ -105,11 +105,11 @@ public class User extends EntityBase {
     /** Join event List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = UserContract.MAPPED_BY_USER)
     @JsonIgnoreProperties({JsonIgnoreContract.USER})
-//    @JsonIgnore
     private final List<JoinEvent> joinEvents = new ArrayList<>();
 
     /** The notifications preference of the user.*/
     @OneToOne(mappedBy = UserContract.MAPPED_BY_USER)
+    @JsonIgnoreProperties({JsonIgnoreContract.USER})
     private NotificationSetting preferences;
 
     /** The notifications list of the user.*/
@@ -464,7 +464,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param joinEvent : Add join event to user */
+    /** @param joinEvent : Add join event to user.*/
     public void addJoinEvent(final JoinEvent joinEvent) {
         if (!this.joinEvents.contains(joinEvent)) {
             this.joinEvents.add(joinEvent);
@@ -472,7 +472,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param userLanguage : association table. Add language to user */
+    /** @param userLanguage : association table. Add language to user.*/
     public void addUserLanguage(final UserLanguage userLanguage) {
         if (!this.languages.contains(userLanguage)) {
             this.languages.add(userLanguage);
@@ -480,7 +480,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param userHobby : association table. Add hobby to user */
+    /** @param userHobby : association table. Add hobby to user.*/
     public void addUserHobby(final UserHobby userHobby) {
         if (!this.hobbies.contains(userHobby)) {
             this.hobbies.add(userHobby);
@@ -488,7 +488,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param userNotification : Add notification to user */
+    /** @param userNotification : Add notification to user.*/
     public void addUserNotification(final Notification userNotification) {
         if (!this.notifications.contains(userNotification)) {
             this.notifications.add(userNotification);
@@ -496,7 +496,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param messagesReceived : Add received message to user */
+    /** @param messagesReceived : Add received message to user.*/
     public void addReceivedMessage(final Message messagesReceived) {
         if (!this.messagesReceived.contains(messagesReceived)) {
             this.messagesReceived.add(messagesReceived);
@@ -504,7 +504,7 @@ public class User extends EntityBase {
         }
     }
 
-    /** @param messagesEmitted : Add emitted message to user */
+    /** @param messagesEmitted : Add emitted message to user.*/
     public void addEmmittedMessage(final Message messagesEmitted) {
         if (!this.messagesEmitted.contains(messagesEmitted)) {
             this.messagesEmitted.add(messagesEmitted);
@@ -550,6 +550,13 @@ public class User extends EntityBase {
     public void removeEmmittedMessage(final Message messagesEmitted) {
         if (this.messagesEmitted.contains(messagesEmitted)) {
             this.messagesEmitted.remove(messagesEmitted);
+        }
+    }
+    /** @param notificationSetting : Add preferences (notification settings) to an user.*/
+    public void addPreferences(final NotificationSetting notificationSetting) {
+        if (!this.preferences.equals(notificationSetting)) {
+            this.setPreferences(notificationSetting);
+            notificationSetting.setUser(this);
         }
     }
 }

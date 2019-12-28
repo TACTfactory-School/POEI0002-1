@@ -1,18 +1,20 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { MatDialog, MatSlideToggleChange } from '@angular/material';
+import { MatDialog, MatSlideToggleChange, MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
-import { UserSetting } from '../user';
+import { UserSetting, User } from '../user';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
 import { Subscription } from 'rxjs';
 import { NotificationSetting } from 'src/app/models/notification-setting';
 import { NotificationSettingService } from 'src/app/models/notification-setting.service';
+import { AuthApiService } from 'src/app/auth/auth-api.service';
+import { first } from 'rxjs/operators';
+import { UserApiService } from '../user-api.service';
 
 const DISPLAY = 'Afficher';
 const HIDE = 'Masquer';
 const ACTIVE = 'Activer';
 const DESACTIVE = 'Désactiver';
-
 
 @Component({
   selector: 'app-user-preferences',
@@ -23,12 +25,11 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
 
   settings: FormGroup;
   userPref: UserSetting;
+  newUserPref: UserSetting;
   pref: NotificationSetting;
   private userSub: Subscription;
   private settingSub: Subscription;
 
-  private app: boolean;
-  private mail: boolean;
   @Input() displayHeader = true;
 
   // Hide label manual TODO refacto ?
@@ -48,11 +49,15 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
   hideStatusText: string;
 
   constructor(
-    public dialog: MatDialog,
+    public dialog: MatDialog, // MatDialogRef<UserPreferencesComponent>,
     private router: Router,
     private fb: FormBuilder,
     private readonly currentUser: CurrentUserService,
-    private readonly preferences: NotificationSettingService) { }
+    private readonly preferences: NotificationSettingService,
+    private api: UserApiService,
+    private auth: AuthApiService,
+    // @Inject(MAT_DIALOG_DATA) private data: User,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.settings = this.fb.group({
@@ -74,10 +79,6 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
       this.currentUser
           .observable
           .subscribe(user => this.onUserChange(user));
-    // Get the current logged user.
-    // this.currentUser.observable
-    //   .pipe(tap(console.log))
-    //   .subscribe(value => this.currentUpref = value);
   }
 
   ngOnDestroy(): void {
@@ -88,22 +89,12 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // if (this.settings.controls.activeApp.value === DESACTIVE) {
-    //   this.app = true;
-    // }
-    // if (this.settings.controls.activeMail.value === DESACTIVE) {
-    //   this.app = true;
-    // }
+    this.updateSettings();
     this.close();
    }
 
   close() {
     this.dialog.closeAll();
-  }
-
-  save() {
-    this.close();
-  //  this.router.navigate(['user/me']);
   }
 
   changed1(ob: MatSlideToggleChange) {
@@ -142,9 +133,8 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
     // Release old settings
     this.freeSettingSub();
 
+    // Update old state.
     if (newUser) {
-      // Update old state.
-
       // Get notifications for new user.
       this.settingSub = this.preferences
           .getOne(this.userPref.id)
@@ -208,5 +198,45 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
 
     if (this.activeMail) { this.activeMailText = ACTIVE;
     } else { this.activeMailText = DESACTIVE; }
+  }
+
+  private updateSettings() {
+    if (this.settings.valid) {
+      //console.log(this.newUserPref.username + '-' + this.settings.controls.password.value);
+      this.newUserPref = new UserSetting(
+        this.hideGender,
+        this.hideJob,
+        this.hideMail,
+        this.hideStatus,
+        this.hideBirthdate,
+        new NotificationSetting(this.activeApp, this.activeMail)
+      );
+      //console.log(this.newUserPref.username + '-' + this.newUserPref.password);
+      this.auth.login(this.newUserPref.username, this.settings.controls.password.value)
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.api.updateOne(this.newUserPref.id, this.newUserPref as User)
+                .pipe(first())
+                .subscribe(
+                  data => {
+                      this.dialog.closeAll();
+                      this._snackBar.open('Vos préférences ont bien été sauvegardées !', 'Fermer', {
+                        duration: 4000,
+                      });
+                  },
+                  error => {
+                      console.log(error);
+                      this._snackBar.open('Vos préférences n\'ont pas pu être sauvegardées. Vérifiez que vous êtes connecté(e)', 'Fermer', {
+                        duration: 4000,
+                      });
+                  });
+            },
+            error => {
+                this._snackBar.open('Mot de passe incorrect', 'Fermer', {
+                  duration: 4000,
+                });
+          });
+    }
   }
 }

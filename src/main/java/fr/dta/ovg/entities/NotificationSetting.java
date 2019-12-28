@@ -22,6 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = SettingContract.TABLE_API)
 public class NotificationSetting extends EntityBase {
 
+    /** the user notification setting.*/
     @OneToOne
     @PrimaryKeyJoinColumn
     private User user;
@@ -58,5 +59,21 @@ public class NotificationSetting extends EntityBase {
      * @param activeMail : boolean to set. Enable/Disable mail notifications.*/
     public void setActiveMail(final boolean activeMail) {
         this.activeMail = activeMail;
+    }
+    /** Get the notificationSetting's user.
+     * @return the user : @see User.*/
+    public User getUser() {
+        return user;
+    }
+
+    /** Set the notificationSetting's user.
+     * @param user the user to set.*/
+    public void setUser(final User user) {
+        if (this.user != user) {
+            this.user = user;
+            if (user != null) {
+                user.addPreferences(this);
+            }
+        }
     }
 }
