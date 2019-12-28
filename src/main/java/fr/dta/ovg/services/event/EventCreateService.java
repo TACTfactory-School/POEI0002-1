@@ -19,6 +19,7 @@ import fr.dta.ovg.repositories.EventRepository;
 @Transactional
 public class EventCreateService {
 
+    /** Local Logger instance declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(EventCreateService.class);
 
     /** Link to Event repository.*/

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserDetail, User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
-import { Observable } from 'rxjs';
 import { UserApiService } from '../user-api.service';
 import { tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { UserEditComponent } from '../user-edit/user-edit.component';
+
+const UNSPECIFIED = 'Non renseigné';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,8 +16,9 @@ import { UserEditComponent } from '../user-edit/user-edit.component';
 })
 export class UserProfileComponent implements OnInit {
 
-  currentUser: User;
-  unspecifiedText = 'Non renseigné';
+  currentUser: UserDetail;
+  unspecifiedText = UNSPECIFIED;
+  displayHeader: boolean;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -29,15 +31,13 @@ export class UserProfileComponent implements OnInit {
     this.currentU.observable
         .pipe(tap(console.log))
         .subscribe(value => this.currentUser = value);
+    // Hide Settings Header
+    this.displayHeader = false;
   }
 
-  onDelete() {
+  onDelete() { }
 
-  }
-
-  onEditAvatar() {
-
-  }
+  onEditAvatar() { }
 
   onEditInfo() {
     const dialogRef = this.dialog.open(UserEditComponent, {

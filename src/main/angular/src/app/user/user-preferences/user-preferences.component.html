@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="header">
+  <div class="header" *ngIf="displayHeader">
     <mat-toolbar>
         <mat-toolbar-row>
           <span>Préférences</span>
@@ -11,7 +11,7 @@
     </mat-toolbar>
   </div>
   <div class="pref-dialog">
-    <form [formGroup]="preferences" (ngSubmit)="onSubmit()">
+    <form [formGroup]="settings" (ngSubmit)="onSubmit()">
       <div class="pref-notifications">
           <mat-toolbar>
               <mat-toolbar-row class="sub">
@@ -21,11 +21,11 @@
         <ul>
           <li>
             <!-- Hide Current User Email -->
-            <mat-slide-toggle formControlName="activeApp" (change)="changed1($event)" aria-label="Desactivate application notficiations">{{ activeApp }} les notifications dans l'application.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="activeApp" (change)="changed1($event)" aria-label="Desactivate application notficiations">{{ activeAppText }} les notifications dans l'application.</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Birthate -->
-            <mat-slide-toggle formControlName="activeMail" (change)="changed2($event)" aria-label="Desactivate mail notficiations">{{ activeMail }} les notifications par mail.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="activeMail" (change)="changed2($event)" aria-label="Desactivate mail notficiations">{{ activeMailText }} les notifications par mail.</mat-slide-toggle>
           </li>
         </ul>
 
@@ -39,23 +39,23 @@
         <ul>
           <li>
             <!-- Hide Current User Email -->
-            <mat-slide-toggle formControlName="hideMail" (change)="changed3($event)">{{ hideMail }} mon email.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hideMail" (change)="changed3($event)">{{ hideMailText }} mon email.</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Birthate -->
-            <mat-slide-toggle formControlName="hideBirthdate" (change)="changed4($event)">{{ hideBirthdate }} ma date de naissance.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hideBirthdate" (change)="changed4($event)">{{ hideBirthdateText }} ma date de naissance.</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Job -->
-            <mat-slide-toggle formControlName="hideJob" (change)="changed5($event)">{{ hideJob }} ma profession.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hideJob" (change)="changed5($event)">{{ hideJobText }} ma profession.</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Marital Status -->
-            <mat-slide-toggle formControlName="hideStatus" (change)="changed6($event)">{{ hideStatus }} ma situation familiale.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hideStatus" (change)="changed6($event)">{{ hideStatusText }} ma situation familiale.</mat-slide-toggle>
           </li>
           <li>
             <!-- Hide Current User Gender -->
-            <mat-slide-toggle formControlName="hideGender" (change)="changed7($event)">{{ hideGender }} mon genre.</mat-slide-toggle>
+            <mat-slide-toggle formControlName="hideGender" (change)="changed7($event)">{{ hideGenderText }} mon genre.</mat-slide-toggle>
           </li>
         </ul>
       </div>

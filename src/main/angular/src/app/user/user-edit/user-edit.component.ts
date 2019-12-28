@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserApiService } from '../user-api.service';
 import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { User } from '../user';
+import { User, UserDetail } from '../user';
 import { first } from 'rxjs/operators';
 import { AuthApiService } from 'src/app/auth/auth-api.service';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class UserEditComponent implements OnInit {
     private api: UserApiService,
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<UserEditComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: User,
+    @Inject(MAT_DIALOG_DATA) private data: UserDetail,
     private auth: AuthApiService,
     private router: Router,
     public dialog: MatDialog
@@ -76,10 +76,6 @@ export class UserEditComponent implements OnInit {
                 duration: 4000,
               });
           });
-
-
-
-
     }
   }
 }

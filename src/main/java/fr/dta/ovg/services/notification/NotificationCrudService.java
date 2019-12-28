@@ -3,7 +3,6 @@
  * Genericity of crud service.
  * License : ©2019 All rights reserved
  */
-
 package fr.dta.ovg.services.notification;
 
 import org.springframework.data.domain.Page;
@@ -29,7 +28,7 @@ public interface NotificationCrudService {
      * Must be redefined in implemented class.<br>
      * @param id : Notification id.
      * @return Notification : entity.
-     * */
+     * @throws NotFoundException : Setting not found.*/
     Notification getOne(long id) throws NotFoundException;
 
     /**
@@ -44,7 +43,6 @@ public interface NotificationCrudService {
      * Delete one Notification entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id : Notification id.
-     * @return void : nothing.
-     * */
+     * @throws NotFoundException : Setting not found.*/
     void delete(long id) throws NotFoundException;
 }

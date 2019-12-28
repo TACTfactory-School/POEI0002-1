@@ -6,7 +6,7 @@
 package fr.dta.ovg.contracts;
 
 /** EVENT CONTRACT - Constants Term.*/
-public class EventContract {
+public final class EventContract {
 
     /** Private empty constructor of EventContract.*/
     private EventContract() {
@@ -22,7 +22,6 @@ public class EventContract {
     // COLUMNS DEFINITION
     /** Column Creator API Description. */
     public static final String COL_CREATOR_API = "The author of the event.";
-    public static final String COL_CREATOR_JSONIGNORE = "ev_label";
 
     /** Column ev_label. */
     public static final String COL_LABEL = "ev_label";

@@ -1,3 +1,9 @@
+/* JoinEvent Fixtures DB Service.
+ * @author Colin Cerveaux @C-ambium
+ * Action : Initialize DB with initials data.
+ * License : ©2019 All rights reserved
+ */
+
 package fr.dta.ovg.fixtures;
 
 import java.util.Random;
@@ -17,20 +23,32 @@ import fr.dta.ovg.services.EventCrudService;
 import fr.dta.ovg.services.JoinCrudService;
 import fr.dta.ovg.services.UserCrudService;
 
+/** This class initialize DB join table with initials fixtures data. */
 @Component
 @Profile("!prod")
 public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
 
+    /** Link to Join CRUD Service. */
     private final JoinCrudService joinService;
 
+    /** Link to Event CRUD Service. */
     private final EventCrudService eventService;
 
+    /** Link to User CRUD Service. */
     private final UserCrudService userService;
 
+    /** Event Faker Size. */
     private final int eventFakerSize;
 
+    /** User Faker Size. */
     private final int userFakerSize;
 
+    /** Local Constructor.
+     * @param joinService : @see JoinCrudService.
+     * @param eventService : @see EventCrudService.
+     * @param userService : @see UserCrudService.
+     * @param eventFakerSize : @see application-dev.properties.
+     * @param userFakerSize : @see application-dev.properties.*/
     public JoinEventFixtureService(
             @Autowired final JoinCrudService joinService,
             @Autowired final EventCrudService eventService,
@@ -45,11 +63,16 @@ public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
         this.userFakerSize = userFakerSize;
     }
 
+
+    /** Fixtures are loaded only if no data.
+     * @throws NotFoundException : JoinEvent entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
         this.loadReal();
     }
 
+    /** Build manually some real JoinEvent fixture.
+     * @throws NotFoundException : JoinEvent entity not found.*/
     private void loadReal() throws NotFoundException {
 
         final Random rand = new Random();
@@ -70,6 +93,11 @@ public class JoinEventFixtureService extends FixtureCheck<JoinEventRepository> {
         }
     }
 
+    /** JoinEvent Builder.
+     * @param event : Event entity.
+     * @param user : User entity.
+     * @param role : EventRole Enum.
+     * @param valid : true if user can participation to event.*/
     private void buildJoin(final Event event, final User user, final EventRole role, final boolean valid) {
 
         if (!event.getUsersJoin()

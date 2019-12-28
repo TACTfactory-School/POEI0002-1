@@ -36,24 +36,43 @@ import fr.dta.ovg.services.event.EventCreateService;
 @Profile("!prod")
 public class EventFixtureService extends FixtureCheck<EventRepository> {
 
+    /** Link to Event Create Service. */
     private final EventCreateService eventService;
 
+    /** Link to User CRUD Service. */
     private final UserCrudService userService;
 
+    /** Link to Join CRUD Service. */
     private final JoinCrudService joinService;
 
+    /** Event Faker Size. */
     private int eventFakerSize;
 
+    /** User Faker Size. */
     private int userFakerSize;
 
+    /** Samy ID.*/
+    private static final byte SAMY = 1;
 
+    /** Colin ID.*/
+    private static final byte COLIN = 1;
+
+    /** Fabrice ID.*/
+    private static final byte FAB = 1;
+
+    /** Test ID.*/
+    private static final byte TEST = 1;
+
+    /** Define new Faker and set Local to french FR. */
     private final Faker fake = new Faker(new Locale("fr"));
 
-    /**
-     * Local Constructor.
-     *  Link to Event Create Service.
-     *  Get Value of fakerSize @see application.properties. */
-     public EventFixtureService(
+    /** Local Constructor.
+     * @param eventFakerSize : @see application-dev.properties.
+     * @param userFakerSize : @see application-dev.properties.
+     * @param eventService : @see EventCreateService.
+     * @param userService : @see UserCrudService.
+     * @param joinService : @see JoinCrudService.*/
+    public EventFixtureService(
             @Value("${app.event.fixtures.fakersize:100}") final int eventFakerSize,
             @Value("${app.user.fixtures.fakersize:100}") final int userFakerSize,
             @Autowired final EventCreateService eventService,
@@ -66,39 +85,53 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         this.joinService = joinService;
     }
 
-    /** Create-Drop DB - Insert initial data, erasing old data every run.
-     * @throws NotFoundException */
+    /** Create-Drop DB - Insert initial data, erasing old data every run (create-drop mode).
+     * Fixtures are loaded only if no data.
+     * @throws NotFoundException : Event entity not found.*/
     @Override
     public void loadIfNoData() throws NotFoundException {
         this.loadReal();
         this.loadFake();
     }
 
+    /** Build manually some real Event fixture.
+     * @throws NotFoundException : Event entity not found.*/
     private void loadReal() throws NotFoundException {
 
         ZonedDateTime start = ZonedDateTime.now();
 
-        this.build("Supra Party One",   userService.getOne(1),          "C'est super génial Viendez",
+        this.build("Supra Party One",   userService.getOne(SAMY),       "C'est super génial Viendez",
                     start,              "img1",                         25,
                     "5 rue du chat",    "35000",                        "Rennes",
-                    this.EventTypeStore().get(1));
+                    this.eventTypeStore().get(1));
 
-        this.build("Poke GO",           userService.getOne(2),          "Chasse aux pokemons",
-                    start,              "img1",                         25,
-                    "5 chemin des eaux", "49000",                        "Angers",
-                    this.EventTypeStore().get(2));
+        this.build("Poke GO",           userService.getOne(COLIN),      "Chasse aux pokemons",
+                    start,              "img1",                         20,
+                    "5 chemin des eaux", "49000",                       "Angers",
+                    this.eventTypeStore().get(2));
 
-        this.build("GameBox",           userService.getOne(3),          "RetroGamin Event #7",
-                    start,              "img1",                         25,
+        this.build("GameBox",           userService.getOne(FAB),        "RetroGamin Event #7",
+                    start,              "img1",                         15,
                     "5 bld Nerobi",     "69000",                        "Lyon",
-                    this.EventTypeStore().get(3));
+                    this.eventTypeStore().get(3));
 
-        this.build("Dotball",           userService.getOne(4),          "Jeux de sports & pinball",
-                    start,              "img1",                         25,
+        this.build("Dotball",           userService.getOne(TEST),       "Jeux de sports & pinball",
+                    start,              "img1",                         5,
                     "15 rue Paul Bert", "75000",                        "Paris",
-                    this.EventTypeStore().get(4));
+                    this.eventTypeStore().get(4));
     }
 
+    /** Event Builder function.
+     * @param label : event label.
+     * @param creator : event creator.
+     * @param description : event description.
+     * @param startAt : event start date.
+     * @param img : event image.
+     * @param nbPlaceMax : event max places.
+     * @param address : event address.
+     * @param postcode : event postcode.
+     * @param city : event city.
+     * @param type : event type.*/
     private void build(final String label, final User creator, final String description,
             final ZonedDateTime startAt, final String img, final int nbPlaceMax,
             final String address, final String postcode, final String city, final EventType type) {
@@ -129,10 +162,14 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
     }
 
+    /** Build fake event fixtures function.*/
     private void loadFake() {
         IntStream.range(0, this.eventFakerSize).forEach(this::buildFake);
     }
 
+
+    /** Faker builder Function.
+     * @param i : faker size option.*/
     private void buildFake(final int i) {
 
         Random rand = new Random();
@@ -149,7 +186,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
                     this.fake.address().streetAddress(),
                     this.fake.address().zipCode(),
                     this.fake.address().city(),
-                    this.EventTypeStore().get(rand.nextInt(13)));
+                    this.eventTypeStore().get(rand.nextInt(13)));
         } catch (NotFoundException e) {
             e.getMessage();
         }
@@ -157,7 +194,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
     /** Event Type Storage Function.
      * @return List of Event type.*/
-    private ArrayList<EventType> EventTypeStore() {
+    private ArrayList<EventType> eventTypeStore() {
 
         ArrayList<EventType> type = new ArrayList<EventType>();
 

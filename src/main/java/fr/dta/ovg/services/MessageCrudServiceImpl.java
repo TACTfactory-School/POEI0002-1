@@ -1,3 +1,8 @@
+/* Message CRUD Service Implementation Class.
+ * @author Colin Cerveaux @C-ambium
+ * Genericity of crud service.
+ * License : ©2019 All rights reserved
+ */
 package fr.dta.ovg.services;
 
 import org.slf4j.Logger;
@@ -13,6 +18,7 @@ import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.MessageRepository;
 import fr.dta.ovg.services.user.UserDeleteService;
 
+/** Message CRUD Service Implementation Class.*/
 @Service
 public class MessageCrudServiceImpl implements MessageCrudService {
 
@@ -20,6 +26,7 @@ public class MessageCrudServiceImpl implements MessageCrudService {
     @Autowired
     private MessageRepository repository;
 
+    /** Local Logger declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     /** {@inheritDoc}.*/
@@ -33,6 +40,7 @@ public class MessageCrudServiceImpl implements MessageCrudService {
 
         return this.repository.findAllByUserId(pageable, userId);    }
 
+    /** {@inheritDoc}.*/
     @Override
     public Message getOne(final long id) throws NotFoundException {
 
@@ -42,6 +50,7 @@ public class MessageCrudServiceImpl implements MessageCrudService {
                 .orElseThrow(() -> new NotFoundException());
     }
 
+    /** {@inheritDoc}.*/
     @Override
     public Message create(final Message message) {
 
@@ -49,6 +58,7 @@ public class MessageCrudServiceImpl implements MessageCrudService {
         return this.repository.save(message);
     }
 
+    /** {@inheritDoc}.*/
     @Override
     public void delete(final long id) throws NotFoundException {
         LOG.debug("Delete Message");

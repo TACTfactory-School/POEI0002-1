@@ -15,10 +15,12 @@ import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
 import fr.dta.ovg.repositories.UserRepository;
 
+/** Implementation Delete CRUD on User. */
 @Component
 @Transactional
 public class UserDeleteService {
 
+    /** Local Logger declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     /** Link to User Repository. */

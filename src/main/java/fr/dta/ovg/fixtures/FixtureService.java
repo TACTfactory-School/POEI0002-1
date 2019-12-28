@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.dta.ovg.exceptions.NotFoundException;
 
+/** Fixtures Service implementation Class.*/
 @Component
 @Profile("!prod")
 public class FixtureService implements Fixture {
@@ -48,7 +49,20 @@ public class FixtureService implements Fixture {
     @Autowired
     private LanguageFixtureService langFixture;
 
-    /** Call loading initials fixtures @see {@link EventFixtureService}.
+    /** Link to Language Fixture Service. */
+    @Autowired
+    private UserFriendFixtureService friendFixture;
+
+    /** Call loading initials fixtures.
+     * @see {@link EventFixtureService}
+     * @see {@link UserFixtureService}
+     * @see {@link HobbyFixtureService}
+     * @see {@link NotificationFixtureService}
+     * @see {@link MessageFixtureService}
+     * @see {@link JoinEventFixtureService}
+     * @see {@link NotificationSettingFixtureService}
+     * @see {@link LanguageFixtureService}
+     * @see {@link UserFriendFixtureService}
      *  @throws NotFoundException */
     @Transactional
     public void load() throws NotFoundException {
@@ -60,5 +74,6 @@ public class FixtureService implements Fixture {
         this.hobbyFixture.load();
         this.joinFixture.load();
         this.langFixture.load();
+        this.friendFixture.load();
     }
 }

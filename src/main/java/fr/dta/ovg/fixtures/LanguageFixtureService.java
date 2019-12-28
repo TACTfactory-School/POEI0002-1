@@ -26,7 +26,7 @@ import fr.dta.ovg.services.user.UserCrudServiceImpl;
 /** This class initialize DB with initials languages fixtures data. */
 @Component
 @Profile("!prod")
-public class LanguageFixtureService  extends FixtureCheck<LanguageRepository>{
+public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
 
     /** Link to Language CRUD Service. */
     private final LanguageCrudService langService;
@@ -39,6 +39,11 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository>{
 
     /** Declare new Random object.*/
     private final Random rand = new Random();
+
+    /** Number of level choices minus one (because random object can hit zero).*/
+    private final static byte NB_LEVELS = 4;
+    /** Number of languages default choices minus one (because random object can hit zero).*/
+    private final static byte NB_LANGS = 4;
 
     /** LanguageFixtureService Constructor. Initialize Language CRUD service.
      * @param langService : @see LanguageCrudService.
@@ -54,21 +59,33 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository>{
     }
 
 
-    /** Insert initial data - Create-drop mode will erasing old data in the DB at every run.
-     * @throws NotFoundException */
+    /** Fixtures are loaded only if no data.
+     * @throws NotFoundException : Language entity not found.*/
     @Override
     protected void loadIfNoData() throws NotFoundException {
 
         Stream.of("FRANÇAIS", "ENGLISH", "DEUTSCH", "ITALIANO", "ESPAÑOL", "中国的", "ไทย", "РУССКИЙ")
             .forEach(this::build);
 
-        this.buildUserLanguage(
-                this.LanguageLevelStore().get(rand.nextInt(4)),
-                this.langService.getOne(rand.nextInt(7) + 1),
-                this.userService.getOne(rand.nextInt(99) + 1));
+        // Build real fixtures.
+        for (int i = 1; i < 4; i++) {
+            this.buildUserLanguage(
+                    this.languageLevelStore().get(4),// Here we use 0 index because its an array.
+                    this.langService.getOne(1),
+                    this.userService.getOne(i));
+        }
+
+        // Build fake fixtures.
+        for (int i = 4; i < 101; i++) {
+            this.buildUserLanguage(
+                    this.languageLevelStore().get(rand.nextInt(NB_LEVELS)),// Here we use 0 index because its an array.
+                    this.langService.getOne(rand.nextInt(NB_LANGS) + 1),
+                    this.userService.getOne(i));
+        }
+
     }
 
-    /** Build Language Function.
+    /** Language Builder Function.
      * @param label : the language label.*/
     private void build(final String label) {
 
@@ -80,7 +97,9 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository>{
     }
 
     /** Build UserLanguage Join table Function.
-     * @param label : the language label.*/
+     * @param level : user language level.
+     * @param language : language choosed.
+     * @param user : current user.*/
     private void buildUserLanguage(final LanguageLevel level, final Language language, final User user) {
 
         final UserLanguage userLang = new UserLanguage();
@@ -94,7 +113,7 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository>{
 
     /** User Language Level Storage Function.
      * @return List of Language Level.*/
-    private ArrayList<LanguageLevel> LanguageLevelStore() {
+    private ArrayList<LanguageLevel> languageLevelStore() {
 
         ArrayList<LanguageLevel> level = new ArrayList<LanguageLevel>();
 

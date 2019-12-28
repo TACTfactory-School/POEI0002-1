@@ -28,22 +28,26 @@ import io.swagger.annotations.ApiModelProperty;
 @MappedSuperclass
 public class EntityBase {
 
+    /** Entity Auto-generated ID. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = EntityBaseContract.COL_ID_API, readOnly = true)
     private Long id;
 
+    /** Entity Enabled boolean option.*/
     @JsonProperty(access = Access.READ_ONLY)
     @ApiModelProperty(value = EntityBaseContract.COL_ENABLED_API, readOnly = true)
     @Column(name = EntityBaseContract.COL_ENABLED)
     private boolean enabled = true;
 
+    /** Entity Created Date.*/
     @CreatedDate //  @Temporal(TemporalType.TIMESTAMP)
     @ApiModelProperty(value = EntityBaseContract.COL_CREATED_AT_API, readOnly = true)
     @JsonProperty(access = Access.READ_ONLY)
     @Column(name = EntityBaseContract.COL_CREATED_AT, nullable = false)
     private LocalDateTime createdAt;
 
+    /** Entity Last Updated Date.*/
     @LastModifiedDate//  @Temporal(TemporalType.TIMESTAMP)
     @ApiModelProperty(value = EntityBaseContract.COL_UPDATED_AT_API, readOnly = true)
     @JsonProperty(access = Access.READ_ONLY)
@@ -70,26 +74,20 @@ public class EntityBase {
         super();
     }
 
-    /**
-     * Getter id.
-     * @return the id (long).
-     */
+    /** Getter id.
+     * @return the id (long).*/
     public Long getId() {
         return id;
     }
 
-    /**
-     * Setter id.
-     * @param id the id to set (Long).
-     */
+    /** Setter id.
+     * @param id the id to set (Long).*/
     public void setId(final Long id) {
         this.id = id;
     }
 
-    /**
-     * Getter Function isEnabled.
-     * @return boolean : enabled.
-     */
+    /** Getter Function isEnabled.
+     * @return boolean : enabled.*/
     public boolean isEnabled() {
         return enabled;
     }
@@ -106,10 +104,8 @@ public class EntityBase {
         return createdAt;
     }
 
-    /**
-     * Getter updated date.
-     * @return LocalDateTime updatedAt.
-     */
+    /** Getter updated date.
+     * @return LocalDateTime updatedAt.*/
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }

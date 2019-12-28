@@ -40,7 +40,7 @@ public class NotFoundException extends HttpException {
         super(message, cause);
     }
 
-    /** Full Constructor with message, cause, suppression & stack trace options.
+    /** Full Constructor with message, cause, suppression and stack trace options.
      * @param message (String) : message to return.
      * @param cause : cause to return. @see Throwable.
      * @param enableSuppression : enable suppression option.

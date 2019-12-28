@@ -20,6 +20,7 @@ import fr.dta.ovg.repositories.EventRepository;
 @Transactional
 public class EventDeleteService {
 
+    /** Local Logger instance declaration. */
     private static final Logger LOG = LoggerFactory.getLogger(EventDeleteService.class);
 
     /** Link to Event Repository. */
@@ -27,7 +28,8 @@ public class EventDeleteService {
     private EventRepository repository;
 
     /** Delete Event function implementation.
-     * @param id : number of the selected Event.*/
+     * @param id : number of the selected Event.
+     * @throws NotFoundException : Event entity not found.*/
     void delete(final long id)  throws NotFoundException {
         LOG.debug("Delete event");
 
