@@ -53,7 +53,7 @@ public class FixtureService implements Fixture {
     @Autowired
     private UserFriendFixtureService friendFixture;
 
-    /** Call loading initials fixtures
+    /** Call loading initials fixtures.
      * @see EventFixtureService
      * @see UserFixtureService
      * @see HobbyFixtureService
@@ -62,7 +62,7 @@ public class FixtureService implements Fixture {
      * @see JoinEventFixtureService
      * @see NotificationSettingFixtureService
      * @see LanguageFixtureService
-     * @see UserFriendFixtureServic
+     * @see UserFriendFixtureService
      * @throws NotFoundException : entity not found. */
     @Transactional
     public void load() throws NotFoundException {
