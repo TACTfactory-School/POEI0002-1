@@ -3,8 +3,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { User, UserDetail } from './user';
 import { environment } from 'src/environments/environment';
 import { Page } from '../shared/paginator/page';
+import { UserFriend } from '../models/user-friend';
 
 const URL = `${environment.apiUrl}/user`;
+const URL_FRIEND = `${environment.apiUrl}/friend`;
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,16 +22,23 @@ export class UserApiService {
   // }
 
   getAll(page: number, perPage: number) {
-
     const params = new HttpParams()
         .set('page', `${page}`)
         .set('quantity', `${perPage}`)
-
     return this.http.get<Page<User>>(`${URL}`, {params});
+  }
+
+  getAllFriends(id: number) {
+    const params = new HttpParams()
+        .set('id', `${id}`)
+    return this.http.get<UserFriend>(`${URL_FRIEND}`, {params});
   }
 
   getOne(id: number) {
     return this.http.get<User>(`${URL}/${id}`);
+  }
+  getOneFriend(id: number) {
+    return this.http.get<User>(`${URL_FRIEND}/${id}`);
   }
 
   getOneDetail(id: number) {
@@ -39,8 +49,16 @@ export class UserApiService {
     return this.http.delete<void>(`${URL}/${id}`);
   }
 
+  deleteFriend(id: number) {
+    return this.http.delete<void>(`${URL_FRIEND}/${id}`);
+  }
+
   add(data: User) {
     return this.http.post<Event>(URL, data);
+  }
+
+  addNewFriend(data: UserFriend) {
+    return this.http.post<Event>(URL_FRIEND, data);
   }
 
   updateOne(id: number, data: User) {

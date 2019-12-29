@@ -2,6 +2,7 @@ import { UserLanguage } from '../models/user-language';
 import { UserHobby } from '../models/user-hobby';
 import { JoinEvent } from '../join-event/join-event';
 import { NotificationSetting } from '../models/notification-setting';
+import { UserFriend } from '../models/user-friend';
 
 export interface User {
   id: number;
@@ -68,6 +69,8 @@ export interface UserDetail {
   genderHidden: boolean;
   statusHidden: boolean;
 
+  friendsRequest: UserFriend[];
+  friendsAccept: UserFriend[];
 }
 
 export interface UserSetting {
