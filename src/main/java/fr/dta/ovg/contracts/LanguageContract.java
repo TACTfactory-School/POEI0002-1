@@ -25,6 +25,8 @@ public final class LanguageContract {
     public static final String COL_LABEL = "lang_label";
     /** Column lang_label API Description.*/
     public static final String COL_LABEL_API = "The language label to create.";
+    /** Column lang_label length. */
+    public static final int COL_LABEL_LENGTH = 50;
 
     // UserLanguage ENTITY - JOIN TABLE
     /** Join Table app_us_lang_lvl. */

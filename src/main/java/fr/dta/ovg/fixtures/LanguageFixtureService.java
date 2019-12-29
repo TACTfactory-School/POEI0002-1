@@ -74,7 +74,7 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
         }
 
         // Build fake fixtures (101).
-        for (int i = 4; i < FixturesContract.NB_USERS; i++) {
+        for (int i = FixturesContract.NB_REAL; i < FixturesContract.NB_USERS; i++) {
             this.buildUserLanguage(
                     // Here we use 0 index because its an array.
                     this.languageLevelStore().get(rand.nextInt(FixturesContract.NB_LEVELS)),

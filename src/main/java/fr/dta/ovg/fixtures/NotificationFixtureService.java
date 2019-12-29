@@ -48,6 +48,7 @@ public class NotificationFixtureService extends FixtureCheck<NotificationReposit
         this.build("Nouveau message de ListerKred.",    userService.getOne(FixturesContract.COLIN));
 
         for (int i = 1; i < FixturesContract.NB_REAL; i++) {
+            this.build("Bienvenue sur OVG.fr ",                         userService.getOne(i));
             this.build("Paul à accepté votre demande d'ami.",           userService.getOne(i));
             this.build("Jacques vous a envoyé une demande d'ami.",      userService.getOne(i));
             this.build("Votre demande d'inscritption à été validée.",   userService.getOne(i));

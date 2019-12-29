@@ -90,22 +90,22 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
         final ZonedDateTime start = ZonedDateTime.now();
 
         this.build("Supra Party One",   userService.getOne(FixturesContract.SAMY),       "C'est super génial Viendez",
-                    start,              "img1",                         25,
+                    start,              "img1",                         FixturesContract.NB_PLACES_25,
                     "5 rue du chat",    "35000",                        "Rennes",
                     this.eventTypeStore().get(FixturesContract.TYPE_TOURNAMENTS));
 
         this.build("Poke GO",           userService.getOne(FixturesContract.COLIN),      "Chasse aux pokemons",
-                    start,              "img1",                         20,
+                    start,              "img1",                         FixturesContract.NB_PLACES_20,
                     "5 chemin des eaux", "49000",                       "Angers",
                     this.eventTypeStore().get(FixturesContract.TYPE_ESPORT));
 
         this.build("GameBox",           userService.getOne(FixturesContract.FAB),        "RetroGamin Event #7",
-                    start,              "img1",                         15,
+                    start,              "img1",                         FixturesContract.NB_PLACES_15,
                     "5 bld Nerobi",     "69000",                        "Lyon",
                     this.eventTypeStore().get(FixturesContract.TYPE_RETROGAMING));
 
         this.build("Dotball",           userService.getOne(FixturesContract.TEST),       "Jeux de sports & pinball",
-                    start,              "img1",                         5,
+                    start,              "img1",                         FixturesContract.NB_PLACES_5,
                     "15 rue Paul Bert", "75000",                        "Paris",
                     this.eventTypeStore().get(FixturesContract.TYPE_SPORT));
     }
@@ -168,10 +168,10 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
                     this.fake.esports().event(),
                     userService.getOne(rand.nextInt(userFakerSize)), // this.fake.name().fullName(),
                     this.fake.gameOfThrones().quote(),
-                    this.fake.date().future(rand.nextInt(2000) + 1, TimeUnit.DAYS)
+                    this.fake.date().future(rand.nextInt(FixturesContract.DATE_SCALE) + 1, TimeUnit.DAYS)
                         .toInstant().atZone(ZoneId.systemDefault()),
                     this.fake.avatar().toString(),
-                    rand.nextInt(100),
+                    rand.nextInt(FixturesContract.NB_USERS),
                     this.fake.address().streetAddress(),
                     this.fake.address().zipCode(),
                     this.fake.address().city(),

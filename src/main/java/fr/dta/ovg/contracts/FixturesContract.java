@@ -22,6 +22,12 @@ public final class FixturesContract {
     public static final int NB_RAND = 99;
     /** User Rate value.*/
     public static final byte NB_STARS = 5;
+    /** Number of default avatar choices.*/
+    public static final byte NB_DEFAULT_AVATAR = 5;
+    /** Random event future date scale.*/
+    public static final int DATE_SCALE = 2000;
+
+    // CREATORS INFORMATIONS.
     /** Samy ID.*/
     public static final byte SAMY = 1;
     /** Samy Birthdate.*/
@@ -69,7 +75,7 @@ public final class FixturesContract {
     /** Fabrice ID.*/
     public static final byte NB_PLACES_15 = 15;
     /** Test ID.*/
-    public static final byte NB_PLACES_10 = 10;
+    public static final byte NB_PLACES_5 = 5;
 
     // EVENT TYPE FIXTURES REFERENCES
     /** Event type Store length.*/

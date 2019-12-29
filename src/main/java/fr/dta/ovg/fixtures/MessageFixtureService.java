@@ -54,9 +54,13 @@ public class MessageFixtureService extends FixtureCheck<MessageRepository> {
         this.build("Je viens de créé, tu peux rejoindre si tu veux.",
                     userService.getOne(FixturesContract.FAB),           userService.getOne(FixturesContract.COLIN));
 
-        for (int i = 3; i < 4; i++) {
-            this.build("Bienvenue sur OVG.fr :)",   userService.getOne(i + 1), userService.getOne(i));
-            this.build("Salut c'est Polo !",        userService.getOne(i + 1), userService.getOne(i));
+        for (int i = 1; i < FixturesContract.NB_REAL; i++) {
+            this.build("Hey, t'es là le 6 janvier ?)",
+                        userService.getOne(FixturesContract.NB_RAND),
+                        userService.getOne(i));
+            this.build("Salut c'est Polo !",
+                        userService.getOne(FixturesContract.NB_RAND - i),
+                        userService.getOne(i));
         }
     }
 

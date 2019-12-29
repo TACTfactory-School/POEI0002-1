@@ -29,7 +29,8 @@ public class Language extends EntityBase {
 
     /** Label of the Language. <br>DB Column.*/
     @NotBlank
-    @Column(name = LanguageContract.COL_LABEL, length = 500, nullable = true, unique = false)
+    @Column(name = LanguageContract.COL_LABEL,
+            length = LanguageContract.COL_LABEL_LENGTH, nullable = true, unique = false)
     @ApiModelProperty(value = LanguageContract.COL_LABEL_API)
     private String label;
 
