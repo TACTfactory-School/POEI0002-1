@@ -1,0 +1,16 @@
+<div class="header" *ngIf="displayHeader">
+  <mat-toolbar>
+      <mat-toolbar-row>
+        <span>Mes amis</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-toolbar-row>
+  </mat-toolbar>
+  <ul>
+    <li>TEST AMIS 1</li>
+    <li>TEST AMIS 2</li>
+    <li>TEST AMIS 3</li>
+  </ul>
+</div>

@@ -44,7 +44,7 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
   hideStatus: boolean;
   hideBirthdateText: string;
   hideMailText: string;
-  hideJobText: string; // = 'Afficher';
+  hideJobText: string;
   hideGenderText: string;
   hideStatusText: string;
 
