@@ -1,8 +1,10 @@
 @import "../../../sass/_media.scss";
 @import '../../../sass/gradient.scss';
+
 @include mat-table-columns((
-    firstname: (width: 6rem),
-    createdAt: (width: 6rem)
+  username: (width: 8rem),
+  email: (width: 15rem),
+  gender: (width: 3rem)
 ));
 
 // TABLE
@@ -25,9 +27,15 @@ td, th {
   border-style: none !important;
 }
 
+tr .gender {
+  text-align: center;
+}
+
 tr {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
+  padding-right: 5px;
+  padding-left: 5px;
   height: 56px !important;
 }
 

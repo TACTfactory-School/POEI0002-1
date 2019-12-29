@@ -11,7 +11,7 @@ export class TranslatePipe implements PipeTransform {
 
     switch (text) {
       case 'UNSPECIFIED':
-        translation = 'Non spécifié';
+        translation = 'Non spécifié'; // 'N/A';
         break;
       case 'OTHER':
         translation = 'Autres';
