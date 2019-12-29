@@ -51,19 +51,19 @@ export class TranslatePipe implements PipeTransform {
         break;
       // LanguageLevel
       case 'BEGINNER':
-        translation = 'Débutant';
+        translation = ' - niveau débutant';
         break;
       case 'INTERMEDIATE':
-        translation = 'Intermédiaire';
+        translation = ' - niveau intermédiaire';
         break;
       case 'ADVANCED':
-        translation = 'Avancé';
+        translation = ' - niveau avancé';
         break;
       case 'FLUENT':
-        translation = 'Bilingue';
+        translation = ' - bilingue';
         break;
       case 'NATIVE':
-        translation = 'Langue natale';
+        translation = '- langue natale';
         break;
       // EventType
       case 'VIDEOGAMES':

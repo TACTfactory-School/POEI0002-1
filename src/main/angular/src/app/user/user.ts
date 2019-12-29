@@ -61,6 +61,13 @@ export interface UserDetail {
   hobbies: UserHobby[];
   languages: UserLanguage[];
   avatar: number;
+
+  birthdateHidden: boolean;
+  mailHidden: boolean;
+  jobHidden: boolean;
+  genderHidden: boolean;
+  statusHidden: boolean;
+
 }
 
 export interface UserSetting {
