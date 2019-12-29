@@ -10,9 +10,6 @@ import org.springframework.data.domain.Pageable;
 
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.services.event.EventCreateService;
-import fr.dta.ovg.services.event.EventCrudServiceImpl;
-import fr.dta.ovg.services.event.EventDeleteService;
 
 /** Event CRUD Service Interface.*/
 public interface EventCrudService {
@@ -22,14 +19,14 @@ public interface EventCrudService {
      * @return List of all Event.
      * @param pageable (Pageable) object with page number and quantity.
      * @param search : string to process search.
-     * @see EventCrudServiceImpl*/
+     * @see fr.dta.ovg.services.event.EventCrudServiceImpl*/
     Page<Event> getAll(Pageable pageable, String search);
 
     /** Get one Event entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @return Event : entity.
      * @param id of the Event.
-     * @see EventCrudServiceImpl
+     * @see fr.dta.ovg.services.event.EventCrudServiceImpl
      * @throws NotFoundException : Event not found.*/
     Event getOne(long id) throws NotFoundException;
 
@@ -37,14 +34,14 @@ public interface EventCrudService {
      * Must be redefined in implemented class.<br>
      * @return Created Event entity.
      * @param event : Event entity
-     * @see EventCreateService*/
+     * @see fr.dta.ovg.services.event.EventCreateService*/
     Event create(Event event);
 
     /** Delete one Event entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id of the Event.
      * @throws NotFoundException : Event not found.
-     * @see EventDeleteService*/
+     * @see fr.dta.ovg.services.event.EventDeleteService*/
     void delete(long id) throws NotFoundException;
 
 }

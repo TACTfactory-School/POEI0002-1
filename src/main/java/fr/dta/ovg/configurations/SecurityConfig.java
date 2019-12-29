@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * Security configure function.
-     * Override HttpSecurity configure to open route & put httpBasic security.
+     * Override HttpSecurity configure to open route and put httpBasic security.
      * @see #configure (org.springframework.security.config.annotation.web.builders.HttpSecurity).
      * @throws Exception : Handle HTTP Security exception.
      */

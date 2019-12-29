@@ -10,9 +10,6 @@ import org.springframework.data.domain.Pageable;
 
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.NotFoundException;
-import fr.dta.ovg.services.user.UserCreateService;
-import fr.dta.ovg.services.user.UserCrudServiceImpl;
-import fr.dta.ovg.services.user.UserDeleteService;
 
 /** User CRUD Service Interface.*/
 public interface UserCrudService {
@@ -22,14 +19,14 @@ public interface UserCrudService {
      * @param pageable : @see Pageable.
      * @param search : the string to process search.
      * @return List of all User.
-     * @see UserCrudServiceImpl*/
+     * @see fr.dta.ovg.services.user.UserCrudServiceImpl*/
     Page<User> getAll(Pageable pageable, String search);
 
     /** Get one User entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id : the user id to find.
      * @return User : entity.
-     * @see UserCrudServiceImpl
+     * @see fr.dta.ovg.services.user.UserCrudServiceImpl
      * @throws NotFoundException : User not found.*/
     User getOne(long id) throws NotFoundException;
 
@@ -43,14 +40,14 @@ public interface UserCrudService {
      * Must be redefined in implemented class.<br>
      * @return Created User : entity.
      * @param user : User entity.
-     * @see UserCreateService*/
+     * @see fr.dta.ovg.services.user.UserCreateService*/
     User create(User user);
 
     /** Delete one User entity by ID.<br>
      * Must be redefined in implemented class.<br>
      * @param id : User id to process delete.
      * @throws NotFoundException : User not found.
-     * @see UserDeleteService*/
+     * @see fr.dta.ovg.services.user.UserDeleteService*/
     void delete(long id) throws NotFoundException;
 
     /** existsByUsernameIgnoreCaseAndIdNot function.
