@@ -6,7 +6,7 @@
 package fr.dta.ovg.contracts;
 
 /** EVENT CONTRACT - Constants Term.*/
-public class EventContract {
+public final class EventContract {
 
     /** Private empty constructor of EventContract.*/
     private EventContract() {
@@ -22,17 +22,20 @@ public class EventContract {
     // COLUMNS DEFINITION
     /** Column Creator API Description. */
     public static final String COL_CREATOR_API = "The author of the event.";
-    public static final String COL_CREATOR_JSONIGNORE = "ev_label";
 
     /** Column ev_label. */
     public static final String COL_LABEL = "ev_label";
     /** Column ev_label API Description. */
     public static final String COL_LABEL_API = "The label of the event.";
+    /** Column ev_label length. */
+    public static final int COL_LABEL_LENGTH = 100;
 
     /** Column ev_description. */
     public static final String COL_DESC = "ev_description";
     /** Column ev_description API Description. */
     public static final String COL_DESC_API = "The description of the event.";
+    /** Column ev_description length. */
+    public static final int COL_DESC_LENGTH = 500;
 
     /** Column ev_start_date. */
     public static final String COL_START_DATE = "ev_start_date";
@@ -53,6 +56,9 @@ public class EventContract {
     public static final String COL_ADDRESS = "ev_address";
     /** Column ev_address API Description. */
     public static final String COL_ADDRESS_API = "The place of the event.";
+    /** Column ev_address length. */
+    public static final int COL_ADDRESS_LENGTH = 255;
+
 
     /** Column ev_postcode. */
     public static final String COL_POSTCODE = "ev_postcode";
@@ -63,11 +69,15 @@ public class EventContract {
     public static final String COL_CITY = "ev_city";
     /** Column ev_city API Description. */
     public static final String COL_CITY_API = "The city of the event.";
+    /** Column ev_city length. */
+    public static final int COL_CITY_LENGTH = 50;
 
     /** Column ev_type. */
     public static final String COL_TYPE = "ev_type";
     /** Column ev_ype API Description. */
     public static final String COL_TYPE_API = "The type of the event.";
+    /** Column ev_type length. */
+    public static final int COL_TYPE_LENGTH = 100;
 
 
     /** Mapped by "event".*/

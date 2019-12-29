@@ -14,25 +14,36 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import fr.dta.ovg.contracts.JsonIgnoreContract;
+import fr.dta.ovg.contracts.MessageContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /** Entity Message class.*/
 @Entity
-@Table(name = "app_messages")
-@ApiModel(value = "Describes a Message for our system")
+@Table(name = MessageContract.TABLE)
+@ApiModel(value = MessageContract.TABLE_API)
 public class Message extends EntityBase {
 
     /** Message String container. <br>DB Column.*/
     @NotBlank
-    @Column(name = "mess_label", length = 500, nullable = false, unique = false)
-    @ApiModelProperty(value = "The message to send.")
+    @Column(name = MessageContract.COL_LABEL,
+            length = MessageContract.COL_LABEL_LENGTH, nullable = false, unique = false)
+    @ApiModelProperty(value = MessageContract.COL_LABEL_API)
     private String message;
 
     /** Join Table UserEmitter. <br>DB Column.*/
     @ManyToOne
-    @JsonIgnoreProperties({"notifications", "languages", "hobbies", "friends", "joinEvents",
-        "preferences", "messagesEmitted", "messagesReceived"})
+    @JsonIgnoreProperties({
+        JsonIgnoreContract.JOIN_EVENTS,
+        JsonIgnoreContract.NOTIFICATIONS,
+        JsonIgnoreContract.LANGUAGES,
+        JsonIgnoreContract.HOBBIES,
+        JsonIgnoreContract.USER_FRIENDS_ACCEPT,
+        JsonIgnoreContract.USER_FRIENDS_REQUEST,
+        JsonIgnoreContract.MESSAGES_EMITTED,
+        JsonIgnoreContract.MESSAGES_RECEIVED,
+        JsonIgnoreContract.PREFERENCES})
     private User userEmitter;
 
     /** Join Table UserReceiver. <br>DB Column.*/

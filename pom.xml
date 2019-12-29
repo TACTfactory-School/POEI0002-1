@@ -29,11 +29,18 @@
 
 <!-- ==================== DEPENDANCIES ==================== -->
   <dependencies>
+      <!-- ________________ Javax Interceptor ________________ -->
+      <!-- Try to fix : class file for javax.interceptor.InterceptorBinding not found. -->
+    <dependency>
+      <groupId>javax.interceptor</groupId>
+      <artifactId>javax.interceptor-api</artifactId>
+      <version>1.2</version>
+    </dependency>
     <!-- ________________ jUnit ________________ -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.12</version><!--$NO-MVN-MAN-VER$-->
       <scope>test</scope>
     </dependency>
 
@@ -41,7 +48,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.18</version>
+      <version>8.0.18</version><!--$NO-MVN-MAN-VER$-->
     </dependency>
 
     <!-- ____tomcat______ Spring _____jpa________ -->
@@ -121,7 +128,7 @@
     <dependency>
       <groupId>org.springframework.session</groupId>
       <artifactId>spring-session-jdbc</artifactId>
-      <version>2.2.0.RELEASE</version>
+      <version>2.2.0.RELEASE</version><!--$NO-MVN-MAN-VER$-->
     </dependency>
 
     <!-- ________________ Spring Starter Security ________________ -->
@@ -129,7 +136,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
-      <version>2.2.0.RELEASE</version>
+      <version>2.2.0.RELEASE</version><!--$NO-MVN-MAN-VER$-->
     </dependency>
 
       <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-junit -->

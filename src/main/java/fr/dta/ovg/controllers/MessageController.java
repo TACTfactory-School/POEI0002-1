@@ -40,11 +40,13 @@ public class MessageController {
     /**
      * Get All function. <br>
      * GET - HTTP.
-     * @return List of all Messages.
-     */
+     * @param page : the page number.
+     * @param quantity : the quantity of return per page.
+     * @param userId : User id messages.
+     * @return List of all Messages.*/
     @GetMapping
     public Page<Message> getAll(final int page, final int quantity, final long userId) {
-        
+
         Pageable pageable = PageRequest.of(page, quantity);
 
         return this.service.getAll(pageable, userId);

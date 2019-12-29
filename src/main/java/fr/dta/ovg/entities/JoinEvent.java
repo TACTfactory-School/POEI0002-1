@@ -49,6 +49,8 @@ public class JoinEvent extends EntityBase {
     @ManyToOne(optional = false) // targetEntity = Event.class
     @JoinColumn(nullable = false)
     @JsonIgnoreProperties({
+        JsonIgnoreContract.USER_FRIENDS_ACCEPT,
+        JsonIgnoreContract.USER_FRIENDS_REQUEST,
         JsonIgnoreContract.JOIN_EVENTS,
         JsonIgnoreContract.NOTIFICATIONS,
         JsonIgnoreContract.MESSAGES_EMITTED,

@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import fr.dta.ovg.contracts.LanguageContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -27,12 +29,14 @@ public class Language extends EntityBase {
 
     /** Label of the Language. <br>DB Column.*/
     @NotBlank
-    @Column(name = LanguageContract.COL_LABEL, length = 500, nullable = true, unique = false)
+    @Column(name = LanguageContract.COL_LABEL,
+            length = LanguageContract.COL_LABEL_LENGTH, nullable = true, unique = false)
     @ApiModelProperty(value = LanguageContract.COL_LABEL_API)
     private String label;
 
     /** Join Table UserLanguage. <br>DB Column.*/
     @OneToMany(mappedBy = LanguageContract.MAPPED_BY_LANGUAGE)
+    @JsonIgnore // @JsonIgnoreProperties(JsonIgnoreContract.USER)
     private final List<UserLanguage> users = new ArrayList<>();
 
     /** Getter Language label.

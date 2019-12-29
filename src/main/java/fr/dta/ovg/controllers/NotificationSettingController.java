@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -38,23 +39,17 @@ public class NotificationSettingController {
     @Autowired
     private NotificationSettingCrudService service;
 
-    /**
-     * Get All function. <br>
-     * GET - HTTP.
-     * @return List of all NotificationSetting.
-     */
+    /** Get All function. <br>GET - HTTP.
+     * @return List of all NotificationSetting.*/
     @GetMapping
     public List<NotificationSetting> getAll() {
         return this.service.getAll();
     }
 
-    /**
-     * Get One by ID.<br>
-     * GET - HTTP
+    /** Get One by ID.<br>GET - HTTP.
      * @param id : number of the selected NotificationSetting.
      * @return Entity NotificationSetting.
-     * @throws NotFoundException :  NotificationSetting entity not found.
-     */
+     * @throws NotFoundException :  NotificationSetting entity not found.*/
     @GetMapping("{id}")
     public  NotificationSetting getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
@@ -68,9 +63,31 @@ public class NotificationSettingController {
      * @throws BadRequestException : Incorrect request (ie Json Body{}).
      */
     @PostMapping
-    public  NotificationSetting create(@Valid @RequestBody final  NotificationSetting  notificationSetting) throws BadRequestException {
+    public  NotificationSetting create(@Valid @RequestBody final  NotificationSetting  notificationSetting)
+            throws BadRequestException {
 
         return this.service.create(notificationSetting);
+    }
+
+    /** Update User Notification Setting. <br>
+     * PUT - HTTP.
+     * @param id : number of the selected User.
+     * @param setting : NotificationSetting entity.
+     * @return the updated NotificationSetting object.
+     * @throws BadRequestException : Incorrect request.
+     * @throws NotFoundException : entity not found exception.*/
+    @PutMapping("{id}")
+    public NotificationSetting update(
+            @PathVariable final Long id,
+            @Valid @RequestBody final NotificationSetting setting)
+            throws BadRequestException, NotFoundException {
+
+        final NotificationSetting entity = this.service.getOne(id);
+
+        //  Use ObjectMapper.
+        entity.setActiveApp(setting.isActiveApp());
+        entity.setActiveMail(setting.isActiveMail());
+        return this.service.create(entity);
     }
 
     /**

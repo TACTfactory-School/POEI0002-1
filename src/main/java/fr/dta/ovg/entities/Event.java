@@ -43,7 +43,8 @@ public class Event extends EntityBase {
         JsonIgnoreContract.NOTIFICATIONS,
         JsonIgnoreContract.LANGUAGES,
         JsonIgnoreContract.HOBBIES,
-        JsonIgnoreContract.FRIENDS,
+        JsonIgnoreContract.USER_FRIENDS_ACCEPT,
+        JsonIgnoreContract.USER_FRIENDS_REQUEST,
         JsonIgnoreContract.MESSAGES_EMITTED,
         JsonIgnoreContract.MESSAGES_RECEIVED})
     private User creator;
@@ -51,12 +52,14 @@ public class Event extends EntityBase {
     /** Title of the Event. <br>DB Column.*/
     @NotBlank
     @ApiModelProperty(value = EventContract.COL_LABEL_API)
-    @Column(name = EventContract.COL_LABEL, length = 100, nullable = false, unique = false)
+    @Column(name = EventContract.COL_LABEL,
+            length = EventContract.COL_LABEL_LENGTH, nullable = false, unique = false)
     private String label;
 
     /** Description of the Event. <br>DB Column.*/
     @ApiModelProperty(value = EventContract.COL_DESC_API)
-    @Column(name = EventContract.COL_DESC, length = 510, nullable = true, unique = false)
+    @Column(name = EventContract.COL_DESC,
+            length = EventContract.COL_DESC_LENGTH, nullable = true, unique = false)
     private String description;
 
     /** The started date/time of the Event. <br> DB Column.*/
@@ -66,17 +69,18 @@ public class Event extends EntityBase {
 
     /** Custom photo of the Event. <br>DB Column.*/
     @ApiModelProperty(value = EventContract.COL_IMG_API)
-    @Column(name = EventContract.COL_IMG, length = 255, nullable = true, unique = false)
+    @Column(name = EventContract.COL_IMG, nullable = true, unique = false)
     private String img;
 
     /** Max places of the Event. <br>DB Column.*/
     @ApiModelProperty(value = EventContract.COL_NB_PLACES_API)
-    @Column(name = EventContract.COL_NB_PLACES, nullable = true, unique = false) // false
+    @Column(name = EventContract.COL_NB_PLACES, nullable = true, unique = false)
     private int nbPlaceMax;
 
     /** Address of the Event. <br>DB Column.*/
     @ApiModelProperty(value = EventContract.COL_ADDRESS_API)
-    @Column(name = EventContract.COL_ADDRESS, length = 255, nullable = true, unique = false)
+    @Column(name = EventContract.COL_ADDRESS,
+            length = EventContract.COL_ADDRESS_LENGTH, nullable = true, unique = false)
     private String address;
 
     /**
@@ -88,18 +92,20 @@ public class Event extends EntityBase {
     /** City of the Event. <br>DB Column.*/
     @NotBlank
     @ApiModelProperty(value = EventContract.COL_CITY_API)
-    @Column(name = EventContract.COL_CITY, length = 255, nullable = false, unique = false)
+    @Column(name = EventContract.COL_CITY,
+            length = EventContract.COL_CITY_LENGTH, nullable = false, unique = false)
     private String city;
 
     /** Type of the Event. <br>DB Column.*/
     @ApiModelProperty(value = EventContract.COL_TYPE_API)
-    @Column(name = EventContract.COL_TYPE, length = 255, nullable = true, unique = false)
+    @Column(name = EventContract.COL_TYPE,
+            length = EventContract.COL_TYPE_LENGTH, nullable = true, unique = false)
     @Enumerated(EnumType.ORDINAL)
     private EventType type;
 
     /** Join users List of the Event. <br>DB Column.*/
     @OneToMany(mappedBy = EventContract.MAPPED_BY_EVENT, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = {"event"}, allowSetters = true)
+    @JsonIgnoreProperties(value = JsonIgnoreContract.EVENT, allowSetters = true)
     private final List<JoinEvent> usersJoin = new ArrayList<>();
 
     /** Notifications List of the Event. <br>DB Column.*/
@@ -310,5 +316,4 @@ public class Event extends EntityBase {
             this.messages.remove(message);
         }
     }
-
 }

@@ -1,4 +1,4 @@
-/* Entity base class.
+/* Event Repository class.
  * @author Colin Cerveaux @C-ambium
  * Shared attributes between entity.
  * License : ©2019 All rights reserved

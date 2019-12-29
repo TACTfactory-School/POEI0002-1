@@ -35,7 +35,7 @@
 
     <mat-card class="user-profile-card">
       <mat-card-header>
-        <mat-card-title>{{ u.username | uppercase }} - Informations Utilisateur</mat-card-title>
+        <mat-card-title>{{ u.username | uppercase }} - Informations utilisateur</mat-card-title>
         <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -75,7 +75,7 @@
 
               <ng-container *ngIf="u.maritalStatus; else unspecified1">
                 <dt>Sitation familiale</dt>
-                <dd>{{ u.maritalStatus }}</dd>
+                <dd>{{ u.maritalStatus | translate }}</dd>
               </ng-container>
               <ng-template #unspecified1>
                 <dt>Sitation familiale</dt>
@@ -84,7 +84,7 @@
 
               <ng-container *ngIf="u.gender; else unspecified2">
                 <dt>Genre</dt>
-                <dd>{{ u.gender }}</dd>
+                <dd>{{ u.gender | translate }}</dd>
               </ng-container>
               <ng-template #unspecified2>
                 <dt>Genre</dt>
@@ -93,7 +93,7 @@
 
               <ng-container *ngIf="u.languages && u.languages.length; else unspecified3">
                 <dt>Langues parlés</dt>
-                <dd *ngFor="let lang of u.languages; index as i">{{ lang.default }} {{ lang.level }}</dd>
+                <dd *ngFor="let l of u.languages; index as i">{{ l.language.label }} {{ l.level | translate }}</dd>
               </ng-container>
               <ng-template #unspecified3>
                 <dt>Langues parlés</dt>
@@ -114,7 +114,7 @@
 
               <ng-container *ngIf="u.hobbies && u.hobbies.length; else unspecified5">
                 <dt>Centres d'intérêts</dt>
-                <dd *ngFor="let hobby of u.hobbies; index as i">{{ hobby.label }}</dd>
+                <dd *ngFor="let h of u.hobbies; index as i">{{ h.hobby.label }}</dd>
               </ng-container>
               <ng-template #unspecified5>
                 <dt>Centres d'intérêts</dt>
@@ -123,7 +123,7 @@
 
               <ng-container *ngIf="u.events && u.events.length; else unspecified6">
                 <dt>Évènements</dt>
-                <dd *ngFor="let event of u.events; index as i">{{ event.label }}</dd>
+                <dd *ngFor="let e of u.events; index as i">{{ e.event.label }} {{ e.role }} {{ e.validateAt }}</dd>
               </ng-container>
               <ng-template #unspecified6>
                 <dt>Évènements</dt>
@@ -145,7 +145,7 @@
         <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <app-user-preferences></app-user-preferences>
+        <app-user-preferences [displayHeader]="displayHeader"></app-user-preferences>
       </mat-card-content>
     </mat-card>
   </div>

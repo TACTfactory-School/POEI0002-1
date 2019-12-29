@@ -6,8 +6,16 @@ package fr.dta.ovg.entities;
 
 /** Define the user gender by constants.*/
 public enum UserGender {
+
+    /** User gender male.*/
     MALE,
+
+    /** User gender female.*/
     FEMALE,
+
+    /** User gender non-binary.*/
     NONBINARY,
+
+    /** User gender unspecified.*/
     UNSPECIFIED
 }

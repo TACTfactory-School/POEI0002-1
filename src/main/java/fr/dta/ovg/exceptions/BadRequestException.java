@@ -39,7 +39,7 @@ public class BadRequestException extends HttpException {
         super(message, cause);
     }
 
-    /** Full Constructor with message, cause, suppression option & stack trace parameters.
+    /** Full Constructor with message, cause, suppression option and stack trace parameters.
      * @param message (String) : message to return.
      * @param cause : cause to return. @see Throwable.
      * @param enableSuppression : enable suppression option.

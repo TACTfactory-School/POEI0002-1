@@ -42,6 +42,7 @@ public class NotificationController {
      * GET - HTTP.
      * @param page the page number.
      * @param quantity the quantity of return per page.
+     * @param userId : User id notifications.
      * @return List of all Notifications.
      */
     @GetMapping

@@ -16,7 +16,7 @@ public class HttpException extends Exception {
       super();
   }
 
-  /** Full Constructor with message, cause, suppression option & stack trace options.
+  /** Full Constructor with message, cause, suppression option and stack trace options.
    * @param message : (String) : message to return.
    * @param cause :  cause to return. @see Throwable.
    * @param enableSuppression : enable suppression option.

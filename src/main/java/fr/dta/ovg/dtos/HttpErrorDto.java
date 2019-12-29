@@ -9,11 +9,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-/**
- * Model of content of response used in case of HTTP exception.
- *
- * @see GlobalExceptionHandler
- */
+/** Model of content of response used in case of HTTP exception. GlobalExceptionHandler.*/
 public class HttpErrorDto {
 
     /** The date of error generation. */
@@ -25,57 +21,45 @@ public class HttpErrorDto {
     /** The details about the error. */
     private final String details;
 
-    /**
-     * Http Error DTO Exception.
-     * @param exception Exception.
-     */
+    /** HTTP Error DTO Exception.
+     * @param exception Exception.*/
     public HttpErrorDto(final Exception exception) {
         this(new Date(), exception.getMessage(), null);
     }
 
-    /**
-     * Http Error DTO Message & Detail.
+    /** HTTP Error DTO Message and Detail.
      * @param message String.
-     * @param details String.
-     */
+     * @param details String.*/
     public HttpErrorDto(final String message, final String details) {
         this(new Date(), message, details);
     }
 
-    /**
-     * Http Error DTO Date, Message & Detail.
+    /** HTTP Error DTO Date, Message and Detail.
      * @param timestamp Date.
      * @param message String.
-     * @param details String.
-     */
+     * @param details String.*/
     public HttpErrorDto(final Date timestamp, final String message, final String details) {
         super();
 
-        this.timestamp = timestamp;
+        this.timestamp = (Date) timestamp.clone();
         this.message = message;
         this.details = details;
     }
 
-    /**
-     * Getter Date.
-     * @return Date timestamp.
-     */
+    /** Getter Date.
+     * @return Date timestamp.*/
     public Date getTimestamp() {
-        return this.timestamp;
+        return (Date) this.timestamp.clone();
     }
 
-    /**
-     * Getter Message.
-     * @return String message.
-     */
+    /** Getter Message.
+     * @return String message.*/
     public String getMessage() {
         return this.message;
     }
 
-    /**
-     * Getter Details.
-     * @return Date timestamp, String Message & String Detail.
-     */
+    /** Getter Details.
+     * @return date timestamp, String Message and String Detail.*/
     @JsonInclude(value = Include.NON_NULL)
     public String getDetails() {
         return this.details;

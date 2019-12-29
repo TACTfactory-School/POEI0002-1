@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { User } from './user';
+import { User, UserDetail } from './user';
 import { environment } from 'src/environments/environment';
 import { Page } from '../shared/paginator/page';
 
@@ -29,6 +29,10 @@ export class UserApiService {
 
   getOne(id: number) {
     return this.http.get<User>(`${URL}/${id}`);
+  }
+
+  getOneDetail(id: number) {
+    return this.http.get<UserDetail>(`${URL}/${id}`);
   }
 
   deleteOne(id: number) {

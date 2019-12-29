@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import fr.dta.ovg.contracts.HobbyContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -26,12 +28,14 @@ public class Hobby  extends EntityBase {
 
     /** Label of the Hobby. <br>DB Column.*/
     @NotBlank
-    @Column(name = HobbyContract.COL_LABEL, length = 100, nullable = true, unique = false)
+    @Column(name = HobbyContract.COL_LABEL,
+            length = HobbyContract.COL_LABEL_LENGTH, nullable = true, unique = false)
     @ApiModelProperty(value = HobbyContract.COL_LABEL_API)
     private String label;
 
     /** Join Table UserHobby. <br>DB Column.*/
     @OneToMany(mappedBy = HobbyContract.MAPPED_BY_HOBBY)
+    @JsonIgnore //@JsonIgnoreProperties(JsonIgnoreContract.HOBBY)
     private final List<UserHobby> users = new ArrayList<>();
 
     /** Getter label.
