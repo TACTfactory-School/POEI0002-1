@@ -10,6 +10,9 @@ import org.springframework.data.domain.Pageable;
 
 import fr.dta.ovg.entities.Event;
 import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.services.event.EventCreateService;
+import fr.dta.ovg.services.event.EventCrudServiceImpl;
+import fr.dta.ovg.services.event.EventDeleteService;
 
 /** Event CRUD Service Interface.*/
 public interface EventCrudService {
@@ -41,7 +44,7 @@ public interface EventCrudService {
      * Must be redefined in implemented class.<br>
      * @param id of the Event.
      * @throws NotFoundException : Event not found.
-     * @see EventDeleteService EventDeleteService*/
+     * @see EventDeleteService*/
     void delete(long id) throws NotFoundException;
 
 }

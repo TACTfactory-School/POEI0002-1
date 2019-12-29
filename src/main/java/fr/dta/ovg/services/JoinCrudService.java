@@ -9,6 +9,7 @@ import java.util.List;
 
 import fr.dta.ovg.entities.JoinEvent;
 import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.services.join.JoinServiceImpl;
 
 /** Join CRUD Service Interface.*/
 public interface JoinCrudService {
@@ -26,7 +27,7 @@ public interface JoinCrudService {
      * Must be redefined in implemented class.<br>
      * @param id : JoinEvent id.
      * @return JoinEvent : entity.
-     * @see EventCrudServiceImpl
+     * @see JoinServiceImpl
      * @throws NotFoundException : Throws if one requested entity not found.*/
     JoinEvent getOne(long id) throws NotFoundException;
 
