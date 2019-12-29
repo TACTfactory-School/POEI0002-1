@@ -54,16 +54,16 @@ public class FixtureService implements Fixture {
     private UserFriendFixtureService friendFixture;
 
     /** Call loading initials fixtures.
-     * @see {@link EventFixtureService}
-     * @see {@link UserFixtureService}
-     * @see {@link HobbyFixtureService}
-     * @see {@link NotificationFixtureService}
-     * @see {@link MessageFixtureService}
-     * @see {@link JoinEventFixtureService}
-     * @see {@link NotificationSettingFixtureService}
-     * @see {@link LanguageFixtureService}
-     * @see {@link UserFriendFixtureService}
-     *  @throws NotFoundException */
+     * @see EventFixtureService
+     * @see UserFixtureService
+     * @see HobbyFixtureService
+     * @see NotificationFixtureService
+     * @see MessageFixtureService
+     * @see JoinEventFixtureService
+     * @see NotificationSettingFixtureService
+     * @see LanguageFixtureService
+     * @see UserFriendFixtureService
+     * @throws NotFoundException : entity not found. */
     @Transactional
     public void load() throws NotFoundException {
         this.prefFixture.load();

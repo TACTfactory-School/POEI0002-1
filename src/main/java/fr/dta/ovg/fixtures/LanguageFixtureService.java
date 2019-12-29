@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import fr.dta.ovg.contracts.FixturesContract;
 import fr.dta.ovg.entities.Language;
 import fr.dta.ovg.entities.LanguageLevel;
 import fr.dta.ovg.entities.User;
@@ -40,11 +41,6 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
     /** Declare new Random object.*/
     private final Random rand = new Random();
 
-    /** Number of level choices minus one (because random object can hit zero).*/
-    private final static byte NB_LEVELS = 4;
-    /** Number of languages default choices minus one (because random object can hit zero).*/
-    private final static byte NB_LANGS = 4;
-
     /** LanguageFixtureService Constructor. Initialize Language CRUD service.
      * @param langService : @see LanguageCrudService.
      * @param userLanguageRepo : @see UserLanguageRepository.
@@ -64,22 +60,25 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
     @Override
     protected void loadIfNoData() throws NotFoundException {
 
-        Stream.of("FRANÇAIS", "ENGLISH", "DEUTSCH", "ITALIANO", "ESPAÑOL", "中国的", "ไทย", "РУССКИЙ")
+        // "FRANÇAIS", "ENGLISH", "DEUTSCH", "ITALIANO", "ESPAÑOL", "中国的", "ไทย", "РУССКИЙ"
+        Stream.of("Français", "Anglais", "Allemand", "Italien", "Espagnol", "Chinois", "Portugais", "Russe")
             .forEach(this::build);
 
         // Build real fixtures.
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < FixturesContract.NB_REAL; i++) {
             this.buildUserLanguage(
-                    this.languageLevelStore().get(4),// Here we use 0 index because its an array.
+                    // Here we use 0 index because its an array.
+                    this.languageLevelStore().get(FixturesContract.LVL_NATIVE),
                     this.langService.getOne(1),
                     this.userService.getOne(i));
         }
 
-        // Build fake fixtures.
-        for (int i = 4; i < 101; i++) {
+        // Build fake fixtures (101).
+        for (int i = FixturesContract.NB_REAL; i < FixturesContract.NB_USERS; i++) {
             this.buildUserLanguage(
-                    this.languageLevelStore().get(rand.nextInt(NB_LEVELS)),// Here we use 0 index because its an array.
-                    this.langService.getOne(rand.nextInt(NB_LANGS) + 1),
+                    // Here we use 0 index because its an array.
+                    this.languageLevelStore().get(rand.nextInt(FixturesContract.NB_LEVELS)),
+                    this.langService.getOne(rand.nextInt(FixturesContract.NB_LANGS) + 1),
                     this.userService.getOne(i));
         }
 

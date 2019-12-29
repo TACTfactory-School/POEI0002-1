@@ -10,7 +10,7 @@ public enum EventType {
     /** Event type related to Video games.*/
     VIDEOGAMES,
 
-    /** Event type related to retro Video games.*/
+    /** Event type related to RETRO Video games.*/
     RETROGAMING,
 
     /** Event type related to video games tournaments.*/

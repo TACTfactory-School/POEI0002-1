@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import com.github.javafaker.Faker;
 
+import fr.dta.ovg.contracts.FixturesContract;
 import fr.dta.ovg.entities.NotificationSetting;
 import fr.dta.ovg.entities.User;
 import fr.dta.ovg.entities.UserGender;
@@ -47,6 +48,9 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
 
     /** Faker Size. */
     private int fakerSize;
+
+    /** Define local constant rate for real fixtures build. */
+    private static final float RATE = 4.7f;
 
     /** Define new Faker and set Local to french FR. */
     private final Faker fake = new Faker(new Locale("fr"));
@@ -84,22 +88,26 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     /** Build some real user fixture.
      * @throws NotFoundException : Entity requested not found.*/
     private void loadReal() throws NotFoundException {
-        this.build("Pamwamba",  "samy@hotmail.fr",      "samysamy",             LocalDate.of(1998, 9, 25),
-                    "Samy",     "Nantes",               "Dev Fullstack", 4.5f,  LocalDateTime.now(),
-                    prefService.getOne(1), (byte) 1,    UserStatus.MARRIED,     UserGender.MALE,
-                    true,       false,        false,    false,                  false);
-        this.build("C-ambium",  "joe@me.com",           "colin",                LocalDate.of(1990, 06, 05),
-                    "Colin",    "Rennes",               "Dev Fullstack", 3.2f,  LocalDateTime.now(),
-                    prefService.getOne(2), (byte) 2,    UserStatus.DIVORCED,     UserGender.MALE,
-                    false,      false,        false,    false,                  false);
-        this.build("ListerKred", "fab@4ever.org",        "fabricefabrice",      LocalDate.of(1997, 04, 8),
-                    "Fabrice",  "Angers",               "Dev Fullstack", 5f,    LocalDateTime.now(),
-                    prefService.getOne(3), (byte) 3,    UserStatus.SINGLE,      UserGender.MALE,
-                    false,      true,          true,    false,                  false);
-        this.build("test",      "test@test.org",        "test",                 LocalDate.of(1999, 04, 8),
-                   "test",      "test",                 "test",          0.5f,  LocalDateTime.now(),
-                   prefService.getOne(4), (byte) 4,     UserStatus.UNSPECIFIED, UserGender.UNSPECIFIED,
-                   true,        false,         true,    false,                  true);
+        this.build("Pamwamba",  "samy@hotmail.fr",      "samysamy",      FixturesContract.SAMY_BD,      "Samy",
+                    "Nantes",   "Dev Fullstack",        RATE,            LocalDateTime.now(),
+                    prefService.getOne(FixturesContract.SAMY),           FixturesContract.SAMY,
+                    UserStatus.MARRIED,                 UserGender.MALE,
+                    true,       false,                  false,           false,                         false);
+        this.build("C-ambium",  "joe@me.com",           "colin",         FixturesContract.COLIN_BD,     "Colin",
+                    "Rennes",   "Dev Fullstack",        RATE,            LocalDateTime.now(),
+                    prefService.getOne(FixturesContract.COLIN),          FixturesContract.COLIN,
+                    UserStatus.DIVORCED,                UserGender.MALE,
+                    false,      false,                  false,           false,                         false);
+        this.build("ListerKred", "fab@4ever.org",      "fabricefabrice", FixturesContract.FAB_BD,       "Fabrice",
+                    "Angers",    "Dev Fullstack",       RATE,            LocalDateTime.now(),
+                    prefService.getOne(FixturesContract.FAB),            FixturesContract.FAB,
+                    UserStatus.SINGLE,                  UserGender.MALE,
+                    false,       true,                  true,            false,                         false);
+        this.build("test",      "test@test.org",        "test",          FixturesContract.TEST_BD,      "TestName",
+                   "testCity",  "testjob",              RATE,            LocalDateTime.now(),
+                   prefService.getOne(FixturesContract.TEST),            FixturesContract.TEST,
+                   UserStatus.UNSPECIFIED,              UserGender.UNSPECIFIED,
+                   true,        false,                  true,            false,                         true);
     }
 
     /** User Builder.
@@ -175,15 +183,15 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                     this.fake.name().firstName(),
                     this.fake.address().city(),
                     this.fake.job().title(),
-                    rand.nextFloat() + rand.nextInt(5),
+                    rand.nextFloat() + rand.nextInt(FixturesContract.NB_STARS),
                     this.fake.date()
-                        .past(rand.nextInt(2000) + 1, TimeUnit.DAYS)
+                        .past(rand.nextInt(FixturesContract.DATE_SCALE) + 1, TimeUnit.DAYS)
                         .toInstant().atZone(zoneId)
                         .toLocalDateTime(),
-                    prefService.getOne(4),
-                    (byte) rand.nextInt(5),
-                    userStatusStore().get(rand.nextInt(4)),
-                    userGenderStore().get(rand.nextInt(3)),
+                    prefService.getOne(FixturesContract.TEST),
+                    (byte) rand.nextInt(FixturesContract.NB_DEFAULT_AVATAR),
+                    userStatusStore().get(rand.nextInt(FixturesContract.US_STATUS_STORE_SIZE)),
+                    userGenderStore().get(rand.nextInt(FixturesContract.US_GENDER_STORE_SIZE)),
                     rand.nextBoolean(),
                     rand.nextBoolean(),
                     rand.nextBoolean(),

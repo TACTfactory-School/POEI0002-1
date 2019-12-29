@@ -26,7 +26,7 @@ public interface JoinCrudService {
      * Must be redefined in implemented class.<br>
      * @param id : JoinEvent id.
      * @return JoinEvent : entity.
-     * @see EventCrudServiceImpl.
+     * @see fr.dta.ovg.services.join.JoinServiceImpl
      * @throws NotFoundException : Throws if one requested entity not found.*/
     JoinEvent getOne(long id) throws NotFoundException;
 

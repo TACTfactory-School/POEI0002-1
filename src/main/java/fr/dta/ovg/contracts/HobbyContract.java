@@ -27,6 +27,8 @@ public final class HobbyContract {
     public static final String COL_LABEL = "hobby_label";
     /** Column eb_enabled API Description.*/
     public static final String COL_LABEL_API = "The hobby label to create.";
+    /** Column hobby_label length. */
+    public static final int COL_LABEL_LENGTH = 100;
 
     /** Mapped by "hobby".*/
     public static final String MAPPED_BY_HOBBY = "hobby";

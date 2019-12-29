@@ -15,20 +15,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.dta.ovg.contracts.JsonIgnoreContract;
+import fr.dta.ovg.contracts.NotificationContract;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
 /** Entity Notification class.*/
 @Entity
-@Table(name = "app_notifications")
-@ApiModel(value = "Describes a Notification for our system")
+@Table(name = NotificationContract.TABLE)
+@ApiModel(value = NotificationContract.TABLE_API)
 public class Notification extends EntityBase {
 
     /** Label of the Notification. <br>DB Column.*/
     @NotBlank
-    @Column(name = "notif_label", length = 255, nullable = false, unique = false)
-    @ApiModelProperty(value = "The notification to send.")
+    @Column(name = NotificationContract.COL_LABEL,
+            length = NotificationContract.COL_LABEL_LENGTH,
+            nullable = false, unique = false)
+    @ApiModelProperty(value = NotificationContract.COL_LABEL_API)
     private String label;
 
     /** Join Table User.*/
