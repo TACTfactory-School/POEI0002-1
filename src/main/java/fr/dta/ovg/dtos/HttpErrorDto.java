@@ -41,7 +41,7 @@ public class HttpErrorDto {
     public HttpErrorDto(final Date timestamp, final String message, final String details) {
         super();
 
-        this.timestamp = timestamp;
+        this.timestamp = (Date) timestamp.clone();
         this.message = message;
         this.details = details;
     }
@@ -49,7 +49,7 @@ public class HttpErrorDto {
     /** Getter Date.
      * @return Date timestamp.*/
     public Date getTimestamp() {
-        return this.timestamp;
+        return (Date) this.timestamp.clone();
     }
 
     /** Getter Message.

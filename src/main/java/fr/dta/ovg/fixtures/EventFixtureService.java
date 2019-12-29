@@ -13,6 +13,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
@@ -31,6 +33,7 @@ import fr.dta.ovg.repositories.EventRepository;
 import fr.dta.ovg.services.JoinCrudService;
 import fr.dta.ovg.services.UserCrudService;
 import fr.dta.ovg.services.event.EventCreateService;
+import fr.dta.ovg.services.user.UserDeleteService;
 
 /** This class initialize DB with initials fixtures data. */
 @Component
@@ -51,6 +54,9 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
 
     /** User Faker Size. */
     private int userFakerSize;
+
+    /** Local Logger declaration. */
+    private static final Logger LOG = LoggerFactory.getLogger(UserDeleteService.class);
 
     /** Define new Faker and set Local to french FR. */
     private final Faker fake = new Faker(new Locale("fr"));
@@ -177,7 +183,7 @@ public class EventFixtureService extends FixtureCheck<EventRepository> {
                     this.fake.address().city(),
                     this.eventTypeStore().get(rand.nextInt(FixturesContract.EV_TYPE_STORE_SIZE)));
         } catch (NotFoundException e) {
-            e.getMessage();
+            LOG.debug("Entity not found ! " + e.getMessage());
         }
     }
 
