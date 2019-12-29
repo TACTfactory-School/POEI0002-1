@@ -50,7 +50,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     private int fakerSize;
 
     /** Define local constant rate for real fixtures build. */
-    private final static float RATE = 4.7f;
+    private static final float RATE = 4.7f;
 
     /** Define new Faker and set Local to french FR. */
     private final Faker fake = new Faker(new Locale("fr"));
