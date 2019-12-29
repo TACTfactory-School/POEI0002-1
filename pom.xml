@@ -29,6 +29,13 @@
 
 <!-- ==================== DEPENDANCIES ==================== -->
   <dependencies>
+      <!-- ________________ Javax Interceptor ________________ -->
+      <!-- Try to fix : class file for javax.interceptor.InterceptorBinding not found. -->
+    <dependency>
+      <groupId>javax.interceptor</groupId>
+      <artifactId>javax.interceptor-api</artifactId>
+      <version>1.2</version>
+    </dependency>
     <!-- ________________ jUnit ________________ -->
     <dependency>
       <groupId>junit</groupId>

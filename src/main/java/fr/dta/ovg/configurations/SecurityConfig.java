@@ -57,8 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * Authentication Manager Builder class.<br>
-     * Call super HttpSecurity configure().
-     * @see AuthenticationManagerBuilder.
+     * Call super HttpSecurity configure() @see AuthenticationManagerBuilder.
      * @throws Exception : Handle AuthenticationManagerBuilder exception.
      */
     @Override
