@@ -39,6 +39,10 @@ public final class JsonIgnoreContract {
     public static final String USER_FRIENDS_ACCEPT = "friendAccept";
     /** JSON ignore "user". */
     public static final String USER = "user";
+    /** JSON ignore "event". */
+    public static final String EVENT = "event";
+    /** JSON ignore "preferences". */
+    public static final String PREFERENCES = "preferences";
 
 
 }

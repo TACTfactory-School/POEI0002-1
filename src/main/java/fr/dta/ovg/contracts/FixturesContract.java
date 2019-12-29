@@ -3,13 +3,12 @@
  * @author Colin Cerveaux @C-ambium.
  * License : ©2019 All rights reserved.
  */
-
 package fr.dta.ovg.contracts;
 
 import java.time.LocalDate;
 
 /** FIXTURES CONTRACT - Constants Term.*/
-public class FixturesContract {
+public final class FixturesContract {
 
     /** Private empty constructor of FixturesContract.*/
     private FixturesContract() {
@@ -44,13 +43,13 @@ public class FixturesContract {
 
     // HOBBY FIXTURES TERMS
     /** Number of initial real hobbies minus one (because random object can hit zero).*/
-    public final static byte NB_HOBBIES = 15;
+    public static final byte NB_HOBBIES = 15;
 
     // LANGUAGE FIXTURES TERMS
     /** Number of level choices minus one (because random object can hit zero).*/
-    public final static byte NB_LEVELS = 4;
+    public static final byte NB_LEVELS = 4;
     /** Number of languages default choices minus one (because random object can hit zero).*/
-    public final static byte NB_LANGS = 4;
+    public static final byte NB_LANGS = 4;
     /** Language level BEGINNER ID.*/
     public static final byte LVL_BEGINNER = 0;
     /** Language level INTERMEDIATE ID.*/

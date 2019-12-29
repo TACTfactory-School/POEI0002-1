@@ -60,7 +60,8 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
     @Override
     protected void loadIfNoData() throws NotFoundException {
 
-        Stream.of("FRANÇAIS", "ENGLISH", "DEUTSCH", "ITALIANO", "ESPAÑOL", "中国的", "ไทย", "РУССКИЙ")
+        // "FRANÇAIS", "ENGLISH", "DEUTSCH", "ITALIANO", "ESPAÑOL", "中国的", "ไทย", "РУССКИЙ"
+        Stream.of("Français", "Anglais", "Allemand", "Italien", "Espagnol", "Chinois", "Portugais", "Russe")
             .forEach(this::build);
 
         // Build real fixtures.
@@ -75,7 +76,8 @@ public class LanguageFixtureService  extends FixtureCheck<LanguageRepository> {
         // Build fake fixtures (101).
         for (int i = 4; i < FixturesContract.NB_USERS; i++) {
             this.buildUserLanguage(
-                    this.languageLevelStore().get(rand.nextInt(FixturesContract.NB_LEVELS)), // Here we use 0 index because its an array.
+                    // Here we use 0 index because its an array.
+                    this.languageLevelStore().get(rand.nextInt(FixturesContract.NB_LEVELS)),
                     this.langService.getOne(rand.nextInt(FixturesContract.NB_LANGS) + 1),
                     this.userService.getOne(i));
         }

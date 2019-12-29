@@ -18,21 +18,36 @@ public final class UserContract {
     public static final String TABLE = "app_users";
     /** Table app_users API description. */
     public static final String TABLE_API = "Describes an User for our system.";
+    /** Join Table app_user_friends. */
+    public static final String JOIN_TABLE = "app_user_friends";
 
     // COLUMNS DEFINITION
+
+    //USER FRIENDS ENTITY - JOIN TABLE
+    /** Column us_fr_valid. */
+    public static final String COL_US_FR_VALID = "us_fr_valid";
+    /** Column us_fr_valid API Description. */
+    public static final String COL_US_FR_VALID_API = "Join table between user and user.";
+
+    /** Column us_fr_validate_at. */
+    public static final String COL_US_FR_VALID_AT = "us_fr_validate_at";
+    /** Column us_fr_validate_at API Description. */
+    public static final String COL_US_FR_VALID_AT_API = "Validation date of friend add.";
+
+    // USER ENTITY
     /** Column us_username. */
     public static final String COL_USERNAME = "us_username";
-    /** Column us_username length. */
-    public static final int COL_USERNAME_LENGTH = 32;
     /** Column us_username API Description. */
     public static final String COL_USERNAME_API = "The username of the user.";
+    /** Column us_username length. */
+    public static final int COL_USERNAME_LENGTH = 32;
 
     /** Column us_email. */
     public static final String COL_EMAIL = "us_email";
-    /** Column us_email length. */
-    public static final int COL_EMAIL_LENGTH = 50;
     /** Column us_email API Description. */
     public static final String COL_EMAIL_API = "The email of the user.";
+    /** Column us_email length. */
+    public static final int COL_EMAIL_LENGTH = 50;
 
     /** Column us_password. */
     public static final String COL_PASSWORD = "us_password";

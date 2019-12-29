@@ -28,7 +28,8 @@ public class Hobby  extends EntityBase {
 
     /** Label of the Hobby. <br>DB Column.*/
     @NotBlank
-    @Column(name = HobbyContract.COL_LABEL, length = 100, nullable = true, unique = false)
+    @Column(name = HobbyContract.COL_LABEL,
+            length = HobbyContract.COL_LABEL_LENGTH, nullable = true, unique = false)
     @ApiModelProperty(value = HobbyContract.COL_LABEL_API)
     private String label;
 

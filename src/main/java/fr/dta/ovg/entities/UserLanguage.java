@@ -22,8 +22,8 @@ import io.swagger.annotations.ApiModelProperty;
 public class UserLanguage extends EntityBase {
 
     /** Language Level of user. <br> DB Column. */
-    @Column(name = "us_lang_lvl", unique = false, nullable = true)
-    @ApiModelProperty(value = "The language level of the user.")
+    @Column(name = LanguageContract.COL_US_LANG_LVL, unique = false, nullable = true)
+    @ApiModelProperty(value = LanguageContract.COL_US_LANG_LVL_API)
     @Enumerated(EnumType.ORDINAL)
     private LanguageLevel level;
 

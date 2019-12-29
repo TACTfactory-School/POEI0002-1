@@ -17,21 +17,22 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.dta.ovg.contracts.JsonIgnoreContract;
+import fr.dta.ovg.contracts.UserContract;
 import io.swagger.annotations.ApiModelProperty;
 
 /** User Friends class. Association table.*/
 @Entity
-@Table(name = "app_user_friends")
+@Table(name = UserContract.JOIN_TABLE)
 public class UserFriend extends EntityBase {
 
     /** Validation of event inscription request.*/
-    @Column(name = "us_fr_valid", unique = false, nullable = false)
-    @ApiModelProperty(value = "Join table between user and user.")
+    @Column(name = UserContract.COL_US_FR_VALID, unique = false, nullable = false)
+    @ApiModelProperty(value = UserContract.COL_US_FR_VALID_API)
     private boolean valid = true;
 
     /** Validation of event inscription request.*/
-    @Column(name = "us_fr_validate_at", unique = false, nullable = true)
-    @ApiModelProperty(value = "Validation date of friend add.")
+    @Column(name = UserContract.COL_US_FR_VALID_AT, unique = false, nullable = true)
+    @ApiModelProperty(value = UserContract.COL_US_FR_VALID_AT_API)
     private LocalDateTime validatedAt;
 
     /** Selected user. */
@@ -44,7 +45,8 @@ public class UserFriend extends EntityBase {
         JsonIgnoreContract.NOTIFICATIONS,
         JsonIgnoreContract.MESSAGES_EMITTED,
         JsonIgnoreContract.MESSAGES_RECEIVED,
-        JsonIgnoreContract.LANGUAGES})
+        JsonIgnoreContract.LANGUAGES,
+        JsonIgnoreContract.PREFERENCES})
     private User friendRequest;
 
     /** Selected Hobby. */
@@ -57,7 +59,8 @@ public class UserFriend extends EntityBase {
         JsonIgnoreContract.NOTIFICATIONS,
         JsonIgnoreContract.MESSAGES_EMITTED,
         JsonIgnoreContract.MESSAGES_RECEIVED,
-        JsonIgnoreContract.LANGUAGES})
+        JsonIgnoreContract.LANGUAGES,
+        JsonIgnoreContract.PREFERENCES})
     private User friendAccept;
 
     /** Get valid.
