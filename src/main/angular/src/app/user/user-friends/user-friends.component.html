@@ -8,9 +8,56 @@
         </button>
       </mat-toolbar-row>
   </mat-toolbar>
-  <ul>
-    <li>{{ user.email }}</li>
-    <li>TEST AMIS 2</li>
-    <li>TEST AMIS 3</li>
-  </ul>
 </div>
+
+<p class="display"> {{ quantity }} / {{ totalElements }} résultats.</p>
+
+<ng-container *ngIf="page; else loading">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Username Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pseudo </th>
+        <td mat-cell *matCellDef="let row"> {{ row.friendRequest.username }} </td>
+      </ng-container>
+
+      <!-- Firstname Column -->
+      <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
+        <td mat-cell *matCellDef="let row"> {{ row.friendRequest.firstname }} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row"> {{ row.friendRequest.email | mask: row.mailHidden }} </td>
+      </ng-container>
+
+      <!-- Birthdate Column -->
+      <ng-container matColumnDef="birthdate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Anniversaire</th>
+        <td mat-cell *matCellDef="let row"> {{ row.friendRequest.birthdate | date: 'shortDate' }} </td>
+      </ng-container>
+
+      <!-- Valid Column -->
+      <ng-container matColumnDef="valid">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Validé</th>
+        <td mat-cell *matCellDef="let row"> {{ row.valid }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</ng-container>
+
+<app-paginator
+  [totalElements]="totalElements"
+  (page)="onPaginate($event)">
+</app-paginator>
+
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
+

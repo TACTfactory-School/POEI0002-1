@@ -6,7 +6,7 @@ import { Page } from '../shared/paginator/page';
 import { UserFriend } from '../models/user-friend';
 
 const URL = `${environment.apiUrl}/user`;
-const URL_FRIEND = `${environment.apiUrl}/friend`;
+const URL_FRIEND = `${environment.apiUrl}/user/friend`;
 
 
 @Injectable({
@@ -24,14 +24,16 @@ export class UserApiService {
   getAll(page: number, perPage: number) {
     const params = new HttpParams()
         .set('page', `${page}`)
-        .set('quantity', `${perPage}`)
+        .set('quantity', `${perPage}`);
     return this.http.get<Page<User>>(`${URL}`, {params});
   }
 
-  getAllFriends(id: number) {
+  getAllFriends(page: number, perPage: number, userId: number) {
     const params = new HttpParams()
-        .set('id', `${id}`)
-    return this.http.get<UserFriend>(`${URL_FRIEND}`, {params});
+    .set('page', `${page}`)
+    .set('quantity', `${perPage}`)
+    .set('userId', `${userId}`);
+    return this.http.get<Page<User>>(`${URL_FRIEND}`, {params});
   }
 
   getOne(id: number) {

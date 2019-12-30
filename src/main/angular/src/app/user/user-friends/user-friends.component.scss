@@ -1,0 +1,84 @@
+@import '../../../sass/gradient.scss';
+@import '../../../sass/box-content.scss';
+// ---------- Global content css ---------- //
+.content {
+  @include box-content;
+ }
+
+// TABLE
+table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+table tr:nth-child(even){
+  background-color: whitesmoke;
+}
+
+td, th {
+  border-style: none !important;
+}
+
+tr .gender {
+  text-align: center;
+}
+
+tr {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-right: 5px;
+  padding-left: 5px;
+  height: 56px !important;
+}
+
+th {
+  color: silver;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+mat-paginator {
+  background: whitesmoke;
+}
+
+.spacer {
+  padding: 0.6em;
+}
+
+.display {
+  text-align: right;
+}
+
+
+ // ---------- Modal Dialog ---------- //
+ .pref-dialog {
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+mat-toolbar-row {
+  color: #fff;
+  background: $gradient;
+}
+
+.btn {
+  float: left;
+}
+
+mat-toolbar-row.sub {
+  background: #fff;
+}
+.title {
+  background: -webkit-linear-gradient(135deg,  #ff2d3b, #ffb702);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  // background-color: #fff;
+}
+
