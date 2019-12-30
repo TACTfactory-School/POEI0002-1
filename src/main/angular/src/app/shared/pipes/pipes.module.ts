@@ -4,13 +4,15 @@ import { AgePipe } from './age.pipe';
 import { TranslatePipe } from './translate.pipe';
 import { MaskPipe } from './mask.pipe';
 import { GenderPipe } from './gender.pipe';
+import { DateAgoPipe } from './date-ago.pipe';
 
 @NgModule({
   declarations: [
     AgePipe,
     TranslatePipe,
     MaskPipe,
-    GenderPipe
+    GenderPipe,
+    DateAgoPipe
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import { GenderPipe } from './gender.pipe';
     AgePipe,
     TranslatePipe,
     MaskPipe,
-    GenderPipe
+    GenderPipe,
+    DateAgoPipe
   ]
 })
 export class PipesModule { }

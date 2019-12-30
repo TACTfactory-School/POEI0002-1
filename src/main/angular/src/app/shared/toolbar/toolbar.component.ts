@@ -94,7 +94,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   openFriendsDialog(): void {
     this.isModal = true;
     const dialogRef = this.dialog.open(UserFriendsComponent, {
-      width: '40%'
+      width: '50%'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.isModal = false;

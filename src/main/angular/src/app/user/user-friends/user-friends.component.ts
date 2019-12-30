@@ -18,7 +18,7 @@ export class UserFriendsComponent implements OnInit, OnDestroy {
   private userSub: Subscription[] = [];
   user: UserDetail;
   page: Page<User>;
-  displayedColumns: string[] = ['username', 'firstname', 'email', 'birthdate', 'valid'];
+  displayedColumns: string[] = ['username', 'firstname', 'email', 'birthdate', 'validatedAt', 'valid'];
   dataSource: MatTableDataSource<User>;
 
   constructor(

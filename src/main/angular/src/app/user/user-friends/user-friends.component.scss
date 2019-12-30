@@ -7,7 +7,7 @@
 
 // TABLE
 table {
-  width: 100%;
+  width: 95%;
   margin-top: 1rem;
 }
 
@@ -47,7 +47,7 @@ mat-paginator {
 }
 
 .spacer {
-  padding: 0.6em;
+  flex: 1 1 auto;
 }
 
 .display {
@@ -68,13 +68,10 @@ mat-toolbar-row {
   background: $gradient;
 }
 
-.btn {
-  float: left;
-}
-
 mat-toolbar-row.sub {
   background: #fff;
 }
+
 .title {
   background: -webkit-linear-gradient(135deg,  #ff2d3b, #ffb702);
   -webkit-background-clip: text;
