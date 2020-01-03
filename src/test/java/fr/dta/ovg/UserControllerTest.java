@@ -2,6 +2,7 @@ package fr.dta.ovg;
 
 //import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -78,14 +79,12 @@ public class UserControllerTest extends UnitTestBase {
             .andExpect(jsonPath("$.password").doesNotExist());
     }
 
-//    @Rollback
-//    @Test
-//    public void testDelete() throws Exception {
-//        this.mvc.perform(delete("/api/v1/user/id"))
-//            .andExpect(status().isNotFound())
-//            .andExpect(jsonPath("$.id").value(1));
-//
-//    }
+    @Rollback
+    @Test
+    public void testDelete() throws Exception {
+        this.mvc.perform(delete("/api/v1/user/1"))
+            .andExpect(status().isNoContent());
+    }
 
     // TODO: NE devrait PAS etre la !
 //    @Test

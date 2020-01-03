@@ -1,5 +1,6 @@
 package fr.dta.ovg;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MockMvc;
 
 @Transactional
@@ -59,4 +61,12 @@ public class EventControllerTest extends UnitTestBase {
         .andExpect(status().isUnauthorized());
 //        .andExpect(jsonPath("$.label").value("test create event"));
     }
+
+    @Rollback
+    @Test
+    public void testDelete() throws Exception {
+        this.mvc.perform(delete("/api/v1/event/1"))
+            .andExpect(status().isNoContent());
+    }
+
 }
