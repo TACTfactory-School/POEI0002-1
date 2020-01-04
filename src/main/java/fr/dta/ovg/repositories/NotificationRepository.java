@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import fr.dta.ovg.contracts.NotificationContract;
 import fr.dta.ovg.entities.Notification;
 
 /** Notification Repository extends Jpa Repository. */
@@ -23,10 +24,7 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
    * @param pageableFinal : @see Pageable.
    * @param userId : User id Notifications.
    * @return Notifications page object.*/
-    @Query("SELECT n FROM Notification n "
-                + "INNER JOIN n.user u "
-                + "WHERE u.id = :userId "
-                + "ORDER BY n.createdAt DESC")
+    @Query(NotificationContract.SEL_ALL_BY_USER_ID)
     Page<Notification> findAllByUserId(Pageable pageableFinal, @Param("userId") long userId);
 
 }
