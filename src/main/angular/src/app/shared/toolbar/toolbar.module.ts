@@ -7,6 +7,8 @@ import { UserFormLoginModule } from 'src/app/user/user-form/user-form-login/user
 import { RouterModule } from '@angular/router';
 import { UserPreferencesModule } from 'src/app/user/user-preferences/user-preferences.module';
 import { MessageDialogModule } from 'src/app/models/message-dialog/message-dialog.module';
+import { OvgFormsModule } from '../forms/ovg-forms.module';
+import { EventListModule } from 'src/app/event/event-list/event-list.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MessageDialogModule } from 'src/app/models/message-dialog/message-dialo
     MatInputModule,
     MatBadgeModule,
     MatTooltipModule,
-    MessageDialogModule
+    MessageDialogModule,
+    OvgFormsModule,
+    EventListModule
   ],
   exports: [
     ToolbarComponent

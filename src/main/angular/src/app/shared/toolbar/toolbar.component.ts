@@ -13,6 +13,10 @@ import { Notification } from 'src/app/models/notification';
 import { NotificationApiService } from 'src/app/models/notification-api.service';
 import { Subscription } from 'rxjs';
 import { MessageDialogComponent } from 'src/app/models/message-dialog/message-dialog.component';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { EventApiService } from 'src/app/event/event-api.service';
+import { Event } from 'src/app/event/event';
+import { EventListComponent } from 'src/app/event/event-list/event-list.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -25,18 +29,21 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   private messSub: Subscription;
   private userSub: Subscription;
 
+  page: Page<Event>;
   user: User;
   isModal: boolean;
   messagePage: Page<Message>;
   notificationPage: Page<Notification>;
-
+  searchForm: FormGroup;
   constructor(
       public dialog: MatDialog,
       private readonly currentUser: CurrentUserService,
       private readonly router: Router,
       private readonly auth: AuthApiService,
       private readonly messages: MessageApiService,
-      private readonly notifications: NotificationApiService
+      private readonly notifications: NotificationApiService,
+      private readonly fb: FormBuilder,
+      private readonly eventApi: EventApiService
     ) { }
 
   ngOnInit() {
@@ -44,6 +51,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       this.currentUser
           .observable
           .subscribe(user => this.onUserChange(user));
+
+    this.searchForm = this.fb.group({
+      label: new FormControl()
+    });
   }
 
   ngOnDestroy(): void {
@@ -62,6 +73,12 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       this.isModal = false;
     });
+  }
+
+  onSearch() {
+    this.eventApi
+        .getAllByLabel(0, 12, this.searchForm.controls.label.value)
+        .subscribe(data => this.page = data);
   }
 
   openMessageDialog(): void {

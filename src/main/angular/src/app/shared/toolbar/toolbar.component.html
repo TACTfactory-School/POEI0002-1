@@ -1,10 +1,13 @@
 <mat-toolbar class="fixed-top">
   <mat-toolbar-row>
     <a [routerLink]="['event']"><img class="brand-logo" src="../../../assets/logo.png" alt="OVG"/></a>
-    <form class="search-form">
+    <form class="search-form" [formGroup]="searchForm">
       <mat-form-field color="primary" class="search-bar">
-        <input matInput  placeholder="Rechercher un événement">
+        <input matInput placeholder="Rechercher un événement" formControlName="label">
       </mat-form-field>
+      <button mat-icon-button aria-label="Rechercher un événement" (click)="onSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
     </form>
     <!-- Event List -->
     <a [routerLink]="['event']" class="icon"><mat-icon class="toolbar-icon" aria-hidden="false" aria-labelledby="events" matTooltip="Voir les événements">event</mat-icon></a>
