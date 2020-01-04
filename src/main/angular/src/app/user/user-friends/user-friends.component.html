@@ -51,11 +51,11 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Validé</th>
         <ng-container  *matCellDef="let row">
           <td mat-cell *ngIf="row.valid; else valid">
-            <button class="btn" [disabled]="row.valid" mat-raised-button>Validé</button>
+            <button class="btn" [disabled]="row.valid || accept" mat-raised-button>Validé</button>
           </td>
           <ng-template #valid>
             <td mat-cell>
-            <button class="btn" mat-raised-button>Accepter</button>
+            <button class="btn" mat-raised-button (click)="onConfirm()">Accepter</button>
           </td>
         </ng-template>
         </ng-container>

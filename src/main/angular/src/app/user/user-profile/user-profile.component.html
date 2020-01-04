@@ -150,7 +150,8 @@
     <!-- FRIENDS -->
     <mat-card class="user-preferences-card">
         <mat-card-header>
-          <mat-card-title>Amis</mat-card-title>
+          <mat-card-title>Mes Amis</mat-card-title>
+          <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <app-user-friends [displayHeader]="displayHeader"></app-user-friends>

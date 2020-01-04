@@ -14,9 +14,17 @@
 
     <div class="content">
       <p>Rédaction d'un nouveau message :</p>
+      <mat-form-field>
+        <mat-label>Destinataire</mat-label>
+        <select matNativeControl formControlName="selectedValue" name="friends">
+          <option value="" selected></option>
+          <option *ngFor="let u of user" [value]="u.friendAccept.username">
+            {{u.friendAccept.username}}
+          </option>
+        </select>
+      </mat-form-field>
 
       <form class="message-form">
-
           <mat-form-field class="message-full-width">
             <textarea matInput cdkAutosizeMinRows="7" cdkTextareaAutosize #message maxlength="500" placeholder="Message"></textarea>
             <mat-hint align="start"><strong>Ne divulguez pas d'informations personnelles ou sensibles.</strong> </mat-hint>

@@ -15,6 +15,7 @@ import { UserApiService } from '../user-api.service';
 export class UserFriendsComponent implements OnInit, OnDestroy {
 
   @Input() displayHeader = true;
+  accept: boolean;
   private userSub: Subscription[] = [];
   user: UserDetail;
   page: Page<User>;
@@ -41,7 +42,7 @@ export class UserFriendsComponent implements OnInit, OnDestroy {
   onPaginate(pageable: Pageable) {
     this.userSub.push(
     this.api
-        .getAllFriends(pageable.page, pageable.perPage, 2)
+        .getAllFriends(pageable.page, pageable.perPage, 2) // this.user.id)
         .subscribe(data => {
           this.page = data;
           this.dataSource = new MatTableDataSource(this.page.content);
@@ -58,5 +59,9 @@ export class UserFriendsComponent implements OnInit, OnDestroy {
 
   close() {
     this.dialog.closeAll();
+  }
+
+  onConfirm() {
+    this.accept = true;
   }
 }
