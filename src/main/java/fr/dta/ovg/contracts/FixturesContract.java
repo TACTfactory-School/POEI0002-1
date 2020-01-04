@@ -134,4 +134,14 @@ public final class FixturesContract {
     public static final byte US_GENDER_NONBINARY = 2;
     /** User Gender UNSPECIFIED ID.*/
     public static final byte US_GENDER_UNSPECIFIED = 3;
+
+    // UER FRIENDS FIXTURES REFERENCES
+    /** Select one random friends to add.*/
+    public static final byte US_FRIENDS_1 = 47;
+    /** Select another one random friends to add.*/
+    public static final byte US_FRIENDS_2 = 57;
+    /** Select another one random friends to add.*/
+    public static final byte US_FRIENDS_3 = 67;
+    /** Select another one random friends to add.*/
+    public static final byte US_FRIENDS_4 = 77;
 }

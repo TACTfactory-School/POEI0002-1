@@ -6,6 +6,7 @@ import { MatToolbarModule, MatCardModule } from '@angular/material';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { UserPreferencesModule } from '../user-preferences/user-preferences.module';
+import { UserFriendsModule } from '../user-friends/user-friends.module';
 
 @NgModule({
   declarations: [ UserProfileComponent ],
@@ -16,6 +17,7 @@ import { UserPreferencesModule } from '../user-preferences/user-preferences.modu
     MaterialModule,
     MatCardModule,
     UserPreferencesModule,
+    UserFriendsModule,
     PipesModule
  ],
   exports: [ UserProfileComponent ]

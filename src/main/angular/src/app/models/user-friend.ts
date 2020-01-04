@@ -1,6 +1,10 @@
 import { User } from '../user/user';
 
 export interface UserFriend {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+
   valid: boolean;
   validatedAt: Date;
   friendRequest: User;
