@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import fr.dta.ovg.contracts.HobbyContract;
 import fr.dta.ovg.entities.Hobby;
 
 /** Hobby Repository extends Jpa Repository. */
@@ -20,7 +21,6 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long> {
     /** Exist by hobby label Function.
      * @param hobby : Hobby entity.
      * @return true if the hobby already exist in the repository.*/
-    @Query("SELECT COUNT(h) > 0" + " FROM Hobby h" + " WHERE LOWER(h.label) = LOWER(:#{#s.label})"
-            + " AND (:#{#s.id} = NULL OR h.id != :#{#s.id})")
+    @Query(HobbyContract.EXISTS_BY_LABEL)
       boolean existsByLabel(@Param("s") Hobby hobby);
 }

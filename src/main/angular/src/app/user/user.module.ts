@@ -7,6 +7,8 @@ import { UserDetailsModule } from './user-details/user-details.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { UserPreferencesModule } from './user-preferences/user-preferences.module';
 import { UserEditModule } from './user-edit/user-edit.module';
+import { UserFriendsComponent } from './user-friends/user-friends.component';
+import { UserFriendsModule } from './user-friends/user-friends.module';
 
 @NgModule({
   declarations: [],
@@ -18,6 +20,7 @@ import { UserEditModule } from './user-edit/user-edit.module';
     UserDetailsModule,
     UserProfileModule,
     UserPreferencesModule,
+    UserFriendsModule,
     UserEditModule
     ],
   exports: [ ]

@@ -13,6 +13,12 @@ public final class SettingContract {
         // nothing here.
     }
 
+    // REPOSITORY SQL REQUESTS
+    /** Return one notification settings by user ID.*/
+    public static final String SEL_ONE_BY_USER_ID = "SELECT n FROM NotificationSetting n "
+                                                + "INNER JOIN n.user u "
+                                                + "WHERE u.id = :userId ";
+
     // TABLE DEFINITION
     /** Table app_settings. */
     public static final String TABLE = "app_settings";

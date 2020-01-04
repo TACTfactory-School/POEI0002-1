@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import fr.dta.ovg.contracts.EventContract;
 import fr.dta.ovg.entities.Event;
 
 /** Event Repository extends Jpa Repository. */
@@ -26,7 +27,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
      * @return Page of events.
      */
     @Query(
-            value = "SELECT * FROM app_events e WHERE e.ev_title like %?1%",
+            value = EventContract.SEL_ALL_WHERE_TITLE_LIKE,
             nativeQuery = true)
     Page<Event> findAll(String search, Pageable pageable);
 
@@ -36,7 +37,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
      * @return Page of events.
      */
     @Query(
-            value = "SELECT * FROM app_events e WHERE DATEDIFF(e.ev_start_date, NOW()) < 0",
+            value = EventContract.SEL_ALL_PAST_DATE,
             nativeQuery = true)
     Page<Event> findAllByPastDate(ZonedDateTime date, Pageable pageable);
 
@@ -46,7 +47,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
      * @return Page of events.
      */
     @Query(
-            value = "SELECT * FROM app_events e WHERE DATEDIFF(e.ev_start_date, NOW()) > 0",
+            value = EventContract.SEL_ALL_COMING_DATE,
             nativeQuery = true)
     Page<Event> findAllByComingDate(ZonedDateTime date, Pageable pageable);
 
@@ -56,7 +57,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
      * @return Page of events.
      */
     @Query(
-            value = "SELECT * FROM app_events e WHERE DATEDIFF(e.ev_start_date, NOW()) = 0",
+            value = EventContract.SEL_ALL_BY_DATE,
             nativeQuery = true)
     Page<Event> findAllByDate(ZonedDateTime date, Pageable pageable);
 

@@ -13,6 +13,12 @@ public final class HobbyContract {
         // nothing here.
     }
 
+    // REPOSITORY SQL REQUESTS
+    /** Request if hobby entity exists by label.*/
+    public static final String EXISTS_BY_LABEL = "SELECT COUNT(h) > 0"
+                                                + " FROM Hobby h"
+                                                + " WHERE LOWER(h.label) = LOWER(:#{#s.label})"
+                                                + " AND (:#{#s.id} = NULL OR h.id != :#{#s.id})";
     // TABLE DEFINITION
     /** Table app_hobbies. */
     public static final String TABLE = "app_hobbies";

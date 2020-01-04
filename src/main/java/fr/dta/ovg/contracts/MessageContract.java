@@ -13,6 +13,13 @@ public final class MessageContract {
         // nothing here.
     }
 
+ // REPOSITORY SQL REQUESTS
+    /** Return all messages by user ID.*/
+    public static final String SEL_ALL_BY_USER_ID = "SELECT m FROM Message m "
+                                                    + "INNER JOIN m.userReceiver u "
+                                                    + "WHERE u.id = :userId "
+                                                    + "ORDER BY m.createdAt DESC";
+
     // TABLE DEFINITION
     /** Table app_messages. */
     public static final String TABLE = "app_messages";

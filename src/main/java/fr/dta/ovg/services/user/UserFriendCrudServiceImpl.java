@@ -27,10 +27,10 @@ public class UserFriendCrudServiceImpl implements UserFriendCrudService {
     /**{@inheritDoc}*/
     @Transactional(readOnly = true)
     @Override
-    public Page<UserFriend> getAll(final Pageable pageable) {
+    public Page<UserFriend> getAll(final Pageable pageable, final Long userId) {
 
         LOG.debug("Get All User's friends.");
-        return this.repository.findAll(pageable);
+        return this.repository.findAllByUserId(pageable, userId);
     }
 
     /**{@inheritDoc}*/

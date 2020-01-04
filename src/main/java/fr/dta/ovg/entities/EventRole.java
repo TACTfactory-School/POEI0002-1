@@ -14,5 +14,8 @@ public enum EventRole {
     ORGANIZER,
 
     /** Event guest role.*/
-    GUEST
+    GUEST,
+
+    /** Event Administrator role.*/
+    ADMIN
 }

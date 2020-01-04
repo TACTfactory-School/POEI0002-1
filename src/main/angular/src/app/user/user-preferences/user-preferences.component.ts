@@ -44,7 +44,7 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
   hideStatus: boolean;
   hideBirthdateText: string;
   hideMailText: string;
-  hideJobText: string; // = 'Afficher';
+  hideJobText: string;
   hideGenderText: string;
   hideStatusText: string;
 
@@ -178,25 +178,25 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
   }
 
   private initializeTexts() {
-    if (this.hideMail) { this.hideMailText = HIDE;
+    if (!this.hideMail) { this.hideMailText = HIDE;
     } else { this.hideMailText = DISPLAY; }
 
-    if (this.hideJob) { this.hideJobText = HIDE;
+    if (!this.hideJob) { this.hideJobText = HIDE;
     } else { this.hideJobText = DISPLAY; }
 
-    if (this.hideBirthdate) { this.hideBirthdateText = HIDE;
+    if (!this.hideBirthdate) { this.hideBirthdateText = HIDE;
     } else { this.hideBirthdateText = DISPLAY; }
 
-    if (this.hideGender) { this.hideGenderText = HIDE;
+    if (!this.hideGender) { this.hideGenderText = HIDE;
     } else { this.hideGenderText = DISPLAY; }
 
-    if (this.hideStatus) { this.hideStatusText = HIDE;
+    if (!this.hideStatus) { this.hideStatusText = HIDE;
     } else { this.hideStatusText = DISPLAY; }
 
-    if (this.activeApp) { this.activeAppText = ACTIVE;
+    if (!this.activeApp) { this.activeAppText = ACTIVE;
     } else { this.activeAppText = DESACTIVE; }
 
-    if (this.activeMail) { this.activeMailText = ACTIVE;
+    if (!this.activeMail) { this.activeMailText = ACTIVE;
     } else { this.activeMailText = DESACTIVE; }
   }
 

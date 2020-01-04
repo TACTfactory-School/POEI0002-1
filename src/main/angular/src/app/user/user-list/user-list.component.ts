@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { User } from '../user';
 import { UserApiService } from '../user-api.service';
 import { Subscription } from 'rxjs';
@@ -6,6 +6,8 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Page } from 'src/app/shared/paginator/page';
 import { Pageable } from 'src/app/shared/paginator/pageable';
 import { CurrentUserService } from 'src/app/auth/current-user.service';
+
+const HIDE = 'Masqué';
 
 @Component({
   selector: 'app-user-list',
@@ -15,9 +17,10 @@ import { CurrentUserService } from 'src/app/auth/current-user.service';
 export class UserListComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  hideText = HIDE;
   user: User;
   page: Page<User>;
-  displayedColumns: string[] = ['username', 'firstname', 'email', 'birthdate', 'age', 'registeredAt', 'actions'];
+  displayedColumns: string[] = ['username', 'firstname', 'email', 'birthdate', 'age', 'gender', 'city', 'job', 'registeredAt', 'actions'];
   dataSource: MatTableDataSource<User>;
 
   constructor(private api: UserApiService, private readonly currentUser: CurrentUserService) { }

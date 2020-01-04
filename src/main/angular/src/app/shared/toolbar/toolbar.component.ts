@@ -13,6 +13,7 @@ import { Notification } from 'src/app/models/notification';
 import { NotificationApiService } from 'src/app/models/notification-api.service';
 import { Subscription } from 'rxjs';
 import { MessageDialogComponent } from 'src/app/models/message-dialog/message-dialog.component';
+import { UserFriendsComponent } from 'src/app/user/user-friends/user-friends.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -84,6 +85,16 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.isModal = true;
     const dialogRef = this.dialog.open(UserPreferencesComponent, {
       width: '40%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.isModal = false;
+    });
+  }
+
+  openFriendsDialog(): void {
+    this.isModal = true;
+    const dialogRef = this.dialog.open(UserFriendsComponent, {
+      width: '50%'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.isModal = false;
