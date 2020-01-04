@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import fr.dta.ovg.contracts.SettingContract;
 import fr.dta.ovg.entities.NotificationSetting;
 
 /** Notifications Setting Repository extends Jpa Repository. */
@@ -20,9 +21,7 @@ public interface NotificationSettingRepository extends JpaRepository<Notificatio
     /** Find notification setting by User id.
      * @param userId : User id Notifications.
      * @return NotificationSetting object.*/
-      @Query("SELECT n FROM NotificationSetting n "
-                  + "INNER JOIN n.user u "
-                  + "WHERE u.id = :userId ")
+      @Query(SettingContract.SEL_ONE_BY_USER_ID)
       NotificationSetting findOneByUserId(@Param("userId") long userId);
 
 }

@@ -17,6 +17,7 @@ import { ConfirmDialogComponent } from './event/confirm-dialog/confirm-dialog.co
 import { EventEditComponent } from './event/event-edit/event-edit.component';
 import { MessageDialogComponent } from './models/message-dialog/message-dialog.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserFriendsComponent } from './user/user-friends/user-friends.component';
 
 const routes: Routes = [
 
@@ -42,6 +43,7 @@ const routes: Routes = [
       { path: 'me', component: UserProfileComponent , canActivate: [LogguedGuard]},
       { path: 'me/edit', component: UserFormEditComponent , canActivate: [LogguedGuard]},
       { path: 'me/preferences', component: UserPreferencesComponent , canActivate: [LogguedGuard]},
+      { path: 'me/friends', component: UserFriendsComponent , canActivate: [LogguedGuard]},
       { path: ':id', component: UserDetailsComponent }, // User details
       { path: '', component: UserListComponent } // User List
     ]

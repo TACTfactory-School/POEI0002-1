@@ -13,6 +13,13 @@ public final class JoinEventContract {
         // nothing here.
     }
 
+    // REPOSITORY SQL REQUESTS
+    /**Find JoinEvent by Event ID and User ID.*/
+    public static final String FIND_BY_USER_EVENT_ID = "SELECT * FROM app_join_event e "
+                                                    + "WHERE e.event_id = ?1 "
+                                                    + "AND e.user_id = ?2 "
+                                                    + "LIMIT 1";
+
     // TABLE DEFINITION
     /** Table app_join_event. */
     public static final String TABLE = "app_join_event";

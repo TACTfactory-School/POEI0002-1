@@ -13,6 +13,13 @@ public final class NotificationContract {
         // nothing here.
     }
 
+    // REPOSITORY SQL REQUESTS
+    /** Return all notifications by user ID.*/
+    public static final String SEL_ALL_BY_USER_ID = "SELECT n FROM Notification n "
+                                                    + "INNER JOIN n.user u "
+                                                    + "WHERE u.id = :userId "
+                                                    + "ORDER BY n.createdAt DESC";
+
     // TABLE DEFINITION
     /** Table app_notifications. */
     public static final String TABLE = "app_notifications";

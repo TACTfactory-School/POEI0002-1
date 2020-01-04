@@ -39,6 +39,7 @@ public class UserFriend extends EntityBase {
     @ManyToOne(optional = false)
     @JoinColumn(nullable = false)
     @JsonIgnoreProperties({
+        JsonIgnoreContract.USER_FRIENDS_REQUEST,
         JsonIgnoreContract.USER_FRIENDS_ACCEPT,
         JsonIgnoreContract.HOBBIES,
         JsonIgnoreContract.JOIN_EVENTS,
@@ -54,6 +55,7 @@ public class UserFriend extends EntityBase {
     @JoinColumn(nullable = false)
     @JsonIgnoreProperties({
         JsonIgnoreContract.USER_FRIENDS_REQUEST,
+        JsonIgnoreContract.USER_FRIENDS_ACCEPT,
         JsonIgnoreContract.HOBBIES,
         JsonIgnoreContract.JOIN_EVENTS,
         JsonIgnoreContract.NOTIFICATIONS,

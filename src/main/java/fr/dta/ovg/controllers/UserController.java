@@ -69,13 +69,14 @@ public class UserController {
     /** Get All Friends function.<br>GET - HTTP.
      * @return List of all user's friends.
      * @param page : the page number.
+     * @param userId : User id friends.
      * @param quantity : the quantity of return per page.*/
     @GetMapping("/friend")
-    public Page<UserFriend> getAllFriends(final int page, final int quantity) {
+    public Page<UserFriend> getAllFriends(final int page, final int quantity, final long userId) {
 
         Pageable pageable = PageRequest.of(page, quantity);
 
-        return this.friendService.getAll(pageable);
+        return this.friendService.getAll(pageable, userId);
     }
 
     /** Get One by ID.<br>

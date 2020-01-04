@@ -13,6 +13,30 @@ public final class UserContract {
         // nothing here.
     }
 
+    // REPOSITORY SQL REQUESTS
+    /** Find all users with search option.*/
+    public static final String SEL_ALL_WHERE_NAME_LIKE = "SELECT * FROM app_users u "
+                                                        + "WHERE u.us_username like %?1%";
+
+    /** Request if user entity exists by username.*/
+    public static final String EXISTS_BY_USERNAME = "SELECT COUNT(e) > 0 "
+                                                    + "FROM User e "
+                                                    + "WHERE LOWER(e.username) = LOWER(:#{#s.username}) "
+                                                    + "AND (:#{#s.id} = NULL "
+                                                    + "OR e.id != :#{#s.id})";
+
+    /** Request if UserFriend entity exists by label.*/
+    public static final String EXISTS_BY_LABEL = "SELECT COUNT(e) > 0 "
+                                                + "FROM User e "
+                                                + "WHERE LOWER(e.username) = LOWER(:#{#s.username}) "
+                                                + "AND (:#{#s.id} = NULL "
+                                                + "OR e.id != :#{#s.id})";
+    /** Return all Friends by user ID.*/
+    public static final String SEL_ALL_BY_USER_ID = "SELECT f FROM UserFriend f "
+                                                    + "INNER JOIN f.friendRequest r "
+                                                    + "INNER JOIN f.friendAccept a "
+                                                    + "WHERE a.id = :userId ";
+
     // TABLE DEFINITION
     /** Table app_users. */
     public static final String TABLE = "app_users";

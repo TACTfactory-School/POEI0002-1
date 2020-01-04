@@ -13,10 +13,10 @@ import { Notification } from 'src/app/models/notification';
 import { NotificationApiService } from 'src/app/models/notification-api.service';
 import { Subscription } from 'rxjs';
 import { MessageDialogComponent } from 'src/app/models/message-dialog/message-dialog.component';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+
+import { UserFriendsComponent } from 'src/app/user/user-friends/user-friends.component';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { EventApiService } from 'src/app/event/event-api.service';
-import { Event } from 'src/app/event/event';
-import { EventListComponent } from 'src/app/event/event-list/event-list.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -76,9 +76,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   onSearch() {
-    this.eventApi
-        .getAllByLabel(0, 12, this.searchForm.controls.label.value)
-        .subscribe(data => this.page = data);
+
   }
 
   openMessageDialog(): void {
@@ -101,6 +99,16 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.isModal = true;
     const dialogRef = this.dialog.open(UserPreferencesComponent, {
       width: '40%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.isModal = false;
+    });
+  }
+
+  openFriendsDialog(): void {
+    this.isModal = true;
+    const dialogRef = this.dialog.open(UserFriendsComponent, {
+      width: '50%'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.isModal = false;

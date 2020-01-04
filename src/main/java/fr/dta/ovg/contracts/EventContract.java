@@ -13,6 +13,20 @@ public final class EventContract {
         // nothing here.
     }
 
+    // REPOSITORY SQL REQUESTS
+    /** Find all events with search option.*/
+    public static final String SEL_ALL_WHERE_TITLE_LIKE = "SELECT * FROM app_events e "
+                                                        + "WHERE e.ev_title like %?1%";
+    /** Find all events by past date.*/
+    public static final String SEL_ALL_PAST_DATE = "SELECT * FROM app_events e "
+                                                    + "WHERE DATEDIFF(e.ev_start_date, NOW()) < 0";
+    /** Find all events by coming date.*/
+    public static final String SEL_ALL_COMING_DATE = "SELECT * FROM app_events e "
+                                                    + "WHERE DATEDIFF(e.ev_start_date, NOW()) > 0";
+    /** Find all events by date.*/
+    public static final String SEL_ALL_BY_DATE = "SELECT * FROM app_events e "
+                                                    + "WHERE DATEDIFF(e.ev_start_date, NOW()) = 0";
+
     // TABLE DEFINITION
     /** Table app_events. */
     public static final String TABLE = "app_events";
