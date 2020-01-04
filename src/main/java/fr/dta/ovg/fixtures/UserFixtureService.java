@@ -58,7 +58,7 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     /** Check Uniq name with UniFakeStore Function. */
     private UniqFakeStore username = new UniqFakeStore(() -> this.fake.gameOfThrones()
                                                                         .character()
-                                                                        .replaceAll("\\s+",""));
+                                                                        .replaceAll("\\s+", ""));
     /** Check Uniq name with UniFakeStore Function. */
     private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().emailAddress());
 

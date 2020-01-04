@@ -48,6 +48,8 @@ public class UniqFakeStore {
         return value;
     }
 
+    /** Get the last unique value function.
+     * @return the last unique generate value.*/
     public String getLastValue() {
         return temp;
     }
