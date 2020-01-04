@@ -19,10 +19,10 @@ public interface UserFriendRepository extends JpaRepository<UserFriend, Long> {
     @Query(UserContract.EXISTS_BY_LABEL)
     boolean existsByUsername(@Param("s") User user);
 
-    /** Find all notifications by User id.
+    /** Find all User Friends by ID.
      * @param pageableFinal : @see Pageable.
-     * @param userId : User id Notifications.
-     * @return Notifications page object.*/
+     * @param userId : User ID.
+     * @return UserFriend page object.*/
       @Query(UserContract.SEL_ALL_BY_USER_ID) //  + "AND a.id = :userId"
       Page<UserFriend> findAllByUserId(Pageable pageableFinal, @Param("userId") long userId);
 

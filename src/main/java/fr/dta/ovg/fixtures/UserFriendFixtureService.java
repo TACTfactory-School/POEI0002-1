@@ -62,6 +62,14 @@ public class UserFriendFixtureService extends FixtureCheck<UserFriendRepository>
                     userService.getOne(rand.nextInt(FixturesContract.NB_RAND) + 1),
                     userService.getOne(rand.nextInt(FixturesContract.NB_RAND) + 1));
         }
+
+        for (int i = 1; i < FixturesContract.NB_REAL; i++) {
+
+            this.build(rand.nextBoolean(), userService.getOne(i), userService.getOne(FixturesContract.US_FRIENDS_1));
+            this.build(rand.nextBoolean(), userService.getOne(i), userService.getOne(FixturesContract.US_FRIENDS_2));
+            this.build(rand.nextBoolean(), userService.getOne(i), userService.getOne(FixturesContract.US_FRIENDS_3));
+            this.build(rand.nextBoolean(), userService.getOne(i), userService.getOne(FixturesContract.US_FRIENDS_4));
+        }
     }
 
     /** UserFriend Builder.
