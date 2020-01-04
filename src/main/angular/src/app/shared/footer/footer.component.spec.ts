@@ -6,6 +6,7 @@ import { UserFormModule } from 'src/app/user/user-form/user-form.module';
 import { EventFormModule } from 'src/app/event/event-form/event-form.module';
 import { EventModule } from 'src/app/event/event.module';
 import { PagesModule } from 'src/app/pages/pages.module';
+import { MessageDialogModule } from 'src/app/models/message-dialog/message-dialog.module';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -20,7 +21,8 @@ describe('FooterComponent', () => {
         EventFormModule,
         EventModule,
         UserModule,
-        PagesModule
+        PagesModule,
+        MessageDialogModule
       ]
 
     })

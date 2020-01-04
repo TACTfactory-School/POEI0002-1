@@ -1,8 +1,12 @@
 import { DateAgoPipe } from './date-ago.pipe';
 
 describe('DateAgoPipe', () => {
+  const pipe = new DateAgoPipe();
   it('create an instance', () => {
-    const pipe = new DateAgoPipe();
     expect(pipe).toBeTruthy();
+  });
+  it('transform', () => {
+    const value = new Date();
+    expect(pipe.transform(value)).toEqual('A l\'instant');
   });
 });

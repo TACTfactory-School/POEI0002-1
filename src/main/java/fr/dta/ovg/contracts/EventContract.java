@@ -16,7 +16,7 @@ public final class EventContract {
     // REPOSITORY SQL REQUESTS
     /** Find all events with search option.*/
     public static final String SEL_ALL_WHERE_TITLE_LIKE = "SELECT * FROM app_events e "
-                                                        + "WHERE e.ev_title like %?1%";
+                                                        + "WHERE e.ev_label like %?1%";
     /** Find all events by past date.*/
     public static final String SEL_ALL_PAST_DATE = "SELECT * FROM app_events e "
                                                     + "WHERE DATEDIFF(e.ev_start_date, NOW()) < 0";

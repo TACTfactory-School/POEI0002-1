@@ -9,6 +9,8 @@ import { UserFormModule } from '../user-form/user-form.module';
 import { EventModule } from 'src/app/event/event.module';
 import { UserModule } from '../user.module';
 import { PagesModule } from 'src/app/pages/pages.module';
+import { MessageDialogModule } from 'src/app/models/message-dialog/message-dialog.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UserPreferencesComponent', () => {
   let component: UserPreferencesComponent;
@@ -26,7 +28,9 @@ describe('UserPreferencesComponent', () => {
         UserFormModule,
         EventModule,
         UserModule,
-        PagesModule
+        PagesModule,
+        MessageDialogModule,
+        HttpClientModule
       ]
     })
     .compileComponents();

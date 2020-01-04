@@ -11,6 +11,7 @@ import { UserModule } from '../user.module';
 import { EventModule } from 'src/app/event/event.module';
 import { PagesModule } from 'src/app/pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageDialogModule } from 'src/app/models/message-dialog/message-dialog.module';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -29,7 +30,8 @@ describe('UserDetailsComponent', () => {
         EventModule,
         UserModule,
         PagesModule,
-        HttpClientModule
+        HttpClientModule,
+        MessageDialogModule
       ]
     })
     .compileComponents();
