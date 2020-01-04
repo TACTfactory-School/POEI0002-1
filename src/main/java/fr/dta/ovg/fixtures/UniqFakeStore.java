@@ -18,6 +18,9 @@ public class UniqFakeStore {
     /** String supplier local storage.*/
     private Supplier<String> valueGen;
 
+    /** Temporary record last value of the UniqStore.*/
+    private String temp;
+
     /** Local Constructor.
      * @param valueGen : the value to test.*/
     public UniqFakeStore(final Supplier<String> valueGen) {
@@ -38,9 +41,14 @@ public class UniqFakeStore {
 
             if (!this.uniqStore.contains(value)) {
                 this.uniqStore.add(value);
+                this.temp = value;
                 notFound = false;
             }
         }
         return value;
+    }
+
+    public String getLastValue() {
+        return temp;
     }
 }

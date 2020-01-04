@@ -56,9 +56,11 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
     private final Faker fake = new Faker(new Locale("fr"));
 
     /** Check Uniq name with UniFakeStore Function. */
-    private UniqFakeStore username = new UniqFakeStore(() -> this.fake.gameOfThrones().character());
+    private UniqFakeStore username = new UniqFakeStore(() -> this.fake.gameOfThrones()
+                                                                        .character()
+                                                                        .replaceAll("\\s+",""));
     /** Check Uniq name with UniFakeStore Function. */
-    private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().safeEmailAddress());
+    private UniqFakeStore email = new UniqFakeStore(() -> this.fake.internet().emailAddress());
 
     /** Local Constructor.
      * @param fakerSize : @see application-dev.properties.
@@ -180,7 +182,8 @@ public class UserFixtureService extends FixtureCheck<UserRepository> {
                     email.genUniqValue(),
                     this.fake.internet().password(),
                     this.fake.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                    this.fake.name().firstName(),
+                    this.email.getLastValue().split("\\.")[0].substring(0, 1).toUpperCase()
+                    + this.email.getLastValue().split("\\.")[0].substring(1),  //fake.name().firstName(),
                     this.fake.address().city(),
                     this.fake.job().title(),
                     rand.nextFloat() + rand.nextInt(FixturesContract.NB_STARS),
