@@ -63,9 +63,7 @@ public class UserControllerTest extends UnitTestBase {
             .andExpect(jsonPath("$.content[0].username").value("Pamwamba"));
     }
 
-    /**
-     * @throws Exception
-     */
+    /** Tests create of parameter of {@link UserController#create create} action. */
     @Rollback
     @Test
     public void testCreate() throws Exception {
@@ -79,6 +77,7 @@ public class UserControllerTest extends UnitTestBase {
             .andExpect(jsonPath("$.password").doesNotExist());
     }
 
+    /** Tests delete of parameter of {@link UserController#delete delete} action. */
     @Rollback
     @Test
     public void testDelete() throws Exception {

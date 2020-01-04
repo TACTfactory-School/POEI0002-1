@@ -26,6 +26,7 @@ public class EventControllerTest extends UnitTestBase {
             + "\"address\": \"13 rue des elysées\","
             + "\"postcode\": \"75000\","
             + "\"city\": \"Paris\"}";
+
     @Autowired
     private MockMvc mvc;
 
@@ -58,7 +59,7 @@ public class EventControllerTest extends UnitTestBase {
                 .content(CREATE_BODY)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-        .andExpect(status().isUnauthorized());
+            .andExpect(status().isUnauthorized());
 //        .andExpect(jsonPath("$.label").value("test create event"));
     }
 
