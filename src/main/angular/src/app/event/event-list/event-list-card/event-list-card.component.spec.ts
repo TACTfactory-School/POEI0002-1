@@ -40,4 +40,8 @@ describe('EventListCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should join', () => {
+    expect(component.onJoin);
+  });
 });
