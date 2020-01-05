@@ -9,6 +9,7 @@ import { UserFormModule } from '../user-form/user-form.module';
 import { EventModule } from 'src/app/event/event.module';
 import { PagesModule } from 'src/app/pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageDialogModule } from 'src/app/models/message-dialog/message-dialog.module';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
@@ -25,7 +26,8 @@ describe('UserProfileComponent', () => {
         UserFormModule,
         EventModule,
         PagesModule,
-        HttpClientModule
+        HttpClientModule,
+        MessageDialogModule
       ]
     })
     .compileComponents();

@@ -24,6 +24,15 @@ export class EventApiService {
     return this.http.get<Page<Event>>(`${URL}`, {params});
   }
 
+  getAllByLabel(page: number, perPage: number, search: string) {
+    const params = new HttpParams()
+    .set('page', `${page}`)
+    .set('quantity', `${perPage}`)
+    .set('search', `${search}`);
+
+    return this.http.get<Page<Event>>(`${URL}`, {params});
+  }
+
   getOne(id: number) {
     // return this.http.get<Event[]>('./assets/fixtureEvent3.json');
     return this.http.get<Event>(`${URL}/${id}`);

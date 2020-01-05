@@ -53,16 +53,16 @@ describe('UserFormRegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('form invalid when empty', () => {
+  it('should be falsy when empty', () => {
     expect(component.registerUser.valid).toBeFalsy();
   });
 
-  it('form valid when fully', () => {
-    component.registerUser.patchValue ({
+  it('should be truthy when fully', () => {
+    component.registerUser.patchValue({
       username: 'Jean',
       email: 'jeanjean@gmail.com',
       password: 'fvher345',
-      birthdate: new Date()
+      birthdate: new Date(1998, 1, 1)
     });
     expect(component.registerUser.valid).toBeTruthy();
   });

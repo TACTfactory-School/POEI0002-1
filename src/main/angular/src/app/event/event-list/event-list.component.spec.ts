@@ -19,10 +19,9 @@ describe('EventListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        EventListComponent,
-        EventListToggleComponent,
-        EventListInlineComponent,
-        EventListCardComponent
+        // EventListToggleComponent,
+        // EventListInlineComponent,
+        // EventListCardComponent
       ],
       imports: [
         HttpClientModule,
