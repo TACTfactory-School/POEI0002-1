@@ -5,6 +5,7 @@
  */
 package fr.dta.ovg.repositories;
 
+import fr.dta.ovg.contracts.JoinEventContract;
 import fr.dta.ovg.entities.JoinEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +21,7 @@ public interface JoinEventRepository extends JpaRepository<JoinEvent, Long> {
      * @return a JoinEvent.
      */
     @Query(
-            value = "SELECT * FROM app_join_event e WHERE e.event_id = ?1 AND e.user_id = ?2 LIMIT 1",
+            value = JoinEventContract.FIND_BY_USER_EVENT_ID,
             nativeQuery = true)
     JoinEvent findAllByEventAndUser(long eventId, long userId);
 

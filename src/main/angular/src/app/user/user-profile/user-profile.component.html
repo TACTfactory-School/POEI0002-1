@@ -14,7 +14,7 @@
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
-
+  <!-- AVATAR -->
   <div class="container">
     <mat-card class="user-avatar-card">
         <mat-card-header>
@@ -32,7 +32,7 @@
           <!-- <span class="spacer"></!-->
         </mat-card-actions>
     </mat-card>
-
+    <!-- ME DETAILS -->
     <mat-card class="user-profile-card">
       <mat-card-header>
         <mat-card-title>{{ u.username | uppercase }} - Informations utilisateur</mat-card-title>
@@ -135,10 +135,9 @@
       </mat-card-content>
       <mat-card-actions>
         <button class="btn" mat-raised-button (click)="onEditInfo()">Editer</button>
-        <!-- <span class="spacer"></!-->
       </mat-card-actions>
     </mat-card>
-
+    <!-- PREFERENCES -->
     <mat-card class="user-preferences-card">
       <mat-card-header>
         <mat-card-title>Préférences</mat-card-title>
@@ -148,6 +147,16 @@
         <app-user-preferences [displayHeader]="displayHeader"></app-user-preferences>
       </mat-card-content>
     </mat-card>
+    <!-- FRIENDS -->
+    <mat-card class="user-preferences-card">
+        <mat-card-header>
+          <mat-card-title>Mes Amis</mat-card-title>
+          <mat-card-subtitle>Dernière modification - {{ u.updatedAt | date: 'short' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <app-user-friends [displayHeader]="displayHeader"></app-user-friends>
+        </mat-card-content>
+      </mat-card>
   </div>
 
 </article>

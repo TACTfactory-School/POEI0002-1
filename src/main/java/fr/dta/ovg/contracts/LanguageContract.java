@@ -13,6 +13,14 @@ public final class LanguageContract {
         // nothing here.
     }
 
+    // REPOSITORY SQL REQUESTS
+    /** Request if language entity exists by label.*/
+    public static final String EXISTS_BY_LABEL = "SELECT COUNT(h) > 0"
+                                                + " FROM Language h"
+                                                + " WHERE LOWER(h.label) = LOWER(:#{#s.label}) "
+                                                + "AND (:#{#s.id} = NULL "
+                                                + "OR h.id != :#{#s.id})";
+
     // TABLE DEFINITION
     /** Table app_languages. */
     public static final String TABLE = "app_languages";

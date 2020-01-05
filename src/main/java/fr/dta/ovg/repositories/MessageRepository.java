@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import fr.dta.ovg.contracts.MessageContract;
 import fr.dta.ovg.entities.Message;
 
 /** Message Repository extends Jpa Repository. */
@@ -22,10 +23,7 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
      * @param pageableFinal : @see Pageable.
      * @param userId : User id Messages.
      * @return Messages page object.*/
-    @Query("SELECT m FROM Message m "
-                + "INNER JOIN m.userReceiver u "
-                + "WHERE u.id = :userId "
-                + "ORDER BY m.createdAt DESC")
+    @Query(MessageContract.SEL_ALL_BY_USER_ID)
     Page<Message> findAllByUserId(Pageable pageableFinal, @Param("userId") long userId);
 
 }

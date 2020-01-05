@@ -18,8 +18,9 @@ public interface UserFriendCrudService {
     /** Get all UserFriend entity.<br>
      * Must be redefined in implemented class.<br>
      * @param pageable : @see Pageable.
+     * @param userId : User Id friends.
      * @return List of all UserFriend.*/
-    Page<UserFriend> getAll(Pageable pageable);
+    Page<UserFriend> getAll(Pageable pageable, Long userId);
 
     /** Get one UserFriend entity by ID.<br>
      * Must be redefined in implemented class.<br>

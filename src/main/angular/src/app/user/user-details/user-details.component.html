@@ -31,16 +31,17 @@
               <dt>Prénom</dt>
               <dd>{{ u.firstname }}</dd>
 
-              <dt>Email</dt>
-              <!-- Check user préférences -->
-              <dd>{{ u.email }}</dd>
+              <ng-container *ngIf="!u.mailHidden">
+                <dt>Email</dt>
+                <dd>{{ u.email | mask: u.mailHidden }}</dd>
+              </ng-container>
 
               <ng-container *ngIf="u.languages && u.languages.length">
                 <dt>Langues parlés</dt>
                 <dd *ngFor="let l of u.languages; index as i">{{ l.language.label }} {{ l.level | translate }}</dd>
               </ng-container>
 
-              <ng-container *ngIf="u.birthdate">
+              <ng-container *ngIf="u.birthdate && !u.birthdateHidden">
                 <dt>Date de naissance</dt>
                 <dd>{{ u.birthdate | date: 'shortDate' }}</dd>
                 <!-- Check user préférences -->
@@ -48,7 +49,7 @@
                 <dd>{{ u.birthdate | age }}</dd>
               </ng-container>
 
-              <ng-container *ngIf="u.job">
+              <ng-container *ngIf="u.job && !u.jobHidden ">
                 <dt>Emploi</dt>
                 <dd>{{ u.job }}</dd>
               </ng-container>
@@ -58,12 +59,12 @@
                 <dd>{{ u.city }}</dd>
               </ng-container>
 
-              <ng-container *ngIf="u.maritalStatus">
+              <ng-container *ngIf="u.maritalStatus && !u.maritalStatus">
                 <dt>Sitation familiale</dt>
                 <dd>{{ u.maritalStatus | translate }}</dd>
               </ng-container>
 
-              <ng-container *ngIf="u.gender">
+              <ng-container *ngIf="u.gender && !u.statusHidden">
                 <dt>Genre</dt>
                 <dd>{{ u.gender | translate }}</dd>
               </ng-container>
