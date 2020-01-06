@@ -146,8 +146,8 @@ public class EventController {
     /**
      * Create a Join.<br>
      * POST - HTTP.
-     * @param inscription : JoinEvent entity.
-     * @return the created object Join.
+     * @param id : Event id.
+     * @param principal @see Principal : current logged user.
      * @throws BadRequestException : Incorrect request.
      * @throws NotFoundException : entity not found.
      * @throws NotLoggedException  : user is not correctly logged.
