@@ -5,6 +5,8 @@
  */
 package fr.dta.ovg.controllers;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.ovg.entities.Event;
+import fr.dta.ovg.entities.EventRole;
 import fr.dta.ovg.entities.JoinEvent;
+import fr.dta.ovg.entities.User;
 import fr.dta.ovg.exceptions.BadRequestException;
 import fr.dta.ovg.exceptions.NotFoundException;
+import fr.dta.ovg.exceptions.NotLoggedException;
 import fr.dta.ovg.services.EventCrudService;
+import fr.dta.ovg.services.JoinCrudService;
+import fr.dta.ovg.services.UserCrudService;
 import fr.dta.ovg.services.join.JoinDeleteService;
 import io.swagger.annotations.Api;
 
@@ -43,6 +50,14 @@ public class EventController {
     /** Link to JoinDelete Service. */
     @Autowired
     private JoinDeleteService joinServ;
+
+    /** Link to Event CRUD Service. */
+    @Autowired
+    private UserCrudService userService;
+
+    /** Link to Join CRUD Service. */
+    @Autowired
+    private JoinCrudService joinService;
 
     /** Get All function. <br>
     * GET - HTTP.
@@ -126,5 +141,35 @@ public class EventController {
             this.joinServ.delete(j.getId());
         }
         this.service.delete(id);
+    }
+
+    /**
+     * Create a Join.<br>
+     * POST - HTTP.
+     * @param inscription : JoinEvent entity.
+     * @return the created object Join.
+     * @throws BadRequestException : Incorrect request.
+     * @throws NotFoundException : entity not found.
+     * @throws NotLoggedException  : user is not correctly logged.
+     */
+    @PostMapping("{id}/join")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void create(@PathVariable final long id, final Principal principal)
+            throws BadRequestException, NotFoundException, NotLoggedException {
+        final User currentUser = this.userService.getOne(principal.getName());
+
+        if (currentUser == null) {
+            throw new NotLoggedException();
+        }
+
+        if (this.joinService.getOneByEventAndUser(id, currentUser.getId()) == null) {
+            JoinEvent join = new JoinEvent();
+            join.setUser(currentUser);
+            join.setEvent(this.service.getOne(id));
+            join.setRole(EventRole.GUEST);
+            this.joinService.create(join);
+        } else {
+            throw new BadRequestException("already_join");
+        }
     }
 }
