@@ -34,9 +34,9 @@ public final class JsonIgnoreContract {
     /** JSON ignore "usersJoin". */
     public static final String JOIN_USERS = "usersJoin";
     /** JSON ignore "friendRequest". */
-    public static final String USER_FRIENDS_REQUEST = "friendRequest";
+    public static final String USER_FRIENDS_REQUEST = "friendsRequest";
     /** JSON ignore "friendAccept". */
-    public static final String USER_FRIENDS_ACCEPT = "friendAccept";
+    public static final String USER_FRIENDS_ACCEPT = "friendsAccept";
     /** JSON ignore "user". */
     public static final String USER = "user";
     /** JSON ignore "event". */
