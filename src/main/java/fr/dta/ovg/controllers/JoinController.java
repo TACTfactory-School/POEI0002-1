@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,24 +53,6 @@ public class JoinController {
     @GetMapping("{id}")
     public JoinEvent getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
-    }
-
-    /**
-     * Create a Join.<br>
-     * POST - HTTP.
-     * @param inscription : JoinEvent entity.
-     * @return the created object Join.
-     * @throws BadRequestException : Incorrect request.
-     */
-    @PostMapping
-    public JoinEvent create(@Valid @RequestBody final JoinEvent inscription) throws BadRequestException {
-        JoinEvent result;
-        if (this.service.getOneByEventAndUser(inscription.getEvent().getId(), inscription.getUser().getId()) == null) {
-            result = this.service.create(inscription);
-        } else {
-            throw new BadRequestException("already_join");
-        }
-        return result;
     }
 
     /**

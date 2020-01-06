@@ -24,7 +24,7 @@ export class EventListCardComponent implements OnInit {
   currentUser: User;
   userJoin: JoinEvent;
   constructor(
-    private join: JoinEventService,
+    private joinService: JoinEventService,
     private currentU: CurrentUserService,
     private router: Router,
     private _snackBar: MatSnackBar,
@@ -40,7 +40,7 @@ export class EventListCardComponent implements OnInit {
 
   onJoin(data: Event) {
     this.userJoin = new JoinEvent(true, new Date(), this.role, this.currentUser, data);
-    this.join.join(this.userJoin)
+    this.joinService.join(data.id)
     .pipe(first())
       .subscribe(
         data => {

@@ -34,7 +34,7 @@ public final class JoinEventContract {
     public static final String COL_VALID_API = "The hobby label to create.";
 
     /** Column us_ev_validatedAt.*/
-    public static final String COL_VALIDATED_AT = "us_ev_validatedAt";
+    public static final String COL_VALIDATED_AT = "us_ev_validated_at";
     /** Column us_ev_validatedAt API Description.*/
     public static final String COL_VALIDATED_AT_API = "Validation date of join event.";
 

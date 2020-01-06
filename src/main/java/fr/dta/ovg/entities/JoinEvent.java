@@ -32,10 +32,10 @@ public class JoinEvent extends EntityBase {
     /** Validation of event inscription request.*/
     @Column(name = JoinEventContract.COL_VALID, unique = false, nullable = false)
     @ApiModelProperty(value = JoinEventContract.COL_VALID_API)
-    private boolean valid = true;
+    private boolean valid;
 
     /** Validation of event inscription request.*/
-    @Column(name = JoinEventContract.COL_VALIDATED_AT, unique = false, nullable = false)
+    @Column(name = JoinEventContract.COL_VALIDATED_AT, unique = false, nullable = true)
     @ApiModelProperty(value = JoinEventContract.COL_VALIDATED_AT_API)
     private LocalDateTime validatedAt;
 
