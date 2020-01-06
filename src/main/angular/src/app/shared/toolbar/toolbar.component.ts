@@ -129,11 +129,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     if (newUser) {
       // Get notifications for new user.
       this.notifSub = this.notifications
-          .getAll(0, 5, this.user.id)
+          .getAll(0, 10, this.user.id)
           .subscribe(page => this.notificationPage = page);
 
       this.messSub = this.messages
-          .getAll(0, 5, this.user.id)
+          .getAll(0, 10, this.user.id)
           .subscribe(page => this.messagePage = page);
     }
   }

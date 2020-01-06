@@ -21,7 +21,7 @@
     <a *ngIf="user" class="icon" [matMenuTriggerFor]="notifications">
       <mat-icon
         matBadgeColor="accent"
-        matBadge="{{user.notifications.length}}"
+        matBadge="{{ user.notifications.length }}"
         matBadgeColor="warn"
         matBadgePosition="above after"
         matBadgeSize="medium"
@@ -35,7 +35,7 @@
     <a *ngIf="user" class="icon" [matMenuTriggerFor]="messages">
       <mat-icon
         matBadgeColor="accent"
-        matBadge="{{user.messagesReceived.length}}"
+        matBadge="{{ user.messagesReceived.length }}"
         matBadgeColor="warn"
         matBadgePosition="above after"
         matBadgeSize="medium"
@@ -83,7 +83,7 @@
               </button>
             </ng-container>
             <button mat-menu-item (click)="openMessageDialog()">
-              <mat-icon>add_comment</mat-icon>
+              <mat-icon>comment</mat-icon>
               <span>Nouveau message</span>
             </button>
           </mat-menu>
